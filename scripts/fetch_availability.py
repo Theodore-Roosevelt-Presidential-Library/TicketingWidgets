@@ -824,6 +824,32 @@ def main():
         {"generatedAt": now.isoformat(), "days": dict(sorted(future_days.items()))}, indent=1))
     print(f"future.json: {len(future_days)} days of advance sales beyond the widget window.")
 
+    # Year-to-date stats for the monitor (data/stats.json)
+    year = str(now.year)
+    ytd_records = []
+    for p in sorted(ARCHIVE_DIR.glob(f"{year}-*.json")):
+        if p.stem != "index":
+            ytd_records.extend(load_json(p, {}).values())
+    ytd_completed = sum(r.get("sold", 0) for r in ytd_records)
+    today_day = next((d for d in availability["days"] if d["date"] == today_iso), None)
+    today_sold = today_day["totalSold"] if today_day else 0
+    # Outstanding = sold for anything not yet begun: today's remaining time
+    # slots + all future dates in the window + advance sales beyond it
+    today_future_slots_sold = sum(
+        sl["sold"] for sl in (today_day["slots"] if today_day else []) if sl["status"] != "past")
+    upcoming_window = sum(d["totalSold"] for d in availability["days"][1:] if not d.get("closed"))
+    future_outstanding = sum(f["sold"] for f in future_days.values())
+    (DATA_DIR / "stats.json").write_text(json.dumps({
+        "generatedAt": now.isoformat(),
+        "year": year,
+        "ytdSoldCompletedDays": ytd_completed,
+        "todaySold": today_sold,
+        "ytdSoldIncludingToday": ytd_completed + today_sold,
+        "outstandingFutureSold": today_future_slots_sold + upcoming_window + future_outstanding,
+        "todayFutureSlotsSold": today_future_slots_sold,
+        "note": "Sold tickets, not scanned admissions. 'Outstanding' = sold for future time slots today plus all future dates.",
+    }, indent=1))
+
     OUTPUT_PATH.write_text(json.dumps(availability, indent=2))
     ANALYTICS_PATH.write_text(json.dumps(analytics, indent=2))
     LEADS_PATH.write_text(json.dumps(leads, indent=1))

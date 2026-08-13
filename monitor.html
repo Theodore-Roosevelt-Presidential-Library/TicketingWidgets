@@ -39,6 +39,8 @@
   <h1>Sell-Out Monitor <span class="meta">— internal, updates every 15 min</span></h1>
   <p class="meta" id="stamp">Loading…</p>
 
+  <div class="cards" id="stats"></div>
+
   <h2>Today &amp; next 7 days</h2>
   <div id="upcoming"></div>
 
@@ -57,10 +59,23 @@
 <script>
 (async function () {
   const bust = "?t=" + Math.floor(Date.now() / 60000);
-  const [avail, analytics] = await Promise.all([
+  const [avail, analytics, stats] = await Promise.all([
     fetch("data/availability.json" + bust).then(r => r.json()),
     fetch("data/analytics.json" + bust).then(r => r.json()).catch(() => null),
+    fetch("data/stats.json" + bust).then(r => r.json()).catch(() => null),
   ]);
+
+  if (stats) {
+    const n = (x) => (x ?? 0).toLocaleString("en-US");
+    document.getElementById("stats").innerHTML =
+      `<div class="card"><h3>${stats.year} tickets sold to date</h3>` +
+      `<p><span class="big">${n(stats.ytdSoldIncludingToday)}</span></p>` +
+      `<p class="meta">${n(stats.ytdSoldCompletedDays)} through yesterday + ${n(stats.todaySold)} today. ` +
+      `Sold tickets — a proxy for attendance until scan data is wired in.</p></div>` +
+      `<div class="card"><h3>Sold, not yet redeemed</h3>` +
+      `<p><span class="big">${n(stats.outstandingFutureSold)}</span></p>` +
+      `<p class="meta">Sold for future time slots and dates — ${n(stats.todayFutureSlotsSold)} still to arrive today, plus all upcoming days.</p></div>`;
+  }
 
   const mins = Math.round((Date.now() - Date.parse(avail.generatedAt)) / 60000);
   document.getElementById("stamp").textContent =
