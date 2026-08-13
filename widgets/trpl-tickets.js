@@ -134,7 +134,7 @@
     ".trpl-tw-cal-grid .dw{font-family:var(--_caption);font-size:.55em;text-align:center;opacity:.5;text-transform:uppercase}",
     ".trpl-tw-cal-grid .dd{aspect-ratio:1;border-radius:3px;background:#F0EDE6}",
     ".trpl-tw-cal-grid .dd.today{outline:2px solid var(--_night);outline-offset:1px}",
-    ".trpl-tw-cal-grid .dd.ghost{opacity:.45;border:1px dashed rgba(37,40,42,.4)}",
+    ".trpl-tw-cal-grid .dd.ghost{background:transparent!important;border:2px dashed rgba(37,40,42,.35)}",
     ".trpl-tw-cal-years{display:flex;gap:.4em;margin:.2em 0 1em}",
     ".trpl-tw-cal-years button{border:1px solid var(--_border);background:transparent;color:var(--_ink);",
     "border-radius:999px;padding:.3em 1em;cursor:pointer;font-family:var(--_caption);font-size:.82em}",
@@ -484,6 +484,7 @@
 
       function draw(year) {
         el.setAttribute("data-year", year);
+        var ghostCount = 0;
         var yearBtns = years.map(function (y) {
           return '<button aria-pressed="' + (y === year) + '" data-y="' + y + '">' + y + "</button>";
         }).join("");
@@ -502,16 +503,22 @@
               title += rec.kind === "closed" ? " — closed" :
                 " — " + rec.pct + "% reserved" + (rec.soldOut ? " (sold out)" : "") +
                 (rec.kind === "live" ? " (live)" : rec.kind === "future" ? " so far (advance sales)" : "");
-            } else if (iso > today) {
+            }
+            var ghostStyle = null;
+            if (!rec && iso > today) {
               var ly = days[(year - 1) + iso.slice(4)];
               if (ly && ly.kind === "final") {
-                rec = ly; cls += " ghost";
-                title += " — last year: " + ly.pct + "% reserved" + (ly.soldOut ? " (sold out)" : "");
+                cls += " ghost";
+                ghostCount++;
+                ghostStyle = "border-color:" + color(ly);
+                title += " — not on sale yet · last year this date " +
+                  (ly.soldOut ? "sold out completely" : "ended " + ly.pct + "% full");
               } else title += " — no data yet";
-            } else title += " — no data";
+            } else if (!rec) title += " — no data";
             if (iso === today) cls += " today";
-            var bg = color(rec);
-            cells.push('<span class="' + cls + '"' + (bg ? ' style="background:' + bg + '"' : "") +
+            var bg = ghostStyle ? null : color(rec);
+            cells.push('<span class="' + cls + '"' +
+              (bg ? ' style="background:' + bg + '"' : ghostStyle ? ' style="' + ghostStyle + '"' : "") +
               ' title="' + esc(title) + '"></span>');
           }
           months += '<div class="trpl-tw-cal-month"><h4>' + MONTHS[m] + " " + year +
@@ -526,7 +533,7 @@
           '<span><i style="background:#092A4D"></i>Sold out</span>' +
           '<span><i style="background:#fff;border:1px solid rgba(37,40,42,.3)"></i>Closed</span>' +
           '<span><i style="background:#F0EDE6"></i>No data yet</span>' +
-          '<span><i style="background:#E7805D;opacity:.45;border:1px dashed rgba(37,40,42,.4)"></i>Last year</span>' +
+          '<span><i style="background:transparent;border:2px dashed #E7805D"></i>Last year\u2019s pattern (not on sale yet)</span>' +
           "</div>";
         el.innerHTML =
           '<div class="trpl-tw trpl-tw-cal">' +
@@ -534,6 +541,8 @@
           '<div class="trpl-tw-cal-years">' + (years.length > 1 ? yearBtns : "") + "</div>" +
           legend +
           '<div class="trpl-tw-cal-months">' + months + "</div>" +
+          (ghostCount ? '<p class="trpl-tw-meta">Dashed outlines are not on sale yet \u2014 they show how full ' +
+            "that date ended <strong>last year</strong>, as a planning guide only.</p>" : "") +
           (el.hasAttribute("data-hide-cta") ? "" :
             '<div class="trpl-tw-cta"><a class="trpl-tw-btn" href="' + esc(ticketsUrl) + '">Reserve Tickets</a></div>');
         el.querySelectorAll(".trpl-tw-cal-years button").forEach(function (b) {
