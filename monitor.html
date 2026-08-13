@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>TRPL Sell-Out Monitor (internal)</title>
+  <style>
+    :root { --accent:#8C3B2E; --ok:#3E6B4F; --warn:#B07C24; --line:rgba(0,0,0,.13); }
+    body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color:#26221e;
+           background:#faf8f5; margin:0; }
+    main { max-width: 1000px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
+    h1 { font-size:1.35rem; } h2 { font-size:1.05rem; margin-top:2.2rem; }
+    .meta { color:#777; font-size:.82rem; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(15.5em,1fr)); gap:.8em; margin-top:.9em; }
+    .card { border:1px solid var(--line); border-radius:8px; padding:.8em 1em; background:#fff; }
+    .card h3 { margin:0 0 .4em; font-size:.95rem; }
+    .card p { margin:.15em 0; font-size:.82rem; }
+    .big { font-size:1.25rem; font-weight:700; }
+    table { border-collapse:collapse; width:100%; margin-top:.9em; background:#fff; font-size:.85rem; }
+    th, td { border:1px solid var(--line); padding:.4em .6em; text-align:left; }
+    th { background:#f0ece6; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; }
+    td.num { text-align:right; font-variant-numeric:tabular-nums; }
+    .pill { display:inline-block; padding:.1em .6em; border-radius:999px; font-size:.75rem; color:#fff; }
+    .pill.soldout { background:var(--accent); } .pill.ok { background:var(--ok); } .pill.part { background:var(--warn); }
+    .bar { height:.5em; background:rgba(0,0,0,.08); border-radius:999px; overflow:hidden; min-width:6em; }
+    .bar i { display:block; height:100%; background:var(--ok); }
+    .bar.hot i { background:var(--accent); }
+    .slotmap { display:flex; gap:2px; }
+    .slotmap b { flex:1; height:.9em; border-radius:2px; background:#d8e4dc; }
+    .slotmap b.x { background:var(--accent); }
+    .note { font-size:.8rem; color:#666; margin-top:.4em; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Sell-Out Monitor <span class="meta">— internal, updates every 15 min</span></h1>
+  <p class="meta" id="stamp">Loading…</p>
+
+  <h2>Today &amp; next 7 days</h2>
+  <div id="upcoming"></div>
+
+  <h2>Day-of-week behavior <span class="meta" id="lookback"></span></h2>
+  <div class="cards" id="dow"></div>
+  <p class="note">"Same-day tickets" = tickets sold on the visit day itself (walk-up + same-day online), measured
+     from the first data snapshot of the day. Builds up as the pipeline runs; blank until enough history exists.</p>
+
+  <h2>Recent days</h2>
+  <div id="recent"></div>
+
+<script>
+(async function () {
+  const bust = "?t=" + Math.floor(Date.now() / 60000);
+  const [avail, analytics] = await Promise.all([
+    fetch("data/availability.json" + bust).then(r => r.json()),
+    fetch("data/analytics.json" + bust).then(r => r.json()).catch(() => null),
+  ]);
+
+  const mins = Math.round((Date.now() - Date.parse(avail.generatedAt)) / 60000);
+  document.getElementById("stamp").textContent =
+    "Data generated " + (mins <= 1 ? "just now" : mins + " min ago") + " (" + avail.generatedAt + ")";
+
+  /* Upcoming days table */
+  const up = ["<table><tr><th>Day</th><th>% sold</th><th></th><th>Sold-out slots</th>",
+              "<th>First available</th><th>Risk</th><th>Note</th></tr>"];
+  for (const d of avail.days) {
+    if (d.closed) { up.push(`<tr><td>${d.dayLabel}</td><td colspan=6>Closed</td></tr>`); continue; }
+    const hot = d.selloutRisk === "high" || d.selloutRisk === "sold_out";
+    up.push(`<tr><td>${d.dayLabel} <span class="meta">${d.date.slice(5)}</span></td>` +
+      `<td class="num">${d.pctSold}%</td>` +
+      `<td><div class="bar${hot ? " hot" : ""}"><i style="width:${Math.min(100, d.pctSold)}%"></i></div></td>` +
+      `<td class="num">${d.soldOutSlots}/${d.slots.length}</td>` +
+      `<td>${d.firstAvailable || "—"}</td>` +
+      `<td><span class="pill ${d.selloutRisk === "sold_out" ? "soldout" : hot ? "soldout" : d.selloutRisk === "medium" ? "part" : "ok"}">${d.selloutRisk}</span></td>` +
+      `<td>${d.riskNote || ""}</td></tr>`);
+  }
+  up.push("</table>");
+  document.getElementById("upcoming").innerHTML = up.join("");
+
+  if (!analytics) return;
+  document.getElementById("lookback").textContent = "— last " + analytics.lookbackDays + " days";
+
+  /* Day-of-week cards */
+  const order = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+  const cards = [];
+  for (const dow of order) {
+    const a = analytics.byDayOfWeek[dow];
+    if (!a) continue;
+    const slots = Object.entries(a.slotSelloutRate || {});
+    const map = slots.map(([t, r]) =>
+      `<b class="${r >= 0.5 ? "x" : ""}" title="${t}: sold out ${Math.round(r * 100)}% of days"></b>`).join("");
+    cards.push(`<div class="card"><h3>${dow} <span class="meta">n=${a.daysObserved}</span></h3>` +
+      `<p><span class="big">${a.medianFinalPctSold ?? "–"}%</span> median final sell-through</p>` +
+      `<p>Fully sold out: <strong>${a.fullSelloutCount}/${a.daysObserved}</strong> days</p>` +
+      `<p>Same-day tickets (median): <strong>${a.medianDayOfTickets ?? "collecting…"}</strong></p>` +
+      `<p>End-of-day first opening: <strong>${a.typicalFirstAvailableAtEndOfDay ?? "–"}</strong></p>` +
+      `<div class="slotmap" title="Per-slot sell-out frequency (red = sold out ≥50% of ${dow}s)">${map}</div>` +
+      `<p class="meta">${slots.length ? slots[0][0] + " → " + slots[slots.length-1][0] : ""}</p></div>`);
+  }
+  document.getElementById("dow").innerHTML = cards.join("") || "<p class='note'>No archived days yet.</p>";
+
+  /* Recent days table */
+  const rec = ["<table><tr><th>Date</th><th>Day</th><th>% sold</th><th>Sold-out slots</th>",
+               "<th>Same-day tickets</th><th>Outcome</th></tr>"];
+  for (const r of (analytics.recentDays || []).slice().reverse()) {
+    rec.push(`<tr><td>${r.date}</td><td>${r.dow}</td><td class="num">${r.pctSold}%</td>` +
+      `<td class="num">${r.soldOutSlots}/${r.slotCount}</td>` +
+      `<td class="num">${r.dayOfTickets ?? "—"}</td>` +
+      `<td>${r.fullySoldOut ? '<span class="pill soldout">sold out</span>'
+             : r.soldOutSlots > 0 ? '<span class="pill part">partial</span>'
+             : '<span class="pill ok">open all day</span>'}</td></tr>`);
+  }
+  rec.push("</table>");
+  document.getElementById("recent").innerHTML = rec.join("");
+})();
+</script>
+</main>
+</body>
+</html>

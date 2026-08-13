@@ -1,0 +1,44 @@
+name: Update availability data
+
+on:
+  schedule:
+    # Every 15 minutes. GitHub cron can drift 5-15 min under load.
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-availability
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch availability from ACME
+        env:
+          ACME_API_KEY: ${{ secrets.ACME_API_KEY }}
+          ACME_API_BASE: ${{ vars.ACME_API_BASE || 'https://api.acmeticketing.com' }}
+          ACME_REPORT_ID: ${{ vars.ACME_REPORT_ID || '69c18975669b758620b4c586' }}
+        run: python scripts/fetch_availability.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "trpl-widgets-bot"
+          git config user.email "actions@github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "chore: update availability data [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi

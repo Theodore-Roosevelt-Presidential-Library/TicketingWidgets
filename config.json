@@ -1,0 +1,61 @@
+{
+  "timezone": "America/Denver",
+  "ticketsUrl": "https://www.trlibrary.com/tickets",
+  "daysAhead": 7,
+  "lookbackDays": 15,
+  "limitedThresholdPct": 15,
+  "limitedThresholdMin": 10,
+  "_unused_note": "seasons/closedDates below are legacy — slot times and closed days now come live from ACME; kept only for reference",
+  "closedDates": ["2026-11-26", "2026-12-25", "2026-12-31"],
+  "seasons": [
+    {
+      "name": "spring",
+      "start": "03-02",
+      "end": "05-31",
+      "openDays": [1, 2, 3, 4, 5, 6],
+      "slotsByDay": {
+        "default": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"],
+        "5": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"],
+        "6": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"]
+      }
+    },
+    {
+      "name": "summer",
+      "start": "06-01",
+      "end": "09-13",
+      "openDays": [0, 1, 2, 3, 4, 5, 6],
+      "slotsByDay": {
+        "default": ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
+      }
+    },
+    {
+      "name": "fall",
+      "start": "09-14",
+      "end": "11-30",
+      "openDays": [1, 2, 3, 4, 5, 6],
+      "slotsByDay": {
+        "default": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"],
+        "5": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"],
+        "6": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"]
+      }
+    },
+    {
+      "name": "winter",
+      "start": "12-01",
+      "end": "12-31",
+      "openDays": [2, 3, 4, 5, 6],
+      "slotsByDay": {
+        "default": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"]
+      }
+    },
+    {
+      "name": "winter-jan",
+      "start": "01-01",
+      "end": "03-01",
+      "openDays": [2, 3, 4, 5, 6],
+      "slotsByDay": {
+        "default": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"]
+      }
+    }
+  ]
+}
