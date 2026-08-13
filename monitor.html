@@ -34,25 +34,27 @@
     .note { font-size:.8rem; color:#666; margin-top:.4em; }
     .tablewrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
     @media (max-width: 640px) {
-      /* Tables become stacked cards */
-      .tablewrap table, .tablewrap tbody, .tablewrap tr, .tablewrap td { display:block; width:100%; }
+      .tablewrap, .tablewrap * { box-sizing: border-box; }
+      .tablewrap table, .tablewrap tbody, .tablewrap tr, .tablewrap td { display:block; width:auto; }
+      .tablewrap table { border:0; background:transparent; width:100%; }
+      .tablewrap tr:first-child { display:none; } /* header row */
       .tablewrap th { display:none; }
-      .tablewrap table { border:0; background:transparent; }
       .tablewrap tr { border:1px solid var(--line); border-radius:8px; background:#fff;
-                      margin:0 0 .6em; padding:.55em .8em; }
-      .tablewrap td { border:0; padding:.14em 0; display:flex; align-items:center;
-                      justify-content:space-between; gap:1em; text-align:right; }
-      .tablewrap td.num { text-align:right; }
+                      margin:0 0 .6em; padding:.5em .8em .6em; overflow:hidden; }
+      .tablewrap td { border:0; padding:.16em 0; display:flex; align-items:center;
+                      justify-content:space-between; gap:1em; min-width:0; }
       .tablewrap td[data-l]::before { content:attr(data-l); font-size:.68rem; text-transform:uppercase;
-                      letter-spacing:.04em; color:#8a8a8a; text-align:left; flex:0 0 auto; }
-      .tablewrap td[data-l="Day"], .tablewrap td[data-l="Date"] { font-weight:700; }
-      .tablewrap td[data-l="Day"]::before, .tablewrap td[data-l="Date"]::before { content:""; }
-      .tablewrap td:has(.bar) { display:block; }
-      .tablewrap .bar { min-width:0; width:100%; margin:.15em 0; }
-      .tablewrap td[data-l="Note"] { display:block; text-align:left; font-size:.8rem; color:#555; }
-      .tablewrap td[data-l="Note"]::before { display:none; }
-      .tablewrap td:empty { display:none; }
-      .tablewrap td.mobilehide { display:none; }
+                      letter-spacing:.04em; color:#8a8a8a; flex:0 0 auto; }
+      .tablewrap td[data-l="Day"], .tablewrap td[data-l="Date"] { display:block; text-align:left;
+                      font-weight:700; font-size:.95rem; padding:0 0 .35em;
+                      border-bottom:1px solid var(--line); margin-bottom:.35em; }
+      .tablewrap td[data-l="Day"]::before, .tablewrap td[data-l="Date"]::before { content:none; }
+      .tablewrap td:has(.bar) { display:block; padding:.3em 0; }
+      .tablewrap .bar { min-width:0; width:100%; }
+      .tablewrap td[data-l="Note"] { display:block; text-align:left; font-size:.8rem;
+                      color:#555; padding-top:.35em; }
+      .tablewrap td[data-l="Note"]::before { content:none; }
+      .tablewrap td:empty, .tablewrap td.mobilehide { display:none; }
     }
   </style>
 </head>
