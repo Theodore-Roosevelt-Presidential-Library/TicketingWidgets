@@ -139,7 +139,7 @@
     ".trpl-tw-cal-years button{border:1px solid var(--_border);background:transparent;color:var(--_ink);",
     "border-radius:999px;padding:.3em 1em;cursor:pointer;font-family:var(--_caption);font-size:.82em}",
     ".trpl-tw-cal-years button[aria-pressed=true]{background:var(--_night);color:#fff;border-color:var(--_night)}",
-    ".trpl-tw-cal-legend{display:flex;flex-wrap:wrap;gap:.9em;margin-top:1em;font-family:var(--_caption);font-size:.72em}",
+    ".trpl-tw-cal-legend{display:flex;flex-wrap:wrap;gap:.9em;margin:.2em 0 1em;font-family:var(--_caption);font-size:.72em}",
     ".trpl-tw-cal-legend i{display:inline-block;width:1em;height:1em;border-radius:3px;vertical-align:-2px;margin-right:.3em}",
     "@media (max-width:480px){.trpl-tw-day .lbl{min-width:6.5em}}"
   ].join("");
@@ -438,17 +438,26 @@
 
   function renderCalendar(el, data, ticketsUrl) {
     var base = (el.getAttribute("data-url") || DEFAULT_DATA_URL).replace(/availability\.json.*$/, "");
-    getJson(base + "archive/index.json").catch(function () { return { months: [] }; }).then(function (index) {
-      return Promise.all((index.months || []).map(function (m) {
-        return getJson(base + "archive/" + m + ".json").then(function (d) { return d; })
-          .catch(function () { return {}; });
-      }));
-    }).then(function (monthFiles) {
+    var loadArchive = getJson(base + "archive/index.json")
+      .catch(function () { return { months: [] }; })
+      .then(function (index) {
+        return Promise.all((index.months || []).map(function (m) {
+          return getJson(base + "archive/" + m + ".json").catch(function () { return {}; });
+        }));
+      });
+    var loadFuture = getJson(base + "future.json").catch(function () { return { days: {} }; });
+    Promise.all([loadArchive, loadFuture]).then(function (results) {
+      var monthFiles = results[0], future = results[1];
       var days = {};
       monthFiles.forEach(function (data2) {
         Object.keys(data2).forEach(function (d) {
           days[d] = { pct: data2[d].pctSold, soldOut: data2[d].fullySoldOut, kind: "final" };
         });
+      });
+      // Advance reservations for dates beyond the live window (through +1 year)
+      Object.keys(future.days || {}).forEach(function (d) {
+        var f = future.days[d];
+        days[d] = { pct: f.pct, soldOut: f.slotCount > 0 && f.soldOutSlots >= f.slotCount, kind: "future" };
       });
       (data.days || []).forEach(function (d) {
         days[d.date] = d.closed ? { kind: "closed" } :
@@ -492,7 +501,7 @@
             if (rec) {
               title += rec.kind === "closed" ? " — closed" :
                 " — " + rec.pct + "% reserved" + (rec.soldOut ? " (sold out)" : "") +
-                (rec.kind === "live" ? " (live)" : "");
+                (rec.kind === "live" ? " (live)" : rec.kind === "future" ? " so far (advance sales)" : "");
             } else if (iso > today) {
               var ly = days[(year - 1) + iso.slice(4)];
               if (ly && ly.kind === "final") {
@@ -508,22 +517,23 @@
           months += '<div class="trpl-tw-cal-month"><h4>' + MONTHS[m] + " " + year +
             '</h4><div class="trpl-tw-cal-grid">' + cells.join("") + "</div></div>";
         }
+        var legend = el.hasAttribute("data-hide-legend") ? "" :
+          '<div class="trpl-tw-cal-legend">' +
+          '<span><i style="background:#EAF4EB"></i>Quiet</span>' +
+          '<span><i style="background:#8FC895"></i>Moderate</span>' +
+          '<span><i style="background:#FC924E"></i>Busy</span>' +
+          '<span><i style="background:#E7805D"></i>Very busy</span>' +
+          '<span><i style="background:#092A4D"></i>Sold out</span>' +
+          '<span><i style="background:#fff;border:1px solid rgba(37,40,42,.3)"></i>Closed</span>' +
+          '<span><i style="background:#F0EDE6"></i>No data yet</span>' +
+          '<span><i style="background:#E7805D;opacity:.45;border:1px dashed rgba(37,40,42,.4)"></i>Last year</span>' +
+          "</div>";
         el.innerHTML =
           '<div class="trpl-tw trpl-tw-cal">' +
           (el.hasAttribute("data-hide-heading") ? "" : "<h3>Reservation Calendar</h3>") +
           '<div class="trpl-tw-cal-years">' + (years.length > 1 ? yearBtns : "") + "</div>" +
+          legend +
           '<div class="trpl-tw-cal-months">' + months + "</div>" +
-          (el.hasAttribute("data-hide-legend") ? "" :
-            '<div class="trpl-tw-cal-legend">' +
-            '<span><i style="background:#EAF4EB"></i>Quiet</span>' +
-            '<span><i style="background:#8FC895"></i>Moderate</span>' +
-            '<span><i style="background:#FC924E"></i>Busy</span>' +
-            '<span><i style="background:#E7805D"></i>Very busy</span>' +
-            '<span><i style="background:#092A4D"></i>Sold out</span>' +
-            '<span><i style="background:#fff;border:1px solid rgba(37,40,42,.3)"></i>Closed</span>' +
-            '<span><i style="background:#F0EDE6"></i>No data yet</span>' +
-            '<span><i style="background:#E7805D;opacity:.45;border:1px dashed rgba(37,40,42,.4)"></i>Last year</span>' +
-            "</div>") +
           (el.hasAttribute("data-hide-cta") ? "" :
             '<div class="trpl-tw-cta"><a class="trpl-tw-btn" href="' + esc(ticketsUrl) + '">Reserve Tickets</a></div>');
         el.querySelectorAll(".trpl-tw-cal-years button").forEach(function (b) {

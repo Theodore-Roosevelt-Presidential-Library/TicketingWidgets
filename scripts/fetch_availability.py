@@ -114,8 +114,8 @@ def api_request(method, path, payload=None):
             raise
 
 
-def run_report(tz, days_ahead, lookback_days):
-    """Execute the report for (today - lookback) -> (today + days_ahead)."""
+def run_report(tz, horizon_days, lookback_days):
+    """Execute the report for (today - lookback) -> (today + horizon)."""
     print(f"Fetching report definition {REPORT_ID} ...")
     definition = api_request("GET", f"/v2/b2b/analytics/report/definitions/{REPORT_ID}")
 
@@ -128,7 +128,7 @@ def run_report(tz, days_ahead, lookback_days):
 
     now = datetime.now(tz)
     start = (now - timedelta(days=lookback_days)).replace(hour=0, minute=0, second=0, microsecond=0)
-    end = (now + timedelta(days=days_ahead)).replace(hour=23, minute=59, second=59, microsecond=0)
+    end = (now + timedelta(days=horizon_days)).replace(hour=23, minute=59, second=59, microsecond=0)
     payload = {
         "reportUuid": REPORT_ID,
         "queryExpression": query_expression,
@@ -712,6 +712,7 @@ def main():
     now = datetime.now(tz)
     today_iso = now.date().isoformat()
     days_ahead = config.get("daysAhead", 7)
+    horizon = max(days_ahead, config.get("futureDaysAhead", 365))
     lookback = config.get("lookbackDays", 15)
     DATA_DIR.mkdir(exist_ok=True)
 
@@ -720,8 +721,13 @@ def main():
         past = [(now.date() - timedelta(days=i)).isoformat() for i in range(lookback, 0, -1)]
         future = [(now.date() + timedelta(days=i)).isoformat() for i in range(days_ahead + 1)]
         slot_data = mock_availability(config, tz, past, future)
+        for i in range(days_ahead + 1, 90):  # sparse advance sales further out
+            d = (now.date() + timedelta(days=i)).isoformat()
+            for slot in ["09:00", "11:00", "13:00", "15:00"]:
+                pct = max(0.02, 0.5 - i * 0.005)
+                slot_data[(d, slot)] = {"available": int(200 * (1 - pct)), "capacity": 200}
     else:
-        raw = run_report(tz, days_ahead, lookback)
+        raw = run_report(tz, horizon, lookback)
         RAW_PATH.write_text(json.dumps(raw, indent=2)[:4_000_000])
         slot_data = parse_availability(raw, tz)
         print(f"Parsed {len(slot_data)} (date, slot) pairs from report.")
@@ -744,6 +750,25 @@ def main():
     leads = update_leads(leads, slot_data, today_iso, tz)
     history = update_history(history, availability, now)
     write_archive_index()
+
+    # Advance reservations beyond the widget window -> compact future.json
+    window_end = (now.date() + timedelta(days=days_ahead)).isoformat()
+    future_days = {}
+    for (d_iso, t), rec in slot_data.items():
+        if d_iso > window_end:
+            f = future_days.setdefault(d_iso, {"capacity": 0, "sold": 0, "soldOutSlots": 0, "slotCount": 0})
+            cap = max(0, rec["capacity"])
+            remaining = max(0, min(rec["available"], cap))
+            f["capacity"] += cap
+            f["sold"] += cap - remaining
+            f["slotCount"] += 1
+            if cap and remaining <= 0:
+                f["soldOutSlots"] += 1
+    for d_iso, f in future_days.items():
+        f["pct"] = round(100 * f["sold"] / f["capacity"]) if f["capacity"] else 0
+    (DATA_DIR / "future.json").write_text(json.dumps(
+        {"generatedAt": now.isoformat(), "days": dict(sorted(future_days.items()))}, indent=1))
+    print(f"future.json: {len(future_days)} days of advance sales beyond the widget window.")
 
     OUTPUT_PATH.write_text(json.dumps(availability, indent=2))
     ANALYTICS_PATH.write_text(json.dumps(analytics, indent=2))
