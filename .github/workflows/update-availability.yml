@@ -34,6 +34,8 @@ jobs:
         run: |
           git config user.name "trpl-widgets-bot"
           git config user.email "actions@github.com"
+          # Auto-resolve conflicts in generated data files (see .gitattributes)
+          git config merge.keepours.driver true
           git add data/
           if git diff --cached --quiet; then
             echo "No changes."

@@ -124,3 +124,4 @@ Everything is year-agnostic by design: dates are computed at runtime, the calend
 - Times displayed are Mountain Time (`America/Denver`), matching Medora.
 - GitHub's cron can drift 5–15 minutes under load; the widgets show "Updated X min ago" and soften their language if data is more than 90 minutes old.
 - The API key grants whatever its ACME user can do — scope that user to reporting only.
+- **Syncing a local clone:** the bot commits `data/` every 15 minutes, so plain pulls often conflict on generated files. Run `./scripts/sync.sh` instead of `git pull` — it sets up the `keepours` merge driver (auto-resolves `data/` conflicts by keeping local; the next pipeline run refreshes them anyway) and stops only for real conflicts in code or docs.
