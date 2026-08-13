@@ -226,6 +226,20 @@
 
   /* ------------------------------------------------ renderers */
 
+  function ticketsLeft(today) {
+    var n = 0;
+    (today.slots || []).forEach(function (s) {
+      if (s.status === "available" || s.status === "limited") n += s.remaining;
+    });
+    return n;
+  }
+  function leftHeadline(n) {
+    if (n <= 10) return "Only " + n + (n === 1 ? " ticket" : " tickets") + " left today";
+    var r = n < 50 ? Math.round(n / 5) * 5 : Math.round(n / 10) * 10;
+    return "About " + r + " tickets left today";
+  }
+
+
   function renderAlert(el, data, ticketsUrl) {
     var today = data.days && data.days[0];
     if (!today) return;
@@ -241,8 +255,9 @@
     } else if (risk === "sold_out") {
       head = "Today is sold out";
       body = "No walk-up tickets are available. Check the next few days and reserve online.";
-    } else if (today.soldOutSlots > 0) {
-      head = today.soldOutSlots + (today.soldOutSlots === 1 ? " time slot has" : " time slots have") + " sold out today";
+    } else if (today.soldOutSlots > 0 || risk === "high") {
+      var left = ticketsLeft(today);
+      head = left > 0 ? leftHeadline(left) : "Today is selling fast";
       body = (today.firstAvailable ? "First available entry: " + today.firstAvailable + " MT. " : "") + (today.riskNote || "");
     } else if (risk === "high" || risk === "medium") {
       head = "Today is selling fast";

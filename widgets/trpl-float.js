@@ -71,6 +71,20 @@
     "@media (max-width:600px){#trpl-float{left:.6rem;right:.6rem;bottom:.6rem;max-width:none}}"
   ].join("");
 
+
+  function ticketsLeft(today) {
+    var n = 0;
+    (today.slots || []).forEach(function (s) {
+      if (s.status === "available" || s.status === "limited") n += s.remaining;
+    });
+    return n;
+  }
+  function leftHeadline(n) {
+    if (n <= 10) return "Only " + n + (n === 1 ? " ticket" : " tickets") + " left today";
+    var r = n < 50 ? Math.round(n / 5) * 5 : Math.round(n / 10) * 10;
+    return "About " + r + " tickets left today";
+  }
+
   function message(today, days) {
     if (today.closed) return null;
     var risk = today.selloutRisk;
@@ -84,10 +98,11 @@
       };
     }
     if (RANK[risk] < MIN_RISK && !today.soldOutSlots) return null;
-    if (today.soldOutSlots > 0) {
+    var left = ticketsLeft(today);
+    if ((today.soldOutSlots > 0 || risk === "high") && left > 0) {
       return {
         risk: risk,
-        head: today.soldOutSlots + (today.soldOutSlots === 1 ? " time slot" : " time slots") + " sold out today",
+        head: leftHeadline(left),
         body: (today.firstAvailable ? "First available entry: " + today.firstAvailable + " MT. " : "") +
               (today.riskNote || "Reserve online before you drive."),
         cta: "Buy Tickets"
