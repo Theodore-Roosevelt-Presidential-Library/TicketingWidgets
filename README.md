@@ -52,7 +52,7 @@ Sitewide banner docked lower-left. Shows only when there's something worth sayin
 <script src="https://ticketing.labs.trlibrary.com/widgets/trpl-float.js" async></script>
 ```
 
-Options via `window.TRPL_FLOAT`: `minRisk` ("low" | "medium" | "high"), `ticketsUrl`, `dataUrl`. Consider a GTM trigger exception on the tickets page itself.
+The banner includes a primary Buy Tickets button plus a smaller "See today's availability" link (default `https://www.trlibrary.com/tickets#available`). Dismissal is keyed to the Mountain-Time date, so it reappears the next day if that day also triggers. Options via `window.TRPL_FLOAT`: `minRisk` ("low" | "medium" | "high"), `ticketsUrl`, `availabilityUrl`, `dataUrl`. Consider a GTM trigger exception on the tickets page itself.
 
 ### Styling
 

@@ -430,6 +430,7 @@
   function initAll() {
     injectStyles();
     var nodes = document.querySelectorAll("[data-trpl-widget]");
+    var refreshers = [];
     nodes.forEach(function (el) {
       var kind = el.getAttribute("data-trpl-widget");
       var render = RENDERERS[kind];
@@ -437,17 +438,31 @@
       var url = el.getAttribute("data-url") || DEFAULT_DATA_URL;
       function refresh() {
         getJson(url).then(function (data) {
+          // Non-destructive refresh: never re-render while the visitor is
+          // interacting with this widget, and skip when data hasn't changed.
+          // (A full innerHTML swap would destroy focus and can cause the
+          // browser to jump/scroll.)
+          if (el.contains(document.activeElement) && document.activeElement !== document.body) return;
+          if (el.getAttribute("data-rendered") === String(data.generatedAt)) return;
           var ticketsUrl = el.getAttribute("data-tickets-url") || data.ticketsUrl ||
             "https://www.trlibrary.com/tickets";
           render(el, data, ticketsUrl);
+          el.setAttribute("data-rendered", String(data.generatedAt));
         }).catch(function (err) {
           /* Fail quietly: never break the host page. */
           if (window.console) console.warn("TRPL widget (" + kind + "):", err);
         });
       }
       refresh();
-      setInterval(function () { cache = {}; refresh(); }, REFRESH_MS);
+      refreshers.push(refresh);
     });
+    if (refreshers.length) {
+      // One shared timer for all widgets (previously one per widget)
+      setInterval(function () {
+        cache = {};
+        refreshers.forEach(function (fn) { fn(); });
+      }, REFRESH_MS);
+    }
   }
 
   if (document.readyState === "loading") {

@@ -15,6 +15,7 @@
  *   window.TRPL_FLOAT = {
  *     minRisk: "medium",           // "low" shows on any day | "medium" (default) | "high"
  *     ticketsUrl: "...",           // override Buy Tickets link
+ *     availabilityUrl: "...",      // secondary "See today's availability" link
  *     dataUrl: "...availability.json",
  *     fontsCss: "https://use.typekit.net/XXXXXXX.css"  // load brand webfonts if the page doesn't
  *   };
@@ -61,6 +62,9 @@
     "font-family:Frutiger,'Frutiger Next','frutiger-next','Helvetica Neue',Arial,sans-serif;",
     "font-weight:700;padding:10px 24px;border-radius:2px;text-decoration:none;font-size:.9rem}",
     "#trpl-float a.trpl-float-btn:hover{filter:brightness(1.07)}",
+    "#trpl-float a.trpl-float-link{display:inline-block;margin-left:.9rem;font-family:Frutiger,'Frutiger Next','frutiger-next','Helvetica Neue',Arial,sans-serif;",
+    "font-size:.8rem;color:#092A4D;text-decoration:underline;text-underline-offset:2px}",
+    "#trpl-float a.trpl-float-link:hover{color:#1B4532}",
     "#trpl-float button.trpl-float-x{position:absolute;top:.35rem;right:.4rem;border:0;background:none;",
     "cursor:pointer;font-size:1.05rem;line-height:1;color:#25282A;opacity:.55;padding:.25rem}",
     "#trpl-float button.trpl-float-x:hover{opacity:1}",
@@ -130,7 +134,10 @@
       "<strong>" + esc(msg.head) + "</strong>" +
       "<p>" + esc(msg.body) + "</p>" +
       '<a class="trpl-float-btn" href="' + esc(cfg.ticketsUrl || data.ticketsUrl || "https://www.trlibrary.com/tickets") +
-      '">' + esc(msg.cta) + "</a>";
+      '">' + esc(msg.cta) + "</a>" +
+      '<a class="trpl-float-link" href="' +
+      esc(cfg.availabilityUrl || "https://www.trlibrary.com/tickets#available") +
+      '">See today\u2019s availability</a>';
     document.body.appendChild(el);
     requestAnimationFrame(function () { requestAnimationFrame(function () { el.className = "trpl-on"; }); });
 
