@@ -316,6 +316,26 @@ def update_history(history, availability, now):
     return history
 
 
+
+# ---------------------------------------------------------------- closures
+
+CLOSURES_PATH = ROOT / "closures.json"
+DOW_NAMES = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+
+def closure_reason(d, closures):
+    """Return a human-readable closure reason for date d, or None if open."""
+    d_iso = d.isoformat()
+    for h in closures.get("holidays", []):
+        if h.get("date") == d_iso:
+            return h.get("name", "Holiday")
+    dow = DOW_NAMES[d.weekday()]
+    for w in closures.get("weeklyClosures", []):
+        if w.get("validFrom", "") <= d_iso <= w.get("validThrough", "") and dow in w.get("daysClosed", []):
+            label = (w.get("label") or "seasonal hours").split(" (")[0]
+            return f"Closed {dow}s ({label})"
+    return None
+
 # ---------------------------------------------------------------- lead curves
 
 def update_leads(leads, slot_data, today_iso, tz):
@@ -568,7 +588,7 @@ def compute_month_outlook(records, availability, tz):
 
 # ------------------------------------------------------------- availability
 
-def build_availability(slot_data, config, tz, history, analytics):
+def build_availability(slot_data, config, tz, history, analytics, closures=None):
     now = datetime.now(tz)
     days_ahead = config.get("daysAhead", 7)
     lim_pct = config.get("limitedThresholdPct", 15)
@@ -585,11 +605,20 @@ def build_availability(slot_data, config, tz, history, analytics):
         d_iso = d.isoformat()
         day_label = "Today" if i == 0 else ("Tomorrow" if i == 1 else d.strftime("%a %b %-d"))
         day_slots = by_date.get(d_iso)
+        reason = closure_reason(d, closures or {})
+
+        if day_slots and reason:
+            print(f"WARNING: {d_iso} is marked closed ({reason}) but ACME has "
+                  f"{len(day_slots)} sellable slots — closure wins for display. "
+                  "Check closures.json vs ACME.", file=sys.stderr)
+            day_slots = None
 
         if not day_slots:
             days_out.append({
                 "date": d_iso, "dayLabel": day_label, "closed": True, "slots": [],
-                "status": "closed", "selloutRisk": "none", "riskNote": "Closed",
+                "closedReason": reason,
+                "status": "closed", "selloutRisk": "none",
+                "riskNote": f"Closed — {reason}" if reason else "Closed",
                 "totalCapacity": 0, "totalSold": 0, "pctSold": 0,
                 "soldOutSlots": 0, "firstAvailable": None,
             })
@@ -739,6 +768,7 @@ def main():
         if not any(d >= today_iso for d, _ in slot_data):
             raise RuntimeError("Report returned no current/future slot data — refusing to publish.")
 
+    closures = load_json(CLOSURES_PATH, {})
     history = load_history()
     leads = load_json(LEADS_PATH, {})
 
@@ -750,7 +780,7 @@ def main():
     print(f"Analytics over {len(records)} archived days "
           f"({', '.join(sorted(set(r['dow'] for r in records))) or 'none yet'}).")
 
-    availability = build_availability(slot_data, config, tz, history, analytics)
+    availability = build_availability(slot_data, config, tz, history, analytics, closures)
     analytics["monthOutlook"] = compute_month_outlook(records, availability, tz)
     leads = update_leads(leads, slot_data, today_iso, tz)
     history = update_history(history, availability, now)
@@ -758,8 +788,20 @@ def main():
 
     # Advance reservations beyond the widget window -> compact future.json
     window_end = (now.date() + timedelta(days=days_ahead)).isoformat()
+    closed_dates = {}
+    for i in range(366):
+        d = now.date() + timedelta(days=i)
+        r = closure_reason(d, closures)
+        if r:
+            closed_dates[d.isoformat()] = r
+    (DATA_DIR / "closures.json").write_text(json.dumps(
+        {"generatedAt": now.isoformat(), "timezone": str(tz), "dates": closed_dates}, indent=1))
+    print(f"closures.json: {len(closed_dates)} closed dates in the next year.")
+
     future_days = {}
     for (d_iso, t), rec in slot_data.items():
+        if d_iso in closed_dates:
+            continue  # closure wins; conflicts warned in build_availability
         if d_iso > window_end:
             f = future_days.setdefault(d_iso, {"capacity": 0, "sold": 0, "soldOutSlots": 0, "slotCount": 0})
             cap = max(0, rec["capacity"])

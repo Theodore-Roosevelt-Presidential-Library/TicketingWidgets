@@ -72,20 +72,3 @@ Merge the following into the existing `@graph` Museum entity (keep all current p
 }
 ```
 
-## Open questions for the team
-
-1. **January–March 1 hours** are not published on /visit — confirm the early-winter schedule and add a matching block (`validFrom: 2027-01-01`, `validThrough: 2027-03-01`).
-2. **Season dates roll annually.** `validFrom`/`validThrough` are year-specific, so this markup needs a yearly refresh when the season calendar is set — ideally driven from the same Drupal content that renders the /visit hours tabs, not hand-edited JSON.
-3. **Last entry vs. closing.** `closes` should be building close (6 PM summer), not last timed-entry slot (5 PM). Confirmed above on that assumption.
-
-## Keep as-is
-
-The existing `specialOpeningHoursSpecification` holiday closures (Christmas, New Year's Eve, Thanksgiving, Friends and Family Day) follow the correct pattern — `opens: 00:00, closes: 00:00` with `validFrom`/`validThrough` on the date. Add each year's dates as they're scheduled.
-
-## Validation
-
-After deploying: Google Rich Results Test (search.google.com/test/rich-results) and Schema.org validator (validator.schema.org) against https://www.trlibrary.com/visit/hours. Then confirm Google Business Profile hours still match — GBP hours are managed separately and should agree with the markup.
-
-## Bonus once live
-
-The ticketing widgets pipeline (this repo) can read this markup on each run and flag mismatches between published hours and ACME's event instances — e.g. a slot accidentally on sale after closing, or a day ACME thinks is open that the site says is closed.

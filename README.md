@@ -72,6 +72,10 @@ Preview everything at [https://ticketing.labs.trlibrary.com](https://ticketing.l
 
 Until a key is added, the script runs in mock mode and generates plausible sample data, so the widgets and demo page work end to end.
 
+## Closures (operating days & holidays)
+
+`closures.json` at the repo root is the hand-maintained source of non-operating days — holiday closures plus weekly closed days per season — shaped to mirror the site's schema.org markup so a future scraper of trlibrary.com/visit/hours JSON-LD can replace it without downstream changes. Each run the pipeline resolves it into `data/closures.json` (every closed date in the next 365 days with a reason). Widgets honor it everywhere: closed days show named reasons ("Thanksgiving", "Closed Mondays (Fall hours)") in the alert, timeslot, and date-check widgets; the calendar renders future closed dates as closed cells with the reason in the tooltip; and closed dates are excluded from advance-sales data. If ACME ever has sellable slots on a date marked closed, the closure wins for display and the Action logs a loud warning — check `closures.json` vs. ACME. Update the file when each year's holidays and season calendar are set; the Jan–Feb weekly schedule is currently marked unconfirmed.
+
 ## Where the numbers come from
 
 Slot times, remaining tickets, and per-slot capacity all come live from the ACME report — no hardcoded assumptions. A date with no GA event instances renders as "Closed." The seasonal-hours block in `config.json` is only used by mock mode (when no API key is present); thresholds for "few left" labeling (`limitedThresholdPct`/`limitedThresholdMin`) also live there.

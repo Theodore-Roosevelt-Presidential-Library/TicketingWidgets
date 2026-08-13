@@ -1,0 +1,19 @@
+{
+  "_readme": "Hand-maintained until scraped from trlibrary.com/visit/hours JSON-LD. Shapes mirror schema.org so the scraper can replace this file without downstream changes. Update holidays each year and weeklyClosures when the season calendar is set.",
+  "source": "manual",
+  "sourceUrl": "https://www.trlibrary.com/visit/hours",
+  "timezone": "America/Denver",
+  "holidays": [
+    { "date": "2026-11-06", "name": "Friends and Family Day" },
+    { "date": "2026-11-26", "name": "Thanksgiving" },
+    { "date": "2026-12-25", "name": "Christmas" },
+    { "date": "2026-12-31", "name": "New Year's Eve" }
+  ],
+  "weeklyClosures": [
+    { "label": "Spring hours", "daysClosed": ["Monday"], "validFrom": "2026-03-02", "validThrough": "2026-05-31" },
+    { "label": "Summer hours", "daysClosed": [], "validFrom": "2026-06-01", "validThrough": "2026-09-13" },
+    { "label": "Fall hours", "daysClosed": ["Monday"], "validFrom": "2026-09-14", "validThrough": "2026-11-30" },
+    { "label": "Winter hours", "daysClosed": ["Monday", "Tuesday"], "validFrom": "2026-12-01", "validThrough": "2026-12-31" },
+    { "label": "Winter hours (UNCONFIRMED — Jan/Feb schedule not yet published)", "daysClosed": ["Monday", "Tuesday"], "validFrom": "2027-01-01", "validThrough": "2027-03-01" }
+  ]
+}

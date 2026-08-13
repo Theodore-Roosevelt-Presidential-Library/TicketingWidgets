@@ -36,6 +36,7 @@
   var BASE = SCRIPT && SCRIPT.src ? SCRIPT.src.replace(/widgets\/[^/]*$/, "") : "";
   var DEFAULT_DATA_URL = BASE + "data/availability.json";
   var ANALYTICS_URL = BASE + "data/analytics.json";
+  var CLOSURES_URL = BASE + "data/closures.json";
   var REFRESH_MS = 5 * 60 * 1000;
   var STALE_MIN = 90;
   var FORECAST_CAVEAT_DAYS = 45;
@@ -251,7 +252,8 @@
     if (today.closed) {
       var nextOpen = (data.days || []).filter(function (d) { return !d.closed; })[0];
       head = "The Library is closed today";
-      body = nextOpen ? "Next open: " + nextOpen.dayLabel + ". Reserve tickets in advance." : "";
+      body = (today.closedReason ? today.closedReason + ". " : "") +
+        (nextOpen ? "Next open: " + nextOpen.dayLabel + ". Reserve tickets in advance." : "");
     } else if (risk === "sold_out") {
       head = "Today is sold out";
       body = "No walk-up tickets are available. Check the next few days and reserve online.";
@@ -288,7 +290,7 @@
         return '<button role="tab" aria-selected="' + (i === state.idx) + '" data-i="' + i + '">' +
           esc(d.dayLabel) + "</button>";
       }).join("");
-      var body = day.closed ? "<p>The Library is closed this day.</p>" : slotGridHtml(day);
+      var body = day.closed ? "<p>The Library is closed this day" + (day.closedReason ? " (" + esc(day.closedReason) + ")" : "") + ".</p>" : slotGridHtml(day);
       var mins = minutesSince(data.generatedAt);
       var cta = el.hasAttribute("data-hide-cta") ? "" :
         '<div class="trpl-tw-cta"><a class="trpl-tw-btn" href="' + esc(ticketsUrl) + '">Reserve Tickets</a></div>';
@@ -435,12 +437,19 @@
           '<p class="trpl-tw-meta">Live availability, Mountain Time.</p>';
       } else {
         result.innerHTML = '<p class="trpl-tw-meta">Looking at recent ' + esc(dowOf(dateIso)) + "s…</p>";
-        getJson(el.getAttribute("data-analytics-url") || ANALYTICS_URL).then(function (analytics) {
-          if (el.getAttribute("data-picked") === dateIso) {
-            result.innerHTML = forecastHtml(dateIso, analytics, ticketsUrl);
+        Promise.all([
+          getJson(el.getAttribute("data-analytics-url") || ANALYTICS_URL).catch(function () { return null; }),
+          getJson(CLOSURES_URL).catch(function () { return { dates: {} }; })
+        ]).then(function (r) {
+          if (el.getAttribute("data-picked") !== dateIso) return;
+          var reason = (r[1].dates || {})[dateIso];
+          if (reason) {
+            result.innerHTML = '<div class="trpl-tw-forecast"><h4>Closed ' + esc(prettyDate(dateIso)) + "</h4>" +
+              "<p>" + esc(reason.indexOf("Closed") === 0 ? reason : "The Library is closed for " + reason) +
+              ". Try a nearby date.</p></div>";
+          } else {
+            result.innerHTML = forecastHtml(dateIso, r[0], ticketsUrl);
           }
-        }).catch(function () {
-          result.innerHTML = forecastHtml(dateIso, null, ticketsUrl);
         });
       }
     }
@@ -461,8 +470,9 @@
         }));
       });
     var loadFuture = getJson(base + "future.json").catch(function () { return { days: {} }; });
-    Promise.all([loadArchive, loadFuture]).then(function (results) {
-      var monthFiles = results[0], future = results[1];
+    var loadClosures = getJson(base + "closures.json").catch(function () { return { dates: {} }; });
+    Promise.all([loadArchive, loadFuture, loadClosures]).then(function (results) {
+      var monthFiles = results[0], future = results[1], closures = results[2];
       var days = {};
       monthFiles.forEach(function (data2) {
         Object.keys(data2).forEach(function (d) {
@@ -474,8 +484,11 @@
         var f = future.days[d];
         days[d] = { pct: f.pct, soldOut: f.slotCount > 0 && f.soldOutSlots >= f.slotCount, kind: "future" };
       });
+      Object.keys(closures.dates || {}).forEach(function (d) {
+        days[d] = { kind: "closed", reason: closures.dates[d] };
+      });
       (data.days || []).forEach(function (d) {
-        days[d.date] = d.closed ? { kind: "closed" } :
+        days[d.date] = d.closed ? { kind: "closed", reason: d.closedReason } :
           { pct: d.pctSold, soldOut: d.selloutRisk === "sold_out", kind: "live" };
       });
 
@@ -515,7 +528,7 @@
             var iso = year + "-" + String(m + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
             var rec = days[iso], cls = "dd", title = iso;
             if (rec) {
-              title += rec.kind === "closed" ? " — closed" :
+              title += rec.kind === "closed" ? " — closed" + (rec.reason ? " · " + rec.reason : "") :
                 " — " + rec.pct + "% reserved" + (rec.soldOut ? " (sold out)" : "") +
                 (rec.kind === "live" ? " (live)" : rec.kind === "future" ? " so far (advance sales)" : "");
             }
