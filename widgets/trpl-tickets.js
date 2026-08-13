@@ -254,8 +254,9 @@
       var next = (data.days || []).slice(1).filter(function (d) { return !d.closed; })[0];
       head = "Today\u2019s entries have ended";
       body = next
-        ? "Planning ahead? " + next.dayLabel + ": " + (next.riskNote || "tickets are available.") +
-          " Reserving online guarantees your entry time."
+        ? "Planning ahead? " + next.dayLabel + ": " +
+          (next.riskReason || "tickets are available") +
+          ". Reserving online guarantees your entry time."
         : "Reserving online guarantees your entry time.";
       el.innerHTML =
         '<div class="trpl-tw"><div class="trpl-tw-alert" role="status" data-risk="' +

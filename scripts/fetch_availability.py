@@ -661,10 +661,10 @@ def build_availability(slot_data, config, tz, history, analytics, closures=None)
 
         if i == 0 and slots and not future:
             # After close: today is over — stop urging action on it
-            risk, note = "none", "Today's entries have ended."
+            risk, note, reason = "none", "Today's entries have ended.", "Today's entries have ended"
             status = "ended"
         else:
-            risk, note = day_risk(d_iso, i, pct, all_out, slots, tz, now, history, analytics)
+            risk, note, reason = day_risk(d_iso, i, pct, all_out, slots, tz, now, history, analytics)
             status = ("sold_out" if all_out else
                       "selling_fast" if risk == "high" else
                       "limited" if pct >= 60 else "available")
@@ -673,7 +673,7 @@ def build_availability(slot_data, config, tz, history, analytics, closures=None)
             "date": d_iso, "dayLabel": day_label, "closed": False,
             "totalCapacity": total_cap, "totalSold": total_sold, "pctSold": pct,
             "soldOutSlots": sold_out_count, "firstAvailable": first_available,
-            "status": status, "selloutRisk": risk, "riskNote": note,
+            "status": status, "selloutRisk": risk, "riskNote": note, "riskReason": reason,
             "slots": slots,
         })
 
@@ -687,9 +687,18 @@ def build_availability(slot_data, config, tz, history, analytics, closures=None)
 
 
 def day_risk(d_iso, day_index, pct, all_out, slots, tz, now, history, analytics):
-    """Risk = supply vs expected demand for this weekday, not just pct sold."""
+    """Risk = supply vs expected demand for this weekday, not just pct sold.
+
+    Returns (risk, note, reason): note is a full sentence including a call to
+    action; reason is the CTA-free observation so each widget can append its
+    own context-appropriate action without doubling up.
+    """
+    def r(risk, reason, action=None, dash=True):
+        note = reason + ((" \u2014 " if dash else ". ") + action + "." if action else ".")
+        return risk, note, reason
+
     if all_out:
-        return "sold_out", "Sold out — no remaining time slots."
+        return r("sold_out", "Sold out \u2014 no remaining time slots")
 
     dow = dow_name(d_iso)
     dowa = (analytics or {}).get("byDayOfWeek", {}).get(dow, {})
@@ -697,11 +706,10 @@ def day_risk(d_iso, day_index, pct, all_out, slots, tz, now, history, analytics)
     day_of_demand = dowa.get("medianDayOfTickets")  # walk-up + same-day online
 
     if day_index == 0:
-        # Blend observed pace with historical same-day demand for this weekday
         velocity = compute_velocity(history, d_iso, now) or 0.0
         hist_rate = 0.0
         if day_of_demand:
-            open_hours = max(1.0, len([s for s in slots]) )  # ~1 slot per hour
+            open_hours = max(1.0, len([s for s in slots]))  # ~1 slot per hour
             hist_rate = day_of_demand / open_hours
         rate = max(velocity, hist_rate)
         if rate > 1 and remaining > 0:
@@ -710,38 +718,38 @@ def day_risk(d_iso, day_index, pct, all_out, slots, tz, now, history, analytics)
             if projected <= close_dt:
                 t = projected.strftime("%-I:%M %p")
                 src = "today's pace" if velocity >= hist_rate else f"typical {dow} walk-up demand"
-                return "high", f"Based on {src}, remaining tickets may be gone by about {t}."
+                return r("high", f"Based on {src}, remaining tickets may be gone by about {t}")
         if pct >= 85:
-            return "high", "Very few tickets remain today — buy online before you drive."
+            return r("high", "Very few tickets remain today", "buy online before you drive")
         if pct >= 65:
-            return "medium", "Today is filling up — buying online is recommended."
-        return "low", "Good availability today."
+            return r("medium", "Today is filling up", "buying online is recommended")
+        return r("low", "Good availability today")
 
     # ---- Future days: what has same-day demand done to this weekday recently?
     n = dowa.get("daysObserved", 0)
     if day_of_demand is not None and remaining <= day_of_demand:
-        return "high", (f"Recent {dow}s have sold {day_of_demand}+ tickets on the day itself — "
-                        "more than what's left. Reserve in advance.")
+        return r("high", f"Recent {dow}s have sold {day_of_demand}+ tickets on the day "
+                 "itself \u2014 more than what's left", "Reserve in advance", dash=False)
     if n >= 2:
         sellout_rate = dowa.get("fullSelloutRate") or 0
         median_final = dowa.get("medianFinalPctSold") or 0
         first_end = dowa.get("typicalFirstAvailableAtEndOfDay")
         if sellout_rate >= 0.5 and pct >= 25:
-            return "high", (f"{dowa.get('fullSelloutCount')} of the last {n} {dow}s sold out "
-                            "completely — reserve in advance.")
+            return r("high", f"{dowa.get('fullSelloutCount')} of the last {n} {dow}s "
+                     "sold out completely", "reserve in advance")
         if median_final >= 90 and pct >= 25:
-            note = f"{dow}s have been selling out"
+            reason = f"{dow}s have been selling out"
             if first_end and "none" not in str(first_end):
-                note += f" — recently only {first_end} or later entry remained"
-            return "high", note + ". Reserve in advance."
+                reason += f" \u2014 recently only {first_end} or later entry remained"
+            return r("high", reason, "Reserve in advance", dash=False)
     # Percent-sold fallback (early sell-through at a distance implies risk)
     threshold_high = 80 - day_index * 5
     threshold_med = 55 - day_index * 5
     if pct >= threshold_high:
-        return "high", "Expected to sell out — reserve in advance."
+        return r("high", "Expected to sell out", "reserve in advance")
     if pct >= threshold_med:
-        return "medium", "Filling up — advance tickets recommended."
-    return "low", "Good availability."
+        return r("medium", "Filling up", "advance tickets recommended")
+    return r("low", "Good availability")
 
 
 # ------------------------------------------------------------------- main

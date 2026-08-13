@@ -94,7 +94,7 @@
       return {
         risk: nextDay.selloutRisk,
         head: "Planning " + (nextDay.dayLabel === "Tomorrow" ? "tomorrow" : nextDay.dayLabel) + "?",
-        body: (nextDay.riskNote || "It is likely to sell out.") + " Reserve tonight to guarantee entry.",
+        body: (nextDay.riskReason ? nextDay.riskReason + ". " : "") + "Reserve tonight to guarantee entry.",
         cta: "Reserve for " + nextDay.dayLabel
       };
     }
