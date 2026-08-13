@@ -4,7 +4,7 @@
  * published to GitHub Pages by the update-availability Action.
  *
  * Usage (drop anywhere on trlibrary.com):
- *   <script src="https://<pages-domain>/TicketingWidgets/widgets/trpl-tickets.js" defer></script>
+ *   <script src="https://ticketing.labs.trlibrary.com/widgets/trpl-tickets.js" defer></script>
  *   <div data-trpl-widget="alert"></div>
  *   <div data-trpl-widget="timeslots"></div>
  *   <div data-trpl-widget="planner"></div>
@@ -15,12 +15,15 @@
  *   data-tickets-url="..."            override Buy Tickets link
  *   data-hide-cta                     hide the Buy Tickets button (timeslots, planner)
  *
- * Styling follows the TRPL Brand Identity System:
- *   Display/CTAs: Dharma Gothic E (all caps) · Body: ITC Clearface · Captions: Frutiger Next
- *   Dark Forest #1B4532 · Night Sky #092A4D · Bright Forest #8FC895 · Sand #D1CCBD
- *   Dark Gray #25282A · Deep Orange #E7805D (CTAs)
- * Font stacks resolve to the licensed brand fonts when the host page loads them
- * (trlibrary.com does) and degrade gracefully elsewhere. Overridable via CSS vars:
+ * Styling matches the TRPL Brand Identity System as implemented on trlibrary.com:
+ *   Headlines: Dharma Gothic E (all caps, Night Sky) · Body: Clearface ·
+ *   Section titles/buttons: Frutiger (buttons: bold, sentence case, Deep Orange
+ *   #E7805D bg, Dark Gray #25282A text, 2px radius — same as the site's CTAs)
+ *   Guide colors only: Bright Forest #8FC895, Sunset Orange #FC924E,
+ *   Deep Orange #E7805D, Night Sky #092A4D, Sand #D1CCBD, Dark Gray #25282A
+ * trlibrary.com self-hosts the fonts as "Clearface", "Dharma Gothic E",
+ * "Frutiger" — all in the stacks below, so real fonts render automatically.
+ * Overridable via CSS vars:
  *   --trpl-tw-display, --trpl-tw-body, --trpl-tw-caption, --trpl-tw-cta,
  *   --trpl-tw-forest, --trpl-tw-night, --trpl-tw-sand, --trpl-tw-warn, --trpl-tw-border
  */
@@ -37,19 +40,20 @@
 
   var CSS = [
     ".trpl-tw{color:var(--trpl-tw-ink,#25282A);line-height:1.5;",
-    "font-family:var(--trpl-tw-body,'ITC Clearface','Clearface',Georgia,'Times New Roman',serif);",
-    "--_display:var(--trpl-tw-display,'Dharma Gothic E','Dharma Gothic','Arial Narrow',Impact,sans-serif);",
-    "--_caption:var(--trpl-tw-caption,'Frutiger Next',Frutiger,'Helvetica Neue',Arial,sans-serif);",
+    /* Both spellings covered: self-hosted/theme names and Adobe Fonts kit names */
+    "font-family:var(--trpl-tw-body,'ITC Clearface','itc-clearface','Clearface',Georgia,'Times New Roman',serif);",
+    "--_display:var(--trpl-tw-display,'Dharma Gothic E','dharma-gothic-e','Dharma Gothic','Arial Narrow',Impact,sans-serif);",
+    "--_caption:var(--trpl-tw-caption,'Frutiger Next','frutiger-next',Frutiger,'Helvetica Neue',Arial,sans-serif);",
     "--_cta:var(--trpl-tw-cta,#E7805D);--_forest:var(--trpl-tw-forest,#1B4532);",
     "--_night:var(--trpl-tw-night,#092A4D);--_bright:var(--trpl-tw-bright,#8FC895);",
     "--_sand:var(--trpl-tw-sand,#D1CCBD);--_ink:var(--trpl-tw-ink,#25282A);",
-    "--_warn:var(--trpl-tw-warn,#B4531F);--_border:var(--trpl-tw-border,rgba(37,40,42,.18));}",
+    "--_warn:var(--trpl-tw-warn,#E7805D);--_border:var(--trpl-tw-border,rgba(37,40,42,.18));}",
     ".trpl-tw *{box-sizing:border-box;margin:0;padding:0}",
-    ".trpl-tw h3{font-family:var(--_display);text-transform:uppercase;letter-spacing:.04em;",
-    "font-weight:700;color:var(--_night);font-size:1.5em;line-height:1.1;margin-bottom:.45em}",
+    ".trpl-tw h3{font-family:var(--_caption);text-transform:uppercase;letter-spacing:.05em;",
+    "font-weight:700;color:var(--_ink);font-size:1em;line-height:1.2;margin-bottom:.6em}",
     ".trpl-tw a.trpl-tw-btn{display:inline-block;background:var(--_cta);color:var(--_ink);",
-    "font-family:var(--_display);text-transform:uppercase;letter-spacing:.06em;font-weight:700;",
-    "padding:.45em 1.3em .35em;border-radius:3px;text-decoration:none;font-size:1.05em;line-height:1.2}",
+    "font-family:var(--_caption);font-weight:700;",
+    "padding:10px 24px;border-radius:2px;text-decoration:none;font-size:1em;line-height:1.2}",
     ".trpl-tw a.trpl-tw-btn:hover{filter:brightness(1.07)}",
     ".trpl-tw-meta{font-family:var(--_caption);font-size:.74em;opacity:.7;margin-top:.7em}",
     /* alert banner */
@@ -61,7 +65,6 @@
     ".trpl-tw-alert p{flex:1 1 16em;font-size:1em}",
     ".trpl-tw-alert strong{display:block;font-family:var(--_display);text-transform:uppercase;",
     "letter-spacing:.04em;font-size:1.25em;line-height:1.15;color:var(--_night);margin-bottom:.2em}",
-    ".trpl-tw-alert[data-risk=high] strong,.trpl-tw-alert[data-risk=sold_out] strong{color:var(--_warn)}",
     /* tabs + slot grid */
     ".trpl-tw-tabs{display:flex;gap:.4em;flex-wrap:wrap;margin-bottom:.9em}",
     ".trpl-tw-tabs button{border:1px solid var(--_border);background:transparent;color:var(--_ink);",
@@ -77,10 +80,10 @@
     ".trpl-tw-slot[data-s=available]{border-color:var(--_forest)}",
     ".trpl-tw-slot[data-s=available] span{color:var(--_forest)}",
     ".trpl-tw-slot[data-s=limited]{border-color:var(--_warn)}",
-    ".trpl-tw-slot[data-s=limited] span{color:var(--_warn);font-weight:700}",
+    ".trpl-tw-slot[data-s=limited] span{color:var(--_ink);font-weight:700}",
     ".trpl-tw-slot[data-s=sold_out]{background:rgba(209,204,189,.35);opacity:.75}",
     ".trpl-tw-slot[data-s=sold_out] b{text-decoration:line-through;color:var(--_ink);opacity:.6}",
-    ".trpl-tw-slot[data-s=sold_out] span{color:var(--_warn)}",
+    ".trpl-tw-slot[data-s=sold_out] span{color:var(--_ink);opacity:.8}",
     ".trpl-tw-slot[data-s=past]{opacity:.35}",
     ".trpl-tw-cta{margin-top:1em}",
     ".trpl-tw-firstnote{font-size:.92em;margin-bottom:.7em}",
@@ -93,11 +96,11 @@
     "letter-spacing:.04em;font-weight:700;font-size:1.05em;color:var(--_night)}",
     ".trpl-tw-day .bar{flex:1;height:.55em;border-radius:999px;background:rgba(209,204,189,.5);overflow:hidden}",
     ".trpl-tw-day .bar i{display:block;height:100%;background:var(--_bright)}",
-    ".trpl-tw-day[data-risk=medium] .bar i{background:var(--_cta)}",
-    ".trpl-tw-day[data-risk=high] .bar i,.trpl-tw-day[data-risk=sold_out] .bar i{background:var(--_warn)}",
+    ".trpl-tw-day[data-risk=medium] .bar i{background:var(--trpl-tw-medium,#FC924E)}",
+    ".trpl-tw-day[data-risk=high] .bar i{background:var(--_warn)}",
+    ".trpl-tw-day[data-risk=sold_out] .bar i{background:var(--_night)}",
     ".trpl-tw-day .lbl{flex:0 0 auto;font-family:var(--_caption);font-size:.78em;min-width:9.5em;text-align:right}",
-    ".trpl-tw-day[data-risk=high] .lbl,.trpl-tw-day[data-risk=sold_out] .lbl{color:var(--_warn);font-weight:700}",
-    ".trpl-tw-day[data-risk=medium] .lbl{color:var(--_warn)}",
+    ".trpl-tw-day[data-risk=high] .lbl,.trpl-tw-day[data-risk=sold_out] .lbl{color:var(--_ink);font-weight:700}",
     /* date check */
     ".trpl-tw-datecheck .trpl-tw-pick{display:flex;gap:.7em;align-items:center;flex-wrap:wrap;margin-bottom:1em}",
     ".trpl-tw-pick label{font-family:var(--_caption);font-size:.85em}",
@@ -109,7 +112,6 @@
     ".trpl-tw-forecast[data-risk=low]{border-left-color:var(--_bright)}",
     ".trpl-tw-forecast h4{font-family:var(--_display);text-transform:uppercase;letter-spacing:.04em;",
     "font-size:1.3em;line-height:1.15;color:var(--_night);margin-bottom:.35em}",
-    ".trpl-tw-forecast[data-risk=high] h4{color:var(--_warn)}",
     ".trpl-tw-forecast p{font-size:.95em;margin-bottom:.4em}",
     ".trpl-tw-fslots{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(8.2em,1fr));",
     "gap:.4em;margin:.7em 0 .2em}",
@@ -118,8 +120,8 @@
     ".trpl-tw-fslots b{display:block;font-family:var(--_display);font-size:1.1em;letter-spacing:.03em;color:var(--_night)}",
     ".trpl-tw-fslots span{display:block;font-family:var(--_caption);font-size:.66em;",
     "text-transform:uppercase;letter-spacing:.04em;margin-top:.2em}",
-    ".trpl-tw-fslots li[data-f=high] span{color:var(--_warn);font-weight:700}",
-    ".trpl-tw-fslots li[data-f=med] span{color:var(--_warn)}",
+    ".trpl-tw-fslots li[data-f=high] span{color:var(--_ink);font-weight:700}",
+    ".trpl-tw-fslots li[data-f=med] span{color:var(--_ink)}",
     ".trpl-tw-fslots li[data-f=low] span{color:var(--_forest)}",
     "@media (max-width:480px){.trpl-tw-day .lbl{min-width:6.5em}}"
   ].join("");
@@ -130,6 +132,17 @@
     s.id = "trpl-tw-styles";
     s.textContent = CSS;
     document.head.appendChild(s);
+    // Optionally load the real brand webfonts (e.g. an Adobe Fonts kit CSS URL)
+    // when the host page doesn't already: set data-fonts-css on the script tag
+    // or window.TRPL_FONTS_CSS before it loads.
+    var fontsCss = (SCRIPT && SCRIPT.getAttribute("data-fonts-css")) || window.TRPL_FONTS_CSS;
+    if (fontsCss && !document.getElementById("trpl-tw-fonts")) {
+      var l = document.createElement("link");
+      l.id = "trpl-tw-fonts";
+      l.rel = "stylesheet";
+      l.href = fontsCss;
+      document.head.appendChild(l);
+    }
   }
 
   function esc(v) {

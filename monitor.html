@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>TRPL Sell-Out Monitor (internal)</title>
   <style>
-    :root { --accent:#B4531F; --ok:#1B4532; --warn:#E7805D; --night:#092A4D; --line:rgba(37,40,42,.18); }
+    :root { --accent:#E7805D; --ok:#1B4532; --warn:#E7805D; --night:#092A4D; --line:rgba(37,40,42,.18); }
     body { font-family: "Frutiger Next", Frutiger, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
            color:#25282A; background:#FAF8F4; margin:0; }
     h1, h2 { font-family: "Dharma Gothic E", "Dharma Gothic", "Arial Narrow", Impact, sans-serif;
@@ -24,7 +24,7 @@
     th { background:#D1CCBD; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; }
     td.num { text-align:right; font-variant-numeric:tabular-nums; }
     .pill { display:inline-block; padding:.1em .6em; border-radius:999px; font-size:.75rem; color:#fff; }
-    .pill.soldout { background:var(--accent); } .pill.ok { background:var(--ok); } .pill.part { background:var(--warn); }
+    .pill.soldout { background:var(--night); } .pill.ok { background:var(--ok); } .pill.part { background:var(--warn); color:#25282A; }
     .bar { height:.5em; background:rgba(0,0,0,.08); border-radius:999px; overflow:hidden; min-width:6em; }
     .bar i { display:block; height:100%; background:var(--ok); }
     .bar.hot i { background:var(--accent); }
@@ -96,7 +96,7 @@
       `<p>Fully sold out: <strong>${a.fullSelloutCount}/${a.daysObserved}</strong> days</p>` +
       `<p>Same-day tickets (median): <strong>${a.medianDayOfTickets ?? "collecting…"}</strong></p>` +
       `<p>End-of-day first opening: <strong>${a.typicalFirstAvailableAtEndOfDay ?? "–"}</strong></p>` +
-      `<div class="slotmap" title="Per-slot sell-out frequency (red = sold out ≥50% of ${dow}s)">${map}</div>` +
+      `<div class="slotmap" title="Per-slot sell-out frequency (orange = sold out ≥50% of ${dow}s)">${map}</div>` +
       `<p class="meta">${slots.length ? slots[0][0] + " → " + slots[slots.length-1][0] : ""}</p></div>`);
   }
   document.getElementById("dow").innerHTML = cards.join("") || "<p class='note'>No archived days yet.</p>";

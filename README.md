@@ -19,7 +19,7 @@ trlibrary.com/visit  <──(one <script> embed)── GitHub Pages CDN
 Add the script once per page, then drop in any container:
 
 ```html
-<script src="https://theodore-roosevelt-presidential-library.github.io/TicketingWidgets/widgets/trpl-tickets.js" defer></script>
+<script src="https://ticketing.labs.trlibrary.com/widgets/trpl-tickets.js" defer></script>
 
 <!-- Sell-out alert banner (homepage / tickets page) -->
 <div data-trpl-widget="alert"></div>
@@ -42,22 +42,22 @@ Sitewide banner docked lower-left. Shows only when there's something worth sayin
 
 ```html
 <script>window.TRPL_FLOAT = { minRisk: "medium" };</script>
-<script src="https://theodore-roosevelt-presidential-library.github.io/TicketingWidgets/widgets/trpl-float.js" async></script>
+<script src="https://ticketing.labs.trlibrary.com/widgets/trpl-float.js" async></script>
 ```
 
 Options via `window.TRPL_FLOAT`: `minRisk` ("low" | "medium" | "high"), `ticketsUrl`, `dataUrl`. Consider a GTM trigger exception on the tickets page itself.
 
 ### Styling
 
-Widgets follow the TRPL Brand Identity System: Dharma Gothic E for display text and CTAs (all caps), ITC Clearface for body, Frutiger Next for captions; Dark Forest `#1B4532`, Night Sky `#092A4D`, Bright Forest `#8FC895`, Sand `#D1CCBD`, Dark Gray `#25282A`, Deep Orange `#E7805D` for CTAs (warn text darkened to `#B4531F` for contrast). Font stacks resolve to the licensed webfonts where the host page loads them (trlibrary.com) and degrade gracefully elsewhere. Override via CSS variables on any ancestor: `--trpl-tw-display`, `--trpl-tw-body`, `--trpl-tw-caption`, `--trpl-tw-cta`, `--trpl-tw-forest`, `--trpl-tw-night`, `--trpl-tw-bright`, `--trpl-tw-sand`, `--trpl-tw-warn`, `--trpl-tw-border`. Optional attributes per container: `data-url`, `data-tickets-url`, and `data-hide-cta` to hide the Buy Tickets button (timeslots and planner) — e.g. `<div data-trpl-widget="planner" data-hide-cta></div>`. Widgets self-refresh every 5 minutes and fail silently if data is unreachable — they will never break the host page.
+Widgets match the TRPL Brand Identity System as implemented on trlibrary.com (verified against the live theme): buttons are Frutiger bold, sentence case, Deep Orange `#E7805D` with Dark Gray `#25282A` text and 2px radius — identical to the site's Tickets/Donate buttons; section headers are Frutiger bold uppercase; big headlines (alert banner) are Dharma Gothic E uppercase in Night Sky `#092A4D`. Guide colors only: Bright Forest `#8FC895` (available), Sunset Orange `#FC924E` (filling up), Deep Orange (high risk accents), Night Sky (sold out), Sand `#D1CCBD` surfaces. trlibrary.com self-hosts the fonts under family names `Clearface`, `Dharma Gothic E`, and `Frutiger` — all present in the widget font stacks, so the real fonts render automatically on the site with no extra loading. For off-site embeds without the fonts, pass a font CSS URL via `data-fonts-css` on the script tag (or `window.TRPL_FONTS_CSS`; for the float banner, `TRPL_FLOAT.fontsCss`). Override via CSS variables on any ancestor: `--trpl-tw-display`, `--trpl-tw-body`, `--trpl-tw-caption`, `--trpl-tw-cta`, `--trpl-tw-forest`, `--trpl-tw-night`, `--trpl-tw-bright`, `--trpl-tw-sand`, `--trpl-tw-warn`, `--trpl-tw-border`. Optional attributes per container: `data-url`, `data-tickets-url`, and `data-hide-cta` to hide the Buy Tickets button (timeslots and planner) — e.g. `<div data-trpl-widget="planner" data-hide-cta></div>`. Widgets self-refresh every 5 minutes and fail silently if data is unreachable — they will never break the host page.
 
-Preview everything at the GitHub Pages URL for this repo (`index.html`).
+Preview everything at [https://ticketing.labs.trlibrary.com](https://ticketing.labs.trlibrary.com); staff monitor at [https://ticketing.labs.trlibrary.com/monitor.html](https://ticketing.labs.trlibrary.com/monitor.html).
 
 ## One-time setup
 
 1. **Get an ACME API key.** API keys are tied to an ACME user. Have your ACME Backoffice admin create a username-only integration user (e.g. `api-website-widgets`) with permission to run reports, then — as an ACME client — submit the "Requesting an API Key" checklist to ACME Product Support (see [ACME's guide](https://developers.acmeticketing.com/support/solutions/articles/33000248661-working-with-acme-apis)). While waiting, a temporary session key (`GET /v2/b2b/customer/session`) can be used for testing only.
 2. **Add the secret.** Repo → Settings → Secrets and variables → Actions → New repository secret: `ACME_API_KEY`. Optional repository *variables*: `ACME_REPORT_ID` (defaults to `69c18975669b758620b4c586`), `ACME_API_BASE` (defaults to production; use a sandbox URL for testing). The report's date range is set dynamically by the script — no Backoffice changes needed.
-3. **Enable GitHub Pages.** Repo → Settings → Pages → Deploy from branch → `main` / root.
+3. **Enable GitHub Pages.** Repo → Settings → Pages → Deploy from branch → `main` / root. The custom domain `ticketing.labs.trlibrary.com` is set via the `CNAME` file — add a DNS CNAME record pointing it to `theodore-roosevelt-presidential-library.github.io` and enable "Enforce HTTPS".
 4. **Run it.** Actions → "Update availability data" → Run workflow. Check `data/availability.json` and the demo page.
 
 Until a key is added, the script runs in mock mode and generates plausible sample data, so the widgets and demo page work end to end.
