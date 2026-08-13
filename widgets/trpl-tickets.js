@@ -102,6 +102,7 @@
     ".trpl-tw-day[data-risk=medium] .bar i{background:var(--trpl-tw-medium,#FC924E)}",
     ".trpl-tw-day[data-risk=high] .bar i{background:var(--_warn)}",
     ".trpl-tw-day[data-risk=sold_out] .bar i{background:var(--_night)}",
+    ".trpl-tw-day[data-risk=ended] .bar i{background:var(--_sand)}",
     ".trpl-tw-day .lbl{flex:0 0 auto;font-family:var(--_caption);font-size:.78em;min-width:9.5em;text-align:right}",
     ".trpl-tw-day[data-risk=high] .lbl,.trpl-tw-day[data-risk=sold_out] .lbl{color:var(--_ink);font-weight:700}",
     /* date check */
@@ -249,6 +250,23 @@
     var risk = today.closed ? "none" : today.selloutRisk;
     var head, body;
 
+    if (today.status === "ended") {
+      var next = (data.days || []).slice(1).filter(function (d) { return !d.closed; })[0];
+      head = "Today\u2019s entries have ended";
+      body = next
+        ? "Planning ahead? " + next.dayLabel + ": " + (next.riskNote || "tickets are available.") +
+          " Reserving online guarantees your entry time."
+        : "Reserving online guarantees your entry time.";
+      el.innerHTML =
+        '<div class="trpl-tw"><div class="trpl-tw-alert" role="status" data-risk="' +
+        esc(next ? next.selloutRisk : "none") + '">' +
+        "<p><strong>" + esc(head) + "</strong>" + esc(body) + "</p>" +
+        (el.hasAttribute("data-hide-cta") ? "" :
+          '<a class="trpl-tw-btn" href="' + esc(ticketsUrl) + '">' +
+          (next ? "Reserve for " + esc(next.dayLabel) : "See All Dates") + "</a>") +
+        "</div></div>";
+      return;
+    }
     if (today.closed) {
       var nextOpen = (data.days || []).filter(function (d) { return !d.closed; })[0];
       head = "The Library is closed today";
@@ -282,7 +300,7 @@
   function renderTimeslots(el, data, ticketsUrl) {
     var days = (data.days || []).slice(0, 3);
     if (!days.length) return;
-    var state = { idx: 0 };
+    var state = { idx: days[0].status === "ended" && days.length > 1 ? 1 : 0 };
 
     function draw() {
       var day = days[state.idx];
@@ -313,10 +331,11 @@
     var rows = days.map(function (d) {
       var pct = d.closed ? 0 : Math.min(100, d.pctSold);
       var lbl = d.closed ? "Closed" :
+        d.status === "ended" ? "Ended for today" :
         d.selloutRisk === "sold_out" ? "Sold out" :
         d.selloutRisk === "high" ? "Likely to sell out" :
         d.selloutRisk === "medium" ? "Filling up" : "Good availability";
-      return '<li class="trpl-tw-day" data-risk="' + esc(d.closed ? "closed" : d.selloutRisk) + '">' +
+      return '<li class="trpl-tw-day" data-risk="' + esc(d.closed ? "closed" : d.status === "ended" ? "ended" : d.selloutRisk) + '">' +
         '<span class="d">' + esc(d.dayLabel) + "</span>" +
         '<span class="bar" aria-hidden="true"><i style="width:' + pct + '%"></i></span>' +
         '<span class="lbl">' + esc(lbl) + "</span></li>";
@@ -406,7 +425,9 @@
     var byDate = {};
     (data.days || []).forEach(function (d) { byDate[d.date] = d; });
     var today = data.today;
-    var picked = el.getAttribute("data-picked") || today;
+    var defaultDate = (data.days && data.days[0] && data.days[0].status === "ended" && data.days[1])
+      ? data.days[1].date : today;
+    var picked = el.getAttribute("data-picked") || defaultDate;
 
     el.innerHTML =
       '<div class="trpl-tw trpl-tw-datecheck"><h3>Check Your Date</h3>' +

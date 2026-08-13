@@ -633,7 +633,9 @@ def build_availability(slot_data, config, tz, history, analytics, closures=None)
             remaining = max(0, min(rec["available"], cap))
             sold = cap - remaining
             slot_dt = datetime.fromisoformat(f"{d_iso}T{t}").replace(tzinfo=tz)
-            past = i == 0 and slot_dt <= now
+            # A slot counts as "past" one hour after its start: entry during the
+            # in-progress hour is still possible.
+            past = i == 0 and slot_dt + timedelta(minutes=60) <= now
             if past:
                 status = "past"
             elif remaining <= 0:
@@ -657,10 +659,15 @@ def build_availability(slot_data, config, tz, history, analytics, closures=None)
         future = [s for s in slots if s["status"] != "past"]
         all_out = bool(future) and all(s["status"] == "sold_out" for s in future)
 
-        risk, note = day_risk(d_iso, i, pct, all_out, slots, tz, now, history, analytics)
-        status = ("sold_out" if all_out else
-                  "selling_fast" if risk == "high" else
-                  "limited" if pct >= 60 else "available")
+        if i == 0 and slots and not future:
+            # After close: today is over — stop urging action on it
+            risk, note = "none", "Today's entries have ended."
+            status = "ended"
+        else:
+            risk, note = day_risk(d_iso, i, pct, all_out, slots, tz, now, history, analytics)
+            status = ("sold_out" if all_out else
+                      "selling_fast" if risk == "high" else
+                      "limited" if pct >= 60 else "available")
 
         days_out.append({
             "date": d_iso, "dayLabel": day_label, "closed": False,

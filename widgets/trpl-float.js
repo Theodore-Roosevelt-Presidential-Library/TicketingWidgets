@@ -87,6 +87,17 @@
 
   function message(today, days) {
     if (today.closed) return null;
+    if (today.status === "ended") {
+      // Evening browsers are planning tomorrow — pivot if the next day is risky
+      var nextDay = (days || []).slice(1).filter(function (d) { return !d.closed; })[0];
+      if (!nextDay || RANK[nextDay.selloutRisk] < RANK.high) return null;
+      return {
+        risk: nextDay.selloutRisk,
+        head: "Planning " + (nextDay.dayLabel === "Tomorrow" ? "tomorrow" : nextDay.dayLabel) + "?",
+        body: (nextDay.riskNote || "It is likely to sell out.") + " Reserve tonight to guarantee entry.",
+        cta: "Reserve for " + nextDay.dayLabel
+      };
+    }
     var risk = today.selloutRisk;
     if (risk === "sold_out") {
       var next = (days || []).filter(function (d) { return !d.closed && d.selloutRisk !== "sold_out"; })[0];
