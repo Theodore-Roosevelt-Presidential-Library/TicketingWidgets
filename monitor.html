@@ -32,6 +32,28 @@
     .slotmap b { flex:1; height:.9em; border-radius:2px; background:#8FC895; }
     .slotmap b.x { background:var(--accent); }
     .note { font-size:.8rem; color:#666; margin-top:.4em; }
+    .tablewrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media (max-width: 640px) {
+      /* Tables become stacked cards */
+      .tablewrap table, .tablewrap tbody, .tablewrap tr, .tablewrap td { display:block; width:100%; }
+      .tablewrap th { display:none; }
+      .tablewrap table { border:0; background:transparent; }
+      .tablewrap tr { border:1px solid var(--line); border-radius:8px; background:#fff;
+                      margin:0 0 .6em; padding:.55em .8em; }
+      .tablewrap td { border:0; padding:.14em 0; display:flex; align-items:center;
+                      justify-content:space-between; gap:1em; text-align:right; }
+      .tablewrap td.num { text-align:right; }
+      .tablewrap td[data-l]::before { content:attr(data-l); font-size:.68rem; text-transform:uppercase;
+                      letter-spacing:.04em; color:#8a8a8a; text-align:left; flex:0 0 auto; }
+      .tablewrap td[data-l="Day"], .tablewrap td[data-l="Date"] { font-weight:700; }
+      .tablewrap td[data-l="Day"]::before, .tablewrap td[data-l="Date"]::before { content:""; }
+      .tablewrap td:has(.bar) { display:block; }
+      .tablewrap .bar { min-width:0; width:100%; margin:.15em 0; }
+      .tablewrap td[data-l="Note"] { display:block; text-align:left; font-size:.8rem; color:#555; }
+      .tablewrap td[data-l="Note"]::before { display:none; }
+      .tablewrap td:empty { display:none; }
+      .tablewrap td.mobilehide { display:none; }
+    }
   </style>
 </head>
 <body>
@@ -82,20 +104,21 @@
     "Data generated " + (mins <= 1 ? "just now" : mins + " min ago") + " (" + avail.generatedAt + ")";
 
   /* Upcoming days table */
-  const up = ["<table><tr><th>Day</th><th>% sold</th><th></th><th>Sold-out slots</th>",
+  const up = ['<div class="tablewrap"><table><tr><th>Day</th><th>% sold</th><th></th><th>Sold-out slots</th>',
               "<th>First available</th><th>Risk</th><th>Note</th></tr>"];
   for (const d of avail.days) {
-    if (d.closed) { up.push(`<tr><td>${d.dayLabel}</td><td colspan=6>Closed</td></tr>`); continue; }
+    if (d.closed) { up.push(`<tr><td data-l="Day">${d.dayLabel} <span class="meta">${d.date.slice(5)}</span></td>` +
+      `<td data-l="Status" colspan=6>Closed${d.closedReason ? " — " + d.closedReason : ""}</td></tr>`); continue; }
     const hot = d.selloutRisk === "high" || d.selloutRisk === "sold_out";
-    up.push(`<tr><td>${d.dayLabel} <span class="meta">${d.date.slice(5)}</span></td>` +
-      `<td class="num">${d.pctSold}%</td>` +
+    up.push(`<tr><td data-l="Day">${d.dayLabel} <span class="meta">${d.date.slice(5)}</span></td>` +
+      `<td class="num" data-l="% sold">${d.pctSold}%</td>` +
       `<td><div class="bar${hot ? " hot" : ""}"><i style="width:${Math.min(100, d.pctSold)}%"></i></div></td>` +
-      `<td class="num">${d.soldOutSlots}/${d.slots.length}</td>` +
-      `<td>${d.firstAvailable || "—"}</td>` +
-      `<td><span class="pill ${d.selloutRisk === "sold_out" ? "soldout" : hot ? "soldout" : d.selloutRisk === "medium" ? "part" : "ok"}">${d.selloutRisk}</span></td>` +
-      `<td>${d.riskNote || ""}</td></tr>`);
+      `<td class="num" data-l="Sold-out slots">${d.soldOutSlots}/${d.slots.length}</td>` +
+      `<td data-l="First available">${d.firstAvailable || "—"}</td>` +
+      `<td data-l="Risk"><span class="pill ${d.selloutRisk === "sold_out" ? "soldout" : hot ? "soldout" : d.selloutRisk === "medium" ? "part" : "ok"}">${d.selloutRisk}</span></td>` +
+      `<td data-l="Note">${d.riskNote || ""}</td></tr>`);
   }
-  up.push("</table>");
+  up.push("</table></div>");
   document.getElementById("upcoming").innerHTML = up.join("");
 
   if (!analytics) return;
@@ -121,17 +144,19 @@
   document.getElementById("dow").innerHTML = cards.join("") || "<p class='note'>No archived days yet.</p>";
 
   /* Recent days table */
-  const rec = ["<table><tr><th>Date</th><th>Day</th><th>% sold</th><th>Sold-out slots</th>",
+  const rec = ['<div class="tablewrap"><table><tr><th>Date</th><th>Day</th><th>% sold</th><th>Sold-out slots</th>',
                "<th>Same-day tickets</th><th>Outcome</th></tr>"];
   for (const r of (analytics.recentDays || []).slice().reverse()) {
-    rec.push(`<tr><td>${r.date}</td><td>${r.dow}</td><td class="num">${r.pctSold}%</td>` +
-      `<td class="num">${r.soldOutSlots}/${r.slotCount}</td>` +
-      `<td class="num">${r.dayOfTickets ?? "—"}</td>` +
-      `<td>${r.fullySoldOut ? '<span class="pill soldout">sold out</span>'
+    rec.push(`<tr><td data-l="Date">${r.date} <span class="meta">${r.dow}</span></td>` +
+      `<td data-l="Day" class="mobilehide">${r.dow}</td>` +
+      `<td class="num" data-l="% sold">${r.pctSold}%</td>` +
+      `<td class="num" data-l="Sold-out slots">${r.soldOutSlots}/${r.slotCount}</td>` +
+      `<td class="num" data-l="Same-day tickets">${r.dayOfTickets ?? "—"}</td>` +
+      `<td data-l="Outcome">${r.fullySoldOut ? '<span class="pill soldout">sold out</span>'
              : r.soldOutSlots > 0 ? '<span class="pill part">partial</span>'
              : '<span class="pill ok">open all day</span>'}</td></tr>`);
   }
-  rec.push("</table>");
+  rec.push("</table></div>");
   document.getElementById("recent").innerHTML = rec.join("");
 })();
 </script>
