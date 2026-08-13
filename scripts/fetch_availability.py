@@ -329,6 +329,10 @@ def update_leads(leads, slot_data, today_iso, tz):
         days_out = (d - today).days
         if days_out < 0:
             continue
+        # Keep the file bounded over a full year: daily resolution inside 30
+        # days, weekly beyond that.
+        if days_out > 30 and days_out % 7 != 0:
+            continue
         cap = sum(r["capacity"] for r in recs)
         sold = cap - sum(min(r["available"], r["capacity"]) for r in recs)
         entry = leads.setdefault(d_iso, {"obs": {}})

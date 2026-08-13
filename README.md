@@ -110,6 +110,10 @@ index.html                        demo page (served by Pages)
 monitor.html                      internal sell-out monitor (staff)
 ```
 
+## Season rollover (checklist for 2027 and beyond)
+
+Everything is year-agnostic by design: dates are computed at runtime, the calendar grows a year picker automatically, last-year ghost overlays appear once the archive holds a prior year, and analytics always use the trailing 15 days so risk thresholds adjust to the season on their own. One dependency to remember at season setup: the report filters on the event name `General Admission`. If a new season's events are created in ACME under a different name, the report returns no data and the Action fails loudly (it never publishes wrong numbers) — the fix is updating the report definition's filter in Backoffice, no code change. If hours or slot structures change, nothing needs updating; slot times come live from ACME.
+
 ## Notes & caveats
 
 - The parser has been validated against live ACME output (columnar `resultFieldList` with `EventStartTime` / `AvailableQuantity` / `Capacity`). If the report structure ever changes, the Action fails loudly rather than publishing wrong numbers; check `data/raw-report.json`.
