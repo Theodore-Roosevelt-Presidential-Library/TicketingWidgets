@@ -713,7 +713,8 @@ def main():
     today_iso = now.date().isoformat()
     days_ahead = config.get("daysAhead", 7)
     horizon = max(days_ahead, config.get("futureDaysAhead", 365))
-    lookback = config.get("lookbackDays", 15)
+    # ACME_LOOKBACK_DAYS overrides for one-off archive backfills (e.g. season start)
+    lookback = int(os.environ.get("ACME_LOOKBACK_DAYS", config.get("lookbackDays", 15)))
     DATA_DIR.mkdir(exist_ok=True)
 
     if MOCK:
