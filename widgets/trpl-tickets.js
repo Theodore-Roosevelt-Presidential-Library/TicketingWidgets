@@ -13,7 +13,7 @@
  * Optional attributes on any container:
  *   data-url="...availability.json"   override data source
  *   data-tickets-url="..."            override Buy Tickets link
- *   data-hide-cta                     hide the Buy Tickets button (timeslots, planner)
+ *   data-hide-cta                     hide the Buy Tickets button (alert, timeslots, planner)
  *
  * Styling matches the TRPL Brand Identity System as implemented on trlibrary.com:
  *   Headlines: Dharma Gothic E (all caps, Night Sky) · Body: Clearface ·
@@ -235,11 +235,12 @@
     }
     if (stale) body += " (Availability shown may be out of date.)";
 
+    var cta = el.hasAttribute("data-hide-cta") ? "" :
+      '<a class="trpl-tw-btn" href="' + esc(ticketsUrl) + '">' +
+      (risk === "sold_out" || today.closed ? "See All Dates" : "Buy Tickets") + "</a>";
     el.innerHTML =
       '<div class="trpl-tw"><div class="trpl-tw-alert" role="status" data-risk="' + esc(risk) + '">' +
-      "<p><strong>" + esc(head) + "</strong>" + esc(body) + "</p>" +
-      '<a class="trpl-tw-btn" href="' + esc(ticketsUrl) + '">' +
-      (risk === "sold_out" || today.closed ? "See All Dates" : "Buy Tickets") + "</a>" +
+      "<p><strong>" + esc(head) + "</strong>" + esc(body) + "</p>" + cta +
       "</div></div>";
   }
 
