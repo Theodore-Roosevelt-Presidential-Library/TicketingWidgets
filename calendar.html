@@ -6,30 +6,13 @@
   <meta name="robots" content="noindex">
   <title>Reservation Calendar | Theodore Roosevelt Presidential Library</title>
   <style>
-    :root { --forest:#1B4532; --bright:#8FC895; --sunset:#FC924E; --deep:#E7805D;
-            --night:#092A4D; --sand:#D1CCBD; --ink:#25282A; --line:rgba(37,40,42,.16); }
     body { font-family: Frutiger, "Frutiger Next", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-           color:var(--ink); background:#FAF8F4; margin:0; }
+           color:#25282A; background:#FAF8F4; margin:0; }
     main { max-width: 1080px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
     h1 { font-family:"Dharma Gothic E","Dharma Gothic","Arial Narrow",Impact,sans-serif;
-         text-transform:uppercase; letter-spacing:.04em; color:var(--night); font-size:2rem; margin-bottom:.2rem; }
-    .sub { font-family:Clearface,Georgia,serif; font-size:.95rem; margin:0 0 1.2rem; }
-    .meta { color:#777; font-size:.8rem; }
-    .yearpick { margin:.6rem 0 1rem; display:flex; gap:.4rem; }
-    .yearpick button { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px;
-                       padding:.3em 1em; cursor:pointer; font:inherit; font-size:.85rem; }
-    .yearpick button[aria-pressed=true] { background:var(--night); color:#fff; border-color:var(--night); }
-    .months { display:grid; grid-template-columns:repeat(auto-fill,minmax(15.5em,1fr)); gap:1.1em; }
-    .month { background:#fff; border:1px solid var(--line); border-radius:6px; padding:.7em .8em .8em; }
-    .month h3 { margin:0 0 .5em; font-size:.85rem; text-transform:uppercase; letter-spacing:.05em; color:var(--night); }
-    .grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
-    .dow { font-size:.55rem; text-align:center; color:#999; text-transform:uppercase; }
-    .day { aspect-ratio:1; border-radius:3px; background:#F0EDE6; position:relative; }
-    .day.today { outline:2px solid var(--night); outline-offset:1px; }
-    .day.lastyear { opacity:.45; border:1px dashed rgba(37,40,42,.4); }
-    .legend { display:flex; flex-wrap:wrap; gap:1em; align-items:center; margin-top:1.4em; font-size:.78rem; }
-    .legend i { display:inline-block; width:1em; height:1em; border-radius:3px; vertical-align:-2px; margin-right:.35em; }
-    .note { font-family:Clearface,Georgia,serif; font-size:.85rem; color:#555; margin-top:1em; max-width:46em; }
+         text-transform:uppercase; letter-spacing:.04em; color:#092A4D; font-size:2rem; margin-bottom:.2rem; }
+    .sub { font-family:Clearface,Georgia,serif; font-size:.95rem; margin:0 0 1.4rem; max-width:46em; }
+    .note { font-family:Clearface,Georgia,serif; font-size:.85rem; color:#555; margin-top:1.4em; max-width:46em; }
   </style>
 </head>
 <body>
@@ -38,117 +21,14 @@
   <p class="sub">How full each day at the Library has been — and is shaping up to be. Darker means fewer
      tickets were left. The picture fills in as the season goes on, and future seasons will show
      last year's pattern for comparison.</p>
-  <p class="meta" id="stamp">Loading…</p>
-  <div class="yearpick" id="years"></div>
-  <div class="months" id="cal"></div>
-  <div class="legend" id="legend"></div>
-  <p class="note" id="foot"></p>
 
-<script>
-(async function () {
-  const bust = "?t=" + Math.floor(Date.now() / 60000);
-  const j = (u) => fetch(u + bust).then(r => { if (!r.ok) throw new Error(u); return r.json(); });
+  <div data-trpl-widget="calendar" data-hide-heading></div>
 
-  const [avail, index] = await Promise.all([
-    j("data/availability.json"),
-    j("data/archive/index.json").catch(() => ({months: []})),
-  ]);
-  const monthFiles = await Promise.all(index.months.map(m =>
-    j("data/archive/" + m + ".json").then(d => [m, d]).catch(() => [m, {}])));
+  <p class="note">Data collection began in August 2026, so earlier months are blank. Each day the pipeline
+     runs, the calendar gains a day — and starting next season, future dates will show last year's
+     pattern so visits can be planned around historically busy stretches.</p>
 
-  // date -> record  (archive = final outcomes; availability = live window)
-  const days = {};
-  for (const [, data] of monthFiles)
-    for (const [d, rec] of Object.entries(data))
-      days[d] = { pct: rec.pctSold, soldOut: rec.fullySoldOut, kind: "final" };
-  for (const d of avail.days) {
-    if (d.closed) days[d.date] = { kind: "closed" };
-    else days[d.date] = { pct: d.pctSold, soldOut: d.selloutRisk === "sold_out",
-                          risk: d.selloutRisk, kind: "live" };
-  }
-
-  const today = avail.today;
-  const thisYear = +today.slice(0, 4);
-  const years = [...new Set([...index.months.map(m => +m.slice(0, 4)), thisYear])].sort();
-
-  const COLORS = [
-    [0,  "#F0EDE6"], [1, "#EAF4EB"], [40, "#8FC895"], [70, "#FC924E"], [90, "#E7805D"]
-  ];
-  const color = (rec) => {
-    if (!rec) return null;
-    if (rec.kind === "closed") return "#fff";
-    if (rec.soldOut || rec.pct >= 100) return "#092A4D";
-    let c = COLORS[0][1];
-    for (const [min, col] of COLORS) if (rec.pct >= min) c = col;
-    return c;
-  };
-
-  const stamp = document.getElementById("stamp");
-  const mins = Math.round((Date.now() - Date.parse(avail.generatedAt)) / 60000);
-  stamp.textContent = "Updated " + (mins <= 1 ? "just now" : mins + " min ago") +
-    " · " + Object.keys(days).length + " days of data so far";
-
-  function draw(year) {
-    const cal = document.getElementById("cal");
-    const MONTHS = ["January","February","March","April","May","June",
-                    "July","August","September","October","November","December"];
-    const html = [];
-    for (let m = 0; m < 12; m++) {
-      const first = new Date(year, m, 1);
-      const nDays = new Date(year, m + 1, 0).getDate();
-      const pad = (first.getDay() + 6) % 7; // Monday-first
-      const cells = ["M","T","W","T","F","S","S"].map(d => `<span class="dow">${d}</span>`);
-      for (let i = 0; i < pad; i++) cells.push("<span></span>");
-      for (let d = 1; d <= nDays; d++) {
-        const iso = `${year}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
-        let rec = days[iso], cls = "day", title = iso;
-        if (rec) {
-          title += rec.kind === "closed" ? " — closed"
-            : ` — ${rec.pct}% reserved` + (rec.soldOut ? " (sold out)" : "") +
-              (rec.kind === "live" ? " (live)" : "");
-        } else if (iso > today) {
-          // Future: show last year's same date as a ghost, if the archive has it
-          const ly = days[(year - 1) + iso.slice(4)];
-          if (ly && ly.kind === "final") {
-            rec = ly; cls += " lastyear";
-            title += ` — last year: ${ly.pct}% reserved` + (ly.soldOut ? " (sold out)" : "");
-          } else title += " — no data yet";
-        } else title += " — no data";
-        if (iso === today) cls += " today";
-        const bg = color(rec);
-        cells.push(`<span class="${cls}" ${bg ? `style="background:${bg}"` : ""} title="${title}"></span>`);
-      }
-      html.push(`<div class="month"><h3>${MONTHS[m]} ${year}</h3><div class="grid">${cells.join("")}</div></div>`);
-    }
-    cal.innerHTML = html.join("");
-
-    const yp = document.getElementById("years");
-    yp.innerHTML = years.map(y =>
-      `<button aria-pressed="${y === year}" data-y="${y}">${y}</button>`).join("");
-    yp.querySelectorAll("button").forEach(b =>
-      b.addEventListener("click", () => draw(+b.dataset.y)));
-  }
-  draw(thisYear);
-
-  document.getElementById("legend").innerHTML =
-    '<span><i style="background:#EAF4EB"></i>Quiet</span>' +
-    '<span><i style="background:#8FC895"></i>Moderate</span>' +
-    '<span><i style="background:#FC924E"></i>Busy (70%+)</span>' +
-    '<span><i style="background:#E7805D"></i>Very busy (90%+)</span>' +
-    '<span><i style="background:#092A4D"></i>Sold out</span>' +
-    '<span><i style="background:#fff;border:1px solid rgba(37,40,42,.3)"></i>Closed</span>' +
-    '<span><i style="background:#F0EDE6"></i>No data yet</span>' +
-    '<span><i style="background:#E7805D;opacity:.45;border:1px dashed rgba(37,40,42,.4)"></i>Last year (future dates)</span>';
-
-  document.getElementById("foot").textContent =
-    "Data collection began in August 2026, so earlier months are blank. Each day the pipeline runs, " +
-    "the calendar gains a day — and starting next season, future dates will show last year's " +
-    "pattern so visits can be planned around historically busy stretches.";
-})().catch(e => {
-  document.getElementById("stamp").textContent = "Could not load calendar data.";
-  console.warn(e);
-});
-</script>
+  <script src="widgets/trpl-tickets.js" defer></script>
 </main>
 </body>
 </html>

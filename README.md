@@ -35,11 +35,14 @@ Add the script once per page, then drop in any container:
 
 <!-- Month outlook: narrative text ("what we're seeing this month and what to expect") -->
 <div data-trpl-widget="outlook"></div>
+
+<!-- Year-at-a-glance reservation heatmap (archive + live window + last-year ghosts) -->
+<div data-trpl-widget="calendar"></div>
 ```
 
 **Month outlook** renders a short narrative composed by the pipeline each run from live sales data (e.g. "August has been busy: over the last 15 days, daily ticket sales reached a median 94% of capacity. Mornings go first…"). Supports `data-hide-heading` and `data-hide-cta`.
 
-**Reservation calendar** — [/calendar.html](https://ticketing.labs.trlibrary.com/calendar.html) is a year-at-a-glance heatmap of how full each day has been, drawn from the permanent archive plus the live window. It starts sparse (collection began August 2026) and fills in daily; once the archive holds a prior year, future dates show last year's same-date pattern as a ghost overlay for planning around historically busy stretches.
+**Reservation calendar** is both an embeddable widget (`data-trpl-widget="calendar"`, options `data-hide-heading`, `data-hide-legend`, `data-hide-cta`) and a standalone page at [/calendar.html](https://ticketing.labs.trlibrary.com/calendar.html) built on the same widget. It's a year-at-a-glance heatmap of how full each day has been, drawn from the permanent archive plus the live window, with a year picker once multiple years exist. It starts sparse (collection began August 2026) and fills in daily; once the archive holds a prior year, future dates show last year's same-date pattern as a dashed ghost overlay for planning around historically busy stretches.
 
 **Check Your Date** lets a visitor pick any future date. Inside the live window it shows real slot availability; beyond it, it forecasts from recent day-of-week behavior ("Saturdays have been selling out — by day's end the earliest entry still open was typically 1:00 PM") with a per-slot outlook strip, plus a seasonality caveat for dates more than ~45 days out.
 

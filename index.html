@@ -52,10 +52,12 @@
   <div data-trpl-widget="outlook"></div>
   <pre>&lt;div data-trpl-widget="outlook"&gt;&lt;/div&gt;</pre>
 
-  <h2>Reservation calendar</h2>
-  <p class="note">Year-at-a-glance heatmap of how full each day has been, built from the permanent
-     archive: <a href="calendar.html">calendar.html</a>. Fills in as the season progresses; next season
-     it will show last year's pattern on future dates.</p>
+  <h2>6. Reservation calendar (embed or page)</h2>
+  <p class="note">Year-at-a-glance heatmap from the permanent archive; fills in as the season progresses,
+     and next season shows last year's pattern on future dates. Also standalone at
+     <a href="calendar.html">calendar.html</a>.</p>
+  <div data-trpl-widget="calendar" data-hide-cta></div>
+  <pre>&lt;div data-trpl-widget="calendar"&gt;&lt;/div&gt;</pre>
 
   <h2>Embed on trlibrary.com</h2>
   <p>Add the script once per page (footer is fine), then place any of the containers above:</p>
@@ -64,7 +66,7 @@
      Brand fonts resolve automatically where the site loads them; colors/fonts overridable via
      <code>--trpl-tw-*</code> CSS variables (see README). Staff: see <a href="monitor.html">the sell-out monitor</a>.</p>
 
-  <h2>6. Floating banner (via Google Tag Manager)</h2>
+  <h2>7. Floating banner (via Google Tag Manager)</h2>
   <p class="note">Docks lower-left sitewide; shows only on medium+ risk days; dismiss hides it for the
      rest of the day across pages. Loaded on this demo — look at the corner (clear the dismissal in
      DevTools with <code>localStorage.removeItem('trplFloatDismissed')</code>).</p>

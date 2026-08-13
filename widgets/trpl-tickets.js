@@ -10,6 +10,7 @@
  *   <div data-trpl-widget="planner"></div>
  *   <div data-trpl-widget="datecheck"></div>
  *   <div data-trpl-widget="outlook"></div>   (month narrative; data-hide-heading available)
+ *   <div data-trpl-widget="calendar"></div>  (year heatmap; data-hide-heading/-legend/-cta)
  *
  * Optional attributes on any container:
  *   data-url="...availability.json"   override data source
@@ -124,6 +125,22 @@
     ".trpl-tw-fslots li[data-f=high] span{color:var(--_ink);font-weight:700}",
     ".trpl-tw-fslots li[data-f=med] span{color:var(--_ink)}",
     ".trpl-tw-fslots li[data-f=low] span{color:var(--_forest)}",
+    /* year calendar heatmap */
+    ".trpl-tw-cal-months{display:grid;grid-template-columns:repeat(auto-fill,minmax(13.5em,1fr));gap:1em}",
+    ".trpl-tw-cal-month{background:#fff;border:1px solid var(--_border);border-radius:6px;padding:.65em .75em .75em}",
+    ".trpl-tw-cal-month h4{font-family:var(--_caption);font-size:.78em;text-transform:uppercase;",
+    "letter-spacing:.05em;color:var(--_night);margin-bottom:.5em}",
+    ".trpl-tw-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}",
+    ".trpl-tw-cal-grid .dw{font-family:var(--_caption);font-size:.55em;text-align:center;opacity:.5;text-transform:uppercase}",
+    ".trpl-tw-cal-grid .dd{aspect-ratio:1;border-radius:3px;background:#F0EDE6}",
+    ".trpl-tw-cal-grid .dd.today{outline:2px solid var(--_night);outline-offset:1px}",
+    ".trpl-tw-cal-grid .dd.ghost{opacity:.45;border:1px dashed rgba(37,40,42,.4)}",
+    ".trpl-tw-cal-years{display:flex;gap:.4em;margin:.2em 0 1em}",
+    ".trpl-tw-cal-years button{border:1px solid var(--_border);background:transparent;color:var(--_ink);",
+    "border-radius:999px;padding:.3em 1em;cursor:pointer;font-family:var(--_caption);font-size:.82em}",
+    ".trpl-tw-cal-years button[aria-pressed=true]{background:var(--_night);color:#fff;border-color:var(--_night)}",
+    ".trpl-tw-cal-legend{display:flex;flex-wrap:wrap;gap:.9em;margin-top:1em;font-family:var(--_caption);font-size:.72em}",
+    ".trpl-tw-cal-legend i{display:inline-block;width:1em;height:1em;border-radius:3px;vertical-align:-2px;margin-right:.3em}",
     "@media (max-width:480px){.trpl-tw-day .lbl{min-width:6.5em}}"
   ].join("");
 
@@ -417,6 +434,108 @@
     show(picked);
   }
 
+  /* ---------------- year calendar heatmap (archive + live window) */
+
+  function renderCalendar(el, data, ticketsUrl) {
+    var base = (el.getAttribute("data-url") || DEFAULT_DATA_URL).replace(/availability\.json.*$/, "");
+    getJson(base + "archive/index.json").catch(function () { return { months: [] }; }).then(function (index) {
+      return Promise.all((index.months || []).map(function (m) {
+        return getJson(base + "archive/" + m + ".json").then(function (d) { return d; })
+          .catch(function () { return {}; });
+      }));
+    }).then(function (monthFiles) {
+      var days = {};
+      monthFiles.forEach(function (data2) {
+        Object.keys(data2).forEach(function (d) {
+          days[d] = { pct: data2[d].pctSold, soldOut: data2[d].fullySoldOut, kind: "final" };
+        });
+      });
+      (data.days || []).forEach(function (d) {
+        days[d.date] = d.closed ? { kind: "closed" } :
+          { pct: d.pctSold, soldOut: d.selloutRisk === "sold_out", kind: "live" };
+      });
+
+      var today = data.today;
+      var thisYear = +today.slice(0, 4);
+      var years = {};
+      Object.keys(days).forEach(function (d) { years[+d.slice(0, 4)] = 1; });
+      years[thisYear] = 1;
+      years = Object.keys(years).map(Number).sort();
+
+      function color(rec) {
+        if (!rec) return null;
+        if (rec.kind === "closed") return "#fff";
+        if (rec.soldOut || rec.pct >= 100) return "#092A4D";
+        return rec.pct >= 90 ? "#E7805D" : rec.pct >= 70 ? "#FC924E" :
+               rec.pct >= 40 ? "#8FC895" : rec.pct >= 1 ? "#EAF4EB" : "#F0EDE6";
+      }
+
+      var MONTHS = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+
+      function draw(year) {
+        el.setAttribute("data-year", year);
+        var yearBtns = years.map(function (y) {
+          return '<button aria-pressed="' + (y === year) + '" data-y="' + y + '">' + y + "</button>";
+        }).join("");
+        var months = "";
+        for (var m = 0; m < 12; m++) {
+          var nDays = new Date(year, m + 1, 0).getDate();
+          var pad = (new Date(year, m, 1).getDay() + 6) % 7; // Monday-first
+          var cells = ["M", "T", "W", "T", "F", "S", "S"].map(function (c) {
+            return '<span class="dw">' + c + "</span>";
+          });
+          for (var i = 0; i < pad; i++) cells.push("<span></span>");
+          for (var d = 1; d <= nDays; d++) {
+            var iso = year + "-" + String(m + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+            var rec = days[iso], cls = "dd", title = iso;
+            if (rec) {
+              title += rec.kind === "closed" ? " — closed" :
+                " — " + rec.pct + "% reserved" + (rec.soldOut ? " (sold out)" : "") +
+                (rec.kind === "live" ? " (live)" : "");
+            } else if (iso > today) {
+              var ly = days[(year - 1) + iso.slice(4)];
+              if (ly && ly.kind === "final") {
+                rec = ly; cls += " ghost";
+                title += " — last year: " + ly.pct + "% reserved" + (ly.soldOut ? " (sold out)" : "");
+              } else title += " — no data yet";
+            } else title += " — no data";
+            if (iso === today) cls += " today";
+            var bg = color(rec);
+            cells.push('<span class="' + cls + '"' + (bg ? ' style="background:' + bg + '"' : "") +
+              ' title="' + esc(title) + '"></span>');
+          }
+          months += '<div class="trpl-tw-cal-month"><h4>' + MONTHS[m] + " " + year +
+            '</h4><div class="trpl-tw-cal-grid">' + cells.join("") + "</div></div>";
+        }
+        el.innerHTML =
+          '<div class="trpl-tw trpl-tw-cal">' +
+          (el.hasAttribute("data-hide-heading") ? "" : "<h3>Reservation Calendar</h3>") +
+          '<div class="trpl-tw-cal-years">' + (years.length > 1 ? yearBtns : "") + "</div>" +
+          '<div class="trpl-tw-cal-months">' + months + "</div>" +
+          (el.hasAttribute("data-hide-legend") ? "" :
+            '<div class="trpl-tw-cal-legend">' +
+            '<span><i style="background:#EAF4EB"></i>Quiet</span>' +
+            '<span><i style="background:#8FC895"></i>Moderate</span>' +
+            '<span><i style="background:#FC924E"></i>Busy</span>' +
+            '<span><i style="background:#E7805D"></i>Very busy</span>' +
+            '<span><i style="background:#092A4D"></i>Sold out</span>' +
+            '<span><i style="background:#fff;border:1px solid rgba(37,40,42,.3)"></i>Closed</span>' +
+            '<span><i style="background:#F0EDE6"></i>No data yet</span>' +
+            '<span><i style="background:#E7805D;opacity:.45;border:1px dashed rgba(37,40,42,.4)"></i>Last year</span>' +
+            "</div>") +
+          (el.hasAttribute("data-hide-cta") ? "" :
+            '<div class="trpl-tw-cta"><a class="trpl-tw-btn" href="' + esc(ticketsUrl) + '">Reserve Tickets</a></div>');
+        el.querySelectorAll(".trpl-tw-cal-years button").forEach(function (b) {
+          b.addEventListener("click", function () { draw(+b.getAttribute("data-y")); });
+        });
+      }
+      draw(+(el.getAttribute("data-year")) || thisYear);
+    }).catch(function (err) {
+      if (window.console) console.warn("TRPL widget (calendar):", err);
+    });
+  }
+
   /* ------------------------------------------------ bootstrap */
 
   var RENDERERS = {
@@ -424,7 +543,8 @@
     timeslots: renderTimeslots,
     planner: renderPlanner,
     datecheck: renderDateCheck,
-    outlook: renderOutlook
+    outlook: renderOutlook,
+    calendar: renderCalendar
   };
 
   function initAll() {
