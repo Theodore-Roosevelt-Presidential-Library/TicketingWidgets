@@ -32,7 +32,14 @@ Add the script once per page, then drop in any container:
 
 <!-- Date picker: live slots for the next 8 days, day-of-week forecast beyond -->
 <div data-trpl-widget="datecheck"></div>
+
+<!-- Month outlook: narrative text ("what we're seeing this month and what to expect") -->
+<div data-trpl-widget="outlook"></div>
 ```
+
+**Month outlook** renders a short narrative composed by the pipeline each run from live sales data (e.g. "August has been busy: over the last 15 days, daily ticket sales reached a median 94% of capacity. Mornings go first…"). Supports `data-hide-heading` and `data-hide-cta`.
+
+**Reservation calendar** — [/calendar.html](https://ticketing.labs.trlibrary.com/calendar.html) is a year-at-a-glance heatmap of how full each day has been, drawn from the permanent archive plus the live window. It starts sparse (collection began August 2026) and fills in daily; once the archive holds a prior year, future dates show last year's same-date pattern as a ghost overlay for planning around historically busy stretches.
 
 **Check Your Date** lets a visitor pick any future date. Inside the live window it shows real slot availability; beyond it, it forecasts from recent day-of-week behavior ("Saturdays have been selling out — by day's end the earliest entry still open was typically 1:00 PM") with a per-slot outlook strip, plus a seasonality caveat for dates more than ~45 days out.
 

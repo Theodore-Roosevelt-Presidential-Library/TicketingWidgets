@@ -45,6 +45,18 @@
   <div data-trpl-widget="datecheck"></div>
   <pre>&lt;div data-trpl-widget="datecheck"&gt;&lt;/div&gt;</pre>
 
+  <h2>5. Month outlook (text embed)</h2>
+  <p class="note">A server-written narrative — what this month has looked like and what to expect —
+     regenerated every 15 minutes from live sales. Optional <code>data-hide-heading</code> and
+     <code>data-hide-cta</code>.</p>
+  <div data-trpl-widget="outlook"></div>
+  <pre>&lt;div data-trpl-widget="outlook"&gt;&lt;/div&gt;</pre>
+
+  <h2>Reservation calendar</h2>
+  <p class="note">Year-at-a-glance heatmap of how full each day has been, built from the permanent
+     archive: <a href="calendar.html">calendar.html</a>. Fills in as the season progresses; next season
+     it will show last year's pattern on future dates.</p>
+
   <h2>Embed on trlibrary.com</h2>
   <p>Add the script once per page (footer is fine), then place any of the containers above:</p>
   <pre>&lt;script src="https://ticketing.labs.trlibrary.com/widgets/trpl-tickets.js" defer&gt;&lt;/script&gt;</pre>
@@ -52,7 +64,7 @@
      Brand fonts resolve automatically where the site loads them; colors/fonts overridable via
      <code>--trpl-tw-*</code> CSS variables (see README). Staff: see <a href="monitor.html">the sell-out monitor</a>.</p>
 
-  <h2>5. Floating banner (via Google Tag Manager)</h2>
+  <h2>6. Floating banner (via Google Tag Manager)</h2>
   <p class="note">Docks lower-left sitewide; shows only on medium+ risk days; dismiss hides it for the
      rest of the day across pages. Loaded on this demo — look at the corner (clear the dismissal in
      DevTools with <code>localStorage.removeItem('trplFloatDismissed')</code>).</p>

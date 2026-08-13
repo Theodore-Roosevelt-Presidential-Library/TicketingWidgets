@@ -362,6 +362,12 @@ def save_archive_record(d_iso, record):
     path.write_text(json.dumps(dict(sorted(month.items())), indent=1))
 
 
+def write_archive_index():
+    """data/archive/index.json — lets the calendar page discover archive months."""
+    months = sorted(p.stem for p in ARCHIVE_DIR.glob("*.json") if p.stem != "index")
+    (ARCHIVE_DIR / "index.json").write_text(json.dumps({"months": months}))
+
+
 def update_archive(slot_data, leads, history, today_iso):
     """Write final outcomes for every past date present in the report window."""
     by_date = {}
@@ -489,6 +495,71 @@ def compute_analytics(records, lookback_days, today_iso, tz):
         ],
         "byDayOfWeek": dows,
     }
+
+
+def compute_month_outlook(records, availability, tz):
+    """Compose a short, friendly narrative: what this month has looked like and
+    what to expect. Rendered verbatim by the 'outlook' text widget."""
+    now = datetime.now(tz)
+    month_name = now.strftime("%B")
+    heading = f"What to Expect in {month_name}"
+    n = len(records)
+    if n < 3:
+        return {
+            "heading": heading,
+            "text": ("The Library uses timed-entry tickets, and busy days can sell out — "
+                     "sometimes well before midday. Reserving tickets online before arriving "
+                     "is the surest way in."),
+            "updatedAt": now.isoformat(),
+        }
+
+    pcts = [r["pctSold"] for r in records]
+    med = round(statistics.median(pcts))
+    full = sum(1 for r in records if r.get("fullySoldOut"))
+    morning_days = 0
+    first_opens = []
+    for r in records:
+        slots = sorted(r.get("slots", {}).items())
+        if any(s["soldOut"] for _, s in slots[:3]):
+            morning_days += 1
+        open_slots = [t for t, s in slots if not s["soldOut"]]
+        first_opens.append(open_slots[0] if open_slots else None)
+
+    sentences = []
+    if med >= 90:
+        s = (f"{month_name} has been busy: over the last {n} days, daily ticket sales "
+             f"reached a median {med}% of capacity")
+        s += f", and {full} {'day' if full == 1 else 'days'} sold out completely." if full else "."
+        sentences.append(s)
+    elif med >= 65:
+        sentences.append(f"{month_name} has been steady: over the last {n} days, daily ticket "
+                         f"sales reached a median {med}% of capacity.")
+    else:
+        sentences.append(f"{month_name} has had good availability, with daily ticket sales at "
+                         f"a median {med}% of capacity over the last {n} days.")
+
+    if morning_days / n >= 0.5:
+        opens = sorted(t for t in first_opens if t)
+        typical = slot_label(opens[len(opens) // 2]) if opens else None
+        s = f"Mornings go first — morning entry times sold out on {morning_days} of those days"
+        s += f", often leaving {typical} or later as the earliest way in." if typical else "."
+        sentences.append(s)
+
+    upcoming = [d for d in availability["days"][1:8] if not d.get("closed")]
+    hot = sum(1 for d in upcoming if d["selloutRisk"] in ("high", "sold_out"))
+    if upcoming and hot >= max(1, len(upcoming) // 2):
+        sentences.append(f"The week ahead looks similar: {hot} of the next {len(upcoming)} open "
+                         "days are likely to sell out.")
+    elif upcoming and hot:
+        sentences.append(f"In the week ahead, {hot} {'day looks' if hot == 1 else 'days look'} "
+                         "likely to sell out.")
+
+    sentences.append("Reserving tickets online before arriving is strongly recommended, "
+                     "especially for mornings and weekends."
+                     if med >= 65 else
+                     "Advance tickets guarantee an entry time.")
+
+    return {"heading": heading, "text": " ".join(sentences), "updatedAt": now.isoformat()}
 
 
 # ------------------------------------------------------------- availability
@@ -669,8 +740,10 @@ def main():
           f"({', '.join(sorted(set(r['dow'] for r in records))) or 'none yet'}).")
 
     availability = build_availability(slot_data, config, tz, history, analytics)
+    analytics["monthOutlook"] = compute_month_outlook(records, availability, tz)
     leads = update_leads(leads, slot_data, today_iso, tz)
     history = update_history(history, availability, now)
+    write_archive_index()
 
     OUTPUT_PATH.write_text(json.dumps(availability, indent=2))
     ANALYTICS_PATH.write_text(json.dumps(analytics, indent=2))

@@ -9,6 +9,7 @@
  *   <div data-trpl-widget="timeslots"></div>
  *   <div data-trpl-widget="planner"></div>
  *   <div data-trpl-widget="datecheck"></div>
+ *   <div data-trpl-widget="outlook"></div>   (month narrative; data-hide-heading available)
  *
  * Optional attributes on any container:
  *   data-url="...availability.json"   override data source
@@ -293,6 +294,24 @@
       "<ul>" + rows + "</ul>" + cta + "</div>";
   }
 
+  /* ---------------- month outlook: server-generated narrative text */
+
+  function renderOutlook(el, data, ticketsUrl) {
+    getJson(el.getAttribute("data-analytics-url") || ANALYTICS_URL).then(function (analytics) {
+      var o = analytics && analytics.monthOutlook;
+      if (!o || !o.text) return;
+      var cta = el.hasAttribute("data-hide-cta") ? "" :
+        '<div class="trpl-tw-cta"><a class="trpl-tw-btn" href="' + esc(ticketsUrl) + '">Reserve Tickets</a></div>';
+      el.innerHTML =
+        '<div class="trpl-tw trpl-tw-outlook">' +
+        (el.hasAttribute("data-hide-heading") ? "" : "<h3>" + esc(o.heading) + "</h3>") +
+        "<p>" + esc(o.text) + "</p>" + cta +
+        '<p class="trpl-tw-meta">Based on recent ticket sales at the Library.</p></div>';
+    }).catch(function (err) {
+      if (window.console) console.warn("TRPL widget (outlook):", err);
+    });
+  }
+
   /* ---------------- date check: live window if we have it, forecast beyond */
 
   function forecastHtml(dateIso, analytics, ticketsUrl) {
@@ -404,7 +423,8 @@
     alert: renderAlert,
     timeslots: renderTimeslots,
     planner: renderPlanner,
-    datecheck: renderDateCheck
+    datecheck: renderDateCheck,
+    outlook: renderOutlook
   };
 
   function initAll() {
