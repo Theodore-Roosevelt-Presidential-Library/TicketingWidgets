@@ -6,9 +6,11 @@
   <meta name="robots" content="noindex,nofollow">
   <title>TRPL Sell-Out Monitor (internal)</title>
   <style>
-    :root { --accent:#8C3B2E; --ok:#3E6B4F; --warn:#B07C24; --line:rgba(0,0,0,.13); }
-    body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color:#26221e;
-           background:#faf8f5; margin:0; }
+    :root { --accent:#B4531F; --ok:#1B4532; --warn:#E7805D; --night:#092A4D; --line:rgba(37,40,42,.18); }
+    body { font-family: "Frutiger Next", Frutiger, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+           color:#25282A; background:#FAF8F4; margin:0; }
+    h1, h2 { font-family: "Dharma Gothic E", "Dharma Gothic", "Arial Narrow", Impact, sans-serif;
+             text-transform: uppercase; letter-spacing:.04em; color: var(--night); }
     main { max-width: 1000px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
     h1 { font-size:1.35rem; } h2 { font-size:1.05rem; margin-top:2.2rem; }
     .meta { color:#777; font-size:.82rem; }
@@ -19,7 +21,7 @@
     .big { font-size:1.25rem; font-weight:700; }
     table { border-collapse:collapse; width:100%; margin-top:.9em; background:#fff; font-size:.85rem; }
     th, td { border:1px solid var(--line); padding:.4em .6em; text-align:left; }
-    th { background:#f0ece6; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; }
+    th { background:#D1CCBD; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; }
     td.num { text-align:right; font-variant-numeric:tabular-nums; }
     .pill { display:inline-block; padding:.1em .6em; border-radius:999px; font-size:.75rem; color:#fff; }
     .pill.soldout { background:var(--accent); } .pill.ok { background:var(--ok); } .pill.part { background:var(--warn); }
@@ -27,7 +29,7 @@
     .bar i { display:block; height:100%; background:var(--ok); }
     .bar.hot i { background:var(--accent); }
     .slotmap { display:flex; gap:2px; }
-    .slotmap b { flex:1; height:.9em; border-radius:2px; background:#d8e4dc; }
+    .slotmap b { flex:1; height:.9em; border-radius:2px; background:#8FC895; }
     .slotmap b.x { background:var(--accent); }
     .note { font-size:.8rem; color:#666; margin-top:.4em; }
   </style>

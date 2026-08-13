@@ -29,9 +29,27 @@ Add the script once per page, then drop in any container:
 
 <!-- Week-ahead "best days to visit" planner -->
 <div data-trpl-widget="planner"></div>
+
+<!-- Date picker: live slots for the next 8 days, day-of-week forecast beyond -->
+<div data-trpl-widget="datecheck"></div>
 ```
 
-Widgets inherit the host page's fonts and text color. Accent colors are overridable via CSS variables on any ancestor: `--trpl-tw-accent`, `--trpl-tw-ok`, `--trpl-tw-warn`, `--trpl-tw-out`, `--trpl-tw-border`. Optional attributes: `data-url` (alternate JSON source), `data-tickets-url` (Buy Tickets link). Widgets self-refresh every 5 minutes and fail silently if data is unreachable — they will never break the host page.
+**Check Your Date** lets a visitor pick any future date. Inside the live window it shows real slot availability; beyond it, it forecasts from recent day-of-week behavior ("Saturdays have been selling out — by day's end the earliest entry still open was typically 1:00 PM") with a per-slot outlook strip, plus a seasonality caveat for dates more than ~45 days out.
+
+### Floating sell-out banner (Google Tag Manager)
+
+Sitewide banner docked lower-left. Shows only when there's something worth saying (medium+ risk or sold-out slots); dismissing hides it for the rest of the Mountain-Time day across all pages (localStorage). Stays silent if data is stale. Install as a GTM Custom HTML tag on All Pages:
+
+```html
+<script>window.TRPL_FLOAT = { minRisk: "medium" };</script>
+<script src="https://theodore-roosevelt-presidential-library.github.io/TicketingWidgets/widgets/trpl-float.js" async></script>
+```
+
+Options via `window.TRPL_FLOAT`: `minRisk` ("low" | "medium" | "high"), `ticketsUrl`, `dataUrl`. Consider a GTM trigger exception on the tickets page itself.
+
+### Styling
+
+Widgets follow the TRPL Brand Identity System: Dharma Gothic E for display text and CTAs (all caps), ITC Clearface for body, Frutiger Next for captions; Dark Forest `#1B4532`, Night Sky `#092A4D`, Bright Forest `#8FC895`, Sand `#D1CCBD`, Dark Gray `#25282A`, Deep Orange `#E7805D` for CTAs (warn text darkened to `#B4531F` for contrast). Font stacks resolve to the licensed webfonts where the host page loads them (trlibrary.com) and degrade gracefully elsewhere. Override via CSS variables on any ancestor: `--trpl-tw-display`, `--trpl-tw-body`, `--trpl-tw-caption`, `--trpl-tw-cta`, `--trpl-tw-forest`, `--trpl-tw-night`, `--trpl-tw-bright`, `--trpl-tw-sand`, `--trpl-tw-warn`, `--trpl-tw-border`. Optional attributes per container: `data-url`, `data-tickets-url`, and `data-hide-cta` to hide the Buy Tickets button (timeslots and planner) — e.g. `<div data-trpl-widget="planner" data-hide-cta></div>`. Widgets self-refresh every 5 minutes and fail silently if data is unreachable — they will never break the host page.
 
 Preview everything at the GitHub Pages URL for this repo (`index.html`).
 
@@ -70,7 +88,8 @@ Tune thresholds in `day_risk()` in `scripts/fetch_availability.py`.
 config.json                       thresholds, tickets URL, mock-mode hours
 scripts/fetch_availability.py     ACME API client + transform (stdlib only)
 .github/workflows/update-availability.yml
-widgets/trpl-tickets.js           all three widgets, self-contained
+widgets/trpl-tickets.js           embedded widgets (alert, timeslots, planner, datecheck)
+widgets/trpl-float.js             floating GTM banner, dismissible per day
 data/availability.json            generated — consumed by widgets
 data/history.json                 generated — rolling 72h snapshots (intraday pace)
 data/leads.json                   generated — pct sold at each days-out lead time
