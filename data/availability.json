@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T16:53:40.400237-06:00",
+  "generatedAt": "2026-08-14T17:06:55.410111-06:00",
   "timezone": "America/Denver",
   "today": "2026-08-14",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -11,12 +11,12 @@
       "totalCapacity": 1522,
       "totalSold": 1522,
       "pctSold": 100,
-      "soldOutSlots": 1,
+      "soldOutSlots": 0,
       "firstAvailable": null,
-      "status": "sold_out",
-      "selloutRisk": "sold_out",
-      "riskNote": "Sold out \u2014 no remaining time slots.",
-      "riskReason": "Sold out \u2014 no remaining time slots",
+      "status": "ended",
+      "selloutRisk": "none",
+      "riskNote": "Today's entries have ended.",
+      "riskReason": "Today's entries have ended",
       "slots": [
         {
           "time": "09:00",
@@ -80,7 +80,7 @@
           "capacity": 121,
           "sold": 121,
           "remaining": 0,
-          "status": "sold_out"
+          "status": "past"
         }
       ]
     },
@@ -169,7 +169,7 @@
       "dayLabel": "Sun Aug 16",
       "closed": false,
       "totalCapacity": 1525,
-      "totalSold": 1383,
+      "totalSold": 1389,
       "pctSold": 91,
       "soldOutSlots": 6,
       "firstAvailable": "3:00 PM",
@@ -230,8 +230,8 @@
           "time": "15:00",
           "label": "3:00 PM",
           "capacity": 200,
-          "sold": 170,
-          "remaining": 30,
+          "sold": 176,
+          "remaining": 24,
           "status": "limited"
         },
         {
@@ -569,7 +569,7 @@
       "dayLabel": "Fri Aug 21",
       "closed": false,
       "totalCapacity": 1525,
-      "totalSold": 611,
+      "totalSold": 613,
       "pctSold": 40,
       "soldOutSlots": 0,
       "firstAvailable": "9:00 AM",
@@ -590,8 +590,8 @@
           "time": "10:00",
           "label": "10:00 AM",
           "capacity": 200,
-          "sold": 166,
-          "remaining": 34,
+          "sold": 168,
+          "remaining": 32,
           "status": "available"
         },
         {
