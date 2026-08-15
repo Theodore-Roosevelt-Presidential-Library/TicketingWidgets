@@ -747,7 +747,7 @@
   "date": "2026-08-13",
   "dow": "Thursday",
   "capacity": 1647,
-  "sold": 1512,
+  "sold": 1510,
   "pctSold": 92,
   "fullySoldOut": false,
   "slots": {
@@ -758,8 +758,8 @@
    },
    "10:00": {
     "capacity": 200,
-    "sold": 200,
-    "soldOut": true
+    "sold": 198,
+    "soldOut": false
    },
    "11:00": {
     "capacity": 200,
@@ -810,15 +810,15 @@
     "at": "2026-08-13T10:24:45.484419-06:00"
    }
   },
-  "dayOfTickets": 32
+  "dayOfTickets": 30
  },
  "2026-08-14": {
   "date": "2026-08-14",
   "dow": "Friday",
   "capacity": 1522,
-  "sold": 1522,
+  "sold": 1520,
   "pctSold": 100,
-  "fullySoldOut": true,
+  "fullySoldOut": false,
   "slots": {
    "09:00": {
     "capacity": 200,
@@ -827,8 +827,8 @@
    },
    "10:00": {
     "capacity": 200,
-    "sold": 200,
-    "soldOut": true
+    "sold": 198,
+    "soldOut": false
    },
    "11:00": {
     "capacity": 200,
@@ -885,6 +885,6 @@
     "at": "2026-08-14T00:33:58.088367-06:00"
    }
   },
-  "dayOfTickets": 1
+  "dayOfTickets": -1
  }
 }
