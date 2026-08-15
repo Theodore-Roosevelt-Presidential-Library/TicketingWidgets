@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T12:44:23.017817-06:00",
+  "generatedAt": "2026-08-15T12:58:58.184016-06:00",
   "timezone": "America/Denver",
   "today": "2026-08-15",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -8,30 +8,30 @@
       "date": "2026-08-15",
       "dayLabel": "Today",
       "closed": false,
-      "totalCapacity": 1643,
-      "totalSold": 1536,
-      "pctSold": 93,
-      "soldOutSlots": 4,
-      "firstAvailable": "4:00 PM",
-      "status": "selling_fast",
-      "selloutRisk": "high",
-      "riskNote": "Very few tickets remain today \u2014 buy online before you drive.",
-      "riskReason": "Very few tickets remain today",
+      "totalCapacity": 1540,
+      "totalSold": 1540,
+      "pctSold": 100,
+      "soldOutSlots": 5,
+      "firstAvailable": null,
+      "status": "sold_out",
+      "selloutRisk": "sold_out",
+      "riskNote": "Sold out \u2014 no remaining time slots.",
+      "riskReason": "Sold out \u2014 no remaining time slots",
       "slots": [
         {
           "time": "09:00",
           "label": "9:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 200,
-          "remaining": 50,
+          "remaining": 0,
           "status": "past"
         },
         {
           "time": "10:00",
           "label": "10:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 200,
-          "remaining": 50,
+          "remaining": 0,
           "status": "past"
         },
         {
@@ -77,10 +77,10 @@
         {
           "time": "16:00",
           "label": "4:00 PM",
-          "capacity": 134,
-          "sold": 127,
-          "remaining": 7,
-          "status": "limited"
+          "capacity": 131,
+          "sold": 131,
+          "remaining": 0,
+          "status": "sold_out"
         }
       ]
     },
@@ -88,11 +88,11 @@
       "date": "2026-08-16",
       "dayLabel": "Tomorrow",
       "closed": false,
-      "totalCapacity": 1975,
-      "totalSold": 1523,
-      "pctSold": 77,
-      "soldOutSlots": 5,
-      "firstAvailable": "9:00 AM",
+      "totalCapacity": 1875,
+      "totalSold": 1539,
+      "pctSold": 82,
+      "soldOutSlots": 7,
+      "firstAvailable": "9:30 AM",
       "status": "selling_fast",
       "selloutRisk": "high",
       "riskNote": "Sundays have been selling out \u2014 recently only 12:00 PM or later entry remained. Reserve in advance.",
@@ -101,33 +101,33 @@
         {
           "time": "09:00",
           "label": "9:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 200,
-          "remaining": 50,
-          "status": "available"
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "09:30",
           "label": "9:30 AM",
           "capacity": 50,
-          "sold": 0,
-          "remaining": 50,
+          "sold": 4,
+          "remaining": 46,
           "status": "available"
         },
         {
           "time": "10:00",
           "label": "10:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 200,
-          "remaining": 50,
-          "status": "available"
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "10:30",
           "label": "10:30 AM",
           "capacity": 50,
-          "sold": 0,
-          "remaining": 50,
+          "sold": 7,
+          "remaining": 43,
           "status": "available"
         },
         {
@@ -190,8 +190,8 @@
           "time": "14:30",
           "label": "2:30 PM",
           "capacity": 50,
-          "sold": 0,
-          "remaining": 50,
+          "sold": 5,
+          "remaining": 45,
           "status": "available"
         },
         {
@@ -224,11 +224,11 @@
       "date": "2026-08-17",
       "dayLabel": "Mon Aug 17",
       "closed": false,
-      "totalCapacity": 1975,
-      "totalSold": 849,
-      "pctSold": 43,
-      "soldOutSlots": 0,
-      "firstAvailable": "9:00 AM",
+      "totalCapacity": 1875,
+      "totalSold": 857,
+      "pctSold": 46,
+      "soldOutSlots": 2,
+      "firstAvailable": "9:30 AM",
       "status": "selling_fast",
       "selloutRisk": "high",
       "riskNote": "Mondays have been selling out \u2014 recently only 1:00 PM or later entry remained. Reserve in advance.",
@@ -237,10 +237,10 @@
         {
           "time": "09:00",
           "label": "9:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 200,
-          "remaining": 50,
-          "status": "available"
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "09:30",
@@ -253,10 +253,10 @@
         {
           "time": "10:00",
           "label": "10:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 200,
-          "remaining": 50,
-          "status": "available"
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "10:30",
@@ -302,8 +302,8 @@
           "time": "13:00",
           "label": "1:00 PM",
           "capacity": 200,
-          "sold": 78,
-          "remaining": 122,
+          "sold": 80,
+          "remaining": 120,
           "status": "available"
         },
         {
@@ -318,8 +318,8 @@
           "time": "14:00",
           "label": "2:00 PM",
           "capacity": 200,
-          "sold": 60,
-          "remaining": 140,
+          "sold": 62,
+          "remaining": 138,
           "status": "available"
         },
         {
@@ -334,8 +334,8 @@
           "time": "15:00",
           "label": "3:00 PM",
           "capacity": 200,
-          "sold": 41,
-          "remaining": 159,
+          "sold": 45,
+          "remaining": 155,
           "status": "available"
         },
         {
@@ -360,10 +360,10 @@
       "date": "2026-08-18",
       "dayLabel": "Tue Aug 18",
       "closed": false,
-      "totalCapacity": 1975,
+      "totalCapacity": 1875,
       "totalSold": 764,
-      "pctSold": 39,
-      "soldOutSlots": 0,
+      "pctSold": 41,
+      "soldOutSlots": 1,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
       "selloutRisk": "high",
@@ -373,10 +373,10 @@
         {
           "time": "09:00",
           "label": "9:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 191,
-          "remaining": 59,
-          "status": "available"
+          "remaining": 9,
+          "status": "limited"
         },
         {
           "time": "09:30",
@@ -389,10 +389,10 @@
         {
           "time": "10:00",
           "label": "10:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 200,
-          "remaining": 50,
-          "status": "available"
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "10:30",
@@ -496,9 +496,9 @@
       "date": "2026-08-19",
       "dayLabel": "Wed Aug 19",
       "closed": false,
-      "totalCapacity": 1975,
+      "totalCapacity": 1875,
       "totalSold": 773,
-      "pctSold": 39,
+      "pctSold": 41,
       "soldOutSlots": 0,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
@@ -509,10 +509,10 @@
         {
           "time": "09:00",
           "label": "9:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 196,
-          "remaining": 54,
-          "status": "available"
+          "remaining": 4,
+          "status": "limited"
         },
         {
           "time": "09:30",
@@ -525,10 +525,10 @@
         {
           "time": "10:00",
           "label": "10:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 196,
-          "remaining": 54,
-          "status": "available"
+          "remaining": 4,
+          "status": "limited"
         },
         {
           "time": "10:30",
@@ -632,9 +632,9 @@
       "date": "2026-08-20",
       "dayLabel": "Thu Aug 20",
       "closed": false,
-      "totalCapacity": 1931,
+      "totalCapacity": 1881,
       "totalSold": 687,
-      "pctSold": 36,
+      "pctSold": 37,
       "soldOutSlots": 1,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
@@ -645,9 +645,9 @@
         {
           "time": "09:00",
           "label": "9:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 111,
-          "remaining": 139,
+          "remaining": 89,
           "status": "available"
         },
         {
@@ -768,9 +768,9 @@
       "date": "2026-08-21",
       "dayLabel": "Fri Aug 21",
       "closed": false,
-      "totalCapacity": 1975,
+      "totalCapacity": 1850,
       "totalSold": 643,
-      "pctSold": 33,
+      "pctSold": 35,
       "soldOutSlots": 0,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
@@ -781,9 +781,9 @@
         {
           "time": "09:00",
           "label": "9:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 158,
-          "remaining": 92,
+          "remaining": 42,
           "status": "available"
         },
         {
@@ -797,10 +797,10 @@
         {
           "time": "10:00",
           "label": "10:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 174,
-          "remaining": 76,
-          "status": "available"
+          "remaining": 26,
+          "status": "limited"
         },
         {
           "time": "10:30",
@@ -893,9 +893,9 @@
         {
           "time": "16:00",
           "label": "4:00 PM",
-          "capacity": 125,
+          "capacity": 100,
           "sold": 26,
-          "remaining": 99,
+          "remaining": 74,
           "status": "available"
         }
       ]
@@ -904,10 +904,10 @@
       "date": "2026-08-22",
       "dayLabel": "Sat Aug 22",
       "closed": false,
-      "totalCapacity": 1975,
+      "totalCapacity": 1875,
       "totalSold": 884,
-      "pctSold": 45,
-      "soldOutSlots": 0,
+      "pctSold": 47,
+      "soldOutSlots": 1,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
       "selloutRisk": "high",
@@ -917,9 +917,9 @@
         {
           "time": "09:00",
           "label": "9:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 126,
-          "remaining": 124,
+          "remaining": 74,
           "status": "available"
         },
         {
@@ -933,10 +933,10 @@
         {
           "time": "10:00",
           "label": "10:00 AM",
-          "capacity": 250,
+          "capacity": 200,
           "sold": 200,
-          "remaining": 50,
-          "status": "available"
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "10:30",
