@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T16:06:10.808352-06:00",
+  "generatedAt": "2026-08-22T16:24:47.276095-06:00",
   "timezone": "America/Denver",
   "today": "2026-08-22",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -9,14 +9,14 @@
       "dayLabel": "Today",
       "closed": false,
       "totalCapacity": 1881,
-      "totalSold": 1879,
+      "totalSold": 1878,
       "pctSold": 100,
-      "soldOutSlots": 2,
-      "firstAvailable": null,
-      "status": "sold_out",
-      "selloutRisk": "sold_out",
-      "riskNote": "Sold out \u2014 no remaining time slots.",
-      "riskReason": "Sold out \u2014 no remaining time slots",
+      "soldOutSlots": 1,
+      "firstAvailable": "4:00 PM",
+      "status": "selling_fast",
+      "selloutRisk": "high",
+      "riskNote": "Very few tickets remain today \u2014 buy online before you drive.",
+      "riskReason": "Very few tickets remain today",
       "slots": [
         {
           "time": "09:00",
@@ -134,9 +134,9 @@
           "time": "16:00",
           "label": "4:00 PM",
           "capacity": 125,
-          "sold": 125,
-          "remaining": 0,
-          "status": "sold_out"
+          "sold": 124,
+          "remaining": 1,
+          "status": "limited"
         }
       ]
     },
@@ -145,8 +145,8 @@
       "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1850,
-      "totalSold": 1321,
-      "pctSold": 71,
+      "totalSold": 1323,
+      "pctSold": 72,
       "soldOutSlots": 7,
       "firstAvailable": "12:30 PM",
       "status": "selling_fast",
@@ -222,8 +222,8 @@
           "time": "13:00",
           "label": "1:00 PM",
           "capacity": 200,
-          "sold": 129,
-          "remaining": 71,
+          "sold": 131,
+          "remaining": 69,
           "status": "available"
         },
         {
@@ -281,7 +281,7 @@
       "dayLabel": "Mon Aug 24",
       "closed": false,
       "totalCapacity": 1877,
-      "totalSold": 723,
+      "totalSold": 728,
       "pctSold": 39,
       "soldOutSlots": 0,
       "firstAvailable": "9:00 AM",
@@ -310,8 +310,8 @@
           "time": "10:00",
           "label": "10:00 AM",
           "capacity": 200,
-          "sold": 186,
-          "remaining": 14,
+          "sold": 188,
+          "remaining": 12,
           "status": "limited"
         },
         {
@@ -406,8 +406,8 @@
           "time": "16:00",
           "label": "4:00 PM",
           "capacity": 127,
-          "sold": 11,
-          "remaining": 116,
+          "sold": 14,
+          "remaining": 113,
           "status": "available"
         }
       ]
@@ -417,7 +417,7 @@
       "dayLabel": "Tue Aug 25",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 912,
+      "totalSold": 914,
       "pctSold": 49,
       "soldOutSlots": 1,
       "firstAvailable": "9:00 AM",
@@ -454,8 +454,8 @@
           "time": "10:30",
           "label": "10:30 AM",
           "capacity": 50,
-          "sold": 23,
-          "remaining": 27,
+          "sold": 25,
+          "remaining": 25,
           "status": "available"
         },
         {
@@ -825,7 +825,7 @@
       "dayLabel": "Fri Aug 28",
       "closed": false,
       "totalCapacity": 1850,
-      "totalSold": 605,
+      "totalSold": 608,
       "pctSold": 33,
       "soldOutSlots": 0,
       "firstAvailable": "9:00 AM",
@@ -886,8 +886,8 @@
           "time": "12:00",
           "label": "12:00 PM",
           "capacity": 200,
-          "sold": 31,
-          "remaining": 169,
+          "sold": 34,
+          "remaining": 166,
           "status": "available"
         },
         {
@@ -961,7 +961,7 @@
       "dayLabel": "Sat Aug 29",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 916,
+      "totalSold": 918,
       "pctSold": 49,
       "soldOutSlots": 0,
       "firstAvailable": "9:00 AM",
@@ -998,8 +998,8 @@
           "time": "10:30",
           "label": "10:30 AM",
           "capacity": 50,
-          "sold": 18,
-          "remaining": 32,
+          "sold": 20,
+          "remaining": 30,
           "status": "available"
         },
         {
