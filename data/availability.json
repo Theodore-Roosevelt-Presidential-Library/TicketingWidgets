@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T13:58:25.456980-06:00",
+  "generatedAt": "2026-08-25T14:11:52.036140-06:00",
   "timezone": "America/Denver",
   "today": "2026-08-25",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -9,14 +9,14 @@
       "dayLabel": "Today",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 1583,
-      "pctSold": 84,
-      "soldOutSlots": 4,
+      "totalSold": 1595,
+      "pctSold": 85,
+      "soldOutSlots": 3,
       "firstAvailable": "3:00 PM",
-      "status": "limited",
-      "selloutRisk": "medium",
-      "riskNote": "Today is filling up \u2014 buying online is recommended.",
-      "riskReason": "Today is filling up",
+      "status": "selling_fast",
+      "selloutRisk": "high",
+      "riskNote": "Very few tickets remain today \u2014 buy online before you drive.",
+      "riskReason": "Very few tickets remain today",
       "slots": [
         {
           "time": "09:00",
@@ -88,7 +88,7 @@
           "capacity": 200,
           "sold": 200,
           "remaining": 0,
-          "status": "sold_out"
+          "status": "past"
         },
         {
           "time": "13:30",
@@ -118,8 +118,8 @@
           "time": "15:00",
           "label": "3:00 PM",
           "capacity": 200,
-          "sold": 52,
-          "remaining": 148,
+          "sold": 64,
+          "remaining": 136,
           "status": "available"
         },
         {
@@ -145,10 +145,10 @@
       "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 1063,
+      "totalSold": 1064,
       "pctSold": 57,
-      "soldOutSlots": 4,
-      "firstAvailable": "10:00 AM",
+      "soldOutSlots": 5,
+      "firstAvailable": "11:30 AM",
       "status": "selling_fast",
       "selloutRisk": "high",
       "riskNote": "Wednesdays have been selling out \u2014 recently only 1:30 PM or later entry remained. Reserve in advance.",
@@ -174,9 +174,9 @@
           "time": "10:00",
           "label": "10:00 AM",
           "capacity": 200,
-          "sold": 199,
-          "remaining": 1,
-          "status": "limited"
+          "sold": 200,
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "10:30",
