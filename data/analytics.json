@@ -1,17 +1,8 @@
 {
-  "generatedAt": "2026-08-25T23:57:05.638762-06:00",
+  "generatedAt": "2026-08-26T00:17:14.938418-06:00",
   "lookbackDays": 15,
-  "windowEnd": "2026-08-25",
+  "windowEnd": "2026-08-26",
   "recentDays": [
-    {
-      "date": "2026-08-10",
-      "dow": "Monday",
-      "pctSold": 95,
-      "fullySoldOut": false,
-      "soldOutSlots": 3,
-      "slotCount": 8,
-      "dayOfTickets": null
-    },
     {
       "date": "2026-08-11",
       "dow": "Tuesday",
@@ -137,55 +128,38 @@
       "soldOutSlots": 5,
       "slotCount": 15,
       "dayOfTickets": 360
+    },
+    {
+      "date": "2026-08-25",
+      "dow": "Tuesday",
+      "pctSold": 89,
+      "fullySoldOut": false,
+      "soldOutSlots": 12,
+      "slotCount": 15,
+      "dayOfTickets": 329
     }
   ],
   "byDayOfWeek": {
-    "Monday": {
-      "daysObserved": 3,
-      "medianFinalPctSold": 88,
-      "fullSelloutRate": 0.0,
-      "fullSelloutCount": 0,
-      "medianDayOfTickets": 362,
-      "slotSelloutRate": {
-        "09:00": 1.0,
-        "09:30": 1.0,
-        "10:00": 0.0,
-        "10:30": 1.0,
-        "11:00": 0.67,
-        "11:30": 1.0,
-        "12:00": 0.67,
-        "12:30": 0.5,
-        "13:00": 0.0,
-        "13:30": 0.5,
-        "14:00": 0.0,
-        "14:30": 0.0,
-        "15:00": 0.33,
-        "15:30": 0.0,
-        "16:00": 0.0
-      },
-      "typicalFirstAvailableAtEndOfDay": "10:00 AM",
-      "observedFullSelloutClockTimes": null
-    },
     "Tuesday": {
-      "daysObserved": 2,
-      "medianFinalPctSold": 88,
+      "daysObserved": 3,
+      "medianFinalPctSold": 89,
       "fullSelloutRate": 0.0,
       "fullSelloutCount": 0,
-      "medianDayOfTickets": 419,
+      "medianDayOfTickets": 374,
       "slotSelloutRate": {
         "09:00": 1.0,
         "09:30": 1.0,
         "10:00": 1.0,
         "10:30": 1.0,
-        "11:00": 0.5,
+        "11:00": 0.67,
         "11:30": 1.0,
-        "12:00": 0.5,
+        "12:00": 0.67,
         "12:30": 1.0,
-        "13:00": 0.5,
+        "13:00": 0.67,
         "13:30": 1.0,
-        "14:00": 0.5,
-        "14:30": 0.0,
-        "15:00": 0.5,
+        "14:00": 0.67,
+        "14:30": 0.5,
+        "15:00": 0.33,
         "15:30": 0.0,
         "16:00": 0.0
       },
@@ -323,11 +297,37 @@
       },
       "typicalFirstAvailableAtEndOfDay": "2:30 PM",
       "observedFullSelloutClockTimes": null
+    },
+    "Monday": {
+      "daysObserved": 2,
+      "medianFinalPctSold": 80,
+      "fullSelloutRate": 0.0,
+      "fullSelloutCount": 0,
+      "medianDayOfTickets": 362,
+      "slotSelloutRate": {
+        "09:00": 1.0,
+        "09:30": 1.0,
+        "10:00": 0.0,
+        "10:30": 1.0,
+        "11:00": 1.0,
+        "11:30": 1.0,
+        "12:00": 0.5,
+        "12:30": 0.5,
+        "13:00": 0.0,
+        "13:30": 0.5,
+        "14:00": 0.0,
+        "14:30": 0.0,
+        "15:00": 0.0,
+        "15:30": 0.0,
+        "16:00": 0.0
+      },
+      "typicalFirstAvailableAtEndOfDay": "10:00 AM",
+      "observedFullSelloutClockTimes": null
     }
   },
   "monthOutlook": {
     "heading": "What to Expect in August",
-    "text": "August has been busy: over the last 15 days, daily ticket sales reached a median 92% of capacity, and 1 day sold out completely. Mornings go first \u2014 morning entry times sold out on 15 of those days, often leaving 10:00 AM or later as the earliest way in. The week ahead looks similar: 4 of the next 7 open days are likely to sell out. Reserving tickets online before arriving is strongly recommended, especially for mornings and weekends.",
-    "updatedAt": "2026-08-25T23:57:05.640125-06:00"
+    "text": "August has been busy: over the last 15 days, daily ticket sales reached a median 92% of capacity, and 1 day sold out completely. Mornings go first \u2014 morning entry times sold out on 15 of those days, often leaving 10:30 AM or later as the earliest way in. The week ahead looks similar: 4 of the next 7 open days are likely to sell out. Reserving tickets online before arriving is strongly recommended, especially for mornings and weekends.",
+    "updatedAt": "2026-08-26T00:17:14.940160-06:00"
   }
 }
