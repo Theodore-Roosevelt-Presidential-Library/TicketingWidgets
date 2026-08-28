@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T15:32:16.910100-06:00",
+  "generatedAt": "2026-08-27T18:41:11.302064-06:00",
   "lookbackDays": 15,
   "windowEnd": "2026-08-27",
   "recentDays": [
@@ -34,10 +34,10 @@
       "date": "2026-08-15",
       "dow": "Saturday",
       "pctSold": 100,
-      "fullySoldOut": true,
-      "soldOutSlots": 8,
+      "fullySoldOut": false,
+      "soldOutSlots": 7,
       "slotCount": 8,
-      "dayOfTickets": 13
+      "dayOfTickets": 12
     },
     {
       "date": "2026-08-16",
@@ -221,11 +221,11 @@
     "Saturday": {
       "daysObserved": 2,
       "medianFinalPctSold": 100,
-      "fullSelloutRate": 0.5,
-      "fullSelloutCount": 1,
-      "medianDayOfTickets": 0,
+      "fullSelloutRate": 0.0,
+      "fullSelloutCount": 0,
+      "medianDayOfTickets": -1,
       "slotSelloutRate": {
-        "09:00": 0.5,
+        "09:00": 0.0,
         "09:30": 1.0,
         "10:00": 1.0,
         "10:30": 1.0,
@@ -242,9 +242,7 @@
         "16:00": 0.5
       },
       "typicalFirstAvailableAtEndOfDay": "9:00 AM",
-      "observedFullSelloutClockTimes": [
-        "23:56"
-      ]
+      "observedFullSelloutClockTimes": null
     },
     "Sunday": {
       "daysObserved": 2,
@@ -327,7 +325,7 @@
   },
   "monthOutlook": {
     "heading": "What to Expect in August",
-    "text": "August has been busy: over the last 15 days, daily ticket sales reached a median 92% of capacity, and 1 day sold out completely. Mornings go first \u2014 morning entry times sold out on 15 of those days, often leaving 10:00 AM or later as the earliest way in. The week ahead looks similar: 4 of the next 7 open days are likely to sell out. Reserving tickets online before arriving is strongly recommended, especially for mornings and weekends.",
-    "updatedAt": "2026-08-27T15:32:16.911818-06:00"
+    "text": "August has been busy: over the last 15 days, daily ticket sales reached a median 92% of capacity. Mornings go first \u2014 morning entry times sold out on 15 of those days, often leaving 10:00 AM or later as the earliest way in. The week ahead looks similar: 4 of the next 7 open days are likely to sell out. Reserving tickets online before arriving is strongly recommended, especially for mornings and weekends.",
+    "updatedAt": "2026-08-27T18:41:11.303013-06:00"
   }
 }
