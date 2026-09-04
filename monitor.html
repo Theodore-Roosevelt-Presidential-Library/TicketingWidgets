@@ -64,6 +64,7 @@
   <p class="meta" id="stamp">Loading…</p>
 
   <div class="cards" id="stats"></div>
+  <div id="breakdown"></div>
 
   <h2>Today &amp; next 7 days</h2>
   <div id="upcoming"></div>
@@ -89,16 +90,53 @@
     fetch("data/stats.json" + bust).then(r => r.json()).catch(() => null),
   ]);
 
-  if (stats) {
-    const n = (x) => (x ?? 0).toLocaleString("en-US");
+  const n = (x) => (x ?? 0).toLocaleString("en-US");
+
+  if (stats && stats.sales) {
+    const s = stats.sales.total, today = stats.sales.today || {};
+    const pct = s.arrivedToDate ? Math.round(100 * s.checkedInToDate / s.arrivedToDate) : 0;
+    const stale = stats.salesStale
+      ? `<p class="meta" style="color:#B4472E">⚠ ACME sales report unavailable on the last run — figures as of ${
+           (stats.salesGeneratedAt || "").slice(0, 16).replace("T", " ")}.</p>` : "";
+
     document.getElementById("stats").innerHTML =
-      `<div class="card"><h3>${stats.year} tickets sold to date</h3>` +
-      `<p><span class="big">${n(stats.ytdSoldIncludingToday)}</span></p>` +
-      `<p class="meta">${n(stats.ytdSoldCompletedDays)} through yesterday + ${n(stats.todaySold)} today. ` +
-      `Sold tickets — a proxy for attendance until scan data is wired in.</p></div>` +
-      `<div class="card"><h3>Sold, not yet redeemed</h3>` +
-      `<p><span class="big">${n(stats.outstandingFutureSold)}</span></p>` +
-      `<p class="meta">Sold for future time slots and dates — ${n(stats.todayFutureSlotsSold)} still to arrive today, plus all upcoming days.</p></div>`;
+      `<div class="card"><h3>${stats.year} tickets sold</h3>` +
+      `<p><span class="big">${n(s.sold)}</span></p>` +
+      `<p class="meta">All ${stats.year} arrival dates, including advance sales.</p>${stale}</div>` +
+
+      `<div class="card"><h3>Sold, arrival date through today</h3>` +
+      `<p><span class="big">${n(s.arrivedToDate)}</span></p>` +
+      `<p class="meta">Tickets whose visit date has now passed — ${n(today.sold)} of them today.</p></div>` +
+
+      `<div class="card"><h3>Checked in</h3>` +
+      `<p><span class="big">${n(s.checkedInToDate)}</span></p>` +
+      `<p class="meta">Actual scans — ${pct}% of tickets whose date has arrived. ` +
+      `This is the defensible attendance number.</p></div>` +
+
+      `<div class="card"><h3>Upcoming arrivals</h3>` +
+      `<p><span class="big">${n(s.futureArrivals)}</span></p>` +
+      `<p class="meta">Sold for dates still ahead.</p></div>`;
+
+    /* Per-event breakdown */
+    const rows = Object.entries(stats.sales.byEventName || {}).map(([name, r]) => {
+      const rp = r.arrivedToDate ? Math.round(100 * r.checkedInToDate / r.arrivedToDate) : 0;
+      return `<tr><td data-l="Event">${name}</td>` +
+        `<td class="num" data-l="Sold">${n(r.sold)}</td>` +
+        `<td class="num" data-l="Through today">${n(r.arrivedToDate)}</td>` +
+        `<td class="num" data-l="Upcoming">${n(r.futureArrivals)}</td>` +
+        `<td class="num" data-l="Checked in">${n(r.checkedInToDate)}</td>` +
+        `<td class="num" data-l="Redeemed">${rp}%</td></tr>`;
+    });
+    document.getElementById("breakdown").innerHTML =
+      '<div class="tablewrap"><table><tr><th>Event</th><th>Sold</th><th>Through today</th>' +
+      "<th>Upcoming</th><th>Checked in</th><th>Redeemed</th></tr>" + rows.join("") + "</table></div>" +
+      `<p class="note">Source: ACME <em>TicketAnalytics</em> — TicketQuantity and CheckedInCount, ` +
+      `matching the "PE: GA Tickets Checked In" report. Availability and sell-out risk below come from ` +
+      `the separate <em>Events</em> report; its capacity math is not a ticket count and is not shown here.</p>`;
+  } else if (stats) {
+    document.getElementById("stats").innerHTML =
+      `<div class="card"><h3>Sales figures unavailable</h3>` +
+      `<p class="meta">The ACME sales report has not returned yet. Availability below is current.</p></div>`;
   }
 
   const mins = Math.round((Date.now() - Date.parse(avail.generatedAt)) / 60000);

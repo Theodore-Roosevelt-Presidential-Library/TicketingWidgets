@@ -1,10 +1,606 @@
 {
- "generatedAt": "2026-09-04T07:49:03.354467-06:00",
+ "generatedAt": "2026-09-04T08:15:17.971266-06:00",
  "year": "2026",
- "ytdSoldCompletedDays": 101067,
- "todaySold": 1284,
- "ytdSoldIncludingToday": 102351,
- "outstandingFutureSold": 18557,
- "todayFutureSlotsSold": 1284,
- "note": "Sold tickets, not scanned admissions. 'Outstanding' = sold for future time slots today plus all future dates."
+ "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
+ "salesEventNames": [
+  "General Admission",
+  "Flex Tickets",
+  "Walk-Up"
+ ],
+ "salesGeneratedAt": "2026-09-04T08:15:17.971266-06:00",
+ "salesStale": false,
+ "sales": {
+  "total": {
+   "sold": 134070,
+   "arrivedToDate": 115061,
+   "futureArrivals": 19009,
+   "checkedIn": 96561,
+   "checkedInToDate": 96495
+  },
+  "today": {
+   "sold": 1348,
+   "checkedIn": 0
+  },
+  "byEventName": {
+   "General Admission": {
+    "sold": 128578,
+    "arrivedToDate": 109657,
+    "futureArrivals": 18921,
+    "checkedIn": 93199,
+    "checkedInToDate": 93135
+   },
+   "Flex Tickets": {
+    "sold": 3130,
+    "arrivedToDate": 3048,
+    "futureArrivals": 82,
+    "checkedIn": 1195,
+    "checkedInToDate": 1195
+   },
+   "Walk-Up": {
+    "sold": 2362,
+    "arrivedToDate": 2356,
+    "futureArrivals": 6,
+    "checkedIn": 2167,
+    "checkedInToDate": 2165
+   }
+  },
+  "byDate": {
+   "2026-07-04": {
+    "sold": 2180,
+    "checkedIn": 1488
+   },
+   "2026-07-05": {
+    "sold": 2153,
+    "checkedIn": 1697
+   },
+   "2026-07-06": {
+    "sold": 1666,
+    "checkedIn": 1171
+   },
+   "2026-07-07": {
+    "sold": 1452,
+    "checkedIn": 1285
+   },
+   "2026-07-08": {
+    "sold": 1982,
+    "checkedIn": 1540
+   },
+   "2026-07-09": {
+    "sold": 1514,
+    "checkedIn": 1389
+   },
+   "2026-07-10": {
+    "sold": 1861,
+    "checkedIn": 1524
+   },
+   "2026-07-11": {
+    "sold": 1832,
+    "checkedIn": 1757
+   },
+   "2026-07-12": {
+    "sold": 1856,
+    "checkedIn": 1673
+   },
+   "2026-07-13": {
+    "sold": 1375,
+    "checkedIn": 1222
+   },
+   "2026-07-14": {
+    "sold": 1645,
+    "checkedIn": 1178
+   },
+   "2026-07-15": {
+    "sold": 1514,
+    "checkedIn": 1393
+   },
+   "2026-07-16": {
+    "sold": 1818,
+    "checkedIn": 1516
+   },
+   "2026-07-17": {
+    "sold": 2194,
+    "checkedIn": 1710
+   },
+   "2026-07-18": {
+    "sold": 2547,
+    "checkedIn": 1737
+   },
+   "2026-07-19": {
+    "sold": 1857,
+    "checkedIn": 1718
+   },
+   "2026-07-20": {
+    "sold": 1683,
+    "checkedIn": 1601
+   },
+   "2026-07-21": {
+    "sold": 1656,
+    "checkedIn": 1561
+   },
+   "2026-07-22": {
+    "sold": 1902,
+    "checkedIn": 1657
+   },
+   "2026-07-23": {
+    "sold": 1814,
+    "checkedIn": 1585
+   },
+   "2026-07-24": {
+    "sold": 1540,
+    "checkedIn": 1401
+   },
+   "2026-07-25": {
+    "sold": 1582,
+    "checkedIn": 1324
+   },
+   "2026-07-26": {
+    "sold": 1725,
+    "checkedIn": 1654
+   },
+   "2026-07-27": {
+    "sold": 1512,
+    "checkedIn": 1428
+   },
+   "2026-07-28": {
+    "sold": 2277,
+    "checkedIn": 1421
+   },
+   "2026-07-29": {
+    "sold": 1769,
+    "checkedIn": 1574
+   },
+   "2026-07-30": {
+    "sold": 1791,
+    "checkedIn": 1294
+   },
+   "2026-07-31": {
+    "sold": 1830,
+    "checkedIn": 1736
+   },
+   "2026-08-01": {
+    "sold": 1858,
+    "checkedIn": 1689
+   },
+   "2026-08-02": {
+    "sold": 1843,
+    "checkedIn": 1711
+   },
+   "2026-08-03": {
+    "sold": 1795,
+    "checkedIn": 1581
+   },
+   "2026-08-04": {
+    "sold": 1895,
+    "checkedIn": 1664
+   },
+   "2026-08-05": {
+    "sold": 1977,
+    "checkedIn": 1601
+   },
+   "2026-08-06": {
+    "sold": 1917,
+    "checkedIn": 1615
+   },
+   "2026-08-07": {
+    "sold": 1981,
+    "checkedIn": 1731
+   },
+   "2026-08-08": {
+    "sold": 1875,
+    "checkedIn": 1743
+   },
+   "2026-08-09": {
+    "sold": 1887,
+    "checkedIn": 1751
+   },
+   "2026-08-10": {
+    "sold": 2020,
+    "checkedIn": 1721
+   },
+   "2026-08-11": {
+    "sold": 1937,
+    "checkedIn": 1646
+   },
+   "2026-08-12": {
+    "sold": 1982,
+    "checkedIn": 1625
+   },
+   "2026-08-13": {
+    "sold": 2186,
+    "checkedIn": 1567
+   },
+   "2026-08-14": {
+    "sold": 1936,
+    "checkedIn": 1698
+   },
+   "2026-08-15": {
+    "sold": 1970,
+    "checkedIn": 1678
+   },
+   "2026-08-16": {
+    "sold": 2228,
+    "checkedIn": 1729
+   },
+   "2026-08-17": {
+    "sold": 1744,
+    "checkedIn": 1584
+   },
+   "2026-08-18": {
+    "sold": 1777,
+    "checkedIn": 1536
+   },
+   "2026-08-19": {
+    "sold": 1851,
+    "checkedIn": 1697
+   },
+   "2026-08-20": {
+    "sold": 1736,
+    "checkedIn": 1470
+   },
+   "2026-08-21": {
+    "sold": 1742,
+    "checkedIn": 1643
+   },
+   "2026-08-22": {
+    "sold": 1949,
+    "checkedIn": 1678
+   },
+   "2026-08-23": {
+    "sold": 1932,
+    "checkedIn": 1685
+   },
+   "2026-08-24": {
+    "sold": 1395,
+    "checkedIn": 1304
+   },
+   "2026-08-25": {
+    "sold": 1743,
+    "checkedIn": 1450
+   },
+   "2026-08-26": {
+    "sold": 1789,
+    "checkedIn": 1463
+   },
+   "2026-08-27": {
+    "sold": 1701,
+    "checkedIn": 1411
+   },
+   "2026-08-28": {
+    "sold": 1790,
+    "checkedIn": 1563
+   },
+   "2026-08-29": {
+    "sold": 1928,
+    "checkedIn": 1723
+   },
+   "2026-08-30": {
+    "sold": 2090,
+    "checkedIn": 1687
+   },
+   "2026-08-31": {
+    "sold": 1515,
+    "checkedIn": 1432
+   },
+   "2026-09-01": {
+    "sold": 1723,
+    "checkedIn": 1395
+   },
+   "2026-09-02": {
+    "sold": 1685,
+    "checkedIn": 1442
+   },
+   "2026-09-03": {
+    "sold": 1809,
+    "checkedIn": 1348
+   },
+   "2026-09-04": {
+    "sold": 1348,
+    "checkedIn": 0
+   },
+   "2026-09-05": {
+    "sold": 2016,
+    "checkedIn": 6
+   },
+   "2026-09-06": {
+    "sold": 1903,
+    "checkedIn": 0
+   },
+   "2026-09-07": {
+    "sold": 928,
+    "checkedIn": 0
+   },
+   "2026-09-08": {
+    "sold": 659,
+    "checkedIn": 2
+   },
+   "2026-09-09": {
+    "sold": 1086,
+    "checkedIn": 2
+   },
+   "2026-09-10": {
+    "sold": 1086,
+    "checkedIn": 0
+   },
+   "2026-09-11": {
+    "sold": 1102,
+    "checkedIn": 0
+   },
+   "2026-09-12": {
+    "sold": 1135,
+    "checkedIn": 4
+   },
+   "2026-09-13": {
+    "sold": 646,
+    "checkedIn": 2
+   },
+   "2026-09-15": {
+    "sold": 909,
+    "checkedIn": 0
+   },
+   "2026-09-16": {
+    "sold": 513,
+    "checkedIn": 0
+   },
+   "2026-09-17": {
+    "sold": 519,
+    "checkedIn": 44
+   },
+   "2026-09-18": {
+    "sold": 441,
+    "checkedIn": 0
+   },
+   "2026-09-19": {
+    "sold": 378,
+    "checkedIn": 0
+   },
+   "2026-09-20": {
+    "sold": 287,
+    "checkedIn": 0
+   },
+   "2026-09-22": {
+    "sold": 640,
+    "checkedIn": 0
+   },
+   "2026-09-23": {
+    "sold": 273,
+    "checkedIn": 0
+   },
+   "2026-09-24": {
+    "sold": 367,
+    "checkedIn": 4
+   },
+   "2026-09-25": {
+    "sold": 255,
+    "checkedIn": 0
+   },
+   "2026-09-26": {
+    "sold": 226,
+    "checkedIn": 0
+   },
+   "2026-09-27": {
+    "sold": 401,
+    "checkedIn": 0
+   },
+   "2026-09-29": {
+    "sold": 279,
+    "checkedIn": 0
+   },
+   "2026-09-30": {
+    "sold": 213,
+    "checkedIn": 0
+   },
+   "2026-10-01": {
+    "sold": 98,
+    "checkedIn": 0
+   },
+   "2026-10-02": {
+    "sold": 135,
+    "checkedIn": 0
+   },
+   "2026-10-03": {
+    "sold": 113,
+    "checkedIn": 0
+   },
+   "2026-10-04": {
+    "sold": 141,
+    "checkedIn": 0
+   },
+   "2026-10-06": {
+    "sold": 144,
+    "checkedIn": 0
+   },
+   "2026-10-07": {
+    "sold": 145,
+    "checkedIn": 0
+   },
+   "2026-10-08": {
+    "sold": 287,
+    "checkedIn": 0
+   },
+   "2026-10-09": {
+    "sold": 397,
+    "checkedIn": 0
+   },
+   "2026-10-10": {
+    "sold": 349,
+    "checkedIn": 0
+   },
+   "2026-10-11": {
+    "sold": 99,
+    "checkedIn": 0
+   },
+   "2026-10-13": {
+    "sold": 76,
+    "checkedIn": 0
+   },
+   "2026-10-14": {
+    "sold": 85,
+    "checkedIn": 0
+   },
+   "2026-10-15": {
+    "sold": 145,
+    "checkedIn": 0
+   },
+   "2026-10-16": {
+    "sold": 115,
+    "checkedIn": 0
+   },
+   "2026-10-17": {
+    "sold": 32,
+    "checkedIn": 0
+   },
+   "2026-10-18": {
+    "sold": 23,
+    "checkedIn": 0
+   },
+   "2026-10-20": {
+    "sold": 54,
+    "checkedIn": 0
+   },
+   "2026-10-21": {
+    "sold": 49,
+    "checkedIn": 0
+   },
+   "2026-10-22": {
+    "sold": 24,
+    "checkedIn": 0
+   },
+   "2026-10-23": {
+    "sold": 22,
+    "checkedIn": 0
+   },
+   "2026-10-24": {
+    "sold": 19,
+    "checkedIn": 0
+   },
+   "2026-10-25": {
+    "sold": 10,
+    "checkedIn": 0
+   },
+   "2026-10-27": {
+    "sold": 11,
+    "checkedIn": 0
+   },
+   "2026-10-29": {
+    "sold": 5,
+    "checkedIn": 0
+   },
+   "2026-10-31": {
+    "sold": 6,
+    "checkedIn": 0
+   },
+   "2026-11-01": {
+    "sold": 8,
+    "checkedIn": 0
+   },
+   "2026-11-03": {
+    "sold": 9,
+    "checkedIn": 0
+   },
+   "2026-11-04": {
+    "sold": 3,
+    "checkedIn": 0
+   },
+   "2026-11-05": {
+    "sold": 4,
+    "checkedIn": 0
+   },
+   "2026-11-07": {
+    "sold": 6,
+    "checkedIn": 0
+   },
+   "2026-11-08": {
+    "sold": 3,
+    "checkedIn": 0
+   },
+   "2026-11-10": {
+    "sold": 4,
+    "checkedIn": 0
+   },
+   "2026-11-11": {
+    "sold": 1,
+    "checkedIn": 0
+   },
+   "2026-11-12": {
+    "sold": 1,
+    "checkedIn": 0
+   },
+   "2026-11-14": {
+    "sold": 6,
+    "checkedIn": 0
+   },
+   "2026-11-20": {
+    "sold": 2,
+    "checkedIn": 0
+   },
+   "2026-11-21": {
+    "sold": 7,
+    "checkedIn": 0
+   },
+   "2026-11-22": {
+    "sold": 6,
+    "checkedIn": 0
+   },
+   "2026-11-24": {
+    "sold": 2,
+    "checkedIn": 0
+   },
+   "2026-12-04": {
+    "sold": 46,
+    "checkedIn": 0
+   },
+   "2026-12-06": {
+    "sold": 2,
+    "checkedIn": 0
+   },
+   "2026-12-09": {
+    "sold": 4,
+    "checkedIn": 0
+   },
+   "2026-12-10": {
+    "sold": 3,
+    "checkedIn": 0
+   },
+   "2026-12-16": {
+    "sold": 5,
+    "checkedIn": 0
+   },
+   "2026-12-17": {
+    "sold": 9,
+    "checkedIn": 0
+   },
+   "2026-12-19": {
+    "sold": 2,
+    "checkedIn": 0
+   },
+   "2026-12-23": {
+    "sold": 3,
+    "checkedIn": 0
+   },
+   "2026-12-24": {
+    "sold": 2,
+    "checkedIn": 2
+   },
+   "2026-12-26": {
+    "sold": 5,
+    "checkedIn": 0
+   },
+   "2026-12-27": {
+    "sold": 15,
+    "checkedIn": 0
+   },
+   "2026-12-31": {
+    "sold": 5,
+    "checkedIn": 0
+   }
+  }
+ },
+ "inventory": {
+  "ytdSoldCompletedDays": 101067,
+  "todaySold": 1301,
+  "ytdSoldIncludingToday": 102368,
+  "outstandingFutureSold": 18597,
+  "todayFutureSlotsSold": 1301,
+  "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
+ }
 }

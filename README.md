@@ -66,7 +66,7 @@ Preview everything at [https://ticketing.labs.trlibrary.com](https://ticketing.l
 ## One-time setup
 
 1. **Get an ACME API key.** API keys are tied to an ACME user. Have your ACME Backoffice admin create a username-only integration user (e.g. `api-website-widgets`) with permission to run reports, then — as an ACME client — submit the "Requesting an API Key" checklist to ACME Product Support (see [ACME's guide](https://developers.acmeticketing.com/support/solutions/articles/33000248661-working-with-acme-apis)). While waiting, a temporary session key (`GET /v2/b2b/customer/session`) can be used for testing only.
-2. **Add the secret.** Repo → Settings → Secrets and variables → Actions → New repository secret: `ACME_API_KEY`. Optional repository *variables*: `ACME_REPORT_ID` (defaults to `69c18975669b758620b4c586`), `ACME_API_BASE` (defaults to production; use a sandbox URL for testing). The report's date range is set dynamically by the script — no Backoffice changes needed.
+2. **Add the secret.** Repo → Settings → Secrets and variables → Actions → New repository secret: `ACME_API_KEY`. Optional repository *variables*: `ACME_REPORT_ID` (defaults to `69c18975669b758620b4c586`), `ACME_SALES_REPORT_ID` (defaults to `6a9acc9efdf8e0b5bcb2fb12`), `ACME_SALES_EVENT_NAMES` (defaults to `General Admission,Flex Tickets,Walk-Up`), `ACME_API_BASE` (defaults to production; use a sandbox URL for testing). Report date ranges are set dynamically by the script — no Backoffice changes needed.
 3. **Enable GitHub Pages.** Repo → Settings → Pages → Deploy from branch → `main` / root. The custom domain `ticketing.labs.trlibrary.com` is set via the `CNAME` file — add a DNS CNAME record pointing it to `theodore-roosevelt-presidential-library.github.io` and enable "Enforce HTTPS".
 4. **Run it.** Actions → "Update availability data" → Run workflow. Check `data/availability.json` and the demo page.
 
@@ -109,10 +109,40 @@ data/history.json                 generated — rolling 72h snapshots (intraday 
 data/leads.json                   generated — pct sold at each days-out lead time
 data/analytics.json               generated — day-of-week sell-out behavior
 data/archive/YYYY-MM.json         generated — permanent per-day outcomes (YoY)
-data/raw-report.json              generated — last raw ACME response (debugging)
+data/stats.json                   generated — YTD tickets sold + checked in (monitor)
+data/raw-report.json              generated — last raw availability response (debugging)
+data/raw-sales.json               generated — last raw sales response (debugging)
 index.html                        demo page (served by Pages)
 monitor.html                      internal sell-out monitor (staff)
 ```
+
+## Two reports: availability vs. sales
+
+The pipeline runs **two** ACME reports each cycle, and they are not interchangeable.
+
+| | Availability | Sales |
+|---|---|---|
+| Collection | `Events` | `TicketAnalytics` |
+| Definition | `69c18975669b758620b4c586` (`ACME_REPORT_ID`) | `ACME_SALES_REPORT_ID` |
+| Events | General Admission only | General Admission, Flex Tickets, Walk-Up (`ACME_SALES_EVENT_NAMES`) |
+| Measures | `AvailableQuantity`, `Capacity` | `TicketQuantity`, `CheckedInCount` |
+| Answers | *What's left to sell?* | *What did we sell, and who showed up?* |
+| Feeds | widgets, sell-out risk, archive | `data/stats.json` → monitor |
+
+**Ticket counts must come from the sales report.** Inferring sold as `Capacity − AvailableQuantity` undercounts badly, and it was the cause of a reconciliation gap against ACME's "PE: GA Tickets Checked In" report. Measured 2026-07-04 → 2026-09-04:
+
+| Source of gap | Tickets |
+|---|---|
+| Flex Tickets — not in the availability report's filter | 3,048 |
+| Walk-Up — not in the availability report's filter | 2,356 |
+| GA undercount from the capacity inference | 7,361 |
+| **Total understated** | **12,765** on 115,052 |
+
+Of that GA undercount, 2,302 comes from 22 days that sold *past* their stated capacity, where the subtraction floors at capacity and the excess disappears. The daily error ranged from 1.4% to 21.8%, so no fixed correction factor works. The capacity-derived numbers still exist in `stats.json` under `inventory` because the risk model uses them — nothing user-facing should present them as tickets sold.
+
+The sales report is grouped `DayMonthYear`. ACME's `Day` group function returns day-of-month (1–31), which collapses Jul 8 / Aug 8 / Sep 8 into a single row: correct totals, but impossible to reconcile day by day.
+
+The script sends its own `queryExpression` rather than the saved definition's, so edits to that report in the ACME Backoffice cannot silently move published numbers. If the sales report fails, the script keeps the last known figures, sets `salesStale: true`, and still publishes availability — the widgets never go down because a sales query timed out.
 
 ## Season rollover (checklist for 2027 and beyond)
 

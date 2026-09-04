@@ -28,6 +28,8 @@ jobs:
           ACME_API_KEY: ${{ secrets.ACME_API_KEY }}
           ACME_API_BASE: ${{ vars.ACME_API_BASE || 'https://api.acmeticketing.com' }}
           ACME_REPORT_ID: ${{ vars.ACME_REPORT_ID || '69c18975669b758620b4c586' }}
+          ACME_SALES_REPORT_ID: ${{ vars.ACME_SALES_REPORT_ID || '6a9acc9efdf8e0b5bcb2fb12' }}
+          ACME_SALES_EVENT_NAMES: ${{ vars.ACME_SALES_EVENT_NAMES || 'General Admission,Flex Tickets,Walk-Up' }}
         run: python scripts/fetch_availability.py
 
       - name: Commit updated data

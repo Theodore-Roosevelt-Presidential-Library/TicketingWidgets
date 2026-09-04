@@ -8,12 +8,31 @@ compute sold-out status and sell-out risk, and publish:
   data/leads.json          pct-sold observed at each days-out lead time
   data/archive/YYYY-MM.json permanent per-day outcomes (grows forever -> YoY)
   data/analytics.json      day-of-week sell-out behavior over the lookback window
+  data/stats.json          year-to-date sold + checked-in counts for the monitor
 
-The report ("TRPL: 2026 Availability", definition 69c18975669b758620b4c586)
-returns one row per GA event instance with EventStartTime, AvailableQuantity,
-and Capacity. Each run requests (today - lookbackDays) -> (today + daysAhead):
-past days bootstrap the archive with final outcomes, future days feed the
-widgets and lead curves.
+The availability report ("TRPL: 2026 Availability", definition
+69c18975669b758620b4c586) returns one row per GA event instance with
+EventStartTime, AvailableQuantity, and Capacity. Each run requests
+(today - lookbackDays) -> (today + daysAhead): past days bootstrap the archive
+with final outcomes, future days feed the widgets and lead curves.
+
+TWO REPORTS, TWO JOBS -- do not mix them up:
+
+  Events collection (availability)   -> supply. Slot capacity and what is left.
+                                        Drives sell-out risk and the widgets.
+  TicketAnalytics collection (sales) -> demand. TicketQuantity is the actual
+                                        count of tickets on orders, and
+                                        CheckedInCount is real scan data.
+
+Sold counts MUST come from TicketAnalytics. Inferring sold as
+(Capacity - AvailableQuantity) undercounts badly: it excludes event types that
+are not General Admission (Flex Tickets, Walk-Up), and it silently floors at
+capacity on days that sell past it. Measured against ACME for 2026-07-04 ->
+2026-09-04, that inference was 12,765 tickets light on 115,052 -- a 6.7% GA
+undercount that swung between 1.4% and 21.8% day to day, so it cannot be
+corrected with a fixed factor. The capacity-derived numbers are still kept in
+stats.json under "inventory" because the risk model uses them, but nothing
+user-facing should report them as tickets sold.
 
 Why day-of-week analytics: percent-sold alone is misleading. A day can sit at
 60% sold the night before and still sell out by mid-morning from walk-up
@@ -29,10 +48,12 @@ https://developers.acmeticketing.com/support/solutions/articles/33000275437):
   4. GET  /v2/b2b/async/report/json/{id}   columnar results
 
 Environment variables (a gitignored .env at the repo root is loaded first):
-  ACME_API_KEY     required for live mode (GitHub Actions secret)
-  ACME_API_BASE    default https://api.acmeticketing.com
-  ACME_REPORT_ID   default 69c18975669b758620b4c586
-  MOCK             set to "1" to force sample data (no API call)
+  ACME_API_KEY           required for live mode (GitHub Actions secret)
+  ACME_API_BASE          default https://api.acmeticketing.com
+  ACME_REPORT_ID         availability report, default 69c18975669b758620b4c586
+  ACME_SALES_REPORT_ID   sales report handle, default 6a9acc9efdf8e0b5bcb2fb12
+  ACME_SALES_EVENT_NAMES default "General Admission,Flex Tickets,Walk-Up"
+  MOCK                   set to "1" to force sample data (no API call)
 
 Runs on Python 3.9+ stdlib only.
 """
@@ -68,13 +89,21 @@ HISTORY_PATH = DATA_DIR / "history.json"
 LEADS_PATH = DATA_DIR / "leads.json"
 ANALYTICS_PATH = DATA_DIR / "analytics.json"
 OUTPUT_PATH = DATA_DIR / "availability.json"
+STATS_PATH = DATA_DIR / "stats.json"
 RAW_PATH = DATA_DIR / "raw-report.json"  # last raw API response, for debugging
+RAW_SALES_PATH = DATA_DIR / "raw-sales.json"
 
 API_BASE = os.environ.get("ACME_API_BASE", "https://api.acmeticketing.com").rstrip("/")
 API_KEY = os.environ.get("ACME_API_KEY", "")
 if API_KEY == "paste-key-here":
     API_KEY = ""
 REPORT_ID = os.environ.get("ACME_REPORT_ID", "69c18975669b758620b4c586")
+# Any existing TicketAnalytics report uuid works as the async-job handle; we
+# always send our own queryExpression below, so edits to that saved report in
+# the ACME back office cannot move these numbers.
+SALES_REPORT_ID = os.environ.get("ACME_SALES_REPORT_ID", "6a9acc9efdf8e0b5bcb2fb12")
+SALES_EVENT_NAMES = os.environ.get(
+    "ACME_SALES_EVENT_NAMES", "General Admission,Flex Tickets,Walk-Up")
 MOCK = os.environ.get("MOCK", "") == "1" or not API_KEY
 
 POLL_INTERVAL_S = 5
@@ -114,23 +143,10 @@ def api_request(method, path, payload=None):
             raise
 
 
-def run_report(tz, horizon_days, lookback_days):
-    """Execute the report for (today - lookback) -> (today + horizon)."""
-    print(f"Fetching report definition {REPORT_ID} ...")
-    definition = api_request("GET", f"/v2/b2b/analytics/report/definitions/{REPORT_ID}")
-
-    query_expression = definition.get("queryExpression")
-    if not query_expression:
-        raise RuntimeError(
-            f"Report definition missing queryExpression. Keys: {list(definition.keys())}"
-        )
-    date_field = (definition.get("dateSettings") or {}).get("dateRangeField", "EventStartTime")
-
-    now = datetime.now(tz)
-    start = (now - timedelta(days=lookback_days)).replace(hour=0, minute=0, second=0, microsecond=0)
-    end = (now + timedelta(days=horizon_days)).replace(hour=23, minute=59, second=59, microsecond=0)
+def execute_report(report_uuid, query_expression, date_field, start, end):
+    """POST an async report, poll to completion, return the columnar JSON."""
     payload = {
-        "reportUuid": REPORT_ID,
+        "reportUuid": report_uuid,
         "queryExpression": query_expression,
         "dateRangeField": date_field,
         "startDate": start.strftime("%Y-%m-%dT%H:%M:%S%z"),
@@ -158,6 +174,124 @@ def run_report(tz, horizon_days, lookback_days):
 
     print("Retrieving results ...")
     return api_request("GET", f"/v2/b2b/async/report/json/{instance_id}")
+
+
+def run_report(tz, horizon_days, lookback_days):
+    """Availability: execute for (today - lookback) -> (today + horizon)."""
+    print(f"Fetching report definition {REPORT_ID} ...")
+    definition = api_request("GET", f"/v2/b2b/analytics/report/definitions/{REPORT_ID}")
+
+    query_expression = definition.get("queryExpression")
+    if not query_expression:
+        raise RuntimeError(
+            f"Report definition missing queryExpression. Keys: {list(definition.keys())}"
+        )
+    date_field = (definition.get("dateSettings") or {}).get("dateRangeField", "EventStartTime")
+
+    now = datetime.now(tz)
+    start = (now - timedelta(days=lookback_days)).replace(hour=0, minute=0, second=0, microsecond=0)
+    end = (now + timedelta(days=horizon_days)).replace(hour=23, minute=59, second=59, microsecond=0)
+    return execute_report(REPORT_ID, query_expression, date_field, start, end)
+
+
+# ------------------------------------------------------------- sales report
+
+def sales_query_expression():
+    """TicketAnalytics: actual tickets on orders, by arrival date and event.
+
+    Grouped DayMonthYear (a real calendar date). ACME's "Day" group function
+    returns day-of-month 1-31, which collapses Jul 8 / Aug 8 / Sep 8 into one
+    row -- correct totals, but impossible to reconcile day by day.
+    """
+    return {
+        "collectionName": "TicketAnalytics",
+        "findQueries": [{
+            "fieldName": "EventName",
+            "fieldValue": SALES_EVENT_NAMES,
+            "operator": "contains",
+        }],
+        "findFields": [
+            {"fieldName": "EventStartTime", "include": True},
+            {"fieldName": "EventName", "include": True},
+            {"fieldName": "TicketQuantity", "include": True},
+            {"fieldName": "CheckedInCount", "include": True},
+        ],
+        "sortFields": [],
+        "groupFields": [
+            {"fieldName": "EventStartTime", "groupFunction": "DayMonthYear"},
+            {"fieldName": "EventName", "groupFunction": None},
+        ],
+        "summaryFields": [
+            {"fieldName": "TicketQuantity", "summaryFunction": "Sum"},
+            {"fieldName": "CheckedInCount", "summaryFunction": "Sum"},
+        ],
+        "countFields": [],
+        "limit": 0,
+    }
+
+
+def run_sales_report(tz, year):
+    """Execute the sales report across the whole calendar year."""
+    start = datetime(int(year), 1, 1, 0, 0, 0, tzinfo=tz)
+    end = datetime(int(year), 12, 31, 23, 59, 59, tzinfo=tz)
+    return execute_report(SALES_REPORT_ID, sales_query_expression(),
+                          "EventStartTime", start, end)
+
+
+def parse_sales(raw, today_iso):
+    """Fold the columnar sales result into totals by event name and by date."""
+    field_list = raw.get("resultFieldList") if isinstance(raw, dict) else None
+    if not field_list:
+        raise RuntimeError(f"Unexpected sales result shape: {type(raw)}")
+    cols = {str(f.get("fieldName", "")): (f.get("values") or []) for f in field_list}
+    dates = cols.get("EventStartTime")
+    names = cols.get("EventName")
+    qty = cols.get("TicketQuantity")
+    checked = cols.get("CheckedInCount")
+    if not dates or names is None or qty is None:
+        raise RuntimeError(f"Sales report missing columns. Found: {list(cols)}")
+
+    def num(seq, i):
+        try:
+            return int(float(seq[i]))
+        except (IndexError, TypeError, ValueError):
+            return 0
+
+    by_name, by_date = {}, {}
+    for i, d in enumerate(dates):
+        d = str(d)[:10]
+        if len(d) != 10 or d[4] != "-":
+            continue  # guard against a group-function change upstream
+        name = str(names[i]) if i < len(names) else "Unknown"
+        q = num(qty, i)
+        c = num(checked, i) if checked else 0
+        rec = by_name.setdefault(name, {"sold": 0, "arrivedToDate": 0,
+                                        "futureArrivals": 0, "checkedIn": 0,
+                                        "checkedInToDate": 0})
+        rec["sold"] += q
+        rec["checkedIn"] += c
+        # Scans can land against a future-dated event (an early Flex redemption,
+        # say). Keep those out of the attendance figure so it stays comparable
+        # to a "PE: GA Tickets Checked In" run ending today.
+        if d <= today_iso:
+            rec["arrivedToDate"] += q
+            rec["checkedInToDate"] += c
+        else:
+            rec["futureArrivals"] += q
+        day = by_date.setdefault(d, {"sold": 0, "checkedIn": 0})
+        day["sold"] += q
+        day["checkedIn"] += c
+
+    total = {k: sum(r[k] for r in by_name.values())
+             for k in ("sold", "arrivedToDate", "futureArrivals",
+                       "checkedIn", "checkedInToDate")}
+    today = by_date.get(today_iso, {"sold": 0, "checkedIn": 0})
+    return {
+        "total": total,
+        "today": today,
+        "byEventName": dict(sorted(by_name.items(), key=lambda kv: -kv[1]["sold"])),
+        "byDate": dict(sorted(by_date.items())),
+    }
 
 
 # ------------------------------------------------------------- result parsing
@@ -832,8 +966,11 @@ def main():
         {"generatedAt": now.isoformat(), "days": dict(sorted(future_days.items()))}, indent=1))
     print(f"future.json: {len(future_days)} days of advance sales beyond the widget window.")
 
-    # Year-to-date stats for the monitor (data/stats.json)
+    # ---- Year-to-date stats for the monitor (data/stats.json)
     year = str(now.year)
+
+    # Inventory-derived figures. Kept because the risk model and the archive
+    # run on them -- NOT a source of truth for tickets sold (see module docs).
     ytd_records = []
     for p in sorted(ARCHIVE_DIR.glob(f"{year}-*.json")):
         if p.stem != "index":
@@ -841,22 +978,60 @@ def main():
     ytd_completed = sum(r.get("sold", 0) for r in ytd_records)
     today_day = next((d for d in availability["days"] if d["date"] == today_iso), None)
     today_sold = today_day["totalSold"] if today_day else 0
-    # Outstanding = sold for anything not yet begun: today's remaining time
-    # slots + all future dates in the window + advance sales beyond it
     today_future_slots_sold = sum(
         sl["sold"] for sl in (today_day["slots"] if today_day else []) if sl["status"] != "past")
     upcoming_window = sum(d["totalSold"] for d in availability["days"][1:] if not d.get("closed"))
     future_outstanding = sum(f["sold"] for f in future_days.values())
-    (DATA_DIR / "stats.json").write_text(json.dumps({
-        "generatedAt": now.isoformat(),
-        "year": year,
+    inventory = {
         "ytdSoldCompletedDays": ytd_completed,
         "todaySold": today_sold,
         "ytdSoldIncludingToday": ytd_completed + today_sold,
         "outstandingFutureSold": today_future_slots_sold + upcoming_window + future_outstanding,
         "todayFutureSlotsSold": today_future_slots_sold,
-        "note": "Sold tickets, not scanned admissions. 'Outstanding' = sold for future time slots today plus all future dates.",
-    }, indent=1))
+        "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: "
+                "General Admission only, and floors at capacity on days that sell past it. "
+                "Use the 'sales' block for any reported ticket number.",
+    }
+
+    # Authoritative sold + checked-in counts from TicketAnalytics. A failure
+    # here must not take the widgets down, so fall back to the last good block
+    # and flag it stale rather than publishing an inventory-derived number
+    # under a label that says "tickets sold".
+    prev_stats = load_json(STATS_PATH, {})
+    sales, sales_stale = None, False
+    if MOCK:
+        print("MOCK mode — reusing any previous sales block.")
+        sales = prev_stats.get("sales")
+        sales_stale = sales is not None
+    else:
+        try:
+            raw_sales = run_sales_report(tz, year)
+            RAW_SALES_PATH.write_text(json.dumps(raw_sales, indent=2)[:4_000_000])
+            sales = parse_sales(raw_sales, today_iso)
+            t = sales["total"]
+            print(f"Sales: {t['sold']:,} sold ({t['arrivedToDate']:,} arrived to date, "
+                  f"{t['futureArrivals']:,} upcoming), {t['checkedIn']:,} checked in.")
+        except Exception as e:  # noqa: BLE001 — availability must still publish
+            print(f"WARNING: sales report failed ({e}); keeping last known figures.",
+                  file=sys.stderr)
+            sales = prev_stats.get("sales")
+            sales_stale = sales is not None
+    if sales is None:
+        print("WARNING: no sales figures available yet.", file=sys.stderr)
+
+    stats = {
+        "generatedAt": now.isoformat(),
+        "year": year,
+        "salesSource": "ACME TicketAnalytics — TicketQuantity (tickets on orders) "
+                       "and CheckedInCount (scans), by EventStartTime.",
+        "salesEventNames": SALES_EVENT_NAMES.split(","),
+        "salesGeneratedAt": (prev_stats.get("salesGeneratedAt") if sales_stale
+                             else (now.isoformat() if sales else None)),
+        "salesStale": sales_stale,
+        "sales": sales,
+        "inventory": inventory,
+    }
+    STATS_PATH.write_text(json.dumps(stats, indent=1))
 
     OUTPUT_PATH.write_text(json.dumps(availability, indent=2))
     ANALYTICS_PATH.write_text(json.dumps(analytics, indent=2))
