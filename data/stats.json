@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-04T08:27:46.004285-06:00",
+ "generatedAt": "2026-09-04T08:39:38.013881-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,25 +7,25 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-04T08:27:46.004285-06:00",
+ "salesGeneratedAt": "2026-09-04T08:39:38.013881-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 134107,
-   "arrivedToDate": 115072,
-   "futureArrivals": 19035,
+   "sold": 134140,
+   "arrivedToDate": 115079,
+   "futureArrivals": 19061,
    "checkedIn": 96561,
    "checkedInToDate": 96495
   },
   "today": {
-   "sold": 1359,
+   "sold": 1366,
    "checkedIn": 0
   },
   "byEventName": {
    "General Admission": {
-    "sold": 128609,
-    "arrivedToDate": 109668,
-    "futureArrivals": 18941,
+    "sold": 128642,
+    "arrivedToDate": 109675,
+    "futureArrivals": 18967,
     "checkedIn": 93199,
     "checkedInToDate": 93135
    },
@@ -294,7 +294,7 @@
     "checkedIn": 1348
    },
    "2026-09-04": {
-    "sold": 1359,
+    "sold": 1366,
     "checkedIn": 0
    },
    "2026-09-05": {
@@ -306,11 +306,11 @@
     "checkedIn": 0
    },
    "2026-09-07": {
-    "sold": 928,
+    "sold": 947,
     "checkedIn": 0
    },
    "2026-09-08": {
-    "sold": 664,
+    "sold": 665,
     "checkedIn": 2
    },
    "2026-09-09": {
@@ -318,7 +318,7 @@
     "checkedIn": 2
    },
    "2026-09-10": {
-    "sold": 1090,
+    "sold": 1092,
     "checkedIn": 0
    },
    "2026-09-11": {
@@ -330,11 +330,11 @@
     "checkedIn": 4
    },
    "2026-09-13": {
-    "sold": 646,
+    "sold": 648,
     "checkedIn": 2
    },
    "2026-09-15": {
-    "sold": 909,
+    "sold": 911,
     "checkedIn": 0
    },
    "2026-09-16": {
@@ -597,10 +597,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 101067,
-  "todaySold": 1312,
-  "ytdSoldIncludingToday": 102379,
-  "outstandingFutureSold": 18622,
-  "todayFutureSlotsSold": 1312,
+  "todaySold": 1317,
+  "ytdSoldIncludingToday": 102384,
+  "outstandingFutureSold": 18657,
+  "todayFutureSlotsSold": 1317,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  }
 }
