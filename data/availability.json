@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T21:40:14.120467-06:00",
+  "generatedAt": "2026-09-03T21:49:26.647249-06:00",
   "timezone": "America/Denver",
   "today": "2026-09-03",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -417,14 +417,14 @@
       "dayLabel": "Sun Sep 6",
       "closed": false,
       "totalCapacity": 1850,
-      "totalSold": 1846,
+      "totalSold": 1850,
       "pctSold": 100,
-      "soldOutSlots": 14,
-      "firstAvailable": "4:00 PM",
-      "status": "selling_fast",
-      "selloutRisk": "high",
-      "riskNote": "Recent Sundays have sold 316+ tickets on the day itself \u2014 more than what's left. Reserve in advance.",
-      "riskReason": "Recent Sundays have sold 316+ tickets on the day itself \u2014 more than what's left",
+      "soldOutSlots": 15,
+      "firstAvailable": null,
+      "status": "sold_out",
+      "selloutRisk": "sold_out",
+      "riskNote": "Sold out \u2014 no remaining time slots.",
+      "riskReason": "Sold out \u2014 no remaining time slots",
       "slots": [
         {
           "time": "09:00",
@@ -542,9 +542,9 @@
           "time": "16:00",
           "label": "4:00 PM",
           "capacity": 100,
-          "sold": 96,
-          "remaining": 4,
-          "status": "limited"
+          "sold": 100,
+          "remaining": 0,
+          "status": "sold_out"
         }
       ]
     },
