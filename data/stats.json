@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-05T16:22:13.548120-06:00",
+ "generatedAt": "2026-09-05T16:35:26.324435-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-05T16:22:13.548120-06:00",
+ "salesGeneratedAt": "2026-09-05T16:35:26.324435-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 136203,
+   "sold": 136207,
    "arrivedToDate": 117618,
-   "futureArrivals": 18585,
-   "checkedIn": 99918,
-   "checkedInToDate": 99841
+   "futureArrivals": 18589,
+   "checkedIn": 99920,
+   "checkedInToDate": 99843
   },
   "today": {
    "sold": 2044,
-   "checkedIn": 1751
+   "checkedIn": 1753
   },
   "byEventName": {
    "General Admission": {
-    "sold": 130664,
+    "sold": 130668,
     "arrivedToDate": 112175,
-    "futureArrivals": 18489,
-    "checkedIn": 96528,
-    "checkedInToDate": 96453
+    "futureArrivals": 18493,
+    "checkedIn": 96530,
+    "checkedInToDate": 96455
    },
    "Flex Tickets": {
     "sold": 3130,
@@ -299,14 +299,14 @@
    },
    "2026-09-05": {
     "sold": 2044,
-    "checkedIn": 1751
+    "checkedIn": 1753
    },
    "2026-09-06": {
     "sold": 1920,
     "checkedIn": 0
    },
    "2026-09-07": {
-    "sold": 1458,
+    "sold": 1460,
     "checkedIn": 8
    },
    "2026-09-08": {
@@ -314,7 +314,7 @@
     "checkedIn": 2
    },
    "2026-09-09": {
-    "sold": 1183,
+    "sold": 1185,
     "checkedIn": 2
    },
    "2026-09-10": {
@@ -607,8 +607,8 @@
   "ytdSoldCompletedDays": 102774,
   "todaySold": 1877,
   "ytdSoldIncludingToday": 104651,
-  "outstandingFutureSold": 17110,
-  "todayFutureSlotsSold": 175,
+  "outstandingFutureSold": 17064,
+  "todayFutureSlotsSold": 125,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  }
 }
