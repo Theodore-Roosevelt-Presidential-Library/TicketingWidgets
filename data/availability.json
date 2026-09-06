@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T16:48:35.144478-06:00",
+  "generatedAt": "2026-09-06T17:11:10.546933-06:00",
   "timezone": "America/Denver",
   "today": "2026-09-06",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -11,12 +11,12 @@
       "totalCapacity": 1857,
       "totalSold": 1857,
       "pctSold": 100,
-      "soldOutSlots": 1,
+      "soldOutSlots": 0,
       "firstAvailable": null,
-      "status": "sold_out",
-      "selloutRisk": "sold_out",
-      "riskNote": "Sold out \u2014 no remaining time slots.",
-      "riskReason": "Sold out \u2014 no remaining time slots",
+      "status": "ended",
+      "selloutRisk": "none",
+      "riskNote": "Today's entries have ended.",
+      "riskReason": "Today's entries have ended",
       "slots": [
         {
           "time": "09:00",
@@ -136,7 +136,7 @@
           "capacity": 100,
           "sold": 100,
           "remaining": 0,
-          "status": "sold_out"
+          "status": "past"
         }
       ]
     },
@@ -297,7 +297,7 @@
       "dayLabel": "Tue Sep 8",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 837,
+      "totalSold": 845,
       "pctSold": 45,
       "soldOutSlots": 3,
       "firstAvailable": "9:00 AM",
@@ -374,16 +374,16 @@
           "time": "13:00",
           "label": "1:00 PM",
           "capacity": 200,
-          "sold": 83,
-          "remaining": 117,
+          "sold": 85,
+          "remaining": 115,
           "status": "available"
         },
         {
           "time": "13:30",
           "label": "1:30 PM",
           "capacity": 50,
-          "sold": 9,
-          "remaining": 41,
+          "sold": 15,
+          "remaining": 35,
           "status": "available"
         },
         {
@@ -433,8 +433,8 @@
       "dayLabel": "Wed Sep 9",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 1151,
-      "pctSold": 61,
+      "totalSold": 1154,
+      "pctSold": 62,
       "soldOutSlots": 6,
       "firstAvailable": "12:00 PM",
       "status": "limited",
@@ -550,8 +550,8 @@
           "time": "15:30",
           "label": "3:30 PM",
           "capacity": 50,
-          "sold": 8,
-          "remaining": 42,
+          "sold": 11,
+          "remaining": 39,
           "status": "available"
         },
         {
