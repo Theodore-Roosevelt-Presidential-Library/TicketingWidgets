@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-05T23:48:41.983862-06:00",
+ "generatedAt": "2026-09-06T00:21:30.568976-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,25 +7,25 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-05T23:48:41.983862-06:00",
+ "salesGeneratedAt": "2026-09-06T00:21:30.568976-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 136458,
-   "arrivedToDate": 117618,
-   "futureArrivals": 18840,
+   "sold": 136462,
+   "arrivedToDate": 119541,
+   "futureArrivals": 16921,
    "checkedIn": 99924,
    "checkedInToDate": 99847
   },
   "today": {
-   "sold": 2044,
-   "checkedIn": 1757
+   "sold": 1923,
+   "checkedIn": 0
   },
   "byEventName": {
    "General Admission": {
-    "sold": 130916,
-    "arrivedToDate": 112175,
-    "futureArrivals": 18741,
+    "sold": 130920,
+    "arrivedToDate": 114095,
+    "futureArrivals": 16825,
     "checkedIn": 96534,
     "checkedInToDate": 96459
    },
@@ -38,8 +38,8 @@
    },
    "Walk-Up": {
     "sold": 2412,
-    "arrivedToDate": 2395,
-    "futureArrivals": 17,
+    "arrivedToDate": 2398,
+    "futureArrivals": 14,
     "checkedIn": 2195,
     "checkedInToDate": 2193
    }
@@ -330,7 +330,7 @@
     "checkedIn": 11
    },
    "2026-09-13": {
-    "sold": 718,
+    "sold": 722,
     "checkedIn": 2
    },
    "2026-09-15": {
@@ -612,11 +612,11 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 102774,
-  "todaySold": 1877,
-  "ytdSoldIncludingToday": 104651,
-  "outstandingFutureSold": 17181,
-  "todayFutureSlotsSold": 0,
+  "ytdSoldCompletedDays": 104651,
+  "todaySold": 1857,
+  "ytdSoldIncludingToday": 106508,
+  "outstandingFutureSold": 17185,
+  "todayFutureSlotsSold": 1857,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  }
 }
