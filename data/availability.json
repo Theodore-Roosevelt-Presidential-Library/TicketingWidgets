@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T15:48:50.113572-06:00",
+  "generatedAt": "2026-09-07T16:12:44.627132-06:00",
   "timezone": "America/Denver",
   "today": "2026-09-07",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -11,7 +11,7 @@
       "totalCapacity": 2036,
       "totalSold": 1850,
       "pctSold": 91,
-      "soldOutSlots": 3,
+      "soldOutSlots": 2,
       "firstAvailable": null,
       "status": "sold_out",
       "selloutRisk": "sold_out",
@@ -136,7 +136,7 @@
           "capacity": 200,
           "sold": 200,
           "remaining": 0,
-          "status": "sold_out"
+          "status": "past"
         },
         {
           "time": "15:30",
@@ -161,11 +161,11 @@
       "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 1102,
-      "pctSold": 59,
-      "soldOutSlots": 4,
-      "firstAvailable": "11:00 AM",
-      "status": "available",
+      "totalSold": 1123,
+      "pctSold": 60,
+      "soldOutSlots": 6,
+      "firstAvailable": "12:00 PM",
+      "status": "limited",
       "selloutRisk": "medium",
       "riskNote": "Filling up \u2014 advance tickets recommended.",
       "riskReason": "Filling up",
@@ -206,24 +206,24 @@
           "time": "11:00",
           "label": "11:00 AM",
           "capacity": 200,
-          "sold": 194,
-          "remaining": 6,
-          "status": "limited"
+          "sold": 200,
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "11:30",
           "label": "11:30 AM",
           "capacity": 50,
-          "sold": 41,
-          "remaining": 9,
-          "status": "limited"
+          "sold": 50,
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "12:00",
           "label": "12:00 PM",
           "capacity": 200,
-          "sold": 51,
-          "remaining": 149,
+          "sold": 53,
+          "remaining": 147,
           "status": "available"
         },
         {
@@ -246,16 +246,16 @@
           "time": "13:30",
           "label": "1:30 PM",
           "capacity": 50,
-          "sold": 26,
-          "remaining": 24,
+          "sold": 28,
+          "remaining": 22,
           "status": "available"
         },
         {
           "time": "14:00",
           "label": "2:00 PM",
           "capacity": 200,
-          "sold": 75,
-          "remaining": 125,
+          "sold": 77,
+          "remaining": 123,
           "status": "available"
         },
         {
@@ -297,10 +297,10 @@
       "dayLabel": "Wed Sep 9",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 1221,
+      "totalSold": 1227,
       "pctSold": 65,
-      "soldOutSlots": 5,
-      "firstAvailable": "9:00 AM",
+      "soldOutSlots": 6,
+      "firstAvailable": "12:00 PM",
       "status": "limited",
       "selloutRisk": "medium",
       "riskNote": "Filling up \u2014 advance tickets recommended.",
@@ -310,9 +310,9 @@
           "time": "09:00",
           "label": "9:00 AM",
           "capacity": 200,
-          "sold": 198,
-          "remaining": 2,
-          "status": "limited"
+          "sold": 200,
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "09:30",
@@ -358,8 +358,8 @@
           "time": "12:00",
           "label": "12:00 PM",
           "capacity": 200,
-          "sold": 111,
-          "remaining": 89,
+          "sold": 115,
+          "remaining": 85,
           "status": "available"
         },
         {
@@ -841,14 +841,14 @@
       "dayLabel": "Sun Sep 13",
       "closed": false,
       "totalCapacity": 1850,
-      "totalSold": 783,
-      "pctSold": 42,
+      "totalSold": 805,
+      "pctSold": 44,
       "soldOutSlots": 1,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
       "selloutRisk": "high",
-      "riskNote": "Sundays have been selling out \u2014 recently only 1:00 PM or later entry remained. Reserve in advance.",
-      "riskReason": "Sundays have been selling out \u2014 recently only 1:00 PM or later entry remained",
+      "riskNote": "Sundays have been selling out \u2014 recently only 10:00 AM or later entry remained. Reserve in advance.",
+      "riskReason": "Sundays have been selling out \u2014 recently only 10:00 AM or later entry remained",
       "slots": [
         {
           "time": "09:00",
@@ -878,8 +878,8 @@
           "time": "10:30",
           "label": "10:30 AM",
           "capacity": 50,
-          "sold": 30,
-          "remaining": 20,
+          "sold": 36,
+          "remaining": 14,
           "status": "available"
         },
         {
@@ -950,8 +950,8 @@
           "time": "15:00",
           "label": "3:00 PM",
           "capacity": 200,
-          "sold": 61,
-          "remaining": 139,
+          "sold": 77,
+          "remaining": 123,
           "status": "available"
         },
         {
