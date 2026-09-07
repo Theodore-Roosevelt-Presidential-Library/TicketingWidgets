@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-06T19:50:26.354848-06:00",
+ "generatedAt": "2026-09-06T20:21:01.456065-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,13 +7,13 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-06T19:50:26.354848-06:00",
+ "salesGeneratedAt": "2026-09-06T20:21:01.456065-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 137409,
+   "sold": 137443,
    "arrivedToDate": 119576,
-   "futureArrivals": 17833,
+   "futureArrivals": 17867,
    "checkedIn": 101687,
    "checkedInToDate": 101610
   },
@@ -23,9 +23,9 @@
   },
   "byEventName": {
    "General Admission": {
-    "sold": 131832,
+    "sold": 131866,
     "arrivedToDate": 114099,
-    "futureArrivals": 17733,
+    "futureArrivals": 17767,
     "checkedIn": 98262,
     "checkedInToDate": 98187
    },
@@ -310,11 +310,11 @@
     "checkedIn": 8
    },
    "2026-09-08": {
-    "sold": 887,
+    "sold": 905,
     "checkedIn": 2
    },
    "2026-09-09": {
-    "sold": 1262,
+    "sold": 1266,
     "checkedIn": 2
    },
    "2026-09-10": {
@@ -322,15 +322,15 @@
     "checkedIn": 0
    },
    "2026-09-11": {
-    "sold": 1279,
+    "sold": 1281,
     "checkedIn": 0
    },
    "2026-09-12": {
-    "sold": 1361,
+    "sold": 1363,
     "checkedIn": 11
    },
    "2026-09-13": {
-    "sold": 769,
+    "sold": 772,
     "checkedIn": 2
    },
    "2026-09-15": {
@@ -346,7 +346,7 @@
     "checkedIn": 44
    },
    "2026-09-18": {
-    "sold": 483,
+    "sold": 486,
     "checkedIn": 0
    },
    "2026-09-19": {
@@ -382,7 +382,7 @@
     "checkedIn": 0
    },
    "2026-09-29": {
-    "sold": 294,
+    "sold": 296,
     "checkedIn": 0
    },
    "2026-09-30": {
@@ -619,7 +619,7 @@
   "ytdSoldCompletedDays": 104651,
   "todaySold": 1855,
   "ytdSoldIncludingToday": 106506,
-  "outstandingFutureSold": 16193,
+  "outstandingFutureSold": 16227,
   "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  }
