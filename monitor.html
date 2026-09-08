@@ -91,6 +91,23 @@
   ]);
 
   const n = (x) => (x ?? 0).toLocaleString("en-US");
+  const md = (iso) => iso
+    ? new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" })
+    : "";
+
+  /* Season sell-through. Capacity utilisation from the Events report — seats
+     sold over seats offered on days that have already happened. Kept visually
+     distinct from the ticket counts beside it, which come from the sales
+     report and are a different (higher) kind of number. */
+  function sellThroughCard(st) {
+    if (!st || !st.capacity) return "";
+    const hot = st.pct >= 85;
+    return `<div class="card"><h3>Sell-through to date</h3>` +
+      `<div class="bar${hot ? " hot" : ""}"><i style="width:${Math.min(100, st.pct)}%"></i></div>` +
+      `<p class="meta" style="margin-top:.5em">${n(st.sold)} sold of ${n(st.capacity)} across ` +
+      `${st.days} open days, ${md(st.firstDay)}–${md(st.lastDay)}. Capacity used, not a ticket ` +
+      `count — see the note below.</p></div>`;
+  }
 
   if (stats && stats.sales) {
     const s = stats.sales.total, today = stats.sales.today || {};
@@ -115,7 +132,9 @@
 
       `<div class="card"><h3>Upcoming arrivals</h3>` +
       `<p><span class="big">${n(s.futureArrivals)}</span></p>` +
-      `<p class="meta">Sold for dates still ahead.</p></div>`;
+      `<p class="meta">Sold for dates still ahead.</p></div>` +
+
+      sellThroughCard(stats.sellThrough);
 
     /* Per-event breakdown */
     const rows = Object.entries(stats.sales.byEventName || {}).map(([name, r]) => {
@@ -130,9 +149,12 @@
     document.getElementById("breakdown").innerHTML =
       '<div class="tablewrap"><table><tr><th>Event</th><th>Sold</th><th>Through today</th>' +
       "<th>Upcoming</th><th>Checked in</th><th>Redeemed</th></tr>" + rows.join("") + "</table></div>" +
-      `<p class="note">Source: ACME <em>TicketAnalytics</em> — TicketQuantity and CheckedInCount, ` +
-      `matching the "PE: GA Tickets Checked In" report. Availability and sell-out risk below come from ` +
-      `the separate <em>Events</em> report; its capacity math is not a ticket count and is not shown here.</p>`;
+      `<p class="note">Ticket counts above and in this table come from ACME <em>TicketAnalytics</em> — ` +
+      `TicketQuantity and CheckedInCount, matching the "PE: GA Tickets Checked In" report. ` +
+      `<strong>Sell-through is a different measurement:</strong> it divides seats sold by seats offered ` +
+      `using the separate <em>Events</em> report, counts General Admission only, and stops at 100% on days ` +
+      `that sold past capacity — so it runs below the true ticket count by roughly 7%. Read it as "how full ` +
+      `did we run," not as tickets sold. Availability and sell-out risk below come from that same report.</p>`;
   } else if (stats) {
     document.getElementById("stats").innerHTML =
       `<div class="card"><h3>Sales figures unavailable</h3>` +

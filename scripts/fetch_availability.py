@@ -1063,6 +1063,25 @@ def main():
         if p.stem != "index":
             ytd_records.extend(load_json(p, {}).values())
     ytd_completed = sum(r.get("sold", 0) for r in ytd_records)
+
+    # Season sell-through: of the seats we actually put on sale on days that
+    # have now happened, what share went. Both halves come from the Events
+    # report, so this is a capacity-utilisation rate and cannot exceed 100% --
+    # it is deliberately NOT the ticket count in the "sales" block, which is
+    # ~7% higher because it includes the door and can oversell a slot.
+    st_cap = sum(r.get("capacity", 0) for r in ytd_records)
+    st_sold = sum(r.get("sold", 0) for r in ytd_records)
+    st_dates = sorted(r.get("date") for r in ytd_records if r.get("date"))
+    sell_through = {
+        "capacity": st_cap,
+        "sold": st_sold,
+        "pct": round(100 * st_sold / st_cap) if st_cap else 0,
+        "days": len(ytd_records),
+        "firstDay": st_dates[0] if st_dates else None,
+        "lastDay": st_dates[-1] if st_dates else None,
+        "note": "Seats sold / seats offered, completed days only, from the Events "
+                "report. Capacity utilisation, not a ticket count.",
+    }
     today_day = next((d for d in availability["days"] if d["date"] == today_iso), None)
     today_sold = today_day["totalSold"] if today_day else 0
     today_future_slots_sold = sum(
@@ -1117,6 +1136,7 @@ def main():
         "salesStale": sales_stale,
         "sales": sales,
         "inventory": inventory,
+        "sellThrough": sell_through,
     }
     STATS_PATH.write_text(json.dumps(stats, indent=1))
 
