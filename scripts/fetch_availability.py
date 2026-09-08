@@ -11,10 +11,27 @@ compute sold-out status and sell-out risk, and publish:
   data/stats.json          year-to-date sold + checked-in counts for the monitor
 
 The availability report ("TRPL: 2026 Availability", definition
-69c18975669b758620b4c586) returns one row per GA event instance with
-EventStartTime, AvailableQuantity, and Capacity. Each run requests
-(today - lookbackDays) -> (today + daysAhead): past days bootstrap the archive
-with final outcomes, future days feed the widgets and lead curves.
+69c18975669b758620b4c586) is used only as an async-job handle: we send our own
+queryExpression (availability_query_expression) so back-office edits to that
+saved report cannot change what the widgets publish. It returns one row per GA
+event INSTANCE with EventStartTime, EventId, AvailableQuantity, and Capacity.
+Each run requests (today - lookbackDays) -> (today + daysAhead): past days
+bootstrap the archive with final outcomes, future days feed the widgets and
+lead curves.
+
+SUPPLY IS NARROWER THAN DEMAND. The widget may only show what a visitor can
+buy online (AVAILABILITY_EVENT_NAMES = "General Admission"); the monitor must
+count every ticket sold, including the door (SALES_EVENT_NAMES adds Flex
+Tickets and Walk-Up). Keep those two lists separate.
+
+Filtering on EventName alone is not sufficient. Staff holds built off the GA
+template inherit the name "General Admission" and pass the filter even though
+they were never put on sale online -- on 2026-09-07 three such instances (62
+seats each, 1:15/1:30/1:45 PM) showed as available in the widget while the
+checkout had them sold out. The Events collection exposes no sales-channel or
+visibility field to filter on, so those instances are listed by id in
+config.excludeEventIds. Grouping by EventId (rather than the saved report's
+group-by-start-time) is what makes them separable at all.
 
 TWO REPORTS, TWO JOBS -- do not mix them up:
 
@@ -53,6 +70,7 @@ Environment variables (a gitignored .env at the repo root is loaded first):
   ACME_REPORT_ID         availability report, default 69c18975669b758620b4c586
   ACME_SALES_REPORT_ID   sales report handle, default 6a9acc9efdf8e0b5bcb2fb12
   ACME_SALES_EVENT_NAMES default "General Admission,Flex Tickets,Walk-Up"
+  ACME_AVAILABILITY_EVENT_NAMES default "General Admission" (online-sellable only)
   MOCK                   set to "1" to force sample data (no API call)
 
 Runs on Python 3.9+ stdlib only.
@@ -104,6 +122,13 @@ REPORT_ID = os.environ.get("ACME_REPORT_ID", "69c18975669b758620b4c586")
 SALES_REPORT_ID = os.environ.get("ACME_SALES_REPORT_ID", "6a9acc9efdf8e0b5bcb2fb12")
 SALES_EVENT_NAMES = os.environ.get(
     "ACME_SALES_EVENT_NAMES", "General Admission,Flex Tickets,Walk-Up")
+# Supply-side (widget) filter. Deliberately NARROWER than SALES_EVENT_NAMES:
+# the widget may only advertise what a visitor can actually buy online, while
+# the monitor must still count every ticket sold. Flex Tickets and Walk-Up are
+# sold at the door, so they are supply we must not offer -- but they are demand
+# we must still report. Do not "unify" these two lists.
+AVAILABILITY_EVENT_NAMES = os.environ.get(
+    "ACME_AVAILABILITY_EVENT_NAMES", "General Admission")
 MOCK = os.environ.get("MOCK", "") == "1" or not API_KEY
 
 POLL_INTERVAL_S = 5
@@ -176,22 +201,57 @@ def execute_report(report_uuid, query_expression, date_field, start, end):
     return api_request("GET", f"/v2/b2b/async/report/json/{instance_id}")
 
 
+def availability_query_expression():
+    """Events: one row per event INSTANCE, not per start time.
+
+    The saved report ("TRPL: 2026 Availability") groups by EventStartTime with
+    groupFunction "Date", which sums every instance sharing a start time into a
+    single row. That hid a real defect: staff holds built off the GA template
+    are named "General Admission", pass the report's name filter, and get added
+    straight into the public numbers -- so a slot that is sold out on the
+    checkout was showing 62 seats free in the widget.
+
+    Grouping by EventId instead keeps the instances separate so
+    config.excludeEventIds can drop the ones that were never on sale online,
+    and parse_availability sums whatever survives. We send this expression
+    ourselves rather than reading it off the definition, so back-office edits
+    to that saved report cannot silently change what the widgets publish (same
+    reasoning as SALES_REPORT_ID above).
+    """
+    return {
+        "collectionName": "Events",
+        "findQueries": [{
+            "fieldName": "EventName",
+            "fieldValue": AVAILABILITY_EVENT_NAMES,
+            "operator": "equals",
+        }],
+        "findFields": [
+            {"fieldName": "EventStartTime", "include": True},
+            {"fieldName": "EventId", "include": True},
+            {"fieldName": "AvailableQuantity", "include": True},
+            {"fieldName": "Capacity", "include": True},
+        ],
+        "sortFields": [],
+        "groupFields": [
+            {"fieldName": "EventStartTime", "groupFunction": None},
+            {"fieldName": "EventId", "groupFunction": None},
+        ],
+        "summaryFields": [
+            {"fieldName": "AvailableQuantity", "summaryFunction": "Sum"},
+            {"fieldName": "Capacity", "summaryFunction": "Sum"},
+        ],
+        "countFields": [],
+        "limit": 0,
+    }
+
+
 def run_report(tz, horizon_days, lookback_days):
     """Availability: execute for (today - lookback) -> (today + horizon)."""
-    print(f"Fetching report definition {REPORT_ID} ...")
-    definition = api_request("GET", f"/v2/b2b/analytics/report/definitions/{REPORT_ID}")
-
-    query_expression = definition.get("queryExpression")
-    if not query_expression:
-        raise RuntimeError(
-            f"Report definition missing queryExpression. Keys: {list(definition.keys())}"
-        )
-    date_field = (definition.get("dateSettings") or {}).get("dateRangeField", "EventStartTime")
-
     now = datetime.now(tz)
     start = (now - timedelta(days=lookback_days)).replace(hour=0, minute=0, second=0, microsecond=0)
     end = (now + timedelta(days=horizon_days)).replace(hour=23, minute=59, second=59, microsecond=0)
-    return execute_report(REPORT_ID, query_expression, date_field, start, end)
+    return execute_report(REPORT_ID, availability_query_expression(),
+                          "EventStartTime", start, end)
 
 
 # ------------------------------------------------------------- sales report
@@ -296,8 +356,14 @@ def parse_sales(raw, today_iso):
 
 # ------------------------------------------------------------- result parsing
 
-def parse_availability(raw, tz):
-    """Return {(iso_date, "HH:MM"): {"available": int, "capacity": int}}."""
+def parse_availability(raw, tz, exclude_ids=None):
+    """Return {(iso_date, "HH:MM"): {"available": int, "capacity": int}}.
+
+    exclude_ids drops named event instances (config.excludeEventIds) before the
+    per-slot sum, so holds that were never on sale online cannot advertise
+    seats the checkout will not sell.
+    """
+    exclude_ids = set(exclude_ids or ())
     field_list = raw.get("resultFieldList") if isinstance(raw, dict) else None
     if not field_list:
         raise RuntimeError(
@@ -314,14 +380,24 @@ def parse_availability(raw, tz):
     times = col("starttime", "start time", "eventstart")
     avail = col("availablequantity", "available")
     cap = col("capacity")
+    ids = col("eventid")
     if times is None or avail is None or cap is None:
         raise RuntimeError(f"Could not identify report columns. Found: {list(cols.keys())}")
+    if exclude_ids and ids is None:
+        raise RuntimeError(
+            "config.excludeEventIds is set but the report returned no EventId column, "
+            "so blocked instances cannot be identified. Refusing to publish unfiltered "
+            f"availability. Columns found: {list(cols.keys())}")
 
     out = {}
+    dropped = []
     for i, t in enumerate(times):
         try:
             dt = datetime.fromisoformat(str(t)).astimezone(tz)
         except ValueError:
+            continue
+        if ids is not None and i < len(ids) and str(ids[i]) in exclude_ids:
+            dropped.append(f"{dt:%Y-%m-%d %H:%M} ({ids[i]})")
             continue
         key = (dt.date().isoformat(), dt.strftime("%H:%M"))
         a = int(float(avail[i])) if i < len(avail) and avail[i] is not None else 0
@@ -331,6 +407,17 @@ def parse_availability(raw, tz):
             out[key]["capacity"] += c
         else:
             out[key] = {"available": a, "capacity": c}
+
+    if dropped:
+        print(f"Excluded {len(dropped)} event instance(s) via config.excludeEventIds: "
+              + ", ".join(sorted(dropped)))
+    unused = exclude_ids - {str(x) for x in (ids or [])}
+    if unused:
+        # Stale entries are harmless but they hide real drift -- once ACME
+        # deletes a hold, the id should come out of config.json too.
+        print(f"NOTE: {len(unused)} excludeEventIds no longer appear in the report "
+              f"(safe to remove from config.json): {', '.join(sorted(unused))}",
+              file=sys.stderr)
     return out
 
 
@@ -912,7 +999,7 @@ def main():
     else:
         raw = run_report(tz, horizon, lookback)
         RAW_PATH.write_text(json.dumps(raw, indent=2)[:4_000_000])
-        slot_data = parse_availability(raw, tz)
+        slot_data = parse_availability(raw, tz, config.get("excludeEventIds") or {})
         print(f"Parsed {len(slot_data)} (date, slot) pairs from report.")
         if not any(d >= today_iso for d, _ in slot_data):
             raise RuntimeError("Report returned no current/future slot data — refusing to publish.")

@@ -6,6 +6,13 @@
   "lookbackDays": 15,
   "limitedThresholdPct": 15,
   "limitedThresholdMin": 10,
+
+  "_excludeEventIds_note": "ACME event instances to drop from public availability. The availability report already filters to EventName = 'General Admission', but staff sometimes build holds off the GA template — those inherit the GA name and land in the report even though they were never put on sale online. There is no on-sale/sales-channel field in the Events collection to filter on (checked: SalesChannel, OnSaleStatus, IsOnline, Published, Visibility, IsPrivate, EventStatus — none exist), so they have to be listed by EventId here. To find the id: compare the widget's slots against the public checkout, then look up the extra start time in data/raw-report.json. The value is a human note; only the key matters.",
+  "excludeEventIds": {
+    "6a68ff77f3a9e3063dd4dc79": "2026-09-07 1:15 PM, 62 seats — hold batch created 2026-07-28 13:13 MT, never on sale online",
+    "6a68ff77f3a9e3063dd4dc87": "2026-09-07 1:30 PM, 62 seats — same batch",
+    "6a68ff77f3a9e3063dd4dc81": "2026-09-07 1:45 PM, 62 seats — same batch"
+  },
   "_unused_note": "seasons/closedDates below are legacy — slot times and closed days now come live from ACME; kept only for reference",
   "closedDates": ["2026-11-26", "2026-12-25", "2026-12-31"],
   "seasons": [
