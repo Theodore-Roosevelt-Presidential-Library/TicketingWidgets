@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-08T20:27:45.583464-06:00",
+ "generatedAt": "2026-09-08T20:45:03.704878-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,13 +7,13 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-08T20:27:45.583464-06:00",
+ "salesGeneratedAt": "2026-09-08T20:45:03.704878-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 141389,
+   "sold": 141409,
    "arrivedToDate": 123338,
-   "futureArrivals": 18051,
+   "futureArrivals": 18071,
    "checkedIn": 105112,
    "checkedInToDate": 105041
   },
@@ -23,9 +23,9 @@
   },
   "byEventName": {
    "General Admission": {
-    "sold": 135380,
+    "sold": 135400,
     "arrivedToDate": 117832,
-    "futureArrivals": 17548,
+    "futureArrivals": 17568,
     "checkedIn": 101671,
     "checkedInToDate": 101602
    },
@@ -314,19 +314,19 @@
     "checkedIn": 1678
    },
    "2026-09-09": {
-    "sold": 1634,
+    "sold": 1640,
     "checkedIn": 2
    },
    "2026-09-10": {
-    "sold": 1558,
+    "sold": 1562,
     "checkedIn": 0
    },
    "2026-09-11": {
-    "sold": 1449,
+    "sold": 1451,
     "checkedIn": 0
    },
    "2026-09-12": {
-    "sold": 1575,
+    "sold": 1578,
     "checkedIn": 11
    },
    "2026-09-13": {
@@ -338,11 +338,11 @@
     "checkedIn": 0
    },
    "2026-09-15": {
-    "sold": 1054,
+    "sold": 1056,
     "checkedIn": 2
    },
    "2026-09-16": {
-    "sold": 640,
+    "sold": 641,
     "checkedIn": 2
    },
    "2026-09-17": {
@@ -378,7 +378,7 @@
     "checkedIn": 0
    },
    "2026-09-26": {
-    "sold": 274,
+    "sold": 276,
     "checkedIn": 0
    },
    "2026-09-27": {
@@ -627,7 +627,7 @@
   "ytdSoldCompletedDays": 108340,
   "todaySold": 1723,
   "ytdSoldIncludingToday": 110063,
-  "outstandingFutureSold": 15977,
+  "outstandingFutureSold": 15999,
   "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
