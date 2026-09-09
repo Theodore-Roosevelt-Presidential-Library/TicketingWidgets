@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-09T06:45:47.336655-06:00",
+ "generatedAt": "2026-09-09T07:13:35.051516-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,25 +7,25 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-09T06:45:47.336655-06:00",
+ "salesGeneratedAt": "2026-09-09T07:13:35.051516-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 141557,
-   "arrivedToDate": 125018,
-   "futureArrivals": 16539,
+   "sold": 141573,
+   "arrivedToDate": 125027,
+   "futureArrivals": 16546,
    "checkedIn": 105112,
    "checkedInToDate": 105043
   },
   "today": {
-   "sold": 1680,
+   "sold": 1689,
    "checkedIn": 2
   },
   "byEventName": {
    "General Admission": {
-    "sold": 135548,
-    "arrivedToDate": 119512,
-    "futureArrivals": 16036,
+    "sold": 135564,
+    "arrivedToDate": 119521,
+    "futureArrivals": 16043,
     "checkedIn": 101671,
     "checkedInToDate": 101604
    },
@@ -314,7 +314,7 @@
     "checkedIn": 1678
    },
    "2026-09-09": {
-    "sold": 1680,
+    "sold": 1689,
     "checkedIn": 2
    },
    "2026-09-10": {
@@ -322,7 +322,7 @@
     "checkedIn": 0
    },
    "2026-09-11": {
-    "sold": 1467,
+    "sold": 1472,
     "checkedIn": 0
    },
    "2026-09-12": {
@@ -330,7 +330,7 @@
     "checkedIn": 11
    },
    "2026-09-13": {
-    "sold": 967,
+    "sold": 969,
     "checkedIn": 2
    },
    "2026-09-14": {
@@ -625,10 +625,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 110063,
-  "todaySold": 1548,
-  "ytdSoldIncludingToday": 111611,
-  "outstandingFutureSold": 16147,
-  "todayFutureSlotsSold": 1548,
+  "todaySold": 1557,
+  "ytdSoldIncludingToday": 111620,
+  "outstandingFutureSold": 16163,
+  "todayFutureSlotsSold": 1557,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
