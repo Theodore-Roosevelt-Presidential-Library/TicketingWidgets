@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-09T16:35:32.293127-06:00",
+ "generatedAt": "2026-09-09T16:48:52.538986-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,13 +7,13 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-09T16:35:32.293127-06:00",
+ "salesGeneratedAt": "2026-09-09T16:48:52.538986-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 142722,
+   "sold": 142743,
    "arrivedToDate": 125305,
-   "futureArrivals": 17417,
+   "futureArrivals": 17438,
    "checkedIn": 106791,
    "checkedInToDate": 106708
   },
@@ -23,9 +23,9 @@
   },
   "byEventName": {
    "General Admission": {
-    "sold": 136707,
+    "sold": 136728,
     "arrivedToDate": 119793,
-    "futureArrivals": 16914,
+    "futureArrivals": 16935,
     "checkedIn": 103344,
     "checkedInToDate": 103263
    },
@@ -318,11 +318,11 @@
     "checkedIn": 1663
    },
    "2026-09-10": {
-    "sold": 1753,
+    "sold": 1761,
     "checkedIn": 8
    },
    "2026-09-11": {
-    "sold": 1574,
+    "sold": 1580,
     "checkedIn": 0
    },
    "2026-09-12": {
@@ -342,7 +342,7 @@
     "checkedIn": 2
    },
    "2026-09-16": {
-    "sold": 699,
+    "sold": 703,
     "checkedIn": 8
    },
    "2026-09-17": {
@@ -362,7 +362,7 @@
     "checkedIn": 0
    },
    "2026-09-22": {
-    "sold": 1000,
+    "sold": 1001,
     "checkedIn": 0
    },
    "2026-09-23": {
@@ -378,7 +378,7 @@
     "checkedIn": 0
    },
    "2026-09-26": {
-    "sold": 286,
+    "sold": 288,
     "checkedIn": 0
    },
    "2026-09-27": {
@@ -627,7 +627,7 @@
   "ytdSoldCompletedDays": 110059,
   "todaySold": 1795,
   "ytdSoldIncludingToday": 111854,
-  "outstandingFutureSold": 15471,
+  "outstandingFutureSold": 15492,
   "todayFutureSlotsSold": 54,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
