@@ -103,6 +103,7 @@
     if (!st || !st.capacity) return "";
     const hot = st.pct >= 85;
     return `<div class="card"><h3>Sell-through to date</h3>` +
+      `<p><span class="big">${st.pct}%</span> of seats offered</p>` +
       `<div class="bar${hot ? " hot" : ""}"><i style="width:${Math.min(100, st.pct)}%"></i></div>` +
       `<p class="meta" style="margin-top:.5em">${n(st.sold)} sold of ${n(st.capacity)} across ` +
       `${st.days} open days, ${md(st.firstDay)}–${md(st.lastDay)}. Capacity used, not a ticket ` +
