@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>TRPL Sell-Out Monitor (internal)</title>
+  <style>
+    :root { --accent:#E7805D; --ok:#1B4532; --warn:#E7805D; --night:#092A4D; --line:rgba(37,40,42,.18); }
+    body { font-family: "Frutiger Next", Frutiger, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+           color:#25282A; background:#FAF8F4; margin:0; }
+    h1, h2 { font-family: "Dharma Gothic E", "Dharma Gothic", "Arial Narrow", Impact, sans-serif;
+             text-transform: uppercase; letter-spacing:.04em; color: var(--night); }
+    main { max-width: 1000px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
+    h1 { font-size:1.35rem; } h2 { font-size:1.05rem; margin-top:2.2rem; }
+    .meta { color:#777; font-size:.82rem; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(15.5em,1fr)); gap:.8em; margin-top:.9em; }
+    .card { border:1px solid var(--line); border-radius:8px; padding:.8em 1em; background:#fff; }
+    .card h3 { margin:0 0 .4em; font-size:.95rem; }
+    .card p { margin:.15em 0; font-size:.82rem; }
+    .big { font-size:1.25rem; font-weight:700; }
+    table { border-collapse:collapse; width:100%; margin-top:.9em; background:#fff; font-size:.85rem; }
+    th, td { border:1px solid var(--line); padding:.4em .6em; text-align:left; }
+    th { background:#D1CCBD; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; }
+    td.num { text-align:right; font-variant-numeric:tabular-nums; }
+    .pill { display:inline-block; padding:.1em .6em; border-radius:999px; font-size:.75rem; color:#fff; }
+    .pill.soldout { background:var(--night); } .pill.ok { background:var(--ok); } .pill.part { background:var(--warn); color:#25282A; }
+    .bar { height:.5em; background:rgba(0,0,0,.08); border-radius:999px; overflow:hidden; min-width:6em; }
+    .bar i { display:block; height:100%; background:var(--ok); }
+    .bar.hot i { background:var(--accent); }
+    .slotmap { display:flex; gap:2px; }
+    .slotmap b { flex:1; height:.9em; border-radius:2px; background:#8FC895; }
+    .slotmap b.x { background:var(--accent); }
+    .note { font-size:.8rem; color:#666; margin-top:.4em; }
+    .tablewrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media (max-width: 640px) {
+      .tablewrap, .tablewrap * { box-sizing: border-box; }
+      .tablewrap table, .tablewrap tbody, .tablewrap tr, .tablewrap td { display:block; width:auto; }
+      .tablewrap table { border:0; background:transparent; width:100%; }
+      .tablewrap tr:first-child { display:none; } /* header row */
+      .tablewrap th { display:none; }
+      .tablewrap tr { border:1px solid var(--line); border-radius:8px; background:#fff;
+                      margin:0 0 .6em; padding:.5em .8em .6em; overflow:hidden; }
+      .tablewrap td { border:0; padding:.16em 0; display:flex; align-items:center;
+                      justify-content:space-between; gap:1em; min-width:0; }
+      .tablewrap td[data-l]::before { content:attr(data-l); font-size:.68rem; text-transform:uppercase;
+                      letter-spacing:.04em; color:#8a8a8a; flex:0 0 auto; }
+      .tablewrap td[data-l="Day"], .tablewrap td[data-l="Date"] { display:block; text-align:left;
+                      font-weight:700; font-size:.95rem; padding:0 0 .35em;
+                      border-bottom:1px solid var(--line); margin-bottom:.35em; }
+      .tablewrap td[data-l="Day"]::before, .tablewrap td[data-l="Date"]::before { content:none; }
+      .tablewrap td:has(.bar) { display:block; padding:.3em 0; }
+      .tablewrap .bar { min-width:0; width:100%; }
+      .tablewrap td[data-l="Note"] { display:block; text-align:left; font-size:.8rem;
+                      color:#555; padding-top:.35em; }
+      .tablewrap td[data-l="Note"]::before { content:none; }
+      .tablewrap td:empty, .tablewrap td.mobilehide { display:none; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Sell-Out Monitor <span class="meta">— PREVIEW, not live</span></h1>
+  <p class="meta" id="stamp">Loading…</p>
+
+  <div class="cards" id="stats"></div>
+  <div id="breakdown"></div>
+
+  <h2>Today &amp; next 7 days</h2>
+  <div id="upcoming"></div>
+
+  <h2>Day-of-week behavior <span class="meta" id="lookback"></span></h2>
+  <div class="cards" id="dow"></div>
+  <p class="note">"Same-day tickets" = tickets sold on the visit day itself (walk-up + same-day online), measured
+     from the first data snapshot of the day. Builds up as the pipeline runs; blank until enough history exists.</p>
+
+  <h2>Recent days</h2>
+  <div id="recent"></div>
+
+  <h2>Year at a glance</h2>
+  <p class="note">(Year-at-a-glance calendar omitted from this preview — it loads its own data over the network.)</p>
+  
+
+<script>
+(async function () {
+  /* PREVIEW BUILD — data inlined so this renders from disk with no network.
+     Generated 2026-09-09T12:48:44.472125-06:00. Not the live page; do not commit. */
+  const avail = {"generatedAt": "2026-09-09T12:48:44.472125-06:00", "timezone": "America/Denver", "today": "2026-09-09", "ticketsUrl": "https://www.trlibrary.com/tickets", "days": [{"date": "2026-09-09", "dayLabel": "Today", "closed": false, "totalCapacity": 1875, "totalSold": 1687, "pctSold": 90, "soldOutSlots": 5, "firstAvailable": "12:30 PM", "status": "selling_fast", "selloutRisk": "high", "riskNote": "Very few tickets remain today \u2014 buy online before you drive.", "riskReason": "Very few tickets remain today", "slots": [{"time": "09:00", "label": "9:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "past"}, {"time": "09:30", "label": "9:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "past"}, {"time": "10:00", "label": "10:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "past"}, {"time": "10:30", "label": "10:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "past"}, {"time": "11:00", "label": "11:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "past"}, {"time": "11:30", "label": "11:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "past"}, {"time": "12:00", "label": "12:00 PM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "12:30", "label": "12:30 PM", "capacity": 50, "sold": 48, "remaining": 2, "status": "limited"}, {"time": "13:00", "label": "1:00 PM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "13:30", "label": "1:30 PM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "14:00", "label": "2:00 PM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "14:30", "label": "2:30 PM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "15:00", "label": "3:00 PM", "capacity": 200, "sold": 139, "remaining": 61, "status": "available"}, {"time": "15:30", "label": "3:30 PM", "capacity": 50, "sold": 19, "remaining": 31, "status": "available"}, {"time": "16:00", "label": "4:00 PM", "capacity": 125, "sold": 31, "remaining": 94, "status": "available"}]}, {"date": "2026-09-10", "dayLabel": "Tomorrow", "closed": false, "totalCapacity": 1851, "totalSold": 1551, "pctSold": 84, "soldOutSlots": 11, "firstAvailable": "2:00 PM", "status": "selling_fast", "selloutRisk": "high", "riskNote": "Recent Thursdays have sold 341+ tickets on the day itself \u2014 more than what's left. Reserve in advance.", "riskReason": "Recent Thursdays have sold 341+ tickets on the day itself \u2014 more than what's left", "slots": [{"time": "09:00", "label": "9:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "09:30", "label": "9:30 AM", "capacity": 51, "sold": 51, "remaining": 0, "status": "sold_out"}, {"time": "10:00", "label": "10:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "10:30", "label": "10:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "11:00", "label": "11:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "11:30", "label": "11:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "12:00", "label": "12:00 PM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "12:30", "label": "12:30 PM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "13:00", "label": "1:00 PM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "13:30", "label": "1:30 PM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "14:00", "label": "2:00 PM", "capacity": 145, "sold": 113, "remaining": 32, "status": "available"}, {"time": "14:30", "label": "2:30 PM", "capacity": 105, "sold": 105, "remaining": 0, "status": "sold_out"}, {"time": "15:00", "label": "3:00 PM", "capacity": 200, "sold": 55, "remaining": 145, "status": "available"}, {"time": "15:30", "label": "3:30 PM", "capacity": 50, "sold": 13, "remaining": 37, "status": "available"}, {"time": "16:00", "label": "4:00 PM", "capacity": 100, "sold": 14, "remaining": 86, "status": "available"}]}, {"date": "2026-09-11", "dayLabel": "Fri Sep 11", "closed": false, "totalCapacity": 1850, "totalSold": 1440, "pctSold": 78, "soldOutSlots": 4, "firstAvailable": "9:00 AM", "status": "selling_fast", "selloutRisk": "high", "riskNote": "Recent Fridays have sold 434+ tickets on the day itself \u2014 more than what's left. Reserve in advance.", "riskReason": "Recent Fridays have sold 434+ tickets on the day itself \u2014 more than what's left", "slots": [{"time": "09:00", "label": "9:00 AM", "capacity": 200, "sold": 199, "remaining": 1, "status": "limited"}, {"time": "09:30", "label": "9:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "10:00", "label": "10:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "10:30", "label": "10:30 AM", "capacity": 50, "sold": 49, "remaining": 1, "status": "limited"}, {"time": "11:00", "label": "11:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "11:30", "label": "11:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "12:00", "label": "12:00 PM", "capacity": 200, "sold": 136, "remaining": 64, "status": "available"}, {"time": "12:30", "label": "12:30 PM", "capacity": 50, "sold": 48, "remaining": 2, "status": "limited"}, {"time": "13:00", "label": "1:00 PM", "capacity": 200, "sold": 197, "remaining": 3, "status": "limited"}, {"time": "13:30", "label": "1:30 PM", "capacity": 50, "sold": 41, "remaining": 9, "status": "limited"}, {"time": "14:00", "label": "2:00 PM", "capacity": 200, "sold": 167, "remaining": 33, "status": "available"}, {"time": "14:30", "label": "2:30 PM", "capacity": 50, "sold": 34, "remaining": 16, "status": "available"}, {"time": "15:00", "label": "3:00 PM", "capacity": 200, "sold": 43, "remaining": 157, "status": "available"}, {"time": "15:30", "label": "3:30 PM", "capacity": 50, "sold": 16, "remaining": 34, "status": "available"}, {"time": "16:00", "label": "4:00 PM", "capacity": 100, "sold": 10, "remaining": 90, "status": "available"}]}, {"date": "2026-09-12", "dayLabel": "Sat Sep 12", "closed": false, "totalCapacity": 1850, "totalSold": 1438, "pctSold": 78, "soldOutSlots": 7, "firstAvailable": "12:00 PM", "status": "selling_fast", "selloutRisk": "high", "riskNote": "1 of the last 2 Saturdays sold out completely \u2014 reserve in advance.", "riskReason": "1 of the last 2 Saturdays sold out completely", "slots": [{"time": "09:00", "label": "9:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "09:30", "label": "9:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "10:00", "label": "10:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "10:30", "label": "10:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "11:00", "label": "11:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "11:30", "label": "11:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "12:00", "label": "12:00 PM", "capacity": 200, "sold": 125, "remaining": 75, "status": "available"}, {"time": "12:30", "label": "12:30 PM", "capacity": 50, "sold": 49, "remaining": 1, "status": "limited"}, {"time": "13:00", "label": "1:00 PM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "13:30", "label": "1:30 PM", "capacity": 50, "sold": 46, "remaining": 4, "status": "limited"}, {"time": "14:00", "label": "2:00 PM", "capacity": 200, "sold": 145, "remaining": 55, "status": "available"}, {"time": "14:30", "label": "2:30 PM", "capacity": 50, "sold": 44, "remaining": 6, "status": "limited"}, {"time": "15:00", "label": "3:00 PM", "capacity": 200, "sold": 51, "remaining": 149, "status": "available"}, {"time": "15:30", "label": "3:30 PM", "capacity": 50, "sold": 11, "remaining": 39, "status": "available"}, {"time": "16:00", "label": "4:00 PM", "capacity": 100, "sold": 17, "remaining": 83, "status": "available"}]}, {"date": "2026-09-13", "dayLabel": "Sun Sep 13", "closed": false, "totalCapacity": 1850, "totalSold": 934, "pctSold": 50, "soldOutSlots": 2, "firstAvailable": "9:00 AM", "status": "selling_fast", "selloutRisk": "high", "riskNote": "Sundays have been selling out \u2014 recently only 10:00 AM or later entry remained. Reserve in advance.", "riskReason": "Sundays have been selling out \u2014 recently only 10:00 AM or later entry remained", "slots": [{"time": "09:00", "label": "9:00 AM", "capacity": 200, "sold": 183, "remaining": 17, "status": "limited"}, {"time": "09:30", "label": "9:30 AM", "capacity": 50, "sold": 50, "remaining": 0, "status": "sold_out"}, {"time": "10:00", "label": "10:00 AM", "capacity": 200, "sold": 200, "remaining": 0, "status": "sold_out"}, {"time": "10:30", "label": "10:30 AM", "capacity": 50, "sold": 49, "remaining": 1, "status": "limited"}, {"time": "11:00", "label": "11:00 AM", "capacity": 200, "sold": 107, "remaining": 93, "status": "available"}, {"time": "11:30", "label": "11:30 AM", "capacity": 50, "sold": 24, "remaining": 26, "status": "available"}, {"time": "12:00", "label": "12:00 PM", "capacity": 200, "sold": 38, "remaining": 162, "status": "available"}, {"time": "12:30", "label": "12:30 PM", "capacity": 50, "sold": 11, "remaining": 39, "status": "available"}, {"time": "13:00", "label": "1:00 PM", "capacity": 200, "sold": 95, "remaining": 105, "status": "available"}, {"time": "13:30", "label": "1:30 PM", "capacity": 50, "sold": 23, "remaining": 27, "status": "available"}, {"time": "14:00", "label": "2:00 PM", "capacity": 200, "sold": 63, "remaining": 137, "status": "available"}, {"time": "14:30", "label": "2:30 PM", "capacity": 50, "sold": 6, "remaining": 44, "status": "available"}, {"time": "15:00", "label": "3:00 PM", "capacity": 200, "sold": 67, "remaining": 133, "status": "available"}, {"time": "15:30", "label": "3:30 PM", "capacity": 50, "sold": 5, "remaining": 45, "status": "available"}, {"time": "16:00", "label": "4:00 PM", "capacity": 100, "sold": 13, "remaining": 87, "status": "available"}]}, {"date": "2026-09-14", "dayLabel": "Mon Sep 14", "closed": true, "slots": [], "closedReason": "Closed Mondays (Fall hours)", "status": "closed", "selloutRisk": "none", "riskNote": "Closed \u2014 Closed Mondays (Fall hours)", "totalCapacity": 0, "totalSold": 0, "pctSold": 0, "soldOutSlots": 0, "firstAvailable": null}, {"date": "2026-09-15", "dayLabel": "Tue Sep 15", "closed": false, "totalCapacity": 1144, "totalSold": 933, "pctSold": 82, "soldOutSlots": 5, "firstAvailable": "12:30 PM", "status": "selling_fast", "selloutRisk": "high", "riskNote": "Recent Tuesdays have sold 365+ tickets on the day itself \u2014 more than what's left. Reserve in advance.", "riskReason": "Recent Tuesdays have sold 365+ tickets on the day itself \u2014 more than what's left", "slots": [{"time": "10:00", "label": "10:00 AM", "capacity": 227, "sold": 227, "remaining": 0, "status": "sold_out"}, {"time": "10:30", "label": "10:30 AM", "capacity": 25, "sold": 25, "remaining": 0, "status": "sold_out"}, {"time": "11:00", "label": "11:00 AM", "capacity": 134, "sold": 134, "remaining": 0, "status": "sold_out"}, {"time": "11:30", "label": "11:30 AM", "capacity": 116, "sold": 116, "remaining": 0, "status": "sold_out"}, {"time": "12:00", "label": "12:00 PM", "capacity": 125, "sold": 125, "remaining": 0, "status": "sold_out"}, {"time": "12:30", "label": "12:30 PM", "capacity": 125, "sold": 72, "remaining": 53, "status": "available"}, {"time": "13:00", "label": "1:00 PM", "capacity": 142, "sold": 141, "remaining": 1, "status": "limited"}, {"time": "13:30", "label": "1:30 PM", "capacity": 125, "sold": 34, "remaining": 91, "status": "available"}, {"time": "14:00", "label": "2:00 PM", "capacity": 125, "sold": 59, "remaining": 66, "status": "available"}]}, {"date": "2026-09-16", "dayLabel": "Wed Sep 16", "closed": false, "totalCapacity": 1168, "totalSold": 633, "pctSold": 54, "soldOutSlots": 3, "firstAvailable": "11:30 AM", "status": "selling_fast", "selloutRisk": "high", "riskNote": "Expected to sell out \u2014 reserve in advance.", "riskReason": "Expected to sell out", "slots": [{"time": "10:00", "label": "10:00 AM", "capacity": 239, "sold": 239, "remaining": 0, "status": "sold_out"}, {"time": "10:30", "label": "10:30 AM", "capacity": 54, "sold": 54, "remaining": 0, "status": "sold_out"}, {"time": "11:00", "label": "11:00 AM", "capacity": 125, "sold": 125, "remaining": 0, "status": "sold_out"}, {"time": "11:30", "label": "11:30 AM", "capacity": 125, "sold": 78, "remaining": 47, "status": "available"}, {"time": "12:00", "label": "12:00 PM", "capacity": 125, "sold": 26, "remaining": 99, "status": "available"}, {"time": "12:30", "label": "12:30 PM", "capacity": 125, "sold": 12, "remaining": 113, "status": "available"}, {"time": "13:00", "label": "1:00 PM", "capacity": 125, "sold": 38, "remaining": 87, "status": "available"}, {"time": "13:30", "label": "1:30 PM", "capacity": 125, "sold": 25, "remaining": 100, "status": "available"}, {"time": "14:00", "label": "2:00 PM", "capacity": 125, "sold": 36, "remaining": 89, "status": "available"}]}]};
+  const analytics = {"generatedAt": "2026-09-09T12:48:44.472078-06:00", "lookbackDays": 15, "windowEnd": "2026-09-09", "recentDays": [{"date": "2026-08-25", "dow": "Tuesday", "pctSold": 88, "fullySoldOut": false, "soldOutSlots": 8, "slotCount": 15, "dayOfTickets": 302}, {"date": "2026-08-26", "dow": "Wednesday", "pctSold": 84, "fullySoldOut": false, "soldOutSlots": 8, "slotCount": 15, "dayOfTickets": 359}, {"date": "2026-08-27", "dow": "Thursday", "pctSold": 81, "fullySoldOut": false, "soldOutSlots": 7, "slotCount": 15, "dayOfTickets": 374}, {"date": "2026-08-28", "dow": "Friday", "pctSold": 92, "fullySoldOut": false, "soldOutSlots": 6, "slotCount": 15, "dayOfTickets": 411}, {"date": "2026-08-29", "dow": "Saturday", "pctSold": 99, "fullySoldOut": false, "soldOutSlots": 11, "slotCount": 15, "dayOfTickets": -13}, {"date": "2026-08-30", "dow": "Sunday", "pctSold": 99, "fullySoldOut": false, "soldOutSlots": 10, "slotCount": 15, "dayOfTickets": 291}, {"date": "2026-08-31", "dow": "Monday", "pctSold": 78, "fullySoldOut": false, "soldOutSlots": 4, "slotCount": 15, "dayOfTickets": 346}, {"date": "2026-09-01", "dow": "Tuesday", "pctSold": 82, "fullySoldOut": false, "soldOutSlots": 7, "slotCount": 15, "dayOfTickets": 365}, {"date": "2026-09-02", "dow": "Wednesday", "pctSold": 86, "fullySoldOut": false, "soldOutSlots": 9, "slotCount": 15, "dayOfTickets": 293}, {"date": "2026-09-03", "dow": "Thursday", "pctSold": 81, "fullySoldOut": false, "soldOutSlots": 7, "slotCount": 15, "dayOfTickets": 308}, {"date": "2026-09-04", "dow": "Friday", "pctSold": 91, "fullySoldOut": false, "soldOutSlots": 8, "slotCount": 15, "dayOfTickets": 456}, {"date": "2026-09-05", "dow": "Saturday", "pctSold": 100, "fullySoldOut": true, "soldOutSlots": 15, "slotCount": 15, "dayOfTickets": 0}, {"date": "2026-09-06", "dow": "Sunday", "pctSold": 99, "fullySoldOut": false, "soldOutSlots": 12, "slotCount": 15, "dayOfTickets": -11}, {"date": "2026-09-07", "dow": "Monday", "pctSold": 100, "fullySoldOut": false, "soldOutSlots": 12, "slotCount": 15, "dayOfTickets": 95}, {"date": "2026-09-08", "dow": "Tuesday", "pctSold": 92, "fullySoldOut": false, "soldOutSlots": 12, "slotCount": 15, "dayOfTickets": 441}], "byDayOfWeek": {"Tuesday": {"daysObserved": 3, "medianFinalPctSold": 88, "fullSelloutRate": 0.0, "fullSelloutCount": 0, "medianDayOfTickets": 365, "slotSelloutRate": {"09:00": 1.0, "09:30": 1.0, "10:00": 0.67, "10:30": 0.67, "11:00": 1.0, "11:30": 1.0, "12:00": 0.33, "12:30": 1.0, "13:00": 0.33, "13:30": 0.67, "14:00": 0.67, "14:30": 0.33, "15:00": 0.0, "15:30": 0.33, "16:00": 0.0}, "typicalFirstAvailableAtEndOfDay": "12:00 PM", "observedFullSelloutClockTimes": null}, "Wednesday": {"daysObserved": 2, "medianFinalPctSold": 85, "fullSelloutRate": 0.0, "fullSelloutCount": 0, "medianDayOfTickets": 326, "slotSelloutRate": {"09:00": 1.0, "09:30": 1.0, "10:00": 0.5, "10:30": 1.0, "11:00": 1.0, "11:30": 0.5, "12:00": 0.5, "12:30": 1.0, "13:00": 1.0, "13:30": 1.0, "14:00": 0.0, "14:30": 0.0, "15:00": 0.0, "15:30": 0.0, "16:00": 0.0}, "typicalFirstAvailableAtEndOfDay": "12:00 PM", "observedFullSelloutClockTimes": null}, "Thursday": {"daysObserved": 2, "medianFinalPctSold": 81, "fullSelloutRate": 0.0, "fullSelloutCount": 0, "medianDayOfTickets": 341, "slotSelloutRate": {"09:00": 0.5, "09:30": 1.0, "10:00": 0.5, "10:30": 1.0, "11:00": 0.5, "11:30": 0.5, "12:00": 0.5, "12:30": 1.0, "13:00": 0.5, "13:30": 0.5, "14:00": 0.0, "14:30": 0.5, "15:00": 0.0, "15:30": 0.0, "16:00": 0.0}, "typicalFirstAvailableAtEndOfDay": "10:00 AM", "observedFullSelloutClockTimes": null}, "Friday": {"daysObserved": 2, "medianFinalPctSold": 92, "fullSelloutRate": 0.0, "fullSelloutCount": 0, "medianDayOfTickets": 434, "slotSelloutRate": {"09:00": 0.5, "09:30": 0.5, "10:00": 1.0, "10:30": 1.0, "11:00": 0.5, "11:30": 1.0, "12:00": 0.0, "12:30": 0.5, "13:00": 0.0, "13:30": 0.5, "14:00": 0.5, "14:30": 1.0, "15:00": 0.0, "15:30": 0.0, "16:00": 0.0}, "typicalFirstAvailableAtEndOfDay": "9:30 AM", "observedFullSelloutClockTimes": null}, "Saturday": {"daysObserved": 2, "medianFinalPctSold": 100, "fullSelloutRate": 0.5, "fullSelloutCount": 1, "medianDayOfTickets": -6, "slotSelloutRate": {"09:00": 1.0, "09:30": 1.0, "10:00": 0.5, "10:30": 1.0, "11:00": 1.0, "11:30": 1.0, "12:00": 1.0, "12:30": 1.0, "13:00": 0.5, "13:30": 1.0, "14:00": 1.0, "14:30": 1.0, "15:00": 0.5, "15:30": 1.0, "16:00": 0.5}, "typicalFirstAvailableAtEndOfDay": "10:00 AM", "observedFullSelloutClockTimes": ["23:48"]}, "Sunday": {"daysObserved": 2, "medianFinalPctSold": 99, "fullSelloutRate": 0.0, "fullSelloutCount": 0, "medianDayOfTickets": 140, "slotSelloutRate": {"09:00": 1.0, "09:30": 0.5, "10:00": 0.5, "10:30": 0.5, "11:00": 0.5, "11:30": 1.0, "12:00": 0.5, "12:30": 1.0, "13:00": 0.5, "13:30": 1.0, "14:00": 0.5, "14:30": 1.0, "15:00": 0.5, "15:30": 1.0, "16:00": 1.0}, "typicalFirstAvailableAtEndOfDay": "10:00 AM", "observedFullSelloutClockTimes": null}, "Monday": {"daysObserved": 2, "medianFinalPctSold": 89, "fullSelloutRate": 0.0, "fullSelloutCount": 0, "medianDayOfTickets": 220, "slotSelloutRate": {"09:00": 1.0, "09:30": 1.0, "10:00": 0.5, "10:30": 1.0, "11:00": 0.5, "11:30": 1.0, "12:00": 0.5, "12:30": 0.5, "13:00": 0.0, "13:30": 0.5, "14:00": 0.5, "14:30": 0.5, "15:00": 0.0, "15:30": 0.5, "16:00": 0.0}, "typicalFirstAvailableAtEndOfDay": "1:00 PM", "observedFullSelloutClockTimes": null}}, "monthOutlook": {"heading": "What to Expect in September", "text": "September has been busy: over the last 15 days, daily ticket sales reached a median 91% of capacity, and 1 day sold out completely. Mornings go first \u2014 morning entry times sold out on 15 of those days, often leaving 10:00 AM or later as the earliest way in. The week ahead looks similar: 6 of the next 6 open days are likely to sell out. Reserving tickets online before arriving is strongly recommended, especially for mornings and weekends.", "updatedAt": "2026-09-09T12:48:44.473737-06:00"}};
+  const stats = {"generatedAt": "2026-09-09T12:48:38.475312-06:00", "year": "2026", "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.", "salesEventNames": ["General Admission", "Flex Tickets", "Walk-Up"], "salesGeneratedAt": "2026-09-09T12:48:38.475312-06:00", "salesStale": false, "sales": {"total": {"sold": 142255, "arrivedToDate": 125172, "futureArrivals": 17083, "checkedIn": 106077, "checkedInToDate": 106004}, "today": {"sold": 1834, "checkedIn": 961}, "byEventName": {"General Admission": {"sold": 136242, "arrivedToDate": 119662, "futureArrivals": 16580, "checkedIn": 102636, "checkedInToDate": 102565}, "Flex Tickets": {"sold": 3130, "arrivedToDate": 3048, "futureArrivals": 82, "checkedIn": 1195, "checkedInToDate": 1195}, "Walk-Up": {"sold": 2883, "arrivedToDate": 2462, "futureArrivals": 421, "checkedIn": 2246, "checkedInToDate": 2244}}, "byDate": {"2026-07-04": {"sold": 2180, "checkedIn": 1488}, "2026-07-05": {"sold": 2153, "checkedIn": 1697}, "2026-07-06": {"sold": 1666, "checkedIn": 1171}, "2026-07-07": {"sold": 1452, "checkedIn": 1285}, "2026-07-08": {"sold": 1982, "checkedIn": 1540}, "2026-07-09": {"sold": 1514, "checkedIn": 1389}, "2026-07-10": {"sold": 1861, "checkedIn": 1524}, "2026-07-11": {"sold": 1832, "checkedIn": 1757}, "2026-07-12": {"sold": 1856, "checkedIn": 1673}, "2026-07-13": {"sold": 1375, "checkedIn": 1222}, "2026-07-14": {"sold": 1645, "checkedIn": 1178}, "2026-07-15": {"sold": 1514, "checkedIn": 1393}, "2026-07-16": {"sold": 1818, "checkedIn": 1516}, "2026-07-17": {"sold": 2194, "checkedIn": 1710}, "2026-07-18": {"sold": 2547, "checkedIn": 1737}, "2026-07-19": {"sold": 1857, "checkedIn": 1718}, "2026-07-20": {"sold": 1683, "checkedIn": 1601}, "2026-07-21": {"sold": 1656, "checkedIn": 1561}, "2026-07-22": {"sold": 1902, "checkedIn": 1657}, "2026-07-23": {"sold": 1814, "checkedIn": 1585}, "2026-07-24": {"sold": 1540, "checkedIn": 1401}, "2026-07-25": {"sold": 1582, "checkedIn": 1324}, "2026-07-26": {"sold": 1725, "checkedIn": 1654}, "2026-07-27": {"sold": 1512, "checkedIn": 1428}, "2026-07-28": {"sold": 2277, "checkedIn": 1421}, "2026-07-29": {"sold": 1769, "checkedIn": 1574}, "2026-07-30": {"sold": 1791, "checkedIn": 1294}, "2026-07-31": {"sold": 1830, "checkedIn": 1736}, "2026-08-01": {"sold": 1858, "checkedIn": 1689}, "2026-08-02": {"sold": 1843, "checkedIn": 1711}, "2026-08-03": {"sold": 1795, "checkedIn": 1581}, "2026-08-04": {"sold": 1895, "checkedIn": 1664}, "2026-08-05": {"sold": 1977, "checkedIn": 1601}, "2026-08-06": {"sold": 1917, "checkedIn": 1615}, "2026-08-07": {"sold": 1981, "checkedIn": 1731}, "2026-08-08": {"sold": 1875, "checkedIn": 1743}, "2026-08-09": {"sold": 1887, "checkedIn": 1751}, "2026-08-10": {"sold": 2020, "checkedIn": 1721}, "2026-08-11": {"sold": 1937, "checkedIn": 1646}, "2026-08-12": {"sold": 1982, "checkedIn": 1625}, "2026-08-13": {"sold": 2186, "checkedIn": 1567}, "2026-08-14": {"sold": 1936, "checkedIn": 1698}, "2026-08-15": {"sold": 1970, "checkedIn": 1678}, "2026-08-16": {"sold": 2228, "checkedIn": 1729}, "2026-08-17": {"sold": 1744, "checkedIn": 1584}, "2026-08-18": {"sold": 1777, "checkedIn": 1536}, "2026-08-19": {"sold": 1851, "checkedIn": 1697}, "2026-08-20": {"sold": 1810, "checkedIn": 1433}, "2026-08-21": {"sold": 1742, "checkedIn": 1643}, "2026-08-22": {"sold": 1949, "checkedIn": 1678}, "2026-08-23": {"sold": 1932, "checkedIn": 1685}, "2026-08-24": {"sold": 1395, "checkedIn": 1304}, "2026-08-25": {"sold": 1743, "checkedIn": 1450}, "2026-08-26": {"sold": 1789, "checkedIn": 1463}, "2026-08-27": {"sold": 1701, "checkedIn": 1411}, "2026-08-28": {"sold": 1790, "checkedIn": 1563}, "2026-08-29": {"sold": 1928, "checkedIn": 1723}, "2026-08-30": {"sold": 2090, "checkedIn": 1687}, "2026-08-31": {"sold": 1515, "checkedIn": 1432}, "2026-09-01": {"sold": 1723, "checkedIn": 1395}, "2026-09-02": {"sold": 1685, "checkedIn": 1442}, "2026-09-03": {"sold": 1809, "checkedIn": 1348}, "2026-09-04": {"sold": 1787, "checkedIn": 1632}, "2026-09-05": {"sold": 2044, "checkedIn": 1761}, "2026-09-06": {"sold": 1958, "checkedIn": 1759}, "2026-09-07": {"sold": 1990, "checkedIn": 1753}, "2026-09-08": {"sold": 1772, "checkedIn": 1680}, "2026-09-09": {"sold": 1834, "checkedIn": 961}, "2026-09-10": {"sold": 1690, "checkedIn": 4}, "2026-09-11": {"sold": 1530, "checkedIn": 0}, "2026-09-12": {"sold": 1642, "checkedIn": 11}, "2026-09-13": {"sold": 1003, "checkedIn": 2}, "2026-09-14": {"sold": 65, "checkedIn": 0}, "2026-09-15": {"sold": 1091, "checkedIn": 2}, "2026-09-16": {"sold": 674, "checkedIn": 2}, "2026-09-17": {"sold": 815, "checkedIn": 44}, "2026-09-18": {"sold": 535, "checkedIn": 0}, "2026-09-19": {"sold": 498, "checkedIn": 0}, "2026-09-20": {"sold": 389, "checkedIn": 0}, "2026-09-22": {"sold": 998, "checkedIn": 0}, "2026-09-23": {"sold": 325, "checkedIn": 0}, "2026-09-24": {"sold": 424, "checkedIn": 4}, "2026-09-25": {"sold": 317, "checkedIn": 0}, "2026-09-26": {"sold": 286, "checkedIn": 0}, "2026-09-27": {"sold": 465, "checkedIn": 0}, "2026-09-29": {"sold": 332, "checkedIn": 0}, "2026-09-30": {"sold": 254, "checkedIn": 0}, "2026-10-01": {"sold": 112, "checkedIn": 0}, "2026-10-02": {"sold": 213, "checkedIn": 0}, "2026-10-03": {"sold": 147, "checkedIn": 0}, "2026-10-04": {"sold": 170, "checkedIn": 0}, "2026-10-06": {"sold": 207, "checkedIn": 0}, "2026-10-07": {"sold": 247, "checkedIn": 0}, "2026-10-08": {"sold": 340, "checkedIn": 2}, "2026-10-09": {"sold": 453, "checkedIn": 0}, "2026-10-10": {"sold": 375, "checkedIn": 0}, "2026-10-11": {"sold": 127, "checkedIn": 0}, "2026-10-13": {"sold": 148, "checkedIn": 0}, "2026-10-14": {"sold": 122, "checkedIn": 0}, "2026-10-15": {"sold": 217, "checkedIn": 0}, "2026-10-16": {"sold": 161, "checkedIn": 0}, "2026-10-17": {"sold": 70, "checkedIn": 0}, "2026-10-18": {"sold": 32, "checkedIn": 0}, "2026-10-20": {"sold": 56, "checkedIn": 0}, "2026-10-21": {"sold": 51, "checkedIn": 0}, "2026-10-22": {"sold": 133, "checkedIn": 0}, "2026-10-23": {"sold": 24, "checkedIn": 0}, "2026-10-24": {"sold": 23, "checkedIn": 0}, "2026-10-25": {"sold": 10, "checkedIn": 0}, "2026-10-27": {"sold": 15, "checkedIn": 0}, "2026-10-28": {"sold": 2, "checkedIn": 0}, "2026-10-29": {"sold": 5, "checkedIn": 0}, "2026-10-30": {"sold": 5, "checkedIn": 0}, "2026-10-31": {"sold": 6, "checkedIn": 0}, "2026-11-01": {"sold": 8, "checkedIn": 0}, "2026-11-03": {"sold": 9, "checkedIn": 0}, "2026-11-04": {"sold": 3, "checkedIn": 0}, "2026-11-05": {"sold": 4, "checkedIn": 0}, "2026-11-07": {"sold": 6, "checkedIn": 0}, "2026-11-08": {"sold": 3, "checkedIn": 0}, "2026-11-10": {"sold": 4, "checkedIn": 0}, "2026-11-11": {"sold": 1, "checkedIn": 0}, "2026-11-12": {"sold": 2, "checkedIn": 0}, "2026-11-14": {"sold": 6, "checkedIn": 0}, "2026-11-20": {"sold": 2, "checkedIn": 0}, "2026-11-21": {"sold": 7, "checkedIn": 0}, "2026-11-22": {"sold": 6, "checkedIn": 0}, "2026-11-24": {"sold": 2, "checkedIn": 0}, "2026-11-25": {"sold": 2, "checkedIn": 0}, "2026-11-27": {"sold": 7, "checkedIn": 0}, "2026-11-28": {"sold": 4, "checkedIn": 0}, "2026-12-04": {"sold": 46, "checkedIn": 0}, "2026-12-05": {"sold": 2, "checkedIn": 0}, "2026-12-06": {"sold": 2, "checkedIn": 0}, "2026-12-09": {"sold": 4, "checkedIn": 0}, "2026-12-10": {"sold": 3, "checkedIn": 0}, "2026-12-16": {"sold": 105, "checkedIn": 0}, "2026-12-17": {"sold": 9, "checkedIn": 0}, "2026-12-19": {"sold": 2, "checkedIn": 0}, "2026-12-23": {"sold": 3, "checkedIn": 0}, "2026-12-24": {"sold": 2, "checkedIn": 2}, "2026-12-26": {"sold": 5, "checkedIn": 0}, "2026-12-27": {"sold": 15, "checkedIn": 0}, "2026-12-31": {"sold": 5, "checkedIn": 0}}}, "inventory": {"ytdSoldCompletedDays": 110059, "todaySold": 1687, "ytdSoldIncludingToday": 111746, "outstandingFutureSold": 16040, "todayFutureSlotsSold": 937, "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."}, "sellThrough": {"capacity": 122402, "sold": 110059, "pct": 90, "days": 67, "firstDay": "2026-07-04", "lastDay": "2026-09-08", "note": "Seats sold / seats offered, completed days only, from the Events report. Capacity utilisation, not a ticket count."}};
+
+  const n = (x) => (x ?? 0).toLocaleString("en-US");
+  const md = (iso) => iso
+    ? new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" })
+    : "";
+
+  /* Season sell-through. Capacity utilisation from the Events report — seats
+     sold over seats offered on days that have already happened. Kept visually
+     distinct from the ticket counts beside it, which come from the sales
+     report and are a different (higher) kind of number. */
+  function sellThroughCard(st) {
+    if (!st || !st.capacity) return "";
+    const hot = st.pct >= 85;
+    return `<div class="card"><h3>Sell-through to date</h3>` +
+      `<p><span class="big">${st.pct}%</span> of seats offered</p>` +
+      `<div class="bar${hot ? " hot" : ""}"><i style="width:${Math.min(100, st.pct)}%"></i></div>` +
+      `<p class="meta" style="margin-top:.5em">${n(st.sold)} sold of ${n(st.capacity)} across ` +
+      `${st.days} open days, ${md(st.firstDay)}–${md(st.lastDay)}. Capacity used, not a ticket ` +
+      `count — see the note below.</p></div>`;
+  }
+
+  if (stats && stats.sales) {
+    const s = stats.sales.total, today = stats.sales.today || {};
+    const pct = s.arrivedToDate ? Math.round(100 * s.checkedInToDate / s.arrivedToDate) : 0;
+    const stale = stats.salesStale
+      ? `<p class="meta" style="color:#B4472E">⚠ ACME sales report unavailable on the last run — figures as of ${
+           (stats.salesGeneratedAt || "").slice(0, 16).replace("T", " ")}.</p>` : "";
+
+    document.getElementById("stats").innerHTML =
+      `<div class="card"><h3>${stats.year} tickets sold</h3>` +
+      `<p><span class="big">${n(s.sold)}</span></p>` +
+      `<p class="meta">All ${stats.year} arrival dates, including advance sales.</p>${stale}</div>` +
+
+      `<div class="card"><h3>Sold, arrival date through today</h3>` +
+      `<p><span class="big">${n(s.arrivedToDate)}</span></p>` +
+      `<p class="meta">Tickets whose visit date has now passed — ${n(today.sold)} of them today.</p></div>` +
+
+      `<div class="card"><h3>Checked in</h3>` +
+      `<p><span class="big">${n(s.checkedInToDate)}</span></p>` +
+      `<p class="meta">Actual scans — ${pct}% of tickets whose date has arrived. ` +
+      `This is the defensible attendance number.</p></div>` +
+
+      `<div class="card"><h3>Upcoming arrivals</h3>` +
+      `<p><span class="big">${n(s.futureArrivals)}</span></p>` +
+      `<p class="meta">Sold for dates still ahead.</p></div>` +
+
+      sellThroughCard(stats.sellThrough);
+
+    /* Per-event breakdown */
+    const rows = Object.entries(stats.sales.byEventName || {}).map(([name, r]) => {
+      const rp = r.arrivedToDate ? Math.round(100 * r.checkedInToDate / r.arrivedToDate) : 0;
+      return `<tr><td data-l="Event">${name}</td>` +
+        `<td class="num" data-l="Sold">${n(r.sold)}</td>` +
+        `<td class="num" data-l="Through today">${n(r.arrivedToDate)}</td>` +
+        `<td class="num" data-l="Upcoming">${n(r.futureArrivals)}</td>` +
+        `<td class="num" data-l="Checked in">${n(r.checkedInToDate)}</td>` +
+        `<td class="num" data-l="Redeemed">${rp}%</td></tr>`;
+    });
+    document.getElementById("breakdown").innerHTML =
+      '<div class="tablewrap"><table><tr><th>Event</th><th>Sold</th><th>Through today</th>' +
+      "<th>Upcoming</th><th>Checked in</th><th>Redeemed</th></tr>" + rows.join("") + "</table></div>" +
+      `<p class="note">Ticket counts above and in this table come from ACME <em>TicketAnalytics</em> — ` +
+      `TicketQuantity and CheckedInCount, matching the "PE: GA Tickets Checked In" report. ` +
+      `<strong>Sell-through is a different measurement:</strong> it divides seats sold by seats offered ` +
+      `using the separate <em>Events</em> report, counts General Admission only, and stops at 100% on days ` +
+      `that sold past capacity — so it runs below the true ticket count by roughly 7%. Read it as "how full ` +
+      `did we run," not as tickets sold. Availability and sell-out risk below come from that same report.</p>`;
+  } else if (stats) {
+    document.getElementById("stats").innerHTML =
+      `<div class="card"><h3>Sales figures unavailable</h3>` +
+      `<p class="meta">The ACME sales report has not returned yet. Availability below is current.</p></div>`;
+  }
+
+  const mins = Math.round((Date.now() - Date.parse(avail.generatedAt)) / 60000);
+  document.getElementById("stamp").textContent =
+    "Data generated " + (mins <= 1 ? "just now" : mins + " min ago") + " (" + avail.generatedAt + ")";
+
+  /* Upcoming days table */
+  const up = ['<div class="tablewrap"><table><tr><th>Day</th><th>% sold</th><th></th><th>Sold-out slots</th>',
+              "<th>First available</th><th>Risk</th><th>Note</th></tr>"];
+  for (const d of avail.days) {
+    if (d.closed) { up.push(`<tr><td data-l="Day">${d.dayLabel} <span class="meta">${d.date.slice(5)}</span></td>` +
+      `<td data-l="Status" colspan=6>Closed${d.closedReason ? " — " + d.closedReason : ""}</td></tr>`); continue; }
+    const hot = d.selloutRisk === "high" || d.selloutRisk === "sold_out";
+    up.push(`<tr><td data-l="Day">${d.dayLabel} <span class="meta">${d.date.slice(5)}</span></td>` +
+      `<td class="num" data-l="% sold">${d.pctSold}%</td>` +
+      `<td><div class="bar${hot ? " hot" : ""}"><i style="width:${Math.min(100, d.pctSold)}%"></i></div></td>` +
+      `<td class="num" data-l="Sold-out slots">${d.soldOutSlots}/${d.slots.length}</td>` +
+      `<td data-l="First available">${d.firstAvailable || "—"}</td>` +
+      `<td data-l="Risk"><span class="pill ${d.selloutRisk === "sold_out" ? "soldout" : hot ? "soldout" : d.selloutRisk === "medium" ? "part" : "ok"}">${d.selloutRisk}</span></td>` +
+      `<td data-l="Note">${d.riskNote || ""}</td></tr>`);
+  }
+  up.push("</table></div>");
+  document.getElementById("upcoming").innerHTML = up.join("");
+
+  if (!analytics) return;
+  document.getElementById("lookback").textContent = "— last " + analytics.lookbackDays + " days";
+
+  /* Day-of-week cards */
+  const order = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+  const cards = [];
+  for (const dow of order) {
+    const a = analytics.byDayOfWeek[dow];
+    if (!a) continue;
+    const slots = Object.entries(a.slotSelloutRate || {});
+    const map = slots.map(([t, r]) =>
+      `<b class="${r >= 0.5 ? "x" : ""}" title="${t}: sold out ${Math.round(r * 100)}% of days"></b>`).join("");
+    cards.push(`<div class="card"><h3>${dow} <span class="meta">n=${a.daysObserved}</span></h3>` +
+      `<p><span class="big">${a.medianFinalPctSold ?? "–"}%</span> median final sell-through</p>` +
+      `<p>Fully sold out: <strong>${a.fullSelloutCount}/${a.daysObserved}</strong> days</p>` +
+      `<p>Same-day tickets (median): <strong>${a.medianDayOfTickets ?? "collecting…"}</strong></p>` +
+      `<p>End-of-day first opening: <strong>${a.typicalFirstAvailableAtEndOfDay ?? "–"}</strong></p>` +
+      `<div class="slotmap" title="Per-slot sell-out frequency (orange = sold out ≥50% of ${dow}s)">${map}</div>` +
+      `<p class="meta">${slots.length ? slots[0][0] + " → " + slots[slots.length-1][0] : ""}</p></div>`);
+  }
+  document.getElementById("dow").innerHTML = cards.join("") || "<p class='note'>No archived days yet.</p>";
+
+  /* Recent days table */
+  const rec = ['<div class="tablewrap"><table><tr><th>Date</th><th>Day</th><th>% sold</th><th>Sold-out slots</th>',
+               "<th>Same-day tickets</th><th>Outcome</th></tr>"];
+  for (const r of (analytics.recentDays || []).slice().reverse()) {
+    rec.push(`<tr><td data-l="Date">${r.date} <span class="meta">${r.dow}</span></td>` +
+      `<td data-l="Day" class="mobilehide">${r.dow}</td>` +
+      `<td class="num" data-l="% sold">${r.pctSold}%</td>` +
+      `<td class="num" data-l="Sold-out slots">${r.soldOutSlots}/${r.slotCount}</td>` +
+      `<td class="num" data-l="Same-day tickets">${r.dayOfTickets ?? "—"}</td>` +
+      `<td data-l="Outcome">${r.fullySoldOut ? '<span class="pill soldout">sold out</span>'
+             : r.soldOutSlots > 0 ? '<span class="pill part">partial</span>'
+             : '<span class="pill ok">open all day</span>'}</td></tr>`);
+  }
+  rec.push("</table></div>");
+  document.getElementById("recent").innerHTML = rec.join("");
+})();
+</script>
+</main>
+</body>
+</html>
