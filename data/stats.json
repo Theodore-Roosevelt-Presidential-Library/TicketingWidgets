@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-10T13:36:14.840160-06:00",
+ "generatedAt": "2026-09-10T13:48:51.547456-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-10T13:36:14.840160-06:00",
+ "salesGeneratedAt": "2026-09-10T13:48:51.547456-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 143860,
+   "sold": 143872,
    "arrivedToDate": 127316,
-   "futureArrivals": 16544,
-   "checkedIn": 107867,
-   "checkedInToDate": 107787
+   "futureArrivals": 16556,
+   "checkedIn": 107917,
+   "checkedInToDate": 107837
   },
   "today": {
    "sold": 2011,
-   "checkedIn": 1077
+   "checkedIn": 1127
   },
   "byEventName": {
    "General Admission": {
-    "sold": 137840,
+    "sold": 137852,
     "arrivedToDate": 121797,
-    "futureArrivals": 16043,
-    "checkedIn": 104415,
-    "checkedInToDate": 104337
+    "futureArrivals": 16055,
+    "checkedIn": 104465,
+    "checkedInToDate": 104387
    },
    "Flex Tickets": {
     "sold": 3130,
@@ -319,14 +319,14 @@
    },
    "2026-09-10": {
     "sold": 2011,
-    "checkedIn": 1077
+    "checkedIn": 1127
    },
    "2026-09-11": {
-    "sold": 1762,
+    "sold": 1770,
     "checkedIn": 5
    },
    "2026-09-12": {
-    "sold": 1843,
+    "sold": 1845,
     "checkedIn": 11
    },
    "2026-09-13": {
@@ -422,7 +422,7 @@
     "checkedIn": 2
    },
    "2026-10-09": {
-    "sold": 461,
+    "sold": 463,
     "checkedIn": 0
    },
    "2026-10-10": {
@@ -631,7 +631,7 @@
   "ytdSoldCompletedDays": 111854,
   "todaySold": 1850,
   "ytdSoldIncludingToday": 113704,
-  "outstandingFutureSold": 15370,
+  "outstandingFutureSold": 15384,
   "todayFutureSlotsSold": 850,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
