@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-10T05:49:07.879891-06:00",
+ "generatedAt": "2026-09-10T06:20:45.773758-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,25 +7,25 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-10T05:49:07.879891-06:00",
+ "salesGeneratedAt": "2026-09-10T06:20:45.773758-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 143063,
-   "arrivedToDate": 127147,
-   "futureArrivals": 15916,
+   "sold": 143075,
+   "arrivedToDate": 127149,
+   "futureArrivals": 15926,
    "checkedIn": 106791,
    "checkedInToDate": 106716
   },
   "today": {
-   "sold": 1842,
+   "sold": 1844,
    "checkedIn": 8
   },
   "byEventName": {
    "General Admission": {
-    "sold": 137048,
-    "arrivedToDate": 121633,
-    "futureArrivals": 15415,
+    "sold": 137060,
+    "arrivedToDate": 121635,
+    "futureArrivals": 15425,
     "checkedIn": 103344,
     "checkedInToDate": 103271
    },
@@ -318,7 +318,7 @@
     "checkedIn": 1663
    },
    "2026-09-10": {
-    "sold": 1842,
+    "sold": 1844,
     "checkedIn": 8
    },
    "2026-09-11": {
@@ -326,11 +326,11 @@
     "checkedIn": 0
    },
    "2026-09-12": {
-    "sold": 1736,
+    "sold": 1739,
     "checkedIn": 11
    },
    "2026-09-13": {
-    "sold": 1041,
+    "sold": 1043,
     "checkedIn": 2
    },
    "2026-09-14": {
@@ -350,7 +350,7 @@
     "checkedIn": 44
    },
    "2026-09-18": {
-    "sold": 562,
+    "sold": 567,
     "checkedIn": 0
    },
    "2026-09-19": {
@@ -625,10 +625,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 111854,
-  "todaySold": 1697,
-  "ytdSoldIncludingToday": 113551,
-  "outstandingFutureSold": 15755,
-  "todayFutureSlotsSold": 1697,
+  "todaySold": 1699,
+  "ytdSoldIncludingToday": 113553,
+  "outstandingFutureSold": 15767,
+  "todayFutureSlotsSold": 1699,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
