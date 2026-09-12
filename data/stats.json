@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-11T23:48:54.424613-06:00",
+ "generatedAt": "2026-09-12T00:21:28.225462-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-11T23:48:54.424613-06:00",
+ "salesGeneratedAt": "2026-09-12T00:21:28.225462-06:00",
  "salesStale": false,
  "sales": {
   "total": {
    "sold": 145506,
-   "arrivedToDate": 129338,
-   "futureArrivals": 16168,
+   "arrivedToDate": 131403,
+   "futureArrivals": 14103,
    "checkedIn": 109983,
-   "checkedInToDate": 109908
+   "checkedInToDate": 109919
   },
   "today": {
-   "sold": 2021,
-   "checkedIn": 1594
+   "sold": 2065,
+   "checkedIn": 11
   },
   "byEventName": {
    "General Admission": {
     "sold": 139474,
-    "arrivedToDate": 123805,
-    "futureArrivals": 15669,
+    "arrivedToDate": 125870,
+    "futureArrivals": 13604,
     "checkedIn": 106518,
-    "checkedInToDate": 106445
+    "checkedInToDate": 106456
    },
    "Flex Tickets": {
     "sold": 3130,
@@ -632,20 +632,20 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 113702,
-  "todaySold": 1850,
-  "ytdSoldIncludingToday": 115552,
+  "ytdSoldCompletedDays": 115552,
+  "todaySold": 1854,
+  "ytdSoldIncludingToday": 117406,
   "outstandingFutureSold": 14239,
-  "todayFutureSlotsSold": 0,
+  "todayFutureSlotsSold": 1854,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
-  "capacity": 126128,
-  "sold": 113702,
+  "capacity": 127978,
+  "sold": 115552,
   "pct": 90,
-  "days": 69,
+  "days": 70,
   "firstDay": "2026-07-04",
-  "lastDay": "2026-09-10",
+  "lastDay": "2026-09-11",
   "note": "Seats sold / seats offered, completed days only, from the Events report. Capacity utilisation, not a ticket count."
  }
 }
