@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-12T23:49:10.960796-06:00",
+ "generatedAt": "2026-09-13T00:26:25.039927-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,32 +7,32 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-12T23:49:10.960796-06:00",
+ "salesGeneratedAt": "2026-09-13T00:26:25.039927-06:00",
  "salesStale": false,
  "sales": {
   "total": {
    "sold": 146474,
-   "arrivedToDate": 131525,
-   "futureArrivals": 14949,
+   "arrivedToDate": 133419,
+   "futureArrivals": 13055,
    "checkedIn": 111758,
-   "checkedInToDate": 111689
+   "checkedInToDate": 111691
   },
   "today": {
-   "sold": 2182,
-   "checkedIn": 1776
+   "sold": 1894,
+   "checkedIn": 2
   },
   "byEventName": {
    "General Admission": {
     "sold": 140333,
-    "arrivedToDate": 125883,
-    "futureArrivals": 14450,
+    "arrivedToDate": 127775,
+    "futureArrivals": 12558,
     "checkedIn": 108236,
-    "checkedInToDate": 108169
+    "checkedInToDate": 108171
    },
    "Flex Tickets": {
     "sold": 3130,
-    "arrivedToDate": 3048,
-    "futureArrivals": 82,
+    "arrivedToDate": 3050,
+    "futureArrivals": 80,
     "checkedIn": 1195,
     "checkedInToDate": 1195
    },
@@ -632,20 +632,20 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 115552,
-  "todaySold": 1854,
-  "ytdSoldIncludingToday": 117406,
+  "ytdSoldCompletedDays": 117406,
+  "todaySold": 1758,
+  "ytdSoldIncludingToday": 119164,
   "outstandingFutureSold": 13208,
-  "todayFutureSlotsSold": 0,
+  "todayFutureSlotsSold": 1758,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
-  "capacity": 127978,
-  "sold": 115552,
+  "capacity": 129832,
+  "sold": 117406,
   "pct": 90,
-  "days": 70,
+  "days": 71,
   "firstDay": "2026-07-04",
-  "lastDay": "2026-09-11",
+  "lastDay": "2026-09-12",
   "note": "Seats sold / seats offered, completed days only, from the Events report. Capacity utilisation, not a ticket count."
  }
 }
