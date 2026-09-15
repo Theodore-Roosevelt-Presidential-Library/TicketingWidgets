@@ -1,17 +1,8 @@
 {
-  "generatedAt": "2026-09-14T23:51:28.529786-06:00",
+  "generatedAt": "2026-09-15T00:25:36.084148-06:00",
   "lookbackDays": 15,
-  "windowEnd": "2026-09-14",
+  "windowEnd": "2026-09-15",
   "recentDays": [
-    {
-      "date": "2026-08-30",
-      "dow": "Sunday",
-      "pctSold": 99,
-      "fullySoldOut": false,
-      "soldOutSlots": 9,
-      "slotCount": 15,
-      "dayOfTickets": 289
-    },
     {
       "date": "2026-08-31",
       "dow": "Monday",
@@ -140,32 +131,6 @@
     }
   ],
   "byDayOfWeek": {
-    "Sunday": {
-      "daysObserved": 3,
-      "medianFinalPctSold": 99,
-      "fullSelloutRate": 0.0,
-      "fullSelloutCount": 0,
-      "medianDayOfTickets": 85,
-      "slotSelloutRate": {
-        "09:00": 1.0,
-        "09:30": 0.67,
-        "10:00": 0.33,
-        "10:30": 0.67,
-        "11:00": 0.67,
-        "11:30": 1.0,
-        "12:00": 0.67,
-        "12:30": 0.67,
-        "13:00": 0.33,
-        "13:30": 0.67,
-        "14:00": 0.67,
-        "14:30": 1.0,
-        "15:00": 0.67,
-        "15:30": 1.0,
-        "16:00": 1.0
-      },
-      "typicalFirstAvailableAtEndOfDay": "10:00 AM",
-      "observedFullSelloutClockTimes": null
-    },
     "Monday": {
       "daysObserved": 2,
       "medianFinalPctSold": 89,
@@ -325,11 +290,37 @@
       "observedFullSelloutClockTimes": [
         "23:48"
       ]
+    },
+    "Sunday": {
+      "daysObserved": 2,
+      "medianFinalPctSold": 100,
+      "fullSelloutRate": 0.0,
+      "fullSelloutCount": 0,
+      "medianDayOfTickets": 36,
+      "slotSelloutRate": {
+        "09:00": 1.0,
+        "09:30": 1.0,
+        "10:00": 0.5,
+        "10:30": 1.0,
+        "11:00": 1.0,
+        "11:30": 1.0,
+        "12:00": 1.0,
+        "12:30": 0.5,
+        "13:00": 0.0,
+        "13:30": 0.5,
+        "14:00": 1.0,
+        "14:30": 1.0,
+        "15:00": 0.5,
+        "15:30": 1.0,
+        "16:00": 1.0
+      },
+      "typicalFirstAvailableAtEndOfDay": "12:30 PM",
+      "observedFullSelloutClockTimes": null
     }
   },
   "monthOutlook": {
     "heading": "What to Expect in September",
-    "text": "September has been busy: over the last 15 days, daily ticket sales reached a median 99% of capacity, and 2 days sold out completely. Mornings go first \u2014 morning entry times sold out on 15 of those days, often leaving 12:00 PM or later as the earliest way in. The week ahead looks similar: 6 of the next 6 open days are likely to sell out. Reserving tickets online before arriving is strongly recommended, especially for mornings and weekends.",
-    "updatedAt": "2026-09-14T23:51:28.530750-06:00"
+    "text": "September has been busy: over the last 14 days, daily ticket sales reached a median 98% of capacity, and 2 days sold out completely. Mornings go first \u2014 morning entry times sold out on 14 of those days, often leaving 12:00 PM or later as the earliest way in. The week ahead looks similar: 6 of the next 6 open days are likely to sell out. Reserving tickets online before arriving is strongly recommended, especially for mornings and weekends.",
+    "updatedAt": "2026-09-15T00:25:36.085378-06:00"
   }
 }
