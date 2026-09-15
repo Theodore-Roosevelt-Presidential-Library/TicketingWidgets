@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T16:13:00.792968-06:00",
+  "generatedAt": "2026-09-15T16:26:15.128348-06:00",
   "timezone": "America/Denver",
   "today": "2026-09-15",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -97,14 +97,14 @@
       "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1168,
-      "totalSold": 1166,
+      "totalSold": 1168,
       "pctSold": 100,
-      "soldOutSlots": 8,
-      "firstAvailable": "12:30 PM",
-      "status": "selling_fast",
-      "selloutRisk": "high",
-      "riskNote": "Recent Wednesdays have sold 272+ tickets on the day itself \u2014 more than what's left. Reserve in advance.",
-      "riskReason": "Recent Wednesdays have sold 272+ tickets on the day itself \u2014 more than what's left",
+      "soldOutSlots": 9,
+      "firstAvailable": null,
+      "status": "sold_out",
+      "selloutRisk": "sold_out",
+      "riskNote": "Sold out \u2014 no remaining time slots.",
+      "riskReason": "Sold out \u2014 no remaining time slots",
       "slots": [
         {
           "time": "10:00",
@@ -150,9 +150,9 @@
           "time": "12:30",
           "label": "12:30 PM",
           "capacity": 125,
-          "sold": 123,
-          "remaining": 2,
-          "status": "limited"
+          "sold": 125,
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "13:00",
@@ -185,7 +185,7 @@
       "dayLabel": "Thu Sep 17",
       "closed": false,
       "totalCapacity": 1129,
-      "totalSold": 993,
+      "totalSold": 997,
       "pctSold": 88,
       "soldOutSlots": 6,
       "firstAvailable": "12:30 PM",
@@ -238,8 +238,8 @@
           "time": "12:30",
           "label": "12:30 PM",
           "capacity": 125,
-          "sold": 119,
-          "remaining": 6,
+          "sold": 123,
+          "remaining": 2,
           "status": "limited"
         },
         {
