@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-16T15:12:59.796215-06:00",
+ "generatedAt": "2026-09-16T15:26:37.568596-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,13 +7,13 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-16T15:12:59.796215-06:00",
+ "salesGeneratedAt": "2026-09-16T15:26:37.568596-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 150144,
+   "sold": 150164,
    "arrivedToDate": 136451,
-   "futureArrivals": 13693,
+   "futureArrivals": 13713,
    "checkedIn": 115700,
    "checkedInToDate": 115632
   },
@@ -23,9 +23,9 @@
   },
   "byEventName": {
    "General Admission": {
-    "sold": 143649,
+    "sold": 143669,
     "arrivedToDate": 130713,
-    "futureArrivals": 12936,
+    "futureArrivals": 12956,
     "checkedIn": 112147,
     "checkedInToDate": 112083
    },
@@ -346,11 +346,11 @@
     "checkedIn": 1154
    },
    "2026-09-17": {
-    "sold": 1597,
+    "sold": 1606,
     "checkedIn": 51
    },
    "2026-09-18": {
-    "sold": 1070,
+    "sold": 1074,
     "checkedIn": 0
    },
    "2026-09-19": {
@@ -366,7 +366,7 @@
     "checkedIn": 0
    },
    "2026-09-23": {
-    "sold": 494,
+    "sold": 496,
     "checkedIn": 4
    },
    "2026-09-24": {
@@ -398,7 +398,7 @@
     "checkedIn": 0
    },
    "2026-10-02": {
-    "sold": 281,
+    "sold": 283,
     "checkedIn": 0
    },
    "2026-10-03": {
@@ -470,7 +470,7 @@
     "checkedIn": 0
    },
    "2026-10-23": {
-    "sold": 35,
+    "sold": 38,
     "checkedIn": 0
    },
    "2026-10-24": {
@@ -643,7 +643,7 @@
   "ytdSoldCompletedDays": 120451,
   "todaySold": 1293,
   "ytdSoldIncludingToday": 121744,
-  "outstandingFutureSold": 11877,
+  "outstandingFutureSold": 11891,
   "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
