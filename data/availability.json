@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T10:40:32.909990-06:00",
+  "generatedAt": "2026-09-18T10:48:44.276975-06:00",
   "timezone": "America/Denver",
   "today": "2026-09-18",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -9,14 +9,14 @@
       "dayLabel": "Today",
       "closed": false,
       "totalCapacity": 1060,
-      "totalSold": 1059,
+      "totalSold": 1060,
       "pctSold": 100,
-      "soldOutSlots": 8,
-      "firstAvailable": "11:00 AM",
-      "status": "selling_fast",
-      "selloutRisk": "high",
-      "riskNote": "Based on typical Friday walk-up demand, remaining tickets may be gone by about 10:43 AM.",
-      "riskReason": "Based on typical Friday walk-up demand, remaining tickets may be gone by about 10:43 AM",
+      "soldOutSlots": 9,
+      "firstAvailable": null,
+      "status": "sold_out",
+      "selloutRisk": "sold_out",
+      "riskNote": "Sold out \u2014 no remaining time slots.",
+      "riskReason": "Sold out \u2014 no remaining time slots",
       "slots": [
         {
           "time": "09:30",
@@ -46,9 +46,9 @@
           "time": "11:00",
           "label": "11:00 AM",
           "capacity": 125,
-          "sold": 124,
-          "remaining": 1,
-          "status": "limited"
+          "sold": 125,
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "11:30",
@@ -105,8 +105,8 @@
       "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 1284,
-      "pctSold": 68,
+      "totalSold": 1290,
+      "pctSold": 69,
       "soldOutSlots": 7,
       "firstAvailable": "12:30 PM",
       "status": "selling_fast",
@@ -174,16 +174,16 @@
           "time": "12:30",
           "label": "12:30 PM",
           "capacity": 125,
-          "sold": 60,
-          "remaining": 65,
+          "sold": 68,
+          "remaining": 57,
           "status": "available"
         },
         {
           "time": "13:00",
           "label": "1:00 PM",
           "capacity": 125,
-          "sold": 124,
-          "remaining": 1,
+          "sold": 122,
+          "remaining": 3,
           "status": "limited"
         },
         {
