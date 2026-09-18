@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-18T11:11:34.468160-06:00",
+ "generatedAt": "2026-09-18T11:22:39.916940-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-18T11:11:34.468160-06:00",
+ "salesGeneratedAt": "2026-09-18T11:22:39.916940-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 152074,
+   "sold": 152087,
    "arrivedToDate": 139445,
-   "futureArrivals": 12629,
-   "checkedIn": 117385,
-   "checkedInToDate": 117367
+   "futureArrivals": 12642,
+   "checkedIn": 117443,
+   "checkedInToDate": 117425
   },
   "today": {
    "sold": 1342,
-   "checkedIn": 566
+   "checkedIn": 624
   },
   "byEventName": {
    "General Admission": {
-    "sold": 145560,
+    "sold": 145573,
     "arrivedToDate": 133219,
-    "futureArrivals": 12341,
-    "checkedIn": 113625,
-    "checkedInToDate": 113609
+    "futureArrivals": 12354,
+    "checkedIn": 113683,
+    "checkedInToDate": 113667
    },
    "Walk-Up": {
     "sold": 3384,
@@ -351,14 +351,14 @@
    },
    "2026-09-18": {
     "sold": 1342,
-    "checkedIn": 566
+    "checkedIn": 624
    },
    "2026-09-19": {
-    "sold": 1349,
+    "sold": 1356,
     "checkedIn": 6
    },
    "2026-09-20": {
-    "sold": 832,
+    "sold": 836,
     "checkedIn": 0
    },
    "2026-09-22": {
@@ -470,7 +470,7 @@
     "checkedIn": 0
    },
    "2026-10-23": {
-    "sold": 40,
+    "sold": 42,
     "checkedIn": 0
    },
    "2026-10-24": {
@@ -643,7 +643,7 @@
   "ytdSoldCompletedDays": 122995,
   "todaySold": 1060,
   "ytdSoldIncludingToday": 124055,
-  "outstandingFutureSold": 12283,
+  "outstandingFutureSold": 12294,
   "todayFutureSlotsSold": 907,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
