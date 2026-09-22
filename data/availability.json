@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T10:49:04.437068-06:00",
+  "generatedAt": "2026-09-22T11:12:23.352535-06:00",
   "timezone": "America/Denver",
   "today": "2026-09-22",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -9,14 +9,14 @@
       "dayLabel": "Today",
       "closed": false,
       "totalCapacity": 1377,
-      "totalSold": 1377,
+      "totalSold": 1376,
       "pctSold": 100,
-      "soldOutSlots": 9,
-      "firstAvailable": null,
-      "status": "sold_out",
-      "selloutRisk": "sold_out",
-      "riskNote": "Sold out \u2014 no remaining time slots.",
-      "riskReason": "Sold out \u2014 no remaining time slots",
+      "soldOutSlots": 7,
+      "firstAvailable": "11:30 AM",
+      "status": "selling_fast",
+      "selloutRisk": "high",
+      "riskNote": "Based on typical Tuesday walk-up demand, remaining tickets may be gone by about 11:15 AM.",
+      "riskReason": "Based on typical Tuesday walk-up demand, remaining tickets may be gone by about 11:15 AM",
       "slots": [
         {
           "time": "09:00",
@@ -40,7 +40,7 @@
           "capacity": 161,
           "sold": 161,
           "remaining": 0,
-          "status": "sold_out"
+          "status": "past"
         },
         {
           "time": "10:30",
@@ -62,9 +62,9 @@
           "time": "11:30",
           "label": "11:30 AM",
           "capacity": 125,
-          "sold": 125,
-          "remaining": 0,
-          "status": "sold_out"
+          "sold": 124,
+          "remaining": 1,
+          "status": "limited"
         },
         {
           "time": "12:00",
@@ -113,8 +113,8 @@
       "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1375,
-      "totalSold": 880,
-      "pctSold": 64,
+      "totalSold": 889,
+      "pctSold": 65,
       "soldOutSlots": 2,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
@@ -126,8 +126,8 @@
           "time": "09:00",
           "label": "9:00 AM",
           "capacity": 125,
-          "sold": 93,
-          "remaining": 32,
+          "sold": 100,
+          "remaining": 25,
           "status": "available"
         },
         {
@@ -190,8 +190,8 @@
           "time": "13:00",
           "label": "1:00 PM",
           "capacity": 125,
-          "sold": 67,
-          "remaining": 58,
+          "sold": 69,
+          "remaining": 56,
           "status": "available"
         },
         {
@@ -217,8 +217,8 @@
       "dayLabel": "Thu Sep 24",
       "closed": false,
       "totalCapacity": 1374,
-      "totalSold": 762,
-      "pctSold": 55,
+      "totalSold": 799,
+      "pctSold": 58,
       "soldOutSlots": 3,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
@@ -230,8 +230,8 @@
           "time": "09:00",
           "label": "9:00 AM",
           "capacity": 125,
-          "sold": 29,
-          "remaining": 96,
+          "sold": 66,
+          "remaining": 59,
           "status": "available"
         },
         {
@@ -321,8 +321,8 @@
       "dayLabel": "Fri Sep 25",
       "closed": false,
       "totalCapacity": 1375,
-      "totalSold": 654,
-      "pctSold": 48,
+      "totalSold": 671,
+      "pctSold": 49,
       "soldOutSlots": 2,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
@@ -342,8 +342,8 @@
           "time": "09:30",
           "label": "9:30 AM",
           "capacity": 125,
-          "sold": 79,
-          "remaining": 46,
+          "sold": 96,
+          "remaining": 29,
           "status": "available"
         },
         {
@@ -425,8 +425,8 @@
       "dayLabel": "Sat Sep 26",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 645,
-      "pctSold": 34,
+      "totalSold": 647,
+      "pctSold": 35,
       "soldOutSlots": 1,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
@@ -518,8 +518,8 @@
           "time": "14:00",
           "label": "2:00 PM",
           "capacity": 125,
-          "sold": 50,
-          "remaining": 75,
+          "sold": 52,
+          "remaining": 73,
           "status": "available"
         },
         {
