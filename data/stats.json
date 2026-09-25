@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-25T10:40:47.482909-06:00",
+ "generatedAt": "2026-09-25T10:50:58.151156-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-25T10:40:47.482909-06:00",
+ "salesGeneratedAt": "2026-09-25T10:50:58.151156-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 158866,
-   "arrivedToDate": 148767,
-   "futureArrivals": 10099,
-   "checkedIn": 125019,
-   "checkedInToDate": 125010
+   "sold": 158872,
+   "arrivedToDate": 148770,
+   "futureArrivals": 10102,
+   "checkedIn": 125059,
+   "checkedInToDate": 125050
   },
   "today": {
-   "sold": 1203,
-   "checkedIn": 418
+   "sold": 1206,
+   "checkedIn": 458
   },
   "byEventName": {
    "General Admission": {
-    "sold": 152055,
-    "arrivedToDate": 142044,
-    "futureArrivals": 10011,
-    "checkedIn": 121231,
-    "checkedInToDate": 121224
+    "sold": 152061,
+    "arrivedToDate": 142047,
+    "futureArrivals": 10014,
+    "checkedIn": 121271,
+    "checkedInToDate": 121264
    },
    "Walk-Up": {
     "sold": 3681,
@@ -374,11 +374,11 @@
     "checkedIn": 1118
    },
    "2026-09-25": {
-    "sold": 1203,
-    "checkedIn": 418
+    "sold": 1206,
+    "checkedIn": 458
    },
    "2026-09-26": {
-    "sold": 969,
+    "sold": 972,
     "checkedIn": 0
    },
    "2026-09-27": {
@@ -645,10 +645,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 131172,
-  "todaySold": 1121,
-  "ytdSoldIncludingToday": 132293,
-  "outstandingFutureSold": 9938,
-  "todayFutureSlotsSold": 871,
+  "todaySold": 1124,
+  "ytdSoldIncludingToday": 132296,
+  "outstandingFutureSold": 9944,
+  "todayFutureSlotsSold": 874,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
