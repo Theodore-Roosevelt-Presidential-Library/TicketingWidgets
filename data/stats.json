@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T08:17:07.730071-06:00",
+ "generatedAt": "2026-09-28T08:43:15.534886-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,13 +7,13 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-28T08:17:07.730071-06:00",
+ "salesGeneratedAt": "2026-09-28T08:43:15.534886-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 161040,
+   "sold": 161054,
    "arrivedToDate": 151915,
-   "futureArrivals": 9125,
+   "futureArrivals": 9139,
    "checkedIn": 128260,
    "checkedInToDate": 128251
   },
@@ -23,9 +23,9 @@
   },
   "byEventName": {
    "General Admission": {
-    "sold": 154212,
+    "sold": 154226,
     "arrivedToDate": 145169,
-    "futureArrivals": 9043,
+    "futureArrivals": 9057,
     "checkedIn": 124458,
     "checkedInToDate": 124451
    },
@@ -386,11 +386,11 @@
     "checkedIn": 1224
    },
    "2026-09-29": {
-    "sold": 1060,
+    "sold": 1065,
     "checkedIn": 5
    },
    "2026-09-30": {
-    "sold": 640,
+    "sold": 643,
     "checkedIn": 0
    },
    "2026-10-01": {
@@ -414,7 +414,7 @@
     "checkedIn": 0
    },
    "2026-10-07": {
-    "sold": 416,
+    "sold": 418,
     "checkedIn": 0
    },
    "2026-10-08": {
@@ -446,7 +446,7 @@
     "checkedIn": 0
    },
    "2026-10-16": {
-    "sold": 267,
+    "sold": 269,
     "checkedIn": 0
    },
    "2026-10-17": {
@@ -502,7 +502,7 @@
     "checkedIn": 0
    },
    "2026-11-01": {
-    "sold": 11,
+    "sold": 13,
     "checkedIn": 0
    },
    "2026-11-03": {
@@ -647,7 +647,7 @@
   "ytdSoldCompletedDays": 135121,
   "todaySold": 0,
   "ytdSoldIncludingToday": 135121,
-  "outstandingFutureSold": 8273,
+  "outstandingFutureSold": 8286,
   "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
