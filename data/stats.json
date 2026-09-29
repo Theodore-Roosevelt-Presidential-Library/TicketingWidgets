@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-29T06:52:37.888426-06:00",
+ "generatedAt": "2026-09-29T07:18:25.945440-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,25 +7,25 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-29T06:52:37.888426-06:00",
+ "salesGeneratedAt": "2026-09-29T07:18:25.945440-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 161632,
-   "arrivedToDate": 153163,
-   "futureArrivals": 8469,
+   "sold": 161640,
+   "arrivedToDate": 153165,
+   "futureArrivals": 8475,
    "checkedIn": 128260,
    "checkedInToDate": 128256
   },
   "today": {
-   "sold": 1248,
+   "sold": 1250,
    "checkedIn": 5
   },
   "byEventName": {
    "General Admission": {
-    "sold": 154804,
-    "arrivedToDate": 146417,
-    "futureArrivals": 8387,
+    "sold": 154812,
+    "arrivedToDate": 146419,
+    "futureArrivals": 8393,
     "checkedIn": 124458,
     "checkedInToDate": 124456
    },
@@ -386,7 +386,7 @@
     "checkedIn": 1224
    },
    "2026-09-29": {
-    "sold": 1248,
+    "sold": 1250,
     "checkedIn": 5
    },
    "2026-09-30": {
@@ -394,7 +394,7 @@
     "checkedIn": 0
    },
    "2026-10-01": {
-    "sold": 441,
+    "sold": 443,
     "checkedIn": 0
    },
    "2026-10-02": {
@@ -470,7 +470,7 @@
     "checkedIn": 0
    },
    "2026-10-23": {
-    "sold": 68,
+    "sold": 72,
     "checkedIn": 0
    },
    "2026-10-24": {
@@ -645,10 +645,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 135121,
-  "todaySold": 1178,
-  "ytdSoldIncludingToday": 136299,
-  "outstandingFutureSold": 8862,
-  "todayFutureSlotsSold": 1178,
+  "todaySold": 1180,
+  "ytdSoldIncludingToday": 136301,
+  "outstandingFutureSold": 8870,
+  "todayFutureSlotsSold": 1180,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
