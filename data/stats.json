@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T19:18:16.253490-06:00",
+ "generatedAt": "2026-09-28T19:54:12.467997-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,13 +7,13 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-28T19:18:16.253490-06:00",
+ "salesGeneratedAt": "2026-09-28T19:54:12.467997-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 161496,
+   "sold": 161517,
    "arrivedToDate": 151915,
-   "futureArrivals": 9581,
+   "futureArrivals": 9602,
    "checkedIn": 128260,
    "checkedInToDate": 128251
   },
@@ -23,9 +23,9 @@
   },
   "byEventName": {
    "General Admission": {
-    "sold": 154668,
+    "sold": 154689,
     "arrivedToDate": 145169,
-    "futureArrivals": 9499,
+    "futureArrivals": 9520,
     "checkedIn": 124458,
     "checkedInToDate": 124451
    },
@@ -386,15 +386,15 @@
     "checkedIn": 1224
    },
    "2026-09-29": {
-    "sold": 1199,
+    "sold": 1207,
     "checkedIn": 5
    },
    "2026-09-30": {
-    "sold": 699,
+    "sold": 701,
     "checkedIn": 0
    },
    "2026-10-01": {
-    "sold": 430,
+    "sold": 432,
     "checkedIn": 0
    },
    "2026-10-02": {
@@ -418,7 +418,7 @@
     "checkedIn": 0
    },
    "2026-10-08": {
-    "sold": 586,
+    "sold": 588,
     "checkedIn": 2
    },
    "2026-10-09": {
@@ -438,7 +438,7 @@
     "checkedIn": 0
    },
    "2026-10-14": {
-    "sold": 264,
+    "sold": 269,
     "checkedIn": 0
    },
    "2026-10-15": {
@@ -454,7 +454,7 @@
     "checkedIn": 0
    },
    "2026-10-18": {
-    "sold": 77,
+    "sold": 79,
     "checkedIn": 0
    },
    "2026-10-20": {
@@ -647,7 +647,7 @@
   "ytdSoldCompletedDays": 135121,
   "todaySold": 0,
   "ytdSoldIncludingToday": 135121,
-  "outstandingFutureSold": 8726,
+  "outstandingFutureSold": 8747,
   "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
