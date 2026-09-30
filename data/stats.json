@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-30T08:43:02.192033-06:00",
+ "generatedAt": "2026-09-30T08:56:18.485174-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-30T08:43:02.192033-06:00",
+ "salesGeneratedAt": "2026-09-30T08:56:18.485174-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 162580,
-   "arrivedToDate": 154248,
-   "futureArrivals": 8332,
-   "checkedIn": 129450,
-   "checkedInToDate": 129444
+   "sold": 162591,
+   "arrivedToDate": 154256,
+   "futureArrivals": 8335,
+   "checkedIn": 129469,
+   "checkedInToDate": 129463
   },
   "today": {
-   "sold": 921,
-   "checkedIn": 3
+   "sold": 929,
+   "checkedIn": 22
   },
   "byEventName": {
    "General Admission": {
-    "sold": 155743,
-    "arrivedToDate": 147493,
-    "futureArrivals": 8250,
-    "checkedIn": 125639,
-    "checkedInToDate": 125635
+    "sold": 155754,
+    "arrivedToDate": 147501,
+    "futureArrivals": 8253,
+    "checkedIn": 125658,
+    "checkedInToDate": 125654
    },
    "Walk-Up": {
     "sold": 3707,
@@ -390,11 +390,11 @@
     "checkedIn": 1189
    },
    "2026-09-30": {
-    "sold": 921,
-    "checkedIn": 3
+    "sold": 929,
+    "checkedIn": 22
    },
    "2026-10-01": {
-    "sold": 564,
+    "sold": 567,
     "checkedIn": 0
    },
    "2026-10-02": {
@@ -645,10 +645,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 136399,
-  "todaySold": 836,
-  "ytdSoldIncludingToday": 137235,
-  "outstandingFutureSold": 8418,
-  "todayFutureSlotsSold": 836,
+  "todaySold": 838,
+  "ytdSoldIncludingToday": 137237,
+  "outstandingFutureSold": 8423,
+  "todayFutureSlotsSold": 838,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
