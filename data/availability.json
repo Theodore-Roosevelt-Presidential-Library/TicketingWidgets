@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T14:50:02.023004-06:00",
+  "generatedAt": "2026-09-30T15:14:06.455749-06:00",
   "timezone": "America/Denver",
   "today": "2026-09-30",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -9,14 +9,14 @@
       "dayLabel": "Today",
       "closed": false,
       "totalCapacity": 1375,
-      "totalSold": 983,
-      "pctSold": 71,
+      "totalSold": 987,
+      "pctSold": 72,
       "soldOutSlots": 0,
-      "firstAvailable": "2:00 PM",
-      "status": "limited",
-      "selloutRisk": "medium",
-      "riskNote": "Today is filling up \u2014 buying online is recommended.",
-      "riskReason": "Today is filling up",
+      "firstAvailable": null,
+      "status": "ended",
+      "selloutRisk": "none",
+      "riskNote": "Today's entries have ended.",
+      "riskReason": "Today's entries have ended",
       "slots": [
         {
           "time": "09:00",
@@ -102,9 +102,9 @@
           "time": "14:00",
           "label": "2:00 PM",
           "capacity": 125,
-          "sold": 65,
-          "remaining": 60,
-          "status": "available"
+          "sold": 69,
+          "remaining": 56,
+          "status": "past"
         }
       ]
     },
@@ -113,7 +113,7 @@
       "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1375,
-      "totalSold": 597,
+      "totalSold": 598,
       "pctSold": 43,
       "soldOutSlots": 1,
       "firstAvailable": "9:00 AM",
@@ -126,8 +126,8 @@
           "time": "09:00",
           "label": "9:00 AM",
           "capacity": 125,
-          "sold": 78,
-          "remaining": 47,
+          "sold": 79,
+          "remaining": 46,
           "status": "available"
         },
         {
@@ -217,7 +217,7 @@
       "dayLabel": "Fri Oct 2",
       "closed": false,
       "totalCapacity": 1379,
-      "totalSold": 532,
+      "totalSold": 534,
       "pctSold": 39,
       "soldOutSlots": 0,
       "firstAvailable": "9:00 AM",
@@ -238,8 +238,8 @@
           "time": "09:30",
           "label": "9:30 AM",
           "capacity": 125,
-          "sold": 41,
-          "remaining": 84,
+          "sold": 43,
+          "remaining": 82,
           "status": "available"
         },
         {
@@ -321,8 +321,8 @@
       "dayLabel": "Sat Oct 3",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 515,
-      "pctSold": 27,
+      "totalSold": 517,
+      "pctSold": 28,
       "soldOutSlots": 1,
       "firstAvailable": "9:00 AM",
       "status": "available",
@@ -358,8 +358,8 @@
           "time": "10:30",
           "label": "10:30 AM",
           "capacity": 125,
-          "sold": 64,
-          "remaining": 61,
+          "sold": 66,
+          "remaining": 59,
           "status": "available"
         },
         {
@@ -457,7 +457,7 @@
       "dayLabel": "Sun Oct 4",
       "closed": false,
       "totalCapacity": 1875,
-      "totalSold": 396,
+      "totalSold": 400,
       "pctSold": 21,
       "soldOutSlots": 0,
       "firstAvailable": "9:00 AM",
@@ -502,8 +502,8 @@
           "time": "11:00",
           "label": "11:00 AM",
           "capacity": 125,
-          "sold": 28,
-          "remaining": 97,
+          "sold": 30,
+          "remaining": 95,
           "status": "available"
         },
         {
@@ -558,8 +558,8 @@
           "time": "14:30",
           "label": "2:30 PM",
           "capacity": 125,
-          "sold": 1,
-          "remaining": 124,
+          "sold": 3,
+          "remaining": 122,
           "status": "available"
         },
         {
@@ -712,9 +712,9 @@
       "dayLabel": "Wed Oct 7",
       "closed": false,
       "totalCapacity": 1375,
-      "totalSold": 360,
+      "totalSold": 362,
       "pctSold": 26,
-      "soldOutSlots": 0,
+      "soldOutSlots": 1,
       "firstAvailable": "9:00 AM",
       "status": "selling_fast",
       "selloutRisk": "high",
@@ -741,9 +741,9 @@
           "time": "10:00",
           "label": "10:00 AM",
           "capacity": 125,
-          "sold": 123,
-          "remaining": 2,
-          "status": "limited"
+          "sold": 125,
+          "remaining": 0,
+          "status": "sold_out"
         },
         {
           "time": "10:30",
