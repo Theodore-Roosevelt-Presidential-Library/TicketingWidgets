@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-29T19:57:26.995381-06:00",
+ "generatedAt": "2026-09-29T20:31:59.834878-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,13 +7,13 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-29T19:57:26.995381-06:00",
+ "salesGeneratedAt": "2026-09-29T20:31:59.834878-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 162396,
+   "sold": 162426,
    "arrivedToDate": 153327,
-   "futureArrivals": 9069,
+   "futureArrivals": 9099,
    "checkedIn": 129450,
    "checkedInToDate": 129441
   },
@@ -23,9 +23,9 @@
   },
   "byEventName": {
    "General Admission": {
-    "sold": 155559,
+    "sold": 155589,
     "arrivedToDate": 146572,
-    "futureArrivals": 8987,
+    "futureArrivals": 9017,
     "checkedIn": 125639,
     "checkedInToDate": 125632
    },
@@ -390,15 +390,15 @@
     "checkedIn": 1189
    },
    "2026-09-30": {
-    "sold": 863,
+    "sold": 876,
     "checkedIn": 3
    },
    "2026-10-01": {
-    "sold": 524,
+    "sold": 530,
     "checkedIn": 0
    },
    "2026-10-02": {
-    "sold": 547,
+    "sold": 548,
     "checkedIn": 0
    },
    "2026-10-03": {
@@ -406,11 +406,11 @@
     "checkedIn": 0
    },
    "2026-10-04": {
-    "sold": 380,
+    "sold": 384,
     "checkedIn": 0
    },
    "2026-10-06": {
-    "sold": 481,
+    "sold": 485,
     "checkedIn": 0
    },
    "2026-10-07": {
@@ -446,7 +446,7 @@
     "checkedIn": 0
    },
    "2026-10-16": {
-    "sold": 278,
+    "sold": 280,
     "checkedIn": 0
    },
    "2026-10-17": {
@@ -647,7 +647,7 @@
   "ytdSoldCompletedDays": 135112,
   "todaySold": 1287,
   "ytdSoldIncludingToday": 136399,
-  "outstandingFutureSold": 8244,
+  "outstandingFutureSold": 8274,
   "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
