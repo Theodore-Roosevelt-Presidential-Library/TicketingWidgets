@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-29T23:52:28.515998-06:00",
+ "generatedAt": "2026-09-30T00:25:58.371982-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-09-29T23:52:28.515998-06:00",
+ "salesGeneratedAt": "2026-09-30T00:25:58.371982-06:00",
  "salesStale": false,
  "sales": {
   "total": {
    "sold": 162477,
-   "arrivedToDate": 153327,
-   "futureArrivals": 9150,
+   "arrivedToDate": 154214,
+   "futureArrivals": 8263,
    "checkedIn": 129450,
-   "checkedInToDate": 129441
+   "checkedInToDate": 129444
   },
   "today": {
-   "sold": 1412,
-   "checkedIn": 1189
+   "sold": 887,
+   "checkedIn": 3
   },
   "byEventName": {
    "General Admission": {
     "sold": 155640,
-    "arrivedToDate": 146572,
-    "futureArrivals": 9068,
+    "arrivedToDate": 147459,
+    "futureArrivals": 8181,
     "checkedIn": 125639,
-    "checkedInToDate": 125632
+    "checkedInToDate": 125635
    },
    "Walk-Up": {
     "sold": 3707,
@@ -644,20 +644,20 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 135112,
-  "todaySold": 1287,
-  "ytdSoldIncludingToday": 136399,
+  "ytdSoldCompletedDays": 136399,
+  "todaySold": 808,
+  "ytdSoldIncludingToday": 137207,
   "outstandingFutureSold": 8325,
-  "todayFutureSlotsSold": 0,
+  "todayFutureSlotsSold": 808,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
-  "capacity": 149525,
-  "sold": 135112,
+  "capacity": 150900,
+  "sold": 136399,
   "pct": 90,
-  "days": 84,
+  "days": 85,
   "firstDay": "2026-07-04",
-  "lastDay": "2026-09-27",
+  "lastDay": "2026-09-29",
   "note": "Seats sold / seats offered, completed days only, from the Events report. Capacity utilisation, not a ticket count."
  }
 }
