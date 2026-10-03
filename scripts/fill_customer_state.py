@@ -43,6 +43,9 @@ import collections
 import json
 import os
 import sys
+import threading
+import os as _os
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -55,6 +58,7 @@ from fetch_availability import (  # noqa: E402  (shared API plumbing)
 CROSSWALK_PATH = DATA_DIR / "zip-state.json"
 STATE_PATH = DATA_DIR / "fill-state.json"
 LOG_PATH = DATA_DIR / "fill-state-log.json"
+QUEUE_PATH = DATA_DIR / "fill-state-queue.json"
 CONFIG_PATH = ROOT / "config.json"
 
 DRY_RUN = os.environ.get("FILL_STATE_DRY_RUN") == "1"
@@ -132,6 +136,36 @@ def find_candidates(tz, since, until, channels):
 
 # ---------------------------------------------------------------------- write
 
+def _atomic_write(path, text):
+    """Write via a temp file and rename.
+
+    The log is flushed after every single write, and a run can be killed at any
+    moment — a cancelled Action, a timeout. A partial write would corrupt the one
+    file that records what was changed in ACME, so the replace must be atomic.
+    """
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(text)
+    _os.replace(tmp, path)
+
+
+def append_log(entries):
+    """Append write records immediately, so an interrupted run still audits."""
+    if not entries:
+        return
+    log = {"entries": []}
+    if LOG_PATH.exists():
+        try:
+            log = json.loads(LOG_PATH.read_text())
+        except json.JSONDecodeError:
+            log = {"entries": []}   # salvaged separately; never block a run
+    log.setdefault("entries", []).extend(entries)
+    log["note"] = ("Every address this job has written, for audit and revert. "
+                   "beforeHadAddress is always false — the job never touches a "
+                   "customer who already had one. Written incrementally, so this "
+                   "stays complete even if a run is interrupted.")
+    _atomic_write(LOG_PATH, json.dumps(log, indent=1))
+
+
 def resolve_customer(customer_key):
     """Report CustomerId -> the numeric id the customer API is keyed on.
 
@@ -154,8 +188,19 @@ def fill_one(customer_key, zip_code, state, address_type):
         return "unresolved", err
 
     before = api_request("GET", f"/v2/b2b/customers/{cid}")
-    if before.get("address"):
-        return "skipped-has-address", None
+    existing = before.get("address") or []
+    if existing:
+        # Recognise our own handiwork. An address with a state and ZIP but no
+        # street or city is the shape this job writes and nothing else does, so
+        # if it is not in the log the log is incomplete — a run interrupted
+        # before it could flush. Record it rather than leave a silent edit.
+        a = existing[0]
+        ours = (a.get("state") and a.get("zipCode")
+                and not (a.get("streetAddress1") or "").strip()
+                and not (a.get("city") or "").strip())
+        return ("skipped-has-address",
+                {"id": cid, "state": a.get("state"), "zip": a.get("zipCode"),
+                 "reconstruct": bool(ours)})
 
     guard = {k: before.get(k) for k in ("firstName", "lastName", "email", "phoneNumber")}
 
@@ -214,54 +259,129 @@ def main():
     print(f"Scanning {since:%Y-%m-%d} -> {until:%Y-%m-%d}, channels {channels}"
           + (" [DRY RUN]" if DRY_RUN else ""))
 
-    cands = find_candidates(tz, since, until, channels)
-    print(f"{len(cands):,} customers with a ZIP and no state.")
+    # Resumable queue. Building the candidate list costs a report round trip, and
+    # the analytics warehouse lags behind our own writes — so a re-query returns
+    # customers we already filled, which then cost two API calls each to discover
+    # and skip. Persisting the queue makes a resumed run pure work: no report, no
+    # re-walking what is already done.
+    queue = {}
+    if QUEUE_PATH.exists():
+        try:
+            q = json.loads(QUEUE_PATH.read_text())
+            age_h = (now - datetime.fromisoformat(q["builtAt"])).total_seconds() / 3600
+            if age_h < float(cfg.get("queueMaxAgeHours", 24)):
+                queue = q.get("pending") or {}
+                print(f"Resuming queue: {len(queue):,} pending "
+                      f"(built {age_h:.1f}h ago, {q.get('doneCount', 0):,} already done).")
+        except (json.JSONDecodeError, KeyError, ValueError):
+            queue = {}
 
+    if not queue:
+        queue = find_candidates(tz, since, until, channels)
+        print(f"{len(queue):,} customers with a ZIP and no state.")
+        _atomic_write(QUEUE_PATH, json.dumps(
+            {"builtAt": now.isoformat(), "window": [since.date().isoformat(),
+                                                    until.date().isoformat()],
+             "doneCount": 0, "pending": queue}, indent=1))
+    cands = queue
+    done_keys = []
+
+    def flush_queue(force=False):
+        if DRY_RUN or (not force and len(done_keys) % 25):
+            return
+        try:
+            q = json.loads(QUEUE_PATH.read_text())
+        except (json.JSONDecodeError, FileNotFoundError):
+            return
+        for k in done_keys:
+            q.get("pending", {}).pop(k, None)
+        q["doneCount"] = q.get("doneCount", 0) + len(done_keys)
+        q["updatedAt"] = now.isoformat()
+        _atomic_write(QUEUE_PATH, json.dumps(q, indent=1))
+        done_keys.clear()
+
+    # Each customer costs up to four serial round trips (search, read, write,
+    # verify), so throughput is latency-bound, not CPU- or rate-bound. Modest
+    # concurrency turns a ~70-minute backlog pass into a few minutes. Customers
+    # are independent — no two tasks touch the same record — so the only shared
+    # state needing a lock is the log and the queue.
+    workers = max(1, int(cfg.get("workers", 6)))
+    lock = threading.Lock()
     tally = collections.Counter()
     written = []
-    for i, (key, zc) in enumerate(sorted(cands.items())):
-        if tally["written"] + tally["would-write"] >= max_per_run:
-            tally["deferred"] += 1
-            continue
+    logged_ids = set()
+    if LOG_PATH.exists():
+        try:
+            logged_ids = {e.get("id") for e in
+                          json.loads(LOG_PATH.read_text()).get("entries", [])}
+        except json.JSONDecodeError:
+            pass
+    abort = {}
+
+    def process(item):
+        key, zc = item
+        if abort:
+            return
         state = lookup(zc)
-        if not state:
-            tally["unresolvable-zip"] += 1
-            continue
-        if state in NON_STATE:
-            tally["military-zip-skipped"] += 1
-            continue
+        if not state or state in NON_STATE:
+            with lock:
+                tally["unresolvable-zip" if not state else "military-zip-skipped"] += 1
+                done_keys.append(key); flush_queue()
+            return
         try:
             status, detail = fill_one(key, zc, state, address_type)
-        except SystemExit:
-            raise
+        except SystemExit as exc:
+            with lock:
+                abort["why"] = str(exc)
+            return
         except Exception as exc:  # noqa: BLE001
-            tally["error"] += 1
+            with lock:
+                tally["error"] += 1
             print(f"  error on one customer: {str(exc)[:120]}", file=sys.stderr)
-            continue
-        tally[status] += 1
-        if status == "written":
-            written.append({"at": now.isoformat(), "customerId": key,
-                            "id": detail["id"], "state": state, "zip": zc,
-                            "beforeHadAddress": False})
+            return
+        with lock:
+            tally[status] += 1
+            done_keys.append(key)
+            flush_queue()
+            if status == "skipped-has-address" and detail and detail.get("reconstruct"):
+                if detail["id"] not in logged_ids:
+                    logged_ids.add(detail["id"])
+                    tally["reconstructed-log"] += 1
+                    append_log([{"at": now.isoformat(), "customerId": key,
+                                 "id": detail["id"], "state": detail["state"],
+                                 "zip": detail["zip"], "beforeHadAddress": False,
+                                 "reconstructed": True}])
+            if status == "written":
+                entry = {"at": now.isoformat(), "customerId": key,
+                         "id": detail["id"], "state": state, "zip": zc,
+                         "beforeHadAddress": False}
+                written.append(entry)
+                append_log([entry])
 
-    if written and not DRY_RUN:
-        log = json.loads(LOG_PATH.read_text()) if LOG_PATH.exists() else {"entries": []}
-        log["entries"].extend(written)
-        log["note"] = ("Every address this job has written, for audit and revert. "
-                       "beforeHadAddress is always false — the job never touches "
-                       "a customer who already had one.")
-        LOG_PATH.write_text(json.dumps(log, indent=1))
+    batch = sorted(cands.items())[:max_per_run]
+    tally["deferred"] = max(0, len(cands) - len(batch))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        list(pool.map(process, batch))
+    if abort:
+        sys.exit(abort["why"])
+
+    flush_queue(force=True)
+    remaining = 0
+    if QUEUE_PATH.exists() and not DRY_RUN:
+        remaining = len(json.loads(QUEUE_PATH.read_text()).get("pending") or {})
+        if remaining == 0:
+            QUEUE_PATH.unlink()      # drained; next run rebuilds from ACME
 
     if not DRY_RUN:
         # Only advance the watermark once a run clears its whole queue. Moving it
         # while work is deferred would push the untouched backlog outside the next
         # run's lookback window, stranding it permanently — with a 3,000-deep
         # queue and a 400 cap that would silently abandon most of it.
-        advance = tally["deferred"] == 0
+        advance = tally["deferred"] == 0 and remaining == 0
         STATE_PATH.write_text(json.dumps({
             "lastRun": now.isoformat(),
             "lastRunDate": now.date().isoformat() if advance else since_iso,
-            "backlogRemaining": tally["deferred"],
+            "backlogRemaining": remaining or tally["deferred"],
             "watermarkHeld": not advance,
             "lastTally": dict(tally),
             "totalWritten": (prev.get("totalWritten", 0) + tally["written"]),

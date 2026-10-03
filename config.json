@@ -6,78 +6,195 @@
   "lookbackDays": 15,
   "limitedThresholdPct": 15,
   "limitedThresholdMin": 10,
-
-  "_origin_note": "Visitor origin. seasonStart is the first day with ticket data (opening day). regionStates defines the 'region' bucket on the monitor — neighbouring states, edit freely. originEventNames is matched with 'contains' against EventName: Walk-Up is excluded because door sales capture an address only ~7% of the time and would drag coverage down without adding signal. originRefreshHours gates how often the origin query runs inside the 15-minute pipeline — origin moves by the week, so 24 is plenty; set ACME_FORCE_ORIGIN=1 to refresh immediately after changing regionStates or originEventNames.",
+  "_origin_note": "Visitor origin. seasonStart is the first day with ticket data (opening day). regionStates defines the 'region' bucket on the monitor \u2014 neighbouring states, edit freely. originEventNames is matched with 'contains' against EventName: Walk-Up is excluded because door sales capture an address only ~7% of the time and would drag coverage down without adding signal. originRefreshHours gates how often the origin query runs inside the 15-minute pipeline \u2014 origin moves by the week, so 24 is plenty; set ACME_FORCE_ORIGIN=1 to refresh immediately after changing regionStates or originEventNames.",
   "seasonStart": "2026-07-04",
-  "regionStates": ["MN", "SD", "MT", "WI", "IA"],
+  "regionStates": [
+    "MN",
+    "SD",
+    "MT",
+    "WI",
+    "IA"
+  ],
   "originEventNames": "General Admission",
   "originRefreshHours": 24,
   "captureEventNames": "General Admission,Walk-Up",
 
-  "_fillState_note": "scripts/fill_customer_state.py — writes a state onto customers who gave a ZIP at the box office but have no address. Runs overnight because ACME has no optimistic locking, so a concurrent back-office edit during opening hours could be clobbered. maxPerRun caps the blast radius of a bug; leftovers are picked up next run. Customers with any existing address are never touched. Every write is logged to data/fill-state-log.json.",
+  "_fillState_note": "scripts/fill_customer_state.py \u2014 writes a state onto customers who gave a ZIP at the box office but have no address. Runs overnight because ACME has no optimistic locking, so a concurrent back-office edit during opening hours could be clobbered. maxPerRun caps the blast radius of a bug; leftovers are picked up next run. Customers with any existing address are never touched. Every write is logged to data/fill-state-log.json.",
   "fillState": {
-    "channels": ["Pos", "InsideSalesIndividual"],
+    "channels": [
+      "Pos",
+      "InsideSalesIndividual"
+    ],
     "maxPerRun": 400,
     "lookbackDays": 10,
-    "addressType": "home"
+    "addressType": "home",
+    "workers": 6,
+    "queueMaxAgeHours": 24
   },
-
-  "_excludeEventIds_note": "ACME event instances to drop from public availability. The availability report already filters to EventName = 'General Admission', but staff sometimes build holds off the GA template — those inherit the GA name and land in the report even though they were never put on sale online. There is no on-sale/sales-channel field in the Events collection to filter on (checked: SalesChannel, OnSaleStatus, IsOnline, Published, Visibility, IsPrivate, EventStatus — none exist), so they have to be listed by EventId here. To find the id: compare the widget's slots against the public checkout, then look up the extra start time in data/raw-report.json. The value is a human note; only the key matters.",
+  "_excludeEventIds_note": "ACME event instances to drop from public availability. The availability report already filters to EventName = 'General Admission', but staff sometimes build holds off the GA template \u2014 those inherit the GA name and land in the report even though they were never put on sale online. There is no on-sale/sales-channel field in the Events collection to filter on (checked: SalesChannel, OnSaleStatus, IsOnline, Published, Visibility, IsPrivate, EventStatus \u2014 none exist), so they have to be listed by EventId here. To find the id: compare the widget's slots against the public checkout, then look up the extra start time in data/raw-report.json. The value is a human note; only the key matters.",
   "excludeEventIds": {
-    "6a68ff77f3a9e3063dd4dc79": "2026-09-07 1:15 PM, 62 admissions — hold batch created 2026-07-28 13:13 MT, never on sale online",
-    "6a68ff77f3a9e3063dd4dc87": "2026-09-07 1:30 PM, 62 admissions — same batch",
-    "6a68ff77f3a9e3063dd4dc81": "2026-09-07 1:45 PM, 62 admissions — same batch"
+    "6a68ff77f3a9e3063dd4dc79": "2026-09-07 1:15 PM, 62 admissions \u2014 hold batch created 2026-07-28 13:13 MT, never on sale online",
+    "6a68ff77f3a9e3063dd4dc87": "2026-09-07 1:30 PM, 62 admissions \u2014 same batch",
+    "6a68ff77f3a9e3063dd4dc81": "2026-09-07 1:45 PM, 62 admissions \u2014 same batch"
   },
-  "_unused_note": "seasons/closedDates below are legacy — slot times and closed days now come live from ACME; kept only for reference",
-  "closedDates": ["2026-11-26", "2026-12-25", "2026-12-31"],
+  "_unused_note": "seasons/closedDates below are legacy \u2014 slot times and closed days now come live from ACME; kept only for reference",
+  "closedDates": [
+    "2026-11-26",
+    "2026-12-25",
+    "2026-12-31"
+  ],
   "seasons": [
     {
       "name": "spring",
       "start": "03-02",
       "end": "05-31",
-      "openDays": [1, 2, 3, 4, 5, 6],
+      "openDays": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
       "slotsByDay": {
-        "default": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"],
-        "5": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"],
-        "6": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"]
+        "default": [
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00"
+        ],
+        "5": [
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00",
+          "16:00"
+        ],
+        "6": [
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00",
+          "16:00"
+        ]
       }
     },
     {
       "name": "summer",
       "start": "06-01",
       "end": "09-13",
-      "openDays": [0, 1, 2, 3, 4, 5, 6],
+      "openDays": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
       "slotsByDay": {
-        "default": ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
+        "default": [
+          "09:00",
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00",
+          "16:00",
+          "17:00"
+        ]
       }
     },
     {
       "name": "fall",
       "start": "09-14",
       "end": "11-30",
-      "openDays": [1, 2, 3, 4, 5, 6],
+      "openDays": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
       "slotsByDay": {
-        "default": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"],
-        "5": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"],
-        "6": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"]
+        "default": [
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00"
+        ],
+        "5": [
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00",
+          "16:00"
+        ],
+        "6": [
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00",
+          "16:00"
+        ]
       }
     },
     {
       "name": "winter",
       "start": "12-01",
       "end": "12-31",
-      "openDays": [2, 3, 4, 5, 6],
+      "openDays": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
       "slotsByDay": {
-        "default": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"]
+        "default": [
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00"
+        ]
       }
     },
     {
       "name": "winter-jan",
       "start": "01-01",
       "end": "03-01",
-      "openDays": [2, 3, 4, 5, 6],
+      "openDays": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
       "slotsByDay": {
-        "default": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"]
+        "default": [
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00"
+        ]
       }
     }
   ]
