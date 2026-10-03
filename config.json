@@ -18,7 +18,6 @@
   "originEventNames": "General Admission",
   "originRefreshHours": 24,
   "captureEventNames": "General Admission,Walk-Up",
-
   "_fillState_note": "scripts/fill_customer_state.py \u2014 writes a state onto customers who gave a ZIP at the box office but have no address. Runs overnight because ACME has no optimistic locking, so a concurrent back-office edit during opening hours could be clobbered. maxPerRun caps the blast radius of a bug; leftovers are picked up next run. Customers with any existing address are never touched. Every write is logged to data/fill-state-log.json.",
   "fillState": {
     "channels": [
