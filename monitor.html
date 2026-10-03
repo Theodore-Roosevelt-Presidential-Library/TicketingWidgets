@@ -32,6 +32,15 @@
     .slotmap b { flex:1; height:.9em; border-radius:2px; background:#8FC895; }
     .slotmap b.x { background:var(--accent); }
     .note { font-size:.8rem; color:#666; margin-top:.4em; }
+    .stack { display:flex; height:1.05em; border-radius:3px; overflow:hidden;
+             background:rgba(0,0,0,.06); min-width:7em; }
+    .stack i { display:block; height:100%; }
+    .sw-nd { background:var(--night); } .sw-rg { background:#4E7D96; }
+    .sw-us { background:var(--accent); } .sw-in { background:#8FC895; }
+    .legend { display:flex; flex-wrap:wrap; gap:1em; margin:.7em 0 .2em; font-size:.8rem; }
+    .legend span { display:flex; align-items:center; gap:.4em; }
+    .legend b { width:.85em; height:.85em; border-radius:2px; display:inline-block; }
+    .statelist { font-size:.78rem; color:#666; }
     .tablewrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
     @media (max-width: 640px) {
       .tablewrap, .tablewrap * { box-sizing: border-box; }
@@ -69,6 +78,9 @@
   <h2>Today &amp; next 7 days</h2>
   <div id="upcoming"></div>
 
+  <h2>Where visitors are coming from <span class="meta" id="originwin"></span></h2>
+  <div id="origin"></div>
+
   <h2>Day-of-week behavior <span class="meta" id="lookback"></span></h2>
   <div class="cards" id="dow"></div>
   <p class="note">"Same-day tickets" = tickets sold on the visit day itself (walk-up + same-day online), measured
@@ -84,10 +96,11 @@
 <script>
 (async function () {
   const bust = "?t=" + Math.floor(Date.now() / 60000);
-  const [avail, analytics, stats] = await Promise.all([
+  const [avail, analytics, stats, origin] = await Promise.all([
     fetch("data/availability.json" + bust).then(r => r.json()),
     fetch("data/analytics.json" + bust).then(r => r.json()).catch(() => null),
     fetch("data/stats.json" + bust).then(r => r.json()).catch(() => null),
+    fetch("data/origin.json" + bust).then(r => r.json()).catch(() => null),
   ]);
 
   const n = (x) => (x ?? 0).toLocaleString("en-US");
@@ -183,6 +196,79 @@
   }
   up.push("</table></div>");
   document.getElementById("upcoming").innerHTML = up.join("");
+
+  /* ---- Where visitors are coming from -------------------------------- */
+  if (origin && origin.weeks && origin.weeks.length) {
+    const c = origin.current, cov = origin.coverage;
+    const day = (iso) => new Date(iso + "T12:00:00")
+      .toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    document.getElementById("originwin").textContent =
+      `— last 7 days, ${day(c.from)}–${day(c.to)}`;
+
+    /* Current window: who is actually walking in this week. */
+    const lead = c.topStates[0];
+    const curRows = c.topStates.map(t =>
+      `<tr><td data-l="State">${t.name}</td>` +
+      `<td class="num" data-l="Tickets">${n(t.tickets)}</td>` +
+      `<td class="num" data-l="Share">${t.pct}%</td>` +
+      `<td><div class="bar"><i style="width:${lead.pct ? Math.round(100 * t.pct / lead.pct) : 0}%"></i></div></td></tr>`);
+
+    /* Weekly trend: four buckets, each annotated with the states behind it. */
+    const B = [["nd", "sw-nd", "North Dakota"], ["region", "sw-rg", "Region"],
+               ["us", "sw-us", "Rest of US"], ["intl", "sw-in", "International"]];
+    const wkRows = origin.weeks.slice().reverse().map(w => {
+      const b = w.buckets;
+      const seg = B.map(([k, cls, label]) =>
+        `<i class="${cls}" style="flex:0 0 ${b[k].pct}%" title="${label}: ${b[k].pct}% (${n(b[k].tickets)})"></i>`).join("");
+      const names = [];
+      if (b.region.states.length) names.push("region: " + b.region.states.slice(0, 5).join(", "));
+      if (b.us.states.length) names.push("then: " + b.us.states.slice(0, 4).join(", "));
+      return `<tr><td data-l="Week">Week of ${w.label}` +
+        (w.partial ? ' <span class="meta">in progress</span>' : "") + "</td>" +
+        `<td class="num" data-l="Tickets">${n(w.tickets)}${w.partial ? "*" : ""}</td>` +
+        `<td><div class="stack">${seg}</div></td>` +
+        `<td class="num" data-l="ND">${b.nd.pct}%</td>` +
+        `<td class="num" data-l="Region">${b.region.pct}%</td>` +
+        `<td class="num" data-l="Rest of US">${b.us.pct}%</td>` +
+        `<td class="num mobilehide" data-l="Intl">${b.intl.pct}%</td>` +
+        `<td data-l="Note" class="statelist">${names.join(" · ")}</td></tr>`;
+    });
+
+    /* Compare finished weeks only — the in-progress week has valid shares but a
+       partial ticket count, so it would misread as a collapse in volume. */
+    const done = origin.weeks.filter(w => !w.partial);
+    const first = done[0] || origin.weeks[0];
+    const last = done[done.length - 1] || origin.weeks[origin.weeks.length - 1];
+    const swing = last.buckets.nd.pct - first.buckets.nd.pct;
+    const anyPartial = origin.weeks.some(w => w.partial);
+
+    document.getElementById("origin").innerHTML =
+      '<div class="tablewrap"><table><tr><th>State</th><th>Tickets</th><th>Share</th><th></th></tr>' +
+      curRows.join("") + "</table></div>" +
+      `<p class="note">${n(c.known)} of ${n(c.tickets)} tickets in the window carry an address; ` +
+      `shares are of those. International: ${n(c.intlTickets)}.</p>` +
+
+      `<h2 style="font-size:.95rem;margin-top:1.8rem">Week by week</h2>` +
+      '<div class="legend">' + B.map(([k, cls, label]) =>
+        `<span><b class="${cls}"></b>${label}</span>`).join("") + "</div>" +
+      '<div class="tablewrap"><table><tr><th>Week</th><th>Tickets</th><th></th><th>ND</th>' +
+      "<th>Region</th><th>Rest of US</th><th>Intl</th><th>Leading states</th></tr>" +
+      wkRows.join("") + "</table></div>" +
+
+      `<p class="note">${anyPartial ? "* Current week still accruing visits — its shares are usable, its ticket count is not yet comparable. " : ""}` +
+      `Region = ${origin.regionStates.join(", ")}. ` +
+      `North Dakota's share has moved from ${first.buckets.nd.pct}% in the week of ${first.label} ` +
+      `to ${last.buckets.nd.pct}% in the week of ${last.label} ` +
+      `(${swing >= 0 ? "+" : ""}${swing} points) — the audience is broadening as the opening surge settles. ` +
+      `Source: ACME Transactions, ticket quantity by visit date and customer address, ` +
+      `General Admission only. ${cov.pct}% of ${n(cov.tickets)} season tickets carry a usable ` +
+      `address; door sales rarely do, so read these as shares of visitors we can place, not of ` +
+      `all visitors. The full season is re-derived every run, so refunds and late orders correct ` +
+      `earlier weeks.</p>`;
+  } else {
+    document.getElementById("origin").innerHTML =
+      "<p class='note'>Origin data not available yet — it is written on the next pipeline run.</p>";
+  }
 
   if (!analytics) return;
   document.getElementById("lookback").textContent = "— last " + analytics.lookbackDays + " days";

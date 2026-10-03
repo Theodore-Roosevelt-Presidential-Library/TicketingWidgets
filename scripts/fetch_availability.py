@@ -77,6 +77,7 @@ Runs on Python 3.9+ stdlib only.
 """
 
 import calendar
+import collections
 import json
 import os
 import random
@@ -108,6 +109,7 @@ LEADS_PATH = DATA_DIR / "leads.json"
 ANALYTICS_PATH = DATA_DIR / "analytics.json"
 OUTPUT_PATH = DATA_DIR / "availability.json"
 STATS_PATH = DATA_DIR / "stats.json"
+ORIGIN_PATH = DATA_DIR / "origin.json"
 RAW_PATH = DATA_DIR / "raw-report.json"  # last raw API response, for debugging
 RAW_SALES_PATH = DATA_DIR / "raw-sales.json"
 
@@ -120,6 +122,11 @@ REPORT_ID = os.environ.get("ACME_REPORT_ID", "69c18975669b758620b4c586")
 # always send our own queryExpression below, so edits to that saved report in
 # the ACME back office cannot move these numbers.
 SALES_REPORT_ID = os.environ.get("ACME_SALES_REPORT_ID", "6a9acc9efdf8e0b5bcb2fb12")
+# Visitor origin comes from the Transactions collection (the only one carrying a
+# customer address). As with the sales report, this uuid is just an async-job
+# handle -- any Transactions report works, because we always send our own
+# queryExpression. Set ACME_ORIGIN_REPORT_ID if this one is ever deleted.
+ORIGIN_REPORT_ID = os.environ.get("ACME_ORIGIN_REPORT_ID", "69e2b83a6f2620bbaeb5062e")
 SALES_EVENT_NAMES = os.environ.get(
     "ACME_SALES_EVENT_NAMES", "General Admission,Flex Tickets,Walk-Up")
 # Supply-side (widget) filter. Deliberately NARROWER than SALES_EVENT_NAMES:
@@ -456,6 +463,209 @@ def mock_availability(config, tz, past_days, future_days):
 
 
 # ---------------------------------------------------------------- small utils
+
+# ------------------------------------------------------------ visitor origin
+
+US_STATES = {
+    "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas",
+    "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware",
+    "DC": "District of Columbia", "FL": "Florida", "GA": "Georgia", "HI": "Hawaii",
+    "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa",
+    "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine",
+    "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota",
+    "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska",
+    "NV": "Nevada", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico",
+    "NY": "New York", "NC": "North Carolina", "ND": "North Dakota", "OH": "Ohio",
+    "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania", "RI": "Rhode Island",
+    "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas",
+    "UT": "Utah", "VT": "Vermont", "VA": "Virginia", "WA": "Washington",
+    "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming",
+    "PR": "Puerto Rico", "VI": "U.S. Virgin Islands", "GU": "Guam",
+}
+_NAME_TO_ABBR = {v.upper(): k for k, v in US_STATES.items()}
+
+
+def normalize_state(raw_state, raw_country):
+    """Map one ACME address to ("US", "ND") / ("INTL", "Canada") / (None, None).
+
+    ACME stores the state free-text: the same place arrives as "North Dakota"
+    and as "ND", and the field also holds Canadian provinces and European
+    regions ("Manitoba", "Catalunya", "Wiltshire") when the visitor is not from
+    the US. Country is the better signal but is blank on ~17% of rows, so fall
+    back to recognising the state string.
+    """
+    s = (raw_state or "").strip()
+    c = (raw_country or "").strip()
+    cu = c.upper()
+    is_us = cu in ("UNITED STATES", "USA", "US", "U.S.", "UNITED STATES OF AMERICA")
+
+    abbr = None
+    su = s.upper()
+    if su in US_STATES:
+        abbr = su
+    elif su in _NAME_TO_ABBR:
+        abbr = _NAME_TO_ABBR[su]
+
+    if is_us or (not c and abbr):
+        return ("US", abbr) if abbr else (None, None)
+    if c:
+        return ("INTL", c if not is_us else None) if not is_us else (None, None)
+    return (None, None)
+
+
+def origin_query_expression(event_names):
+    """Transactions: GA ticket quantity by visit date and customer address.
+
+    Aggregated server-side by (date, state, country) — no names, emails or
+    street addresses are ever requested, so nothing identifying leaves ACME.
+    """
+    return {
+        "collectionName": "Transactions",
+        "findQueries": [
+            {"fieldName": "TransactionType", "fieldValue": "Sale", "operator": "contains"},
+            {"fieldName": "EventName", "fieldValue": event_names, "operator": "contains"},
+        ],
+        "findFields": [
+            {"fieldName": "EventStartTime", "include": True},
+            {"fieldName": "CustomerAddressState", "include": True},
+            {"fieldName": "CustomerAddressCountry", "include": True},
+            {"fieldName": "Quantity", "include": True},
+        ],
+        "sortFields": [],
+        "groupFields": [
+            {"fieldName": "EventStartTime", "groupFunction": "DayMonthYear"},
+            {"fieldName": "CustomerAddressState", "groupFunction": None},
+            {"fieldName": "CustomerAddressCountry", "groupFunction": None},
+        ],
+        "summaryFields": [{"fieldName": "Quantity", "summaryFunction": "Sum"}],
+        "countFields": [],
+        "limit": 0,
+    }
+
+
+def run_origin_report(tz, season_start, today_iso, event_names):
+    start = datetime.fromisoformat(season_start).replace(tzinfo=tz)
+    end = datetime.fromisoformat(today_iso).replace(hour=23, minute=59, second=59, tzinfo=tz)
+    return execute_report(ORIGIN_REPORT_ID, origin_query_expression(event_names),
+                          "EventStartTime", start, end)
+
+
+def compute_origin(raw, config, tz, today_iso):
+    """Weekly visitor-origin series plus a current-window snapshot.
+
+    The whole season is re-derived from ACME on every run rather than appended
+    to, so refunds and late-arriving orders correct past weeks instead of
+    fossilising the first number we happened to see.
+    """
+    cols = {str(f.get("fieldName", "")): (f.get("values") or [])
+            for f in (raw.get("resultFieldList") or [])}
+    dates = cols.get("EventStartTime") or []
+    states = cols.get("CustomerAddressState") or []
+    countries = cols.get("CustomerAddressCountry") or []
+    qtys = cols.get("Quantity") or []
+    if not dates:
+        raise RuntimeError(f"Origin report returned no rows. Columns: {list(cols)}")
+
+    region = [s.upper() for s in config.get("regionStates", ["MN", "SD", "MT", "WI", "IA"])]
+    weeks, current, totals = {}, collections.Counter(), collections.Counter()
+    cur_from = (date.fromisoformat(today_iso) - timedelta(days=6)).isoformat()
+
+    for i, d in enumerate(dates):
+        d_iso = str(d)[:10]
+        try:
+            qty = int(float(qtys[i]))
+        except (ValueError, TypeError, IndexError):
+            continue
+        scope, place = normalize_state(states[i] if i < len(states) else "",
+                                       countries[i] if i < len(countries) else "")
+        dt = date.fromisoformat(d_iso)
+        wk = (dt - timedelta(days=dt.weekday())).isoformat()
+        w = weeks.setdefault(wk, {"total": 0, "known": 0, "states": collections.Counter(),
+                                  "intl": collections.Counter()})
+        w["total"] += qty
+        totals["total"] += qty
+        if d_iso >= cur_from:
+            current["total"] += qty
+        if scope == "US" and place:
+            w["known"] += qty; w["states"][place] += qty
+            totals["known"] += qty
+            if d_iso >= cur_from:
+                current["known"] += qty; current[place] += qty
+        elif scope == "INTL" and place:
+            w["known"] += qty; w["intl"][place] += qty
+            totals["known"] += qty
+            if d_iso >= cur_from:
+                current["known"] += qty; current["__intl__"] += qty
+
+    def bucketize(state_counts, intl_counts, known):
+        nd = state_counts.get("ND", 0)
+        reg = sum(v for k, v in state_counts.items() if k in region)
+        intl = sum(intl_counts.values())
+        rest = known - nd - reg - intl
+        pct = lambda v: round(100 * v / known) if known else 0
+        return {
+            "nd": {"tickets": nd, "pct": pct(nd)},
+            "region": {"tickets": reg, "pct": pct(reg),
+                       "states": [k for k, _ in sorted(
+                           ((k, v) for k, v in state_counts.items() if k in region),
+                           key=lambda x: -x[1])]},
+            "us": {"tickets": rest, "pct": pct(rest),
+                   "states": [k for k, _ in sorted(
+                       ((k, v) for k, v in state_counts.items()
+                        if k != "ND" and k not in region), key=lambda x: -x[1])[:5]]},
+            "intl": {"tickets": intl, "pct": pct(intl),
+                     "places": [k for k, _ in intl_counts.most_common(3)]},
+        }
+
+    today_week = (date.fromisoformat(today_iso)
+                  - timedelta(days=date.fromisoformat(today_iso).weekday())).isoformat()
+    week_list = []
+    for wk in sorted(weeks):
+        w = weeks[wk]
+        week_list.append({
+            "week": wk,
+            "label": date.fromisoformat(wk).strftime("%b %-d"),
+            # The current week is still accruing visits; its share percentages are
+            # usable but its ticket count is not comparable to a finished week.
+            "partial": wk == today_week,
+            "tickets": w["total"],
+            "known": w["known"],
+            "unknownPct": round(100 * (w["total"] - w["known"]) / w["total"]) if w["total"] else 0,
+            "buckets": bucketize(w["states"], w["intl"], w["known"]),
+            "topStates": [[k, v] for k, v in w["states"].most_common(6)],
+        })
+
+    cur_states = collections.Counter({k: v for k, v in current.items()
+                                      if k in US_STATES})
+    cur_known = current.get("known", 0)
+    top = [{"state": k, "name": US_STATES[k], "tickets": v,
+            "pct": round(100 * v / cur_known) if cur_known else 0}
+           for k, v in cur_states.most_common(10)]
+
+    return {
+        "generatedAt": datetime.now(tz).isoformat(),
+        "seasonStart": config.get("seasonStart", "2026-07-04"),
+        "regionStates": region,
+        "source": "ACME Transactions — Quantity by EventStartTime and customer address. "
+                  "Aggregated in ACME; no personal data is requested or stored.",
+        "coverage": {
+            "tickets": totals["total"],
+            "withAddress": totals["known"],
+            "pct": round(100 * totals["known"] / totals["total"]) if totals["total"] else 0,
+            "note": "Share of ticket sales carrying a usable address. Door sales rarely "
+                    "capture one, so percentages below are of tickets we can place, not "
+                    "of all visitors.",
+        },
+        "current": {
+            "from": cur_from, "to": today_iso,
+            "tickets": current.get("total", 0),
+            "known": cur_known,
+            "intlTickets": current.get("__intl__", 0),
+            "topStates": top,
+        },
+        "weeks": week_list,
+    }
+
 
 def slot_label(hhmm):
     h, m = map(int, hhmm.split(":"))
@@ -1139,6 +1349,26 @@ def main():
         "sellThrough": sell_through,
     }
     STATS_PATH.write_text(json.dumps(stats, indent=1))
+
+    # Visitor origin. A failure here must not take the widgets or the monitor
+    # down, so keep the last good file and carry on.
+    if MOCK:
+        print("MOCK mode — skipping origin report.")
+    else:
+        try:
+            origin_raw = run_origin_report(
+                tz, config.get("seasonStart", "2026-07-04"), today_iso,
+                config.get("originEventNames", "General Admission"))
+            origin = compute_origin(origin_raw, config, tz, today_iso)
+            ORIGIN_PATH.write_text(json.dumps(origin, indent=1))
+            cur = origin["current"]
+            lead = cur["topStates"][0] if cur["topStates"] else None
+            print(f"Origin: {origin['coverage']['pct']}% of {origin['coverage']['tickets']:,} "
+                  f"tickets placed, {len(origin['weeks'])} weeks"
+                  + (f"; last 7 days led by {lead['name']} at {lead['pct']}%" if lead else ""))
+        except Exception as exc:  # noqa: BLE001 — best-effort, never fatal
+            print(f"WARNING: origin report failed ({exc}); keeping previous origin.json",
+                  file=sys.stderr)
 
     OUTPUT_PATH.write_text(json.dumps(availability, indent=2))
     ANALYTICS_PATH.write_text(json.dumps(analytics, indent=2))
