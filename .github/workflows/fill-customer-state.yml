@@ -1,0 +1,56 @@
+name: Fill customer state from ZIP
+
+# Overnight only. ACME's customer upsert has no optimistic locking — a stale
+# version is accepted silently — so a write during opening hours could clobber
+# an edit a staff member is making in the back office. 09:00 UTC is 03:00 MT
+# (02:00 during MST), comfortably outside box-office hours year round.
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+    inputs:
+      maxPerRun:
+        description: "Override maxPerRun for a one-off catch-up"
+        required: false
+      dryRun:
+        description: "Set to 1 to resolve and report without writing"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fill-customer-state
+  cancel-in-progress: false
+
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fill state on customers with a ZIP but no address
+        env:
+          ACME_API_KEY: ${{ secrets.ACME_API_KEY }}
+          ACME_API_BASE: ${{ vars.ACME_API_BASE || 'https://api.acmeticketing.com' }}
+          FILL_STATE_MAX: ${{ github.event.inputs.maxPerRun }}
+          FILL_STATE_DRY_RUN: ${{ github.event.inputs.dryRun }}
+        run: python scripts/fill_customer_state.py
+
+      - name: Commit audit log
+        run: |
+          git config user.name "trpl-widgets-bot"
+          git config user.email "actions@github.com"
+          git config merge.keepours.driver true
+          git add data/fill-state.json data/fill-state-log.json
+          if git diff --cached --quiet; then
+            echo "No writes this run."
+          else
+            git commit -m "chore: customer state fill log [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi

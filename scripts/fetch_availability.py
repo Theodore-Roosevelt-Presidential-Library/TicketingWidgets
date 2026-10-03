@@ -27,7 +27,7 @@ Tickets and Walk-Up). Keep those two lists separate.
 Filtering on EventName alone is not sufficient. Staff holds built off the GA
 template inherit the name "General Admission" and pass the filter even though
 they were never put on sale online -- on 2026-09-07 three such instances (62
-seats each, 1:15/1:30/1:45 PM) showed as available in the widget while the
+admissions each, 1:15/1:30/1:45 PM) showed as available in the widget while the
 checkout had them sold out. The Events collection exposes no sales-channel or
 visibility field to filter on, so those instances are listed by id in
 config.excludeEventIds. Grouping by EventId (rather than the saved report's
@@ -218,7 +218,7 @@ def availability_query_expression():
     single row. That hid a real defect: staff holds built off the GA template
     are named "General Admission", pass the report's name filter, and get added
     straight into the public numbers -- so a slot that is sold out on the
-    checkout was showing 62 seats free in the widget.
+    checkout was showing 62 admissions free in the widget.
 
     Grouping by EventId instead keeps the instances separate so
     config.excludeEventIds can drop the ones that were never on sale online,
@@ -370,7 +370,7 @@ def parse_availability(raw, tz, exclude_ids=None):
 
     exclude_ids drops named event instances (config.excludeEventIds) before the
     per-slot sum, so holds that were never on sale online cannot advertise
-    seats the checkout will not sell.
+    admissions the checkout will not sell.
     """
     exclude_ids = set(exclude_ids or ())
     field_list = raw.get("resultFieldList") if isinstance(raw, dict) else None
@@ -545,6 +545,85 @@ def origin_query_expression(event_names):
     }
 
 
+def capture_query_expression(event_names, require_zip):
+    """Ticket counts by day and sale channel, optionally only where a ZIP exists.
+
+    Running this twice — once plain, once with the `exists` filter — gives a
+    capture rate without ever returning a ZIP, a name or a customer id. Grouping
+    by the ZIP value instead would work but would pull ~38k rows of visitor
+    geography into the repo to answer a question about staff workflow.
+    """
+    queries = [
+        {"fieldName": "TransactionType", "fieldValue": "Sale", "operator": "contains"},
+        {"fieldName": "EventName", "fieldValue": event_names, "operator": "contains"},
+    ]
+    if require_zip:
+        queries.append({"fieldName": "ZipCode", "fieldValue": None, "operator": "exists"})
+    return {
+        "collectionName": "Transactions",
+        "findQueries": queries,
+        "findFields": [
+            {"fieldName": "EventStartTime", "include": True},
+            {"fieldName": "SaleChannel", "include": True},
+            {"fieldName": "Quantity", "include": True},
+        ],
+        "sortFields": [],
+        "groupFields": [
+            {"fieldName": "EventStartTime", "groupFunction": "DayMonthYear"},
+            {"fieldName": "SaleChannel", "groupFunction": None},
+        ],
+        "summaryFields": [{"fieldName": "Quantity", "summaryFunction": "Sum"}],
+        "countFields": [],
+        "limit": 0,
+    }
+
+
+def compute_capture(tz, season_start, today_iso, event_names):
+    """Monthly address-capture rate per sale channel.
+
+    Online checkout always collects an address, so its rate is ~100% and is not
+    a measure of anything. The number that matters is Pos: the front desk asking
+    for a ZIP. That rate is a staff-workflow metric, so it is reported per month
+    to be readable as a trend rather than as daily noise.
+    """
+    def pull(require_zip):
+        raw = execute_report(
+            ORIGIN_REPORT_ID, capture_query_expression(event_names, require_zip),
+            "EventStartTime",
+            datetime.fromisoformat(season_start).replace(tzinfo=tz),
+            datetime.fromisoformat(today_iso).replace(hour=23, minute=59, second=59, tzinfo=tz))
+        cols = {str(f.get("fieldName", "")): (f.get("values") or [])
+                for f in (raw.get("resultFieldList") or [])}
+        out = collections.Counter()
+        for d, ch, q in zip(cols.get("EventStartTime", []), cols.get("SaleChannel", []),
+                            cols.get("Quantity", [])):
+            try:
+                out[(str(d)[:7], (ch or "").strip() or "(none)")] += int(float(q))
+            except (ValueError, TypeError):
+                continue
+        return out
+
+    total, withzip = pull(False), pull(True)
+    months = sorted({m for m, _ in total})
+    channels = sorted({c for _, c in total}, key=lambda c: -sum(
+        v for (m, ch), v in total.items() if ch == c))
+    rows = []
+    for ch in channels:
+        series = []
+        for m in months:
+            t = total.get((m, ch), 0)
+            if t < 50:            # too thin to read as a rate
+                series.append({"month": m, "tickets": t, "pct": None})
+            else:
+                series.append({"month": m, "tickets": t,
+                               "pct": round(100 * withzip.get((m, ch), 0) / t)})
+        if sum(s["tickets"] for s in series) >= 100:
+            rows.append({"channel": ch, "months": series})
+    return {"months": months, "channels": rows,
+            "note": "Share of ticket sales where a ZIP was captured. Online checkout "
+                    "requires one, so only the staffed channels measure anything."}
+
+
 def origin_due(tz, refresh_hours):
     """Should the origin report run this time round?
 
@@ -577,6 +656,11 @@ def run_origin_report(tz, season_start, today_iso, event_names):
                           "EventStartTime", start, end)
 
 
+def _bucket():
+    return {"total": 0, "known": 0, "states": collections.Counter(),
+            "intl": collections.Counter()}
+
+
 def compute_origin(raw, config, tz, today_iso):
     """Weekly visitor-origin series plus a current-window snapshot.
 
@@ -594,7 +678,8 @@ def compute_origin(raw, config, tz, today_iso):
         raise RuntimeError(f"Origin report returned no rows. Columns: {list(cols)}")
 
     region = [s.upper() for s in config.get("regionStates", ["MN", "SD", "MT", "WI", "IA"])]
-    weeks, current, totals = {}, collections.Counter(), collections.Counter()
+    weeks, months, years = {}, {}, {}
+    current, totals = collections.Counter(), collections.Counter()
     cur_from = (date.fromisoformat(today_iso) - timedelta(days=6)).isoformat()
 
     for i, d in enumerate(dates):
@@ -607,19 +692,27 @@ def compute_origin(raw, config, tz, today_iso):
                                        countries[i] if i < len(countries) else "")
         dt = date.fromisoformat(d_iso)
         wk = (dt - timedelta(days=dt.weekday())).isoformat()
-        w = weeks.setdefault(wk, {"total": 0, "known": 0, "states": collections.Counter(),
-                                  "intl": collections.Counter()})
-        w["total"] += qty
+        # Accumulate week, month and year together. Weeks are the operating view
+        # but go stale as a list once there are a few seasons of them; months and
+        # years are what make a multi-year trend readable.
+        periods = [weeks.setdefault(wk, _bucket()),
+                   months.setdefault(d_iso[:7], _bucket()),
+                   years.setdefault(d_iso[:4], _bucket())]
+        for p in periods:
+            p["total"] += qty
+        w = periods[0]
         totals["total"] += qty
         if d_iso >= cur_from:
             current["total"] += qty
         if scope == "US" and place:
-            w["known"] += qty; w["states"][place] += qty
+            for p in periods:
+                p["known"] += qty; p["states"][place] += qty
             totals["known"] += qty
             if d_iso >= cur_from:
                 current["known"] += qty; current[place] += qty
         elif scope == "INTL" and place:
-            w["known"] += qty; w["intl"][place] += qty
+            for p in periods:
+                p["known"] += qty; p["intl"][place] += qty
             totals["known"] += qty
             if d_iso >= cur_from:
                 current["known"] += qty; current["__intl__"] += qty
@@ -662,6 +755,31 @@ def compute_origin(raw, config, tz, today_iso):
             "topStates": [[k, v] for k, v in w["states"].most_common(6)],
         })
 
+    def rollup(store, label):
+        out = []
+        for key in sorted(store):
+            b = store[key]
+            out.append({
+                "period": key,
+                "label": label(key),
+                "tickets": b["total"],
+                "known": b["known"],
+                "unknownPct": (round(100 * (b["total"] - b["known"]) / b["total"])
+                               if b["total"] else 0),
+                "buckets": bucketize(b["states"], b["intl"], b["known"]),
+                "topStates": [[k, v] for k, v in b["states"].most_common(8)],
+            })
+        return out
+
+    month_list = rollup(months, lambda k: date.fromisoformat(k + "-01").strftime("%b %Y"))
+    year_list = rollup(years, lambda k: k)
+    this_month = today_iso[:7]
+    this_year = today_iso[:4]
+    for m in month_list:
+        m["partial"] = m["period"] == this_month
+    for y in year_list:
+        y["partial"] = y["period"] == this_year
+
     cur_states = collections.Counter({k: v for k, v in current.items()
                                       if k in US_STATES})
     cur_known = current.get("known", 0)
@@ -691,6 +809,8 @@ def compute_origin(raw, config, tz, today_iso):
             "topStates": top,
         },
         "weeks": week_list,
+        "months": month_list,
+        "years": year_list,
     }
 
 
@@ -1301,7 +1421,7 @@ def main():
             ytd_records.extend(load_json(p, {}).values())
     ytd_completed = sum(r.get("sold", 0) for r in ytd_records)
 
-    # Season sell-through: of the seats we actually put on sale on days that
+    # Season sell-through: of the admissions we actually put on sale on days that
     # have now happened, what share went. Both halves come from the Events
     # report, so this is a capacity-utilisation rate and cannot exceed 100% --
     # it is deliberately NOT the ticket count in the "sales" block, which is
@@ -1316,7 +1436,7 @@ def main():
         "days": len(ytd_records),
         "firstDay": st_dates[0] if st_dates else None,
         "lastDay": st_dates[-1] if st_dates else None,
-        "note": "Seats sold / seats offered, completed days only, from the Events "
+        "note": "Admissions sold / admissions offered, completed days only, from the Events "
                 "report. Capacity utilisation, not a ticket count.",
     }
     today_day = next((d for d in availability["days"] if d["date"] == today_iso), None)
@@ -1392,6 +1512,23 @@ def main():
                 tz, config.get("seasonStart", "2026-07-04"), today_iso,
                 config.get("originEventNames", "General Admission"))
             origin = compute_origin(origin_raw, config, tz, today_iso)
+            # Capture rate is about staff workflow, not visitors, but it shares
+            # this job's daily cadence and its source collection.
+            try:
+                origin["capture"] = compute_capture(
+                    tz, config.get("seasonStart", "2026-07-04"), today_iso,
+                    config.get("captureEventNames", "General Admission,Walk-Up"))
+                pos = next((c for c in origin["capture"]["channels"]
+                            if c["channel"] == "Pos"), None)
+                if pos:
+                    recent = [m for m in pos["months"] if m["pct"] is not None]
+                    if recent:
+                        print(f"Capture: Pos ZIP capture {recent[-1]['pct']}% in "
+                              f"{recent[-1]['month']} (was {recent[0]['pct']}% in "
+                              f"{recent[0]['month']})")
+            except Exception as exc:  # noqa: BLE001
+                print(f"WARNING: capture rate failed ({exc}); origin still written",
+                      file=sys.stderr)
             ORIGIN_PATH.write_text(json.dumps(origin, indent=1))
             cur = origin["current"]
             lead = cur["topStates"][0] if cur["topStates"] else None

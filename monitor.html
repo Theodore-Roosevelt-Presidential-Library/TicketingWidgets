@@ -41,6 +41,10 @@
     .legend span { display:flex; align-items:center; gap:.4em; }
     .legend b { width:.85em; height:.85em; border-radius:2px; display:inline-block; }
     .statelist { font-size:.78rem; color:#666; }
+    .morebtn { font: inherit; font-size:.82rem; color:var(--night); background:#fff;
+               border:1px solid var(--line); border-radius:6px; padding:.4em .9em;
+               cursor:pointer; }
+    .morebtn:hover { background:#F2EFE8; }
     .tablewrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
     @media (max-width: 640px) {
       .tablewrap, .tablewrap * { box-sizing: border-box; }
@@ -108,15 +112,16 @@
     ? new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" })
     : "";
 
-  /* Season sell-through. Capacity utilisation from the Events report — seats
-     sold over seats offered on days that have already happened. Kept visually
+  /* Season sell-through. Capacity utilisation from the Events report —
+     admissions sold over admissions offered on days that have already
+     happened. We sell timed entry, not seats; keep the wording. Kept visually
      distinct from the ticket counts beside it, which come from the sales
      report and are a different (higher) kind of number. */
   function sellThroughCard(st) {
     if (!st || !st.capacity) return "";
     const hot = st.pct >= 85;
     return `<div class="card"><h3>Sell-through to date</h3>` +
-      `<p><span class="big">${st.pct}%</span> of seats offered</p>` +
+      `<p><span class="big">${st.pct}%</span> of admissions offered</p>` +
       `<div class="bar${hot ? " hot" : ""}"><i style="width:${Math.min(100, st.pct)}%"></i></div>` +
       `<p class="meta" style="margin-top:.5em">${n(st.sold)} sold of ${n(st.capacity)} across ` +
       `${st.days} open days, ${md(st.firstDay)}–${md(st.lastDay)}. Capacity used, not a ticket ` +
@@ -165,7 +170,7 @@
       "<th>Upcoming</th><th>Checked in</th><th>Redeemed</th></tr>" + rows.join("") + "</table></div>" +
       `<p class="note">Ticket counts above and in this table come from ACME <em>TicketAnalytics</em> — ` +
       `TicketQuantity and CheckedInCount, matching the "PE: GA Tickets Checked In" report. ` +
-      `<strong>Sell-through is a different measurement:</strong> it divides seats sold by seats offered ` +
+      `<strong>Sell-through is a different measurement:</strong> it divides admissions sold by admissions offered ` +
       `using the separate <em>Events</em> report, counts General Admission only, and stops at 100% on days ` +
       `that sold past capacity — so it runs below the true ticket count by roughly 7%. Read it as "how full ` +
       `did we run," not as tickets sold. Availability and sell-out risk below come from that same report.</p>`;
@@ -220,14 +225,42 @@
     /* Weekly trend: four buckets, each annotated with the states behind it. */
     const B = [["nd", "sw-nd", "North Dakota"], ["region", "sw-rg", "Region"],
                ["us", "sw-us", "Rest of US"], ["intl", "sw-in", "International"]];
-    const wkRows = origin.weeks.slice().reverse().map(w => {
+
+    const stackOf = (b) => B.map(([k, cls, label]) =>
+      `<i class="${cls}" style="flex:0 0 ${b[k].pct}%" title="${label}: ${b[k].pct}% (${n(b[k].tickets)})"></i>`).join("");
+
+    /* Months and years share the weekly shape, minus the per-week noise. */
+    function periodTable(title, rows, colLabel) {
+      const body = rows.map(r => {
+        const b = r.buckets;
+        return `<tr><td data-l="${colLabel}">${r.label}` +
+          (r.partial ? ' <span class="meta">in progress</span>' : "") + "</td>" +
+          `<td class="num" data-l="Tickets">${n(r.tickets)}${r.partial ? "*" : ""}</td>` +
+          `<td><div class="stack">${stackOf(b)}</div></td>` +
+          `<td class="num" data-l="ND">${b.nd.pct}%</td>` +
+          `<td class="num" data-l="Region">${b.region.pct}%</td>` +
+          `<td class="num" data-l="Rest of US">${b.us.pct}%</td>` +
+          `<td class="num mobilehide" data-l="Intl">${b.intl.pct}%</td>` +
+          `<td data-l="Top states" class="statelist">${r.topStates.slice(0, 5).map(s => s[0]).join(", ")}</td></tr>`;
+      }).join("");
+      return `<h2 style="font-size:.95rem;margin-top:1.8rem">${title}</h2>` +
+        `<div class="tablewrap"><table><tr><th>${colLabel}</th><th>Tickets</th><th></th>` +
+        "<th>ND</th><th>Region</th><th>Rest of US</th><th>Intl</th><th>Top states</th></tr>" +
+        body + "</table></div>";
+    }
+    /* Weeks are the operating view, but the list grows forever — a third season
+       would be 150 rows. Show a recent window and let it expand; months and
+       years below are what stay readable as the history builds. */
+    const WEEKS_SHOWN = 12;
+    const wkRows = origin.weeks.slice().reverse().map((w, idx) => {
       const b = w.buckets;
       const seg = B.map(([k, cls, label]) =>
         `<i class="${cls}" style="flex:0 0 ${b[k].pct}%" title="${label}: ${b[k].pct}% (${n(b[k].tickets)})"></i>`).join("");
       const names = [];
       if (b.region.states.length) names.push("region: " + b.region.states.slice(0, 5).join(", "));
       if (b.us.states.length) names.push("then: " + b.us.states.slice(0, 4).join(", "));
-      return `<tr><td data-l="Week">Week of ${w.label}` +
+      return `<tr${idx >= WEEKS_SHOWN ? ' class="wk-extra" hidden' : ""}>` +
+        `<td data-l="Week">Week of ${w.label}` +
         (w.partial ? ' <span class="meta">in progress</span>' : "") + "</td>" +
         `<td class="num" data-l="Tickets">${n(w.tickets)}${w.partial ? "*" : ""}</td>` +
         `<td><div class="stack">${seg}</div></td>` +
@@ -258,6 +291,18 @@
       '<div class="tablewrap"><table><tr><th>Week</th><th>Tickets</th><th></th><th>ND</th>' +
       "<th>Region</th><th>Rest of US</th><th>Intl</th><th>Leading states</th></tr>" +
       wkRows.join("") + "</table></div>" +
+      (origin.weeks.length > WEEKS_SHOWN
+        ? `<p><button type="button" id="wkmore" class="morebtn">Show all ` +
+          `${origin.weeks.length} weeks</button></p>` : "") +
+
+      /* Months, then years. These are the views that survive a multi-season
+         history; the year table only earns its place once there are two. */
+      (origin.months && origin.months.length > 1 ? periodTable(
+        "By month", origin.months.slice().reverse(), "Month") : "") +
+      (origin.years && origin.years.length > 1 ? periodTable(
+        "By year", origin.years.slice().reverse(), "Year") +
+        `<p class="note">Year-over-year is the comparison worth watching: whether ` +
+        `the local share keeps falling as the opening season recedes, or settles.</p>` : "") +
 
       `<p class="note">${anyPartial ? "* Current week still accruing visits — its shares are usable, its ticket count is not yet comparable. " : ""}` +
       `Region = ${origin.regionStates.join(", ")}. ` +
@@ -268,7 +313,50 @@
       `General Admission only. ${cov.pct}% of ${n(cov.tickets)} season tickets carry a usable ` +
       `address; door sales rarely do, so read these as shares of visitors we can place, not of ` +
       `all visitors. The full season is re-derived every run, so refunds and late orders correct ` +
-      `earlier weeks.</p>`;
+      `earlier weeks.</p>` +
+
+      /* Address capture — a staff workflow metric, not a visitor one. It sits
+         here because a falling capture rate is exactly what would make the
+         origin numbers above quietly less trustworthy. */
+      (origin.capture && origin.capture.channels.length ? (() => {
+        const cap = origin.capture;
+        const mlabel = (m) => new Date(m + "-01T12:00:00")
+          .toLocaleDateString("en-US", { month: "short" });
+        const head = cap.months.map(m => `<th>${mlabel(m)}</th>`).join("");
+        const body = cap.channels.map(c => {
+          const name = c.channel === "Pos" ? "Box office (Pos)" : c.channel;
+          const cells = c.months.map(m => {
+            if (m.pct === null) return `<td class="num" data-l="${mlabel(m.month)}">—</td>`;
+            const warn = m.pct < 40 ? ' style="color:#B4472E;font-weight:700"' : "";
+            return `<td class="num" data-l="${mlabel(m.month)}"${warn}>${m.pct}%` +
+              `<span class="meta"> (${n(m.tickets)})</span></td>`;
+          }).join("");
+          return `<tr><td data-l="Channel">${name}</td>${cells}</tr>`;
+        }).join("");
+        const pos = cap.channels.find(c => c.channel === "Pos");
+        const seen = pos ? pos.months.filter(m => m.pct !== null) : [];
+        const drop = seen.length > 1
+          ? ` Box-office capture has moved from ${seen[0].pct}% in ${mlabel(seen[0].month)} ` +
+            `to ${seen[seen.length - 1].pct}% in ${mlabel(seen[seen.length - 1].month)}.` : "";
+        return `<h2 style="font-size:.95rem;margin-top:1.8rem">Address capture by channel</h2>` +
+          '<div class="tablewrap"><table><tr><th>Channel</th>' + head + "</tr>" + body +
+          "</table></div>" +
+          `<p class="note">Share of tickets where a ZIP was captured, with ticket counts ` +
+          `in brackets; under 40% is flagged. Online checkout requires an address, so only ` +
+          `the staffed channels measure anything.${drop} Every visitor sold without one is a ` +
+          `visitor missing from the map above.</p>`;
+      })() : "");
+
+    const moreBtn = document.getElementById("wkmore");
+    if (moreBtn) {
+      moreBtn.addEventListener("click", () => {
+        const hidden = document.querySelector(".wk-extra[hidden]");
+        document.querySelectorAll(".wk-extra").forEach(el => { el.hidden = !hidden; });
+        moreBtn.textContent = hidden
+          ? `Show only the last ${WEEKS_SHOWN} weeks`
+          : `Show all ${origin.weeks.length} weeks`;
+      });
+    }
   } else {
     document.getElementById("origin").innerHTML =
       "<p class='note'>Origin data not available yet — it is written on the next pipeline run.</p>";
