@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-02T23:53:48.959329-06:00",
+ "generatedAt": "2026-10-03T00:25:33.613189-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-02T23:53:48.959329-06:00",
+ "salesGeneratedAt": "2026-10-03T00:25:33.613189-06:00",
  "salesStale": false,
  "sales": {
   "total": {
    "sold": 164917,
-   "arrivedToDate": 156390,
-   "futureArrivals": 8527,
+   "arrivedToDate": 157206,
+   "futureArrivals": 7711,
    "checkedIn": 132063,
-   "checkedInToDate": 132055
+   "checkedInToDate": 132057
   },
   "today": {
-   "sold": 1047,
-   "checkedIn": 824
+   "sold": 816,
+   "checkedIn": 2
   },
   "byEventName": {
    "General Admission": {
     "sold": 158073,
-    "arrivedToDate": 149628,
-    "futureArrivals": 8445,
+    "arrivedToDate": 150444,
+    "futureArrivals": 7629,
     "checkedIn": 128245,
-    "checkedInToDate": 128239
+    "checkedInToDate": 128241
    },
    "Walk-Up": {
     "sold": 3714,
@@ -644,20 +644,20 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 138248,
-  "todaySold": 917,
-  "ytdSoldIncludingToday": 139165,
+  "ytdSoldCompletedDays": 139165,
+  "todaySold": 783,
+  "ytdSoldIncludingToday": 139948,
   "outstandingFutureSold": 7708,
-  "todayFutureSlotsSold": 0,
+  "todayFutureSlotsSold": 783,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
-  "capacity": 153650,
-  "sold": 138248,
+  "capacity": 155029,
+  "sold": 139165,
   "pct": 90,
-  "days": 87,
+  "days": 88,
   "firstDay": "2026-07-04",
-  "lastDay": "2026-10-01",
+  "lastDay": "2026-10-02",
   "note": "Seats sold / seats offered, completed days only, from the Events report. Capacity utilisation, not a ticket count."
  }
 }
