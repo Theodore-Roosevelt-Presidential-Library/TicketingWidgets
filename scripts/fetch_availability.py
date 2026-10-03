@@ -624,6 +624,14 @@ def compute_capture(tz, season_start, today_iso, event_names):
                     "requires one, so only the staffed channels measure anything."}
 
 
+# Bump whenever compute_origin changes the SHAPE of origin.json (a new block, a
+# renamed field). The daily gate means a stale file would otherwise sit there for
+# up to 24h after a deploy, and the monitor would quietly render nothing for the
+# new section — which is exactly what happened when `capture`, `months` and
+# `years` were added.
+ORIGIN_SCHEMA = 3
+
+
 def origin_due(tz, refresh_hours):
     """Should the origin report run this time round?
 
@@ -638,9 +646,13 @@ def origin_due(tz, refresh_hours):
     if not ORIGIN_PATH.exists():
         return True, "no origin.json yet"
     try:
-        last = datetime.fromisoformat(json.loads(ORIGIN_PATH.read_text())["generatedAt"])
+        prev = json.loads(ORIGIN_PATH.read_text())
+        last = datetime.fromisoformat(prev["generatedAt"])
     except (ValueError, KeyError, TypeError, json.JSONDecodeError):
         return True, "origin.json unreadable"
+    if prev.get("schema") != ORIGIN_SCHEMA:
+        return True, (f"schema {prev.get('schema')} -> {ORIGIN_SCHEMA}; "
+                      "the file predates a change to what the monitor reads")
     age = (datetime.now(tz) - last).total_seconds() / 3600
     # Allow one run interval of slack, else a 24h thresholdon a 15-minute cron
     # drifts a little later every day until it wanders across midnight.
@@ -788,6 +800,7 @@ def compute_origin(raw, config, tz, today_iso):
            for k, v in cur_states.most_common(10)]
 
     return {
+        "schema": ORIGIN_SCHEMA,
         "generatedAt": datetime.now(tz).isoformat(),
         "seasonStart": config.get("seasonStart", "2026-07-04"),
         "regionStates": region,

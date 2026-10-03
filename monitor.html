@@ -135,14 +135,28 @@
       ? `<p class="meta" style="color:#B4472E">⚠ ACME sales report unavailable on the last run — figures as of ${
            (stats.salesGeneratedAt || "").slice(0, 16).replace("T", " ")}.</p>` : "";
 
+    /* Today first — it is the number anyone opening this page mid-shift wants,
+       and it was previously buried as a clause inside another card. Counts
+       admissions whose VISIT date is today, which is the gate number, not
+       orders placed today. */
+    const todayDay = avail.days && avail.days[0];
+    const todayPct = todayDay && !todayDay.closed ? todayDay.pctSold : null;
+
     document.getElementById("stats").innerHTML =
+      `<div class="card"><h3>Admissions for today</h3>` +
+      `<p><span class="big">${n(today.sold)}</span></p>` +
+      `<p class="meta">${n(today.checkedIn)} checked in so far` +
+      (todayPct !== null ? ` · ${todayPct}% of today's capacity sold` : "") +
+      `. Counts tickets whose visit date is today, however far in advance they ` +
+      `were bought.</p></div>` +
+
       `<div class="card"><h3>${stats.year} tickets sold</h3>` +
       `<p><span class="big">${n(s.sold)}</span></p>` +
       `<p class="meta">All ${stats.year} arrival dates, including advance sales.</p>${stale}</div>` +
 
       `<div class="card"><h3>Sold, arrival date through today</h3>` +
       `<p><span class="big">${n(s.arrivedToDate)}</span></p>` +
-      `<p class="meta">Tickets whose visit date has now passed — ${n(today.sold)} of them today.</p></div>` +
+      `<p class="meta">Tickets whose visit date has now passed, today included.</p></div>` +
 
       `<div class="card"><h3>Checked in</h3>` +
       `<p><span class="big">${n(s.checkedInToDate)}</span></p>` +
