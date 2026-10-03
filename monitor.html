@@ -202,8 +202,12 @@
     const c = origin.current, cov = origin.coverage;
     const day = (iso) => new Date(iso + "T12:00:00")
       .toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    /* This section refreshes daily, not every 15 min like the rest of the page —
+       say so, and say when, so nobody reads a stale figure as live. */
+    const oAge = Math.round((Date.now() - Date.parse(origin.generatedAt)) / 3600000);
     document.getElementById("originwin").textContent =
-      `— last 7 days, ${day(c.from)}–${day(c.to)}`;
+      `— last 7 days, ${day(c.from)}–${day(c.to)} · refreshed daily, ` +
+      (oAge < 1 ? "just now" : oAge === 1 ? "1 hour ago" : `${oAge} hours ago`);
 
     /* Current window: who is actually walking in this week. */
     const lead = c.topStates[0];

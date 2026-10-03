@@ -71,6 +71,8 @@ Environment variables (a gitignored .env at the repo root is loaded first):
   ACME_SALES_REPORT_ID   sales report handle, default 6a9acc9efdf8e0b5bcb2fb12
   ACME_SALES_EVENT_NAMES default "General Admission,Flex Tickets,Walk-Up"
   ACME_AVAILABILITY_EVENT_NAMES default "General Admission" (online-sellable only)
+  ACME_ORIGIN_REPORT_ID  Transactions report handle for visitor origin
+  ACME_FORCE_ORIGIN      set to "1" to refresh origin.json regardless of its age
   MOCK                   set to "1" to force sample data (no API call)
 
 Runs on Python 3.9+ stdlib only.
@@ -541,6 +543,31 @@ def origin_query_expression(event_names):
         "countFields": [],
         "limit": 0,
     }
+
+
+def origin_due(tz, refresh_hours):
+    """Should the origin report run this time round?
+
+    Visitor origin moves by the week, so re-querying it every 15 minutes would
+    burn an extra report round trip and rewrite a 13KB file ~100 times a day for
+    no new information. Gate on the age of the file we already have. Because a
+    failed or skipped run simply leaves the old file in place, the next 15-minute
+    tick retries — no separate schedule to keep in sync.
+    """
+    if os.environ.get("ACME_FORCE_ORIGIN") == "1":
+        return True, "forced by ACME_FORCE_ORIGIN"
+    if not ORIGIN_PATH.exists():
+        return True, "no origin.json yet"
+    try:
+        last = datetime.fromisoformat(json.loads(ORIGIN_PATH.read_text())["generatedAt"])
+    except (ValueError, KeyError, TypeError, json.JSONDecodeError):
+        return True, "origin.json unreadable"
+    age = (datetime.now(tz) - last).total_seconds() / 3600
+    # Allow one run interval of slack, else a 24h thresholdon a 15-minute cron
+    # drifts a little later every day until it wanders across midnight.
+    if age >= max(0.0, refresh_hours - 0.25):
+        return True, f"last refreshed {age:.1f}h ago"
+    return False, f"last refreshed {age:.1f}h ago"
 
 
 def run_origin_report(tz, season_start, today_iso, event_names):
@@ -1352,10 +1379,15 @@ def main():
 
     # Visitor origin. A failure here must not take the widgets or the monitor
     # down, so keep the last good file and carry on.
+    due, why = origin_due(tz, config.get("originRefreshHours", 24))
     if MOCK:
         print("MOCK mode — skipping origin report.")
+    elif not due:
+        print(f"Origin: skipped ({why}); refreshes every "
+              f"{config.get('originRefreshHours', 24)}h.")
     else:
         try:
+            print(f"Origin: refreshing ({why}).")
             origin_raw = run_origin_report(
                 tz, config.get("seasonStart", "2026-07-04"), today_iso,
                 config.get("originEventNames", "General Admission"))

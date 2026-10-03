@@ -7,10 +7,11 @@
   "limitedThresholdPct": 15,
   "limitedThresholdMin": 10,
 
-  "_origin_note": "Visitor origin. seasonStart is the first day with ticket data (opening day). regionStates defines the 'region' bucket on the monitor — neighbouring states, edit freely. originEventNames is matched with 'contains' against EventName: Walk-Up is excluded because door sales capture an address only ~7% of the time and would drag coverage down without adding signal.",
+  "_origin_note": "Visitor origin. seasonStart is the first day with ticket data (opening day). regionStates defines the 'region' bucket on the monitor — neighbouring states, edit freely. originEventNames is matched with 'contains' against EventName: Walk-Up is excluded because door sales capture an address only ~7% of the time and would drag coverage down without adding signal. originRefreshHours gates how often the origin query runs inside the 15-minute pipeline — origin moves by the week, so 24 is plenty; set ACME_FORCE_ORIGIN=1 to refresh immediately after changing regionStates or originEventNames.",
   "seasonStart": "2026-07-04",
   "regionStates": ["MN", "SD", "MT", "WI", "IA"],
   "originEventNames": "General Admission",
+  "originRefreshHours": 24,
 
   "_excludeEventIds_note": "ACME event instances to drop from public availability. The availability report already filters to EventName = 'General Admission', but staff sometimes build holds off the GA template — those inherit the GA name and land in the report even though they were never put on sale online. There is no on-sale/sales-channel field in the Events collection to filter on (checked: SalesChannel, OnSaleStatus, IsOnline, Published, Visibility, IsPrivate, EventStatus — none exist), so they have to be listed by EventId here. To find the id: compare the widget's slots against the public checkout, then look up the extra start time in data/raw-report.json. The value is a human note; only the key matters.",
   "excludeEventIds": {
