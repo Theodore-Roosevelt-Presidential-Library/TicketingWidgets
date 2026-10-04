@@ -115,20 +115,42 @@ ORIGIN_PATH = DATA_DIR / "origin.json"
 RAW_PATH = DATA_DIR / "raw-report.json"  # last raw API response, for debugging
 RAW_SALES_PATH = DATA_DIR / "raw-sales.json"
 
-API_BASE = os.environ.get("ACME_API_BASE", "https://api.acmeticketing.com").rstrip("/")
-API_KEY = os.environ.get("ACME_API_KEY", "")
+def env_str(name, default):
+    """Environment override that treats blank as absent.
+
+    GitHub Actions renders an unset workflow_dispatch input as an EMPTY STRING,
+    not as nothing — so on a `schedule` run the variable is present but blank.
+    os.environ.get(name, default) only falls back when the key is MISSING, so a
+    blank would otherwise win over the default and break the caller. This cost
+    us every overnight run of fill_customer_state.py.
+    """
+    v = os.environ.get(name)
+    return default if v is None or not str(v).strip() else str(v).strip()
+
+
+def env_int(name, default):
+    try:
+        return int(env_str(name, default))
+    except (TypeError, ValueError):
+        print(f"WARNING: {name}={os.environ.get(name)!r} is not an integer; "
+              f"using {default}", file=sys.stderr)
+        return int(default)
+
+
+API_BASE = env_str("ACME_API_BASE", "https://api.acmeticketing.com").rstrip("/")
+API_KEY = env_str("ACME_API_KEY", "")
 if API_KEY == "paste-key-here":
     API_KEY = ""
-REPORT_ID = os.environ.get("ACME_REPORT_ID", "69c18975669b758620b4c586")
+REPORT_ID = env_str("ACME_REPORT_ID", "69c18975669b758620b4c586")
 # Any existing TicketAnalytics report uuid works as the async-job handle; we
 # always send our own queryExpression below, so edits to that saved report in
 # the ACME back office cannot move these numbers.
-SALES_REPORT_ID = os.environ.get("ACME_SALES_REPORT_ID", "6a9acc9efdf8e0b5bcb2fb12")
+SALES_REPORT_ID = env_str("ACME_SALES_REPORT_ID", "6a9acc9efdf8e0b5bcb2fb12")
 # Visitor origin comes from the Transactions collection (the only one carrying a
 # customer address). As with the sales report, this uuid is just an async-job
 # handle -- any Transactions report works, because we always send our own
 # queryExpression. Set ACME_ORIGIN_REPORT_ID if this one is ever deleted.
-ORIGIN_REPORT_ID = os.environ.get("ACME_ORIGIN_REPORT_ID", "69e2b83a6f2620bbaeb5062e")
+ORIGIN_REPORT_ID = env_str("ACME_ORIGIN_REPORT_ID", "69e2b83a6f2620bbaeb5062e")
 SALES_EVENT_NAMES = os.environ.get(
     "ACME_SALES_EVENT_NAMES", "General Admission,Flex Tickets,Walk-Up")
 # Supply-side (widget) filter. Deliberately NARROWER than SALES_EVENT_NAMES:
@@ -136,7 +158,7 @@ SALES_EVENT_NAMES = os.environ.get(
 # the monitor must still count every ticket sold. Flex Tickets and Walk-Up are
 # sold at the door, so they are supply we must not offer -- but they are demand
 # we must still report. Do not "unify" these two lists.
-AVAILABILITY_EVENT_NAMES = os.environ.get(
+AVAILABILITY_EVENT_NAMES = env_str(
     "ACME_AVAILABILITY_EVENT_NAMES", "General Admission")
 MOCK = os.environ.get("MOCK", "") == "1" or not API_KEY
 
@@ -1353,7 +1375,7 @@ def main():
     days_ahead = config.get("daysAhead", 7)
     horizon = max(days_ahead, config.get("futureDaysAhead", 365))
     # ACME_LOOKBACK_DAYS overrides for one-off archive backfills (e.g. season start)
-    lookback = int(os.environ.get("ACME_LOOKBACK_DAYS", config.get("lookbackDays", 15)))
+    lookback = env_int("ACME_LOOKBACK_DAYS", config.get("lookbackDays", 15))
     DATA_DIR.mkdir(exist_ok=True)
 
     if MOCK:

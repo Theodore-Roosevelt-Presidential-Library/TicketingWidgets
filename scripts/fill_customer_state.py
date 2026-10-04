@@ -53,6 +53,7 @@ from zoneinfo import ZoneInfo
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from fetch_availability import (  # noqa: E402  (shared API plumbing)
     api_request, execute_report, ORIGIN_REPORT_ID, ROOT, DATA_DIR, MOCK,
+    env_int, env_str,
 )
 
 CROSSWALK_PATH = DATA_DIR / "zip-state.json"
@@ -61,7 +62,7 @@ LOG_PATH = DATA_DIR / "fill-state-log.json"
 QUEUE_PATH = DATA_DIR / "fill-state-queue.json"
 CONFIG_PATH = ROOT / "config.json"
 
-DRY_RUN = os.environ.get("FILL_STATE_DRY_RUN") == "1"
+DRY_RUN = (os.environ.get("FILL_STATE_DRY_RUN") or "").strip() == "1"
 # USPS codes that are not states for reporting purposes but are valid addresses.
 NON_STATE = {"AE", "AA", "AP"}
 
@@ -240,7 +241,7 @@ def main():
     cfg = config.get("fillState") or {}
     tz = ZoneInfo(config.get("timezone", "America/Denver"))
     channels = cfg.get("channels", ["Pos", "InsideSalesIndividual"])
-    max_per_run = int(os.environ.get("FILL_STATE_MAX", cfg.get("maxPerRun", 400)))
+    max_per_run = env_int("FILL_STATE_MAX", cfg.get("maxPerRun", 400))
     address_type = cfg.get("addressType", "home")
 
     lookup, n_ranges = load_crosswalk()
