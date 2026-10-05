@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-05T11:54:13.620902-06:00",
+ "generatedAt": "2026-10-05T12:19:24.625691-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,13 +7,13 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-05T11:54:13.620902-06:00",
+ "salesGeneratedAt": "2026-10-05T12:19:24.625691-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 166625,
+   "sold": 166641,
    "arrivedToDate": 158665,
-   "futureArrivals": 7960,
+   "futureArrivals": 7976,
    "checkedIn": 134120,
    "checkedInToDate": 134114
   },
@@ -23,9 +23,9 @@
   },
   "byEventName": {
    "General Admission": {
-    "sold": 159759,
+    "sold": 159775,
     "arrivedToDate": 151881,
-    "futureArrivals": 7878,
+    "futureArrivals": 7894,
     "checkedIn": 130280,
     "checkedInToDate": 130276
    },
@@ -410,7 +410,7 @@
     "checkedIn": 1012
    },
    "2026-10-06": {
-    "sold": 795,
+    "sold": 798,
     "checkedIn": 0
    },
    "2026-10-07": {
@@ -430,7 +430,7 @@
     "checkedIn": 0
    },
    "2026-10-11": {
-    "sold": 355,
+    "sold": 360,
     "checkedIn": 0
    },
    "2026-10-13": {
@@ -442,11 +442,11 @@
     "checkedIn": 0
    },
    "2026-10-15": {
-    "sold": 384,
+    "sold": 387,
     "checkedIn": 0
    },
    "2026-10-16": {
-    "sold": 328,
+    "sold": 330,
     "checkedIn": 0
    },
    "2026-10-17": {
@@ -470,7 +470,7 @@
     "checkedIn": 0
    },
    "2026-10-23": {
-    "sold": 96,
+    "sold": 99,
     "checkedIn": 0
    },
    "2026-10-24": {
@@ -647,7 +647,7 @@
   "ytdSoldCompletedDays": 141307,
   "todaySold": 0,
   "ytdSoldIncludingToday": 141307,
-  "outstandingFutureSold": 7124,
+  "outstandingFutureSold": 7144,
   "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
