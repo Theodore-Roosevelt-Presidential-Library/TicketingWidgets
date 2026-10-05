@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-04T23:59:30.786385-06:00",
+ "generatedAt": "2026-10-05T00:52:37.359508-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,25 +7,25 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-04T23:59:30.786385-06:00",
+ "salesGeneratedAt": "2026-10-05T00:52:37.359508-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 166450,
+   "sold": 166452,
    "arrivedToDate": 158665,
-   "futureArrivals": 7785,
+   "futureArrivals": 7787,
    "checkedIn": 134120,
    "checkedInToDate": 134114
   },
   "today": {
-   "sold": 1120,
-   "checkedIn": 1012
+   "sold": 0,
+   "checkedIn": 0
   },
   "byEventName": {
    "General Admission": {
-    "sold": 159584,
+    "sold": 159586,
     "arrivedToDate": 151881,
-    "futureArrivals": 7703,
+    "futureArrivals": 7705,
     "checkedIn": 130280,
     "checkedInToDate": 130276
    },
@@ -410,7 +410,7 @@
     "checkedIn": 1012
    },
    "2026-10-06": {
-    "sold": 758,
+    "sold": 760,
     "checkedIn": 0
    },
    "2026-10-07": {
@@ -644,20 +644,20 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 140248,
-  "todaySold": 1062,
+  "ytdSoldCompletedDays": 141310,
+  "todaySold": 0,
   "ytdSoldIncludingToday": 141310,
-  "outstandingFutureSold": 6963,
+  "outstandingFutureSold": 6965,
   "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
-  "capacity": 156904,
-  "sold": 140248,
+  "capacity": 158779,
+  "sold": 141310,
   "pct": 89,
-  "days": 89,
+  "days": 90,
   "firstDay": "2026-07-04",
-  "lastDay": "2026-10-03",
+  "lastDay": "2026-10-04",
   "note": "Admissions sold / admissions offered, completed days only, from the Events report. Capacity utilisation, not a ticket count."
  }
 }
