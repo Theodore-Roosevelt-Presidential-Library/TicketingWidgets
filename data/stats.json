@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-07T07:19:01.641938-06:00",
+ "generatedAt": "2026-10-07T07:41:57.892375-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,25 +7,25 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-07T07:19:01.641938-06:00",
+ "salesGeneratedAt": "2026-10-07T07:41:57.892375-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 167854,
-   "arrivedToDate": 160566,
-   "futureArrivals": 7288,
+   "sold": 167861,
+   "arrivedToDate": 160567,
+   "futureArrivals": 7294,
    "checkedIn": 135105,
    "checkedInToDate": 135099
   },
   "today": {
-   "sold": 792,
+   "sold": 793,
    "checkedIn": 1
   },
   "byEventName": {
    "General Admission": {
-    "sold": 160980,
-    "arrivedToDate": 153774,
-    "futureArrivals": 7206,
+    "sold": 160987,
+    "arrivedToDate": 153775,
+    "futureArrivals": 7212,
     "checkedIn": 131257,
     "checkedInToDate": 131253
    },
@@ -414,7 +414,7 @@
     "checkedIn": 984
    },
    "2026-10-07": {
-    "sold": 792,
+    "sold": 793,
     "checkedIn": 1
    },
    "2026-10-08": {
@@ -438,7 +438,7 @@
     "checkedIn": 0
    },
    "2026-10-14": {
-    "sold": 389,
+    "sold": 393,
     "checkedIn": 0
    },
    "2026-10-15": {
@@ -474,7 +474,7 @@
     "checkedIn": 0
    },
    "2026-10-24": {
-    "sold": 156,
+    "sold": 158,
     "checkedIn": 0
    },
    "2026-10-25": {
@@ -645,10 +645,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 142325,
-  "todaySold": 681,
-  "ytdSoldIncludingToday": 143006,
-  "outstandingFutureSold": 7196,
-  "todayFutureSlotsSold": 681,
+  "todaySold": 682,
+  "ytdSoldIncludingToday": 143007,
+  "outstandingFutureSold": 7203,
+  "todayFutureSlotsSold": 682,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
