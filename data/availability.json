@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T14:54:23.777410-06:00",
+  "generatedAt": "2026-10-08T15:13:49.847561-06:00",
   "timezone": "America/Denver",
   "today": "2026-10-08",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
@@ -9,14 +9,14 @@
       "dayLabel": "Today",
       "closed": false,
       "totalCapacity": 1403,
-      "totalSold": 995,
+      "totalSold": 1000,
       "pctSold": 71,
       "soldOutSlots": 0,
-      "firstAvailable": "2:00 PM",
-      "status": "limited",
-      "selloutRisk": "medium",
-      "riskNote": "Today is filling up \u2014 buying online is recommended.",
-      "riskReason": "Today is filling up",
+      "firstAvailable": null,
+      "status": "ended",
+      "selloutRisk": "none",
+      "riskNote": "Today's entries have ended.",
+      "riskReason": "Today's entries have ended",
       "slots": [
         {
           "time": "09:00",
@@ -102,9 +102,9 @@
           "time": "14:00",
           "label": "2:00 PM",
           "capacity": 150,
-          "sold": 134,
-          "remaining": 16,
-          "status": "limited"
+          "sold": 139,
+          "remaining": 11,
+          "status": "past"
         }
       ]
     },
@@ -113,7 +113,7 @@
       "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1400,
-      "totalSold": 728,
+      "totalSold": 732,
       "pctSold": 52,
       "soldOutSlots": 3,
       "firstAvailable": "9:00 AM",
@@ -134,8 +134,8 @@
           "time": "09:30",
           "label": "9:30 AM",
           "capacity": 125,
-          "sold": 66,
-          "remaining": 59,
+          "sold": 68,
+          "remaining": 57,
           "status": "available"
         },
         {
@@ -166,8 +166,8 @@
           "time": "11:30",
           "label": "11:30 AM",
           "capacity": 125,
-          "sold": 15,
-          "remaining": 110,
+          "sold": 17,
+          "remaining": 108,
           "status": "available"
         },
         {
