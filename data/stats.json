@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-07T23:54:31.928261-06:00",
+ "generatedAt": "2026-10-08T00:27:09.331059-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,39 +7,39 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-07T23:54:31.928261-06:00",
+ "salesGeneratedAt": "2026-10-08T00:27:09.331059-06:00",
  "salesStale": false,
  "sales": {
   "total": {
    "sold": 168854,
-   "arrivedToDate": 160733,
-   "futureArrivals": 8121,
+   "arrivedToDate": 161950,
+   "futureArrivals": 6904,
    "checkedIn": 135854,
-   "checkedInToDate": 135848
+   "checkedInToDate": 135850
   },
   "today": {
-   "sold": 959,
-   "checkedIn": 750
+   "sold": 1217,
+   "checkedIn": 2
   },
   "byEventName": {
    "General Admission": {
     "sold": 161858,
-    "arrivedToDate": 153939,
-    "futureArrivals": 7919,
+    "arrivedToDate": 154963,
+    "futureArrivals": 6895,
     "checkedIn": 132004,
-    "checkedInToDate": 132000
+    "checkedInToDate": 132002
    },
    "Walk-Up": {
     "sold": 3866,
-    "arrivedToDate": 3744,
-    "futureArrivals": 122,
+    "arrivedToDate": 3862,
+    "futureArrivals": 4,
     "checkedIn": 2653,
     "checkedInToDate": 2651
    },
    "Flex Tickets": {
     "sold": 3130,
-    "arrivedToDate": 3050,
-    "futureArrivals": 80,
+    "arrivedToDate": 3125,
+    "futureArrivals": 5,
     "checkedIn": 1197,
     "checkedInToDate": 1197
    }
@@ -644,20 +644,20 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 142320,
-  "todaySold": 837,
-  "ytdSoldIncludingToday": 143157,
+  "ytdSoldCompletedDays": 143157,
+  "todaySold": 812,
+  "ytdSoldIncludingToday": 143969,
   "outstandingFutureSold": 7019,
-  "todayFutureSlotsSold": 0,
+  "todayFutureSlotsSold": 812,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
-  "capacity": 160154,
-  "sold": 142320,
+  "capacity": 161529,
+  "sold": 143157,
   "pct": 89,
-  "days": 91,
+  "days": 92,
   "firstDay": "2026-07-04",
-  "lastDay": "2026-10-06",
+  "lastDay": "2026-10-07",
   "note": "Admissions sold / admissions offered, completed days only, from the Events report. Capacity utilisation, not a ticket count."
  }
 }
