@@ -1,17 +1,8 @@
 {
-  "generatedAt": "2026-10-08T23:56:08.804995-06:00",
+  "generatedAt": "2026-10-09T00:33:58.403622-06:00",
   "lookbackDays": 15,
-  "windowEnd": "2026-10-08",
+  "windowEnd": "2026-10-09",
   "recentDays": [
-    {
-      "date": "2026-09-23",
-      "dow": "Wednesday",
-      "pctSold": 94,
-      "fullySoldOut": false,
-      "soldOutSlots": 5,
-      "slotCount": 11,
-      "dayOfTickets": 199
-    },
     {
       "date": "2026-09-24",
       "dow": "Thursday",
@@ -119,51 +110,38 @@
       "soldOutSlots": 3,
       "slotCount": 11,
       "dayOfTickets": 157
+    },
+    {
+      "date": "2026-10-08",
+      "dow": "Thursday",
+      "pctSold": 71,
+      "fullySoldOut": false,
+      "soldOutSlots": 3,
+      "slotCount": 11,
+      "dayOfTickets": 190
     }
   ],
   "byDayOfWeek": {
-    "Wednesday": {
+    "Thursday": {
       "daysObserved": 3,
-      "medianFinalPctSold": 72,
+      "medianFinalPctSold": 71,
       "fullSelloutRate": 0.0,
       "fullSelloutCount": 0,
-      "medianDayOfTickets": 179,
+      "medianDayOfTickets": 190,
       "slotSelloutRate": {
-        "09:00": 1.0,
-        "09:30": 0.67,
-        "10:00": 0.67,
+        "09:00": 0.67,
+        "09:30": 1.0,
+        "10:00": 1.0,
         "10:30": 0.67,
         "11:00": 0.33,
-        "11:30": 0.0,
+        "11:30": 0.33,
         "12:00": 0.33,
-        "12:30": 0.33,
+        "12:30": 0.0,
         "13:00": 0.33,
         "13:30": 0.0,
         "14:00": 0.0
       },
-      "typicalFirstAvailableAtEndOfDay": "10:00 AM",
-      "observedFullSelloutClockTimes": null
-    },
-    "Thursday": {
-      "daysObserved": 2,
-      "medianFinalPctSold": 77,
-      "fullSelloutRate": 0.0,
-      "fullSelloutCount": 0,
-      "medianDayOfTickets": 198,
-      "slotSelloutRate": {
-        "09:00": 0.5,
-        "09:30": 1.0,
-        "10:00": 1.0,
-        "10:30": 1.0,
-        "11:00": 0.5,
-        "11:30": 0.5,
-        "12:00": 0.5,
-        "12:30": 0.0,
-        "13:00": 0.5,
-        "13:30": 0.0,
-        "14:00": 0.0
-      },
-      "typicalFirstAvailableAtEndOfDay": "11:00 AM",
+      "typicalFirstAvailableAtEndOfDay": "10:30 AM",
       "observedFullSelloutClockTimes": null
     },
     "Friday": {
@@ -261,11 +239,33 @@
       },
       "typicalFirstAvailableAtEndOfDay": "1:00 PM",
       "observedFullSelloutClockTimes": null
+    },
+    "Wednesday": {
+      "daysObserved": 2,
+      "medianFinalPctSold": 66,
+      "fullSelloutRate": 0.0,
+      "fullSelloutCount": 0,
+      "medianDayOfTickets": 168,
+      "slotSelloutRate": {
+        "09:00": 1.0,
+        "09:30": 0.5,
+        "10:00": 1.0,
+        "10:30": 1.0,
+        "11:00": 0.5,
+        "11:30": 0.0,
+        "12:00": 0.0,
+        "12:30": 0.0,
+        "13:00": 0.0,
+        "13:30": 0.0,
+        "14:00": 0.0
+      },
+      "typicalFirstAvailableAtEndOfDay": "11:30 AM",
+      "observedFullSelloutClockTimes": null
     }
   },
   "monthOutlook": {
     "heading": "What to Expect in October",
     "text": "October has been steady: over the last 13 days, daily ticket sales reached a median 72% of capacity. Mornings go first \u2014 morning entry times sold out on 13 of those days, often leaving 10:30 AM or later as the earliest way in. Reserving tickets online before arriving is strongly recommended, especially for mornings and weekends.",
-    "updatedAt": "2026-10-08T23:56:08.806181-06:00"
+    "updatedAt": "2026-10-09T00:33:58.404424-06:00"
   }
 }
