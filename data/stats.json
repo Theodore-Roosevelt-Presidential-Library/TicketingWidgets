@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-09T14:52:43.114089-06:00",
+ "generatedAt": "2026-10-09T15:12:50.476282-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,13 +7,13 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-09T14:52:43.114089-06:00",
+ "salesGeneratedAt": "2026-10-09T15:12:50.476282-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 169977,
+   "sold": 169989,
    "arrivedToDate": 163385,
-   "futureArrivals": 6592,
+   "futureArrivals": 6604,
    "checkedIn": 137336,
    "checkedInToDate": 137332
   },
@@ -23,9 +23,9 @@
   },
   "byEventName": {
    "General Admission": {
-    "sold": 162981,
+    "sold": 162993,
     "arrivedToDate": 156398,
-    "futureArrivals": 6583,
+    "futureArrivals": 6595,
     "checkedIn": 133486,
     "checkedInToDate": 133484
    },
@@ -426,11 +426,11 @@
     "checkedIn": 734
    },
    "2026-10-10": {
-    "sold": 1016,
+    "sold": 1021,
     "checkedIn": 0
    },
    "2026-10-11": {
-    "sold": 510,
+    "sold": 513,
     "checkedIn": 0
    },
    "2026-10-13": {
@@ -454,7 +454,7 @@
     "checkedIn": 0
    },
    "2026-10-18": {
-    "sold": 158,
+    "sold": 160,
     "checkedIn": 0
    },
    "2026-10-20": {
@@ -462,7 +462,7 @@
     "checkedIn": 0
    },
    "2026-10-21": {
-    "sold": 254,
+    "sold": 256,
     "checkedIn": 0
    },
    "2026-10-22": {
@@ -644,16 +644,16 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 144153,
+  "ytdSoldCompletedDays": 144150,
   "todaySold": 958,
-  "ytdSoldIncludingToday": 145111,
-  "outstandingFutureSold": 6107,
-  "todayFutureSlotsSold": 74,
+  "ytdSoldIncludingToday": 145108,
+  "outstandingFutureSold": 6038,
+  "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
   "capacity": 162932,
-  "sold": 144153,
+  "sold": 144150,
   "pct": 88,
   "days": 93,
   "firstDay": "2026-07-04",
