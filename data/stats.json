@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-11T15:28:14.786220-06:00",
+ "generatedAt": "2026-10-11T15:42:17.517471-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-11T15:28:14.786220-06:00",
+ "salesGeneratedAt": "2026-10-11T15:42:17.517471-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 171232,
-   "arrivedToDate": 165826,
-   "futureArrivals": 5406,
-   "checkedIn": 139235,
-   "checkedInToDate": 139231
+   "sold": 171244,
+   "arrivedToDate": 165834,
+   "futureArrivals": 5410,
+   "checkedIn": 139247,
+   "checkedInToDate": 139243
   },
   "today": {
-   "sold": 1013,
-   "checkedIn": 895
+   "sold": 1021,
+   "checkedIn": 907
   },
   "byEventName": {
    "General Admission": {
-    "sold": 164230,
-    "arrivedToDate": 158831,
-    "futureArrivals": 5399,
-    "checkedIn": 135377,
-    "checkedInToDate": 135375
+    "sold": 164242,
+    "arrivedToDate": 158839,
+    "futureArrivals": 5403,
+    "checkedIn": 135389,
+    "checkedInToDate": 135387
    },
    "Walk-Up": {
     "sold": 3872,
@@ -430,11 +430,11 @@
     "checkedIn": 1002
    },
    "2026-10-11": {
-    "sold": 1013,
-    "checkedIn": 895
+    "sold": 1021,
+    "checkedIn": 907
    },
    "2026-10-13": {
-    "sold": 609,
+    "sold": 611,
     "checkedIn": 0
    },
    "2026-10-14": {
@@ -462,7 +462,7 @@
     "checkedIn": 0
    },
    "2026-10-21": {
-    "sold": 260,
+    "sold": 262,
     "checkedIn": 0
    },
    "2026-10-22": {
@@ -645,10 +645,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 146294,
-  "todaySold": 943,
-  "ytdSoldIncludingToday": 147237,
-  "outstandingFutureSold": 5150,
-  "todayFutureSlotsSold": 93,
+  "todaySold": 951,
+  "ytdSoldIncludingToday": 147245,
+  "outstandingFutureSold": 5108,
+  "todayFutureSlotsSold": 47,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
