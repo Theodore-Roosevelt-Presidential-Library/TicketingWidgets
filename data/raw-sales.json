@@ -242,6 +242,7 @@
         "2026-12-06",
         "2026-12-09",
         "2026-12-10",
+        "2026-12-11",
         "2026-12-12",
         "2026-12-16",
         "2026-12-17",
@@ -499,6 +500,7 @@
         "General Admission",
         "General Admission",
         "General Admission",
+        "General Admission",
         "Walk-Up",
         "General Admission",
         "General Admission",
@@ -701,7 +703,7 @@
         5,
         971,
         4,
-        642,
+        647,
         544,
         545,
         462,
@@ -743,6 +745,7 @@
         7,
         10,
         4,
+        3,
         3,
         10,
         105,
@@ -964,6 +967,7 @@
         0,
         0,
         2,
+        0,
         0,
         0,
         0,
@@ -3378,7 +3382,7 @@
         "subtotalFields": [
           {
             "name": "TicketQuantity",
-            "value": "642"
+            "value": "647"
           },
           {
             "name": "CheckedInCount",
@@ -4399,6 +4403,30 @@
         "endIndex": 235,
         "primaryGroupField": {
           "name": "EventStartTime",
+          "value": "2026-12-11"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-11"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "TicketQuantity",
+            "value": "3"
+          },
+          {
+            "name": "CheckedInCount",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "startIndex": 236,
+        "endIndex": 236,
+        "primaryGroupField": {
+          "name": "EventStartTime",
           "value": "2026-12-12"
         },
         "groupFields": [
@@ -4419,8 +4447,8 @@
         ]
       },
       {
-        "startIndex": 236,
-        "endIndex": 236,
+        "startIndex": 237,
+        "endIndex": 237,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16"
@@ -4443,8 +4471,8 @@
         ]
       },
       {
-        "startIndex": 237,
-        "endIndex": 237,
+        "startIndex": 238,
+        "endIndex": 238,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17"
@@ -4467,8 +4495,8 @@
         ]
       },
       {
-        "startIndex": 238,
-        "endIndex": 238,
+        "startIndex": 239,
+        "endIndex": 239,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19"
@@ -4491,8 +4519,8 @@
         ]
       },
       {
-        "startIndex": 239,
-        "endIndex": 239,
+        "startIndex": 240,
+        "endIndex": 240,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20"
@@ -4515,8 +4543,8 @@
         ]
       },
       {
-        "startIndex": 240,
-        "endIndex": 240,
+        "startIndex": 241,
+        "endIndex": 241,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23"
@@ -4539,8 +4567,8 @@
         ]
       },
       {
-        "startIndex": 241,
-        "endIndex": 241,
+        "startIndex": 242,
+        "endIndex": 242,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24"
@@ -4563,8 +4591,8 @@
         ]
       },
       {
-        "startIndex": 242,
-        "endIndex": 242,
+        "startIndex": 243,
+        "endIndex": 243,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26"
@@ -4587,8 +4615,8 @@
         ]
       },
       {
-        "startIndex": 243,
-        "endIndex": 243,
+        "startIndex": 244,
+        "endIndex": 244,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27"
@@ -4611,8 +4639,8 @@
         ]
       },
       {
-        "startIndex": 244,
-        "endIndex": 244,
+        "startIndex": 245,
+        "endIndex": 245,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31"
@@ -4638,7 +4666,7 @@
     "grandTotals": [
       {
         "name": "TicketQuantity",
-        "value": "172231"
+        "value": "172239"
       },
       {
         "name": "CheckedInCount",
