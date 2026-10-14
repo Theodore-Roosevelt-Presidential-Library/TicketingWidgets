@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generatedAt": "2026-10-13T15:12:42.872963-06:00",
+ "generatedAt": "2026-10-14T15:13:27.256302-06:00",
  "seasonStart": "2026-07-04",
  "regionStates": [
   "MN",
@@ -11,76 +11,76 @@
  ],
  "source": "ACME Transactions \u2014 Quantity by EventStartTime and customer address. Aggregated in ACME; no personal data is requested or stored.",
  "coverage": {
-  "tickets": 160088,
-  "withAddress": 131376,
+  "tickets": 160981,
+  "withAddress": 131903,
   "pct": 82,
   "note": "Share of ticket sales carrying a usable address. Door sales rarely capture one, so percentages below are of tickets we can place, not of all visitors."
  },
  "current": {
-  "from": "2026-10-07",
-  "to": "2026-10-13",
-  "tickets": 6841,
-  "known": 4574,
-  "intlTickets": 14,
+  "from": "2026-10-08",
+  "to": "2026-10-14",
+  "tickets": 6777,
+  "known": 4434,
+  "intlTickets": 13,
   "topStates": [
    {
     "state": "ND",
     "name": "North Dakota",
-    "tickets": 1178,
-    "pct": 26
+    "tickets": 1186,
+    "pct": 27
    },
    {
     "state": "MN",
     "name": "Minnesota",
-    "tickets": 558,
+    "tickets": 523,
     "pct": 12
    },
    {
     "state": "MT",
     "name": "Montana",
-    "tickets": 311,
+    "tickets": 295,
     "pct": 7
    },
    {
     "state": "SD",
     "name": "South Dakota",
-    "tickets": 229,
+    "tickets": 211,
     "pct": 5
    },
    {
     "state": "WI",
     "name": "Wisconsin",
-    "tickets": 183,
+    "tickets": 178,
     "pct": 4
    },
    {
     "state": "CO",
     "name": "Colorado",
-    "tickets": 180,
+    "tickets": 174,
     "pct": 4
    },
    {
     "state": "TX",
     "name": "Texas",
-    "tickets": 175,
-    "pct": 4
+    "tickets": 154,
+    "pct": 3
    },
    {
     "state": "CA",
     "name": "California",
-    "tickets": 129,
+    "tickets": 123,
+    "pct": 3
+   },
+   {
+    "state": "IL",
+    "name": "Illinois",
+    "tickets": 115,
     "pct": 3
    },
    {
     "state": "WA",
     "name": "Washington",
-    "tickets": 114,
-    "pct": 2
-   },
-   {
-    "state": "IL",
-    "name": "Illinois",
-    "tickets": 110,
+    "tickets": 105,
     "pct": 2
    }
   ]
@@ -1153,17 +1153,17 @@
    "week": "2026-10-12",
    "label": "Oct 12",
    "partial": true,
-   "tickets": 968,
-   "known": 704,
-   "unknownPct": 27,
+   "tickets": 1861,
+   "known": 1231,
+   "unknownPct": 34,
    "buckets": {
     "nd": {
-     "tickets": 91,
-     "pct": 13
+     "tickets": 213,
+     "pct": 17
     },
     "region": {
-     "tickets": 246,
-     "pct": 35,
+     "tickets": 413,
+     "pct": 34,
      "states": [
       "MN",
       "WI",
@@ -1173,14 +1173,14 @@
      ]
     },
     "us": {
-     "tickets": 364,
-     "pct": 52,
+     "tickets": 602,
+     "pct": 49,
      "states": [
-      "TX",
       "CO",
+      "TX",
       "CA",
-      "WA",
-      "NE"
+      "DC",
+      "WA"
      ]
     },
     "intl": {
@@ -1194,27 +1194,27 @@
    "topStates": [
     [
      "MN",
-     139
+     226
     ],
     [
      "ND",
-     91
+     213
     ],
     [
      "WI",
-     46
-    ],
-    [
-     "TX",
-     44
+     72
     ],
     [
      "CO",
-     37
+     65
     ],
     [
      "MT",
-     36
+     62
+    ],
+    [
+     "TX",
+     58
     ]
    ]
   }
@@ -1460,16 +1460,16 @@
   {
    "period": "2026-10",
    "label": "Oct 2026",
-   "tickets": 12144,
-   "known": 8949,
-   "unknownPct": 26,
+   "tickets": 13037,
+   "known": 9476,
+   "unknownPct": 27,
    "buckets": {
     "nd": {
-     "tickets": 2127,
+     "tickets": 2249,
      "pct": 24
     },
     "region": {
-     "tickets": 2674,
+     "tickets": 2841,
      "pct": 30,
      "states": [
       "MN",
@@ -1480,7 +1480,7 @@
      ]
     },
     "us": {
-     "tickets": 4114,
+     "tickets": 4352,
      "pct": 46,
      "states": [
       "CO",
@@ -1503,35 +1503,35 @@
    "topStates": [
     [
      "ND",
-     2127
+     2249
     ],
     [
      "MN",
-     1201
+     1288
     ],
     [
      "MT",
-     530
+     556
     ],
     [
      "SD",
-     431
+     451
     ],
     [
      "CO",
-     335
-    ],
-    [
-     "TX",
-     333
+     363
     ],
     [
      "WI",
-     328
+     354
+    ],
+    [
+     "TX",
+     347
     ],
     [
      "CA",
-     312
+     320
     ]
    ],
    "partial": true
@@ -1541,16 +1541,16 @@
   {
    "period": "2026",
    "label": "2026",
-   "tickets": 160088,
-   "known": 131376,
+   "tickets": 160981,
+   "known": 131903,
    "unknownPct": 18,
    "buckets": {
     "nd": {
-     "tickets": 44044,
-     "pct": 34
+     "tickets": 44166,
+     "pct": 33
     },
     "region": {
-     "tickets": 35325,
+     "tickets": 35492,
      "pct": 27,
      "states": [
       "MN",
@@ -1561,7 +1561,7 @@
      ]
     },
     "us": {
-     "tickets": 51433,
+     "tickets": 51671,
      "pct": 39,
      "states": [
       "TX",
@@ -1584,35 +1584,35 @@
    "topStates": [
     [
      "ND",
-     44044
+     44166
     ],
     [
      "MN",
-     17522
+     17609
     ],
     [
      "MT",
-     5884
+     5910
     ],
     [
      "SD",
-     5493
-    ],
-    [
-     "TX",
-     4074
+     5513
     ],
     [
      "WI",
-     4067
+     4093
+    ],
+    [
+     "TX",
+     4088
     ],
     [
      "CO",
-     3497
+     3525
     ],
     [
      "CA",
-     3461
+     3469
     ]
    ],
    "partial": true
@@ -1646,7 +1646,7 @@
      },
      {
       "month": "2026-10",
-      "tickets": 8855,
+      "tickets": 9341,
       "pct": 100
      }
     ]
@@ -1671,8 +1671,8 @@
      },
      {
       "month": "2026-10",
-      "tickets": 1784,
-      "pct": 55
+      "tickets": 1920,
+      "pct": 57
      }
     ]
    },
@@ -1696,8 +1696,8 @@
      },
      {
       "month": "2026-10",
-      "tickets": 1625,
-      "pct": 1
+      "tickets": 1904,
+      "pct": 6
      }
     ]
    },
@@ -1721,8 +1721,8 @@
      },
      {
       "month": "2026-10",
-      "tickets": 49,
-      "pct": null
+      "tickets": 50,
+      "pct": 26
      }
     ]
    }
