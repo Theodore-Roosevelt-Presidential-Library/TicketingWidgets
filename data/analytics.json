@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-13T23:50:51.182735-06:00",
+  "generatedAt": "2026-10-14T00:23:40.646024-06:00",
   "lookbackDays": 15,
-  "windowEnd": "2026-10-13",
+  "windowEnd": "2026-10-14",
   "recentDays": [
     {
       "date": "2026-09-29",
@@ -110,29 +110,38 @@
       "soldOutSlots": 1,
       "slotCount": 15,
       "dayOfTickets": 325
+    },
+    {
+      "date": "2026-10-13",
+      "dow": "Tuesday",
+      "pctSold": 68,
+      "fullySoldOut": false,
+      "soldOutSlots": 4,
+      "slotCount": 11,
+      "dayOfTickets": 163
     }
   ],
   "byDayOfWeek": {
     "Tuesday": {
-      "daysObserved": 2,
-      "medianFinalPctSold": 84,
+      "daysObserved": 3,
+      "medianFinalPctSold": 74,
       "fullSelloutRate": 0.0,
       "fullSelloutCount": 0,
-      "medianDayOfTickets": 132,
+      "medianDayOfTickets": 153,
       "slotSelloutRate": {
         "09:00": 1.0,
-        "09:30": 1.0,
-        "10:00": 1.0,
-        "10:30": 0.5,
+        "09:30": 0.67,
+        "10:00": 0.67,
+        "10:30": 0.67,
         "11:00": 1.0,
         "11:30": 1.0,
-        "12:00": 0.5,
-        "12:30": 0.5,
+        "12:00": 0.33,
+        "12:30": 0.33,
         "13:00": 0.0,
         "13:30": 0.0,
         "14:00": 0.0
       },
-      "typicalFirstAvailableAtEndOfDay": "1:00 PM",
+      "typicalFirstAvailableAtEndOfDay": "10:30 AM",
       "observedFullSelloutClockTimes": null
     },
     "Wednesday": {
@@ -256,7 +265,7 @@
   },
   "monthOutlook": {
     "heading": "What to Expect in October",
-    "text": "October has had good availability, with daily ticket sales at a median 64% of capacity over the last 12 days. Mornings go first \u2014 morning entry times sold out on 11 of those days, often leaving 10:30 AM or later as the earliest way in. Advance tickets guarantee an entry time.",
-    "updatedAt": "2026-10-13T23:50:51.183314-06:00"
+    "text": "October has been steady: over the last 13 days, daily ticket sales reached a median 66% of capacity. Mornings go first \u2014 morning entry times sold out on 12 of those days, often leaving 10:00 AM or later as the earliest way in. Reserving tickets online before arriving is strongly recommended, especially for mornings and weekends.",
+    "updatedAt": "2026-10-14T00:23:40.647399-06:00"
   }
 }
