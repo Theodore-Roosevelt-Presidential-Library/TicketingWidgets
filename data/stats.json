@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-17T15:35:43.004448-06:00",
+ "generatedAt": "2026-10-17T15:49:11.948792-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-17T15:35:43.004448-06:00",
+ "salesGeneratedAt": "2026-10-17T15:49:11.948792-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 175239,
+   "sold": 175247,
    "arrivedToDate": 170843,
-   "futureArrivals": 4396,
-   "checkedIn": 143460,
-   "checkedInToDate": 143456
+   "futureArrivals": 4404,
+   "checkedIn": 143472,
+   "checkedInToDate": 143468
   },
   "today": {
    "sold": 1152,
-   "checkedIn": 1003
+   "checkedIn": 1015
   },
   "byEventName": {
    "General Admission": {
-    "sold": 167994,
+    "sold": 168002,
     "arrivedToDate": 163750,
-    "futureArrivals": 4244,
-    "checkedIn": 139556,
-    "checkedInToDate": 139554
+    "futureArrivals": 4252,
+    "checkedIn": 139568,
+    "checkedInToDate": 139566
    },
    "Walk-Up": {
     "sold": 4115,
@@ -451,14 +451,14 @@
    },
    "2026-10-17": {
     "sold": 1152,
-    "checkedIn": 1003
+    "checkedIn": 1015
    },
    "2026-10-18": {
-    "sold": 372,
+    "sold": 374,
     "checkedIn": 0
    },
    "2026-10-20": {
-    "sold": 460,
+    "sold": 464,
     "checkedIn": 0
    },
    "2026-10-21": {
@@ -474,7 +474,7 @@
     "checkedIn": 0
    },
    "2026-10-24": {
-    "sold": 284,
+    "sold": 286,
     "checkedIn": 0
    },
    "2026-10-25": {
@@ -671,7 +671,7 @@
   "ytdSoldCompletedDays": 150690,
   "todaySold": 1055,
   "ytdSoldIncludingToday": 151745,
-  "outstandingFutureSold": 3962,
+  "outstandingFutureSold": 3968,
   "todayFutureSlotsSold": 42,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
