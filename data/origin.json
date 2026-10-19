@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generatedAt": "2026-10-18T15:11:34.937039-06:00",
+ "generatedAt": "2026-10-19T15:13:41.277533-06:00",
  "seasonStart": "2026-07-04",
  "regionStates": [
   "MN",
@@ -11,15 +11,15 @@
  ],
  "source": "ACME Transactions \u2014 Quantity by EventStartTime and customer address. Aggregated in ACME; no personal data is requested or stored.",
  "coverage": {
-  "tickets": 164718,
+  "tickets": 164736,
   "withAddress": 134657,
   "pct": 82,
   "note": "Share of ticket sales carrying a usable address. Door sales rarely capture one, so percentages below are of tickets we can place, not of all visitors."
  },
  "current": {
-  "from": "2026-10-12",
-  "to": "2026-10-18",
-  "tickets": 5598,
+  "from": "2026-10-13",
+  "to": "2026-10-19",
+  "tickets": 5616,
   "known": 3985,
   "intlTickets": 6,
   "topStates": [
@@ -1152,8 +1152,8 @@
   {
    "week": "2026-10-12",
    "label": "Oct 12",
-   "partial": true,
-   "tickets": 5598,
+   "partial": false,
+   "tickets": 5616,
    "known": 3985,
    "unknownPct": 29,
    "buckets": {
@@ -1460,7 +1460,7 @@
   {
    "period": "2026-10",
    "label": "Oct 2026",
-   "tickets": 16774,
+   "tickets": 16792,
    "known": 12230,
    "unknownPct": 27,
    "buckets": {
@@ -1541,7 +1541,7 @@
   {
    "period": "2026",
    "label": "2026",
-   "tickets": 164718,
+   "tickets": 164736,
    "known": 134657,
    "unknownPct": 18,
    "buckets": {
@@ -1671,8 +1671,8 @@
      },
      {
       "month": "2026-10",
-      "tickets": 2696,
-      "pct": 64
+      "tickets": 2721,
+      "pct": 63
      }
     ]
    },
