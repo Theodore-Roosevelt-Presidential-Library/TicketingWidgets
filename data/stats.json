@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T08:30:52.293064-06:00",
+ "generatedAt": "2026-10-20T08:51:52.986028-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,31 +7,31 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-20T08:30:52.293064-06:00",
+ "salesGeneratedAt": "2026-10-20T08:51:52.986028-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 176199,
-   "arrivedToDate": 172201,
-   "futureArrivals": 3998,
+   "sold": 176206,
+   "arrivedToDate": 172203,
+   "futureArrivals": 4003,
    "checkedIn": 144157,
    "checkedInToDate": 144153
   },
   "today": {
-   "sold": 630,
+   "sold": 632,
    "checkedIn": 0
   },
   "byEventName": {
    "General Admission": {
-    "sold": 168947,
+    "sold": 168952,
     "arrivedToDate": 165101,
-    "futureArrivals": 3846,
+    "futureArrivals": 3851,
     "checkedIn": 140246,
     "checkedInToDate": 140244
    },
    "Walk-Up": {
-    "sold": 4122,
-    "arrivedToDate": 3975,
+    "sold": 4124,
+    "arrivedToDate": 3977,
     "futureArrivals": 147,
     "checkedIn": 2714,
     "checkedInToDate": 2712
@@ -458,11 +458,11 @@
     "checkedIn": 676
    },
    "2026-10-20": {
-    "sold": 630,
+    "sold": 632,
     "checkedIn": 0
    },
    "2026-10-21": {
-    "sold": 413,
+    "sold": 416,
     "checkedIn": 0
    },
    "2026-10-22": {
@@ -470,7 +470,7 @@
     "checkedIn": 0
    },
    "2026-10-23": {
-    "sold": 392,
+    "sold": 394,
     "checkedIn": 0
    },
    "2026-10-24": {
@@ -671,7 +671,7 @@
   "ytdSoldCompletedDays": 152432,
   "todaySold": 561,
   "ytdSoldIncludingToday": 152993,
-  "outstandingFutureSold": 4086,
+  "outstandingFutureSold": 4091,
   "todayFutureSlotsSold": 561,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
