@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T11:29:11.768175-06:00",
+ "generatedAt": "2026-10-20T11:42:01.406739-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-20T11:29:11.768175-06:00",
+ "salesGeneratedAt": "2026-10-20T11:42:01.406739-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 176389,
-   "arrivedToDate": 172318,
-   "futureArrivals": 4071,
-   "checkedIn": 144619,
-   "checkedInToDate": 144615
+   "sold": 176396,
+   "arrivedToDate": 172320,
+   "futureArrivals": 4076,
+   "checkedIn": 144625,
+   "checkedInToDate": 144621
   },
   "today": {
-   "sold": 744,
-   "checkedIn": 464
+   "sold": 746,
+   "checkedIn": 470
   },
   "byEventName": {
    "General Admission": {
-    "sold": 169100,
-    "arrivedToDate": 165181,
-    "futureArrivals": 3919,
-    "checkedIn": 140676,
-    "checkedInToDate": 140674
+    "sold": 169107,
+    "arrivedToDate": 165183,
+    "futureArrivals": 3924,
+    "checkedIn": 140682,
+    "checkedInToDate": 140680
    },
    "Walk-Up": {
     "sold": 4159,
@@ -458,8 +458,8 @@
     "checkedIn": 674
    },
    "2026-10-20": {
-    "sold": 744,
-    "checkedIn": 464
+    "sold": 746,
+    "checkedIn": 470
    },
    "2026-10-21": {
     "sold": 439,
@@ -474,11 +474,11 @@
     "checkedIn": 0
    },
    "2026-10-24": {
-    "sold": 344,
+    "sold": 347,
     "checkedIn": 0
    },
    "2026-10-25": {
-    "sold": 93,
+    "sold": 95,
     "checkedIn": 0
    },
    "2026-10-27": {
@@ -669,10 +669,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 152431,
-  "todaySold": 638,
-  "ytdSoldIncludingToday": 153069,
-  "outstandingFutureSold": 3855,
-  "todayFutureSlotsSold": 263,
+  "todaySold": 585,
+  "ytdSoldIncludingToday": 153016,
+  "outstandingFutureSold": 3775,
+  "todayFutureSlotsSold": 178,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
