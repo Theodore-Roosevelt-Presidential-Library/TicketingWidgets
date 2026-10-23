@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T23:51:37.751322-06:00",
+ "generatedAt": "2026-10-23T00:23:54.777873-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,32 +7,32 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-22T23:51:37.751322-06:00",
+ "salesGeneratedAt": "2026-10-23T00:23:54.777873-06:00",
  "salesStale": false,
  "sales": {
   "total": {
    "sold": 177892,
-   "arrivedToDate": 173767,
-   "futureArrivals": 4125,
+   "arrivedToDate": 174396,
+   "futureArrivals": 3496,
    "checkedIn": 145974,
    "checkedInToDate": 145970
   },
   "today": {
-   "sold": 706,
-   "checkedIn": 671
+   "sold": 629,
+   "checkedIn": 0
   },
   "byEventName": {
    "General Admission": {
     "sold": 170590,
-    "arrivedToDate": 166597,
-    "futureArrivals": 3993,
+    "arrivedToDate": 167176,
+    "futureArrivals": 3414,
     "checkedIn": 142022,
     "checkedInToDate": 142020
    },
    "Walk-Up": {
     "sold": 4172,
-    "arrivedToDate": 4045,
-    "futureArrivals": 127,
+    "arrivedToDate": 4095,
+    "futureArrivals": 77,
     "checkedIn": 2755,
     "checkedInToDate": 2753
    },
@@ -668,20 +668,20 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 153630,
-  "todaySold": 690,
-  "ytdSoldIncludingToday": 154320,
+  "ytdSoldCompletedDays": 154320,
+  "todaySold": 543,
+  "ytdSoldIncludingToday": 154863,
   "outstandingFutureSold": 3569,
-  "todayFutureSlotsSold": 0,
+  "todayFutureSlotsSold": 543,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
-  "capacity": 180109,
-  "sold": 153630,
+  "capacity": 181486,
+  "sold": 154320,
   "pct": 85,
-  "days": 104,
+  "days": 105,
   "firstDay": "2026-07-04",
-  "lastDay": "2026-10-21",
+  "lastDay": "2026-10-22",
   "note": "Admissions sold / admissions offered, completed days only, from the Events report. Capacity utilisation, not a ticket count."
  }
 }
