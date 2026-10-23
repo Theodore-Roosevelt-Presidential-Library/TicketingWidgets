@@ -1201,6 +1201,38 @@ def compute_month_outlook(records, availability, tz):
 
 # ------------------------------------------------------------- availability
 
+def booking_horizon(slot_data, today_iso):
+    """How far ahead tickets can currently be bought.
+
+    This is the last date ACME has GA events scheduled, not the last date with
+    seats left — a visitor asking "how far out can I book?" wants the end of the
+    published calendar. The availability report already asks a full year ahead
+    (futureDaysAhead), so if the last event is sooner than that, the calendar
+    genuinely stops there rather than the query running out of road.
+
+    Returned as a flag the widgets can show as a footnote, deliberately not as
+    anything that changes a visitor's next action.
+    """
+    dates = sorted({d for (d, _t), rec in slot_data.items()
+                    if d >= today_iso and rec.get("capacity", 0) > 0})
+    if not dates:
+        return None
+    last = dates[-1]
+    days_out = (date.fromisoformat(last) - date.fromisoformat(today_iso)).days
+    # If the schedule reaches the edge of what we asked for, we cannot tell
+    # where it really ends, so say nothing rather than imply a hard stop.
+    if days_out >= 364:
+        return None
+    return {
+        "lastDate": last,
+        "daysOut": days_out,
+        "label": date.fromisoformat(last).strftime("%B %-d, %Y"),
+        "openDays": len(dates),
+        "note": "Last date with General Admission events on the ACME calendar. "
+                "Not a sell-out date — it is how far ahead the schedule is published.",
+    }
+
+
 def build_availability(slot_data, config, tz, history, analytics, closures=None):
     now = datetime.now(tz)
     days_ahead = config.get("daysAhead", 7)
@@ -1295,6 +1327,9 @@ def build_availability(slot_data, config, tz, history, analytics, closures=None)
         "timezone": str(tz),
         "today": now.date().isoformat(),
         "ticketsUrl": config.get("ticketsUrl", "https://www.trlibrary.com/tickets"),
+        # Stamped so sample data can never be mistaken for real downstream.
+        "mock": True if MOCK else None,
+        "bookingHorizon": booking_horizon(slot_data, now.date().isoformat()),
         "days": days_out,
     }
 
@@ -1379,6 +1414,19 @@ def main():
     DATA_DIR.mkdir(exist_ok=True)
 
     if MOCK:
+        # Refuse to clobber real data with samples. MOCK turns on automatically
+        # whenever ACME_API_KEY is absent — including in a fresh clone with no
+        # .env — so an ordinary `python scripts/fetch_availability.py` would
+        # quietly overwrite every committed data file with plausible-looking
+        # fiction: uniform capacities, invented sales. It is only obvious if you
+        # happen to read the one line of stdout saying so.
+        existing = load_json(OUTPUT_PATH, None)
+        if existing and not existing.get("mock") and os.environ.get("MOCK_OVERWRITE") != "1":
+            sys.exit(
+                f"MOCK mode (no ACME_API_KEY) but {OUTPUT_PATH.name} holds real data "
+                f"from {existing.get('generatedAt')}. Refusing to overwrite it with "
+                "samples.\nSet ACME_API_KEY (a .env at the repo root works) to run for "
+                "real, or MOCK_OVERWRITE=1 if you genuinely want sample data here.")
         print("MOCK mode (no ACME_API_KEY set) — generating sample data.")
         past = [(now.date() - timedelta(days=i)).isoformat() for i in range(lookback, 0, -1)]
         future = [(now.date() + timedelta(days=i)).isoformat() for i in range(days_ahead + 1)]

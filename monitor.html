@@ -163,6 +163,13 @@
       `<p><span class="big">${n(s.arrivedToDate)}</span></p>` +
       `<p class="meta">Tickets whose visit date has now passed, today included.</p></div>` +
 
+      (avail.bookingHorizon ? `<div class="card"><h3>On sale through</h3>` +
+        `<p><span class="big">${avail.bookingHorizon.label}</span></p>` +
+        `<p class="meta">${avail.bookingHorizon.daysOut} days out · ` +
+        `${n(avail.bookingHorizon.openDays)} open days on the calendar. This is how far ` +
+        `the schedule is published, not a sell-out date — releasing further out is a ` +
+        `decision, not a constraint.</p></div>` : "") +
+
       `<div class="card"><h3>Upcoming arrivals</h3>` +
       `<p><span class="big">${n(s.futureArrivals)}</span></p>` +
       `<p class="meta">Sold for dates still ahead.</p></div>` +

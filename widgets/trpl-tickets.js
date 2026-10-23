@@ -91,6 +91,7 @@
     ".trpl-tw-cta{margin-top:1em}",
     ".trpl-tw-firstnote{font-size:.92em;margin-bottom:.7em}",
     ".trpl-tw-firstnote strong{color:var(--_forest)}",
+    ".trpl-tw-horizon{font-size:.82em;margin-top:.8em;opacity:.75;line-height:1.4}",
     /* planner */
     ".trpl-tw-planner ul{list-style:none;display:grid;gap:.45em}",
     ".trpl-tw-day{display:flex;align-items:center;gap:.9em;border:1px solid var(--_border);",
@@ -242,6 +243,24 @@
   }
 
 
+  /* How far ahead the calendar is published, as a footnote.
+   *
+   * Deliberately NOT shown on alert, timeslots or planner: those three exist to
+   * answer "should I act now?", and a reassuring note about booking into next
+   * spring pulls against the urgency they are built to convey. It belongs where
+   * someone is already looking further out — checking a specific date, reading
+   * the month outlook, or scanning the year calendar.
+   *
+   * Returns "" when the horizon is unknown or a year-plus away, so the markup
+   * simply isn't there rather than rendering an empty element.
+   */
+  function horizonNote(data) {
+    var h = data && data.bookingHorizon;
+    if (!h || !h.label) return "";
+    return '<p class="trpl-tw-horizon">* Tickets are currently on sale through <strong>' +
+      esc(h.label) + "</strong>. Dates beyond that have not been released yet.</p>";
+  }
+
   function renderAlert(el, data, ticketsUrl) {
     var today = data.days && data.days[0];
     if (!today) return;
@@ -360,7 +379,8 @@
         '<div class="trpl-tw trpl-tw-outlook">' +
         (el.hasAttribute("data-hide-heading") ? "" : "<h3>" + esc(o.heading) + "</h3>") +
         "<p>" + esc(o.text) + "</p>" + cta +
-        '<p class="trpl-tw-meta">Based on recent ticket sales at the Library.</p></div>';
+        '<p class="trpl-tw-meta">Based on recent ticket sales at the Library.</p>' +
+        horizonNote(data) + "</div>";
     }).catch(function (err) {
       if (window.console) console.warn("TRPL widget (outlook):", err);
     });
@@ -434,7 +454,8 @@
       '<div class="trpl-tw trpl-tw-datecheck"><h3>Check Your Date</h3>' +
       '<div class="trpl-tw-pick"><label for="trpl-dc-input">Planning to visit on</label>' +
       '<input type="date" id="trpl-dc-input" min="' + esc(today) + '" value="' + esc(picked) + '"></div>' +
-      '<div class="trpl-tw-dc-result"><p class="trpl-tw-meta">Loading…</p></div></div>';
+      '<div class="trpl-tw-dc-result"><p class="trpl-tw-meta">Loading…</p></div>' +
+      horizonNote(data) + "</div>";
 
     var result = el.querySelector(".trpl-tw-dc-result");
     var input = el.querySelector("#trpl-dc-input");
@@ -593,6 +614,9 @@
           '<div class="trpl-tw-cal-months">' + months + "</div>" +
           (ghostCount ? '<p class="trpl-tw-meta">Dashed outlines are not on sale yet \u2014 they show how full ' +
             "that date ended <strong>last year</strong>, as a planning guide only.</p>" : "") +
+          /* Pairs with the dashed-outline note above: this names the exact date
+             where "not on sale yet" begins. */
+          horizonNote(data) +
           (el.hasAttribute("data-hide-cta") ? "" :
             '<div class="trpl-tw-cta"><a class="trpl-tw-btn" href="' + esc(ticketsUrl) + '">Reserve Tickets</a></div>');
         el.querySelectorAll(".trpl-tw-cal-years button").forEach(function (b) {
