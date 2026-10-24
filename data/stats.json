@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T15:10:52.050650-06:00",
+ "generatedAt": "2026-10-24T15:24:35.203293-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-24T15:10:52.050650-06:00",
+ "salesGeneratedAt": "2026-10-24T15:24:35.203293-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 179016,
-   "arrivedToDate": 175669,
+   "sold": 179020,
+   "arrivedToDate": 175673,
    "futureArrivals": 3347,
-   "checkedIn": 147488,
-   "checkedInToDate": 147484
+   "checkedIn": 147491,
+   "checkedInToDate": 147487
   },
   "today": {
-   "sold": 937,
-   "checkedIn": 811
+   "sold": 941,
+   "checkedIn": 815
   },
   "byEventName": {
    "General Admission": {
-    "sold": 171714,
-    "arrivedToDate": 168449,
+    "sold": 171718,
+    "arrivedToDate": 168453,
     "futureArrivals": 3265,
-    "checkedIn": 143536,
-    "checkedInToDate": 143534
+    "checkedIn": 143539,
+    "checkedInToDate": 143537
    },
    "Walk-Up": {
     "sold": 4172,
@@ -471,11 +471,11 @@
    },
    "2026-10-23": {
     "sold": 965,
-    "checkedIn": 703
+    "checkedIn": 702
    },
    "2026-10-24": {
-    "sold": 937,
-    "checkedIn": 811
+    "sold": 941,
+    "checkedIn": 815
    },
    "2026-10-25": {
     "sold": 297,
@@ -668,16 +668,16 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 155120,
-  "todaySold": 863,
-  "ytdSoldIncludingToday": 155983,
-  "outstandingFutureSold": 2865,
-  "todayFutureSlotsSold": 38,
+  "ytdSoldCompletedDays": 155118,
+  "todaySold": 867,
+  "ytdSoldIncludingToday": 155985,
+  "outstandingFutureSold": 2869,
+  "todayFutureSlotsSold": 42,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
   "capacity": 182861,
-  "sold": 155120,
+  "sold": 155118,
   "pct": 85,
   "days": 106,
   "firstDay": "2026-07-04",
