@@ -1,156 +1,20 @@
 {
-  "generatedAt": "2026-10-25T23:55:49.582095-06:00",
+  "generatedAt": "2026-10-26T00:39:07.645236-06:00",
   "timezone": "America/Denver",
-  "today": "2026-10-25",
+  "today": "2026-10-26",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
   "mock": null,
   "bookingHorizon": {
     "lastDate": "2027-02-28",
-    "daysOut": 126,
+    "daysOut": 125,
     "label": "February 28, 2027",
-    "openDays": 96,
+    "openDays": 95,
     "note": "Last date with General Admission events on the ACME calendar. Not a sell-out date \u2014 it is how far ahead the schedule is published."
   },
   "days": [
     {
-      "date": "2026-10-25",
-      "dayLabel": "Today",
-      "closed": false,
-      "totalCapacity": 1875,
-      "totalSold": 430,
-      "pctSold": 23,
-      "soldOutSlots": 0,
-      "firstAvailable": null,
-      "status": "ended",
-      "selloutRisk": "none",
-      "riskNote": "Today's entries have ended.",
-      "riskReason": "Today's entries have ended",
-      "slots": [
-        {
-          "time": "09:00",
-          "label": "9:00 AM",
-          "capacity": 125,
-          "sold": 55,
-          "remaining": 70,
-          "status": "past"
-        },
-        {
-          "time": "09:30",
-          "label": "9:30 AM",
-          "capacity": 125,
-          "sold": 74,
-          "remaining": 51,
-          "status": "past"
-        },
-        {
-          "time": "10:00",
-          "label": "10:00 AM",
-          "capacity": 125,
-          "sold": 58,
-          "remaining": 67,
-          "status": "past"
-        },
-        {
-          "time": "10:30",
-          "label": "10:30 AM",
-          "capacity": 125,
-          "sold": 16,
-          "remaining": 109,
-          "status": "past"
-        },
-        {
-          "time": "11:00",
-          "label": "11:00 AM",
-          "capacity": 125,
-          "sold": 33,
-          "remaining": 92,
-          "status": "past"
-        },
-        {
-          "time": "11:30",
-          "label": "11:30 AM",
-          "capacity": 125,
-          "sold": 12,
-          "remaining": 113,
-          "status": "past"
-        },
-        {
-          "time": "12:00",
-          "label": "12:00 PM",
-          "capacity": 125,
-          "sold": 27,
-          "remaining": 98,
-          "status": "past"
-        },
-        {
-          "time": "12:30",
-          "label": "12:30 PM",
-          "capacity": 125,
-          "sold": 6,
-          "remaining": 119,
-          "status": "past"
-        },
-        {
-          "time": "13:00",
-          "label": "1:00 PM",
-          "capacity": 125,
-          "sold": 51,
-          "remaining": 74,
-          "status": "past"
-        },
-        {
-          "time": "13:30",
-          "label": "1:30 PM",
-          "capacity": 125,
-          "sold": 23,
-          "remaining": 102,
-          "status": "past"
-        },
-        {
-          "time": "14:00",
-          "label": "2:00 PM",
-          "capacity": 125,
-          "sold": 23,
-          "remaining": 102,
-          "status": "past"
-        },
-        {
-          "time": "14:30",
-          "label": "2:30 PM",
-          "capacity": 125,
-          "sold": 23,
-          "remaining": 102,
-          "status": "past"
-        },
-        {
-          "time": "15:00",
-          "label": "3:00 PM",
-          "capacity": 125,
-          "sold": 18,
-          "remaining": 107,
-          "status": "past"
-        },
-        {
-          "time": "15:30",
-          "label": "3:30 PM",
-          "capacity": 125,
-          "sold": 9,
-          "remaining": 116,
-          "status": "past"
-        },
-        {
-          "time": "16:00",
-          "label": "4:00 PM",
-          "capacity": 125,
-          "sold": 2,
-          "remaining": 123,
-          "status": "past"
-        }
-      ]
-    },
-    {
       "date": "2026-10-26",
-      "dayLabel": "Tomorrow",
+      "dayLabel": "Today",
       "closed": true,
       "slots": [],
       "closedReason": "Closed Mondays (Fall hours)",
@@ -165,7 +29,7 @@
     },
     {
       "date": "2026-10-27",
-      "dayLabel": "Tue Oct 27",
+      "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 985,
       "totalSold": 630,
@@ -850,6 +714,21 @@
           "status": "available"
         }
       ]
+    },
+    {
+      "date": "2026-11-02",
+      "dayLabel": "Mon Nov 2",
+      "closed": true,
+      "slots": [],
+      "closedReason": "Closed Mondays (Fall hours)",
+      "status": "closed",
+      "selloutRisk": "none",
+      "riskNote": "Closed \u2014 Closed Mondays (Fall hours)",
+      "totalCapacity": 0,
+      "totalSold": 0,
+      "pctSold": 0,
+      "soldOutSlots": 0,
+      "firstAvailable": null
     }
   ]
 }
