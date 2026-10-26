@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generatedAt": "2026-10-25T15:12:18.601289-06:00",
+ "generatedAt": "2026-10-26T15:13:45.863018-06:00",
  "seasonStart": "2026-07-04",
  "regionStates": [
   "MN",
@@ -11,16 +11,16 @@
  ],
  "source": "ACME Transactions \u2014 Quantity by EventStartTime and customer address. Aggregated in ACME; no personal data is requested or stored.",
  "coverage": {
-  "tickets": 169212,
-  "withAddress": 137633,
+  "tickets": 169220,
+  "withAddress": 137636,
   "pct": 81,
   "note": "Share of ticket sales carrying a usable address. Door sales rarely capture one, so percentages below are of tickets we can place, not of all visitors."
  },
  "current": {
-  "from": "2026-10-19",
-  "to": "2026-10-25",
-  "tickets": 4471,
-  "known": 2976,
+  "from": "2026-10-20",
+  "to": "2026-10-26",
+  "tickets": 4479,
+  "known": 2979,
   "intlTickets": 4,
   "topStates": [
    {
@@ -38,7 +38,7 @@
    {
     "state": "MT",
     "name": "Montana",
-    "tickets": 114,
+    "tickets": 117,
     "pct": 4
    },
    {
@@ -1221,9 +1221,9 @@
   {
    "week": "2026-10-19",
    "label": "Oct 19",
-   "partial": true,
-   "tickets": 4471,
-   "known": 2976,
+   "partial": false,
+   "tickets": 4479,
+   "known": 2979,
    "unknownPct": 33,
    "buckets": {
     "nd": {
@@ -1231,7 +1231,7 @@
      "pct": 44
     },
     "region": {
-     "tickets": 714,
+     "tickets": 717,
      "pct": 24,
      "states": [
       "MN",
@@ -1271,7 +1271,7 @@
     ],
     [
      "MT",
-     114
+     117
     ],
     [
      "WI",
@@ -1529,8 +1529,8 @@
   {
    "period": "2026-10",
    "label": "Oct 2026",
-   "tickets": 21268,
-   "known": 15206,
+   "tickets": 21276,
+   "known": 15209,
    "unknownPct": 29,
    "buckets": {
     "nd": {
@@ -1538,7 +1538,7 @@
      "pct": 30
     },
     "region": {
-     "tickets": 4608,
+     "tickets": 4611,
      "pct": 30,
      "states": [
       "MN",
@@ -1580,7 +1580,7 @@
     ],
     [
      "MT",
-     905
+     908
     ],
     [
      "SD",
@@ -1610,8 +1610,8 @@
   {
    "period": "2026",
    "label": "2026",
-   "tickets": 169212,
-   "known": 137633,
+   "tickets": 169220,
+   "known": 137636,
    "unknownPct": 19,
    "buckets": {
     "nd": {
@@ -1619,7 +1619,7 @@
      "pct": 34
     },
     "region": {
-     "tickets": 37259,
+     "tickets": 37262,
      "pct": 27,
      "states": [
       "MN",
@@ -1661,7 +1661,7 @@
     ],
     [
      "MT",
-     6259
+     6262
     ],
     [
      "SD",
@@ -1715,7 +1715,7 @@
      },
      {
       "month": "2026-10",
-      "tickets": 14974,
+      "tickets": 14977,
       "pct": 100
      }
     ]
@@ -1740,7 +1740,7 @@
      },
      {
       "month": "2026-10",
-      "tickets": 3655,
+      "tickets": 3660,
       "pct": 66
      }
     ]
