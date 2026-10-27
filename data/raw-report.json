@@ -596,6 +596,13 @@
         "2026-12-10T13:00:00-07:00",
         "2026-12-10T13:30:00-07:00",
         "2026-12-10T14:00:00-07:00",
+        "2026-12-10T15:00:00-07:00",
+        "2026-12-10T15:30:00-07:00",
+        "2026-12-10T16:00:00-07:00",
+        "2026-12-10T16:30:00-07:00",
+        "2026-12-10T17:00:00-07:00",
+        "2026-12-10T17:30:00-07:00",
+        "2026-12-10T18:00:00-07:00",
         "2026-12-11T09:00:00-07:00",
         "2026-12-11T09:30:00-07:00",
         "2026-12-11T10:00:00-07:00",
@@ -651,6 +658,13 @@
         "2026-12-17T13:00:00-07:00",
         "2026-12-17T13:30:00-07:00",
         "2026-12-17T14:00:00-07:00",
+        "2026-12-17T15:00:00-07:00",
+        "2026-12-17T15:30:00-07:00",
+        "2026-12-17T16:00:00-07:00",
+        "2026-12-17T16:30:00-07:00",
+        "2026-12-17T17:00:00-07:00",
+        "2026-12-17T17:30:00-07:00",
+        "2026-12-17T18:00:00-07:00",
         "2026-12-18T09:00:00-07:00",
         "2026-12-18T09:30:00-07:00",
         "2026-12-18T10:00:00-07:00",
@@ -1840,6 +1854,13 @@
         "69a748bb7bd626d7bc371b0a",
         "6a8cabab5f5fce27aeb251ec",
         "69a7488200f2c5353943258a",
+        "6ae0f136e386ff0770378341",
+        "6ae0f136e386ff0770378340",
+        "6ae0f136e386ff077037833f",
+        "6ae0f136e386ff077037833e",
+        "6ae0f136e386ff077037833d",
+        "6ae0f136e386ff077037833c",
+        "6ae0f136e386ff0770378342",
         "6ada2ea8e671def4fe5d1cb4",
         "6ada2ea8e671def4fe5d1cb3",
         "699de402273e25830f152b26",
@@ -1895,6 +1916,13 @@
         "69a748bb7bd626d7bc371b0d",
         "6a8cabad357bb086379e916d",
         "69a7488200f2c5353943258d",
+        "6ae0f1383d8765976e36f978",
+        "6ae0f1383d8765976e36f977",
+        "6ae0f1383d8765976e36f97d",
+        "6ae0f1383d8765976e36f97c",
+        "6ae0f1383d8765976e36f97b",
+        "6ae0f1383d8765976e36f97a",
+        "6ae0f1383d8765976e36f979",
         "6ada2eaae7bf035b60bc0f50",
         "6ada2eaae7bf035b60bc0f51",
         "699de402273e25830f152b32",
@@ -2650,9 +2678,9 @@
         0,
         0,
         0,
-        0,
+        1,
         4,
-        125,
+        123,
         119,
         88,
         99,
@@ -2813,7 +2841,7 @@
         125,
         125,
         125,
-        125,
+        123,
         125,
         122,
         121,
@@ -3086,6 +3114,13 @@
         120,
         125,
         125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
         122,
         125,
         125,
@@ -3134,6 +3169,13 @@
         125,
         123,
         98,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
         125,
         125,
         125,
@@ -4284,6 +4326,20 @@
         125,
         125,
         3,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
         125,
         125,
         125,
@@ -8718,7 +8774,7 @@
         "subtotalFields": [
           {
             "name": "AvailableQuantity",
-            "value": "0"
+            "value": "1"
           },
           {
             "name": "Capacity",
@@ -8766,7 +8822,7 @@
         "subtotalFields": [
           {
             "name": "AvailableQuantity",
-            "value": "125"
+            "value": "123"
           },
           {
             "name": "Capacity",
@@ -12630,7 +12686,7 @@
         "subtotalFields": [
           {
             "name": "AvailableQuantity",
-            "value": "125"
+            "value": "123"
           },
           {
             "name": "Capacity",
@@ -19075,6 +19131,174 @@
         "endIndex": 589,
         "primaryGroupField": {
           "name": "EventStartTime",
+          "value": "2026-12-10T15:00:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-10T15:00:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 590,
+        "endIndex": 590,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-10T15:30:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-10T15:30:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 591,
+        "endIndex": 591,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-10T16:00:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-10T16:00:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 592,
+        "endIndex": 592,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-10T16:30:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-10T16:30:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 593,
+        "endIndex": 593,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-10T17:00:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-10T17:00:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 594,
+        "endIndex": 594,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-10T17:30:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-10T17:30:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 595,
+        "endIndex": 595,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-10T18:00:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-10T18:00:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 596,
+        "endIndex": 596,
+        "primaryGroupField": {
+          "name": "EventStartTime",
           "value": "2026-12-11T09:00:00-07:00"
         },
         "groupFields": [
@@ -19095,8 +19319,8 @@
         ]
       },
       {
-        "startIndex": 590,
-        "endIndex": 590,
+        "startIndex": 597,
+        "endIndex": 597,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T09:30:00-07:00"
@@ -19119,8 +19343,8 @@
         ]
       },
       {
-        "startIndex": 591,
-        "endIndex": 591,
+        "startIndex": 598,
+        "endIndex": 598,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T10:00:00-07:00"
@@ -19143,8 +19367,8 @@
         ]
       },
       {
-        "startIndex": 592,
-        "endIndex": 592,
+        "startIndex": 599,
+        "endIndex": 599,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T10:30:00-07:00"
@@ -19167,8 +19391,8 @@
         ]
       },
       {
-        "startIndex": 593,
-        "endIndex": 593,
+        "startIndex": 600,
+        "endIndex": 600,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T11:00:00-07:00"
@@ -19191,8 +19415,8 @@
         ]
       },
       {
-        "startIndex": 594,
-        "endIndex": 594,
+        "startIndex": 601,
+        "endIndex": 601,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T11:30:00-07:00"
@@ -19215,8 +19439,8 @@
         ]
       },
       {
-        "startIndex": 595,
-        "endIndex": 595,
+        "startIndex": 602,
+        "endIndex": 602,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T12:00:00-07:00"
@@ -19239,8 +19463,8 @@
         ]
       },
       {
-        "startIndex": 596,
-        "endIndex": 596,
+        "startIndex": 603,
+        "endIndex": 603,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T12:30:00-07:00"
@@ -19263,8 +19487,8 @@
         ]
       },
       {
-        "startIndex": 597,
-        "endIndex": 597,
+        "startIndex": 604,
+        "endIndex": 604,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T13:00:00-07:00"
@@ -19287,8 +19511,8 @@
         ]
       },
       {
-        "startIndex": 598,
-        "endIndex": 598,
+        "startIndex": 605,
+        "endIndex": 605,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T13:30:00-07:00"
@@ -19311,8 +19535,8 @@
         ]
       },
       {
-        "startIndex": 599,
-        "endIndex": 599,
+        "startIndex": 606,
+        "endIndex": 606,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-11T14:00:00-07:00"
@@ -19335,8 +19559,8 @@
         ]
       },
       {
-        "startIndex": 600,
-        "endIndex": 600,
+        "startIndex": 607,
+        "endIndex": 607,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T09:00:00-07:00"
@@ -19359,8 +19583,8 @@
         ]
       },
       {
-        "startIndex": 601,
-        "endIndex": 601,
+        "startIndex": 608,
+        "endIndex": 608,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T09:30:00-07:00"
@@ -19383,8 +19607,8 @@
         ]
       },
       {
-        "startIndex": 602,
-        "endIndex": 602,
+        "startIndex": 609,
+        "endIndex": 609,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T10:00:00-07:00"
@@ -19407,8 +19631,8 @@
         ]
       },
       {
-        "startIndex": 603,
-        "endIndex": 603,
+        "startIndex": 610,
+        "endIndex": 610,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T10:30:00-07:00"
@@ -19431,8 +19655,8 @@
         ]
       },
       {
-        "startIndex": 604,
-        "endIndex": 604,
+        "startIndex": 611,
+        "endIndex": 611,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T11:00:00-07:00"
@@ -19455,8 +19679,8 @@
         ]
       },
       {
-        "startIndex": 605,
-        "endIndex": 605,
+        "startIndex": 612,
+        "endIndex": 612,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T11:30:00-07:00"
@@ -19479,8 +19703,8 @@
         ]
       },
       {
-        "startIndex": 606,
-        "endIndex": 606,
+        "startIndex": 613,
+        "endIndex": 613,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T12:00:00-07:00"
@@ -19503,8 +19727,8 @@
         ]
       },
       {
-        "startIndex": 607,
-        "endIndex": 607,
+        "startIndex": 614,
+        "endIndex": 614,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T12:30:00-07:00"
@@ -19527,8 +19751,8 @@
         ]
       },
       {
-        "startIndex": 608,
-        "endIndex": 608,
+        "startIndex": 615,
+        "endIndex": 615,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T13:00:00-07:00"
@@ -19551,8 +19775,8 @@
         ]
       },
       {
-        "startIndex": 609,
-        "endIndex": 609,
+        "startIndex": 616,
+        "endIndex": 616,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T13:30:00-07:00"
@@ -19575,8 +19799,8 @@
         ]
       },
       {
-        "startIndex": 610,
-        "endIndex": 610,
+        "startIndex": 617,
+        "endIndex": 617,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-12T14:00:00-07:00"
@@ -19599,8 +19823,8 @@
         ]
       },
       {
-        "startIndex": 611,
-        "endIndex": 611,
+        "startIndex": 618,
+        "endIndex": 618,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T09:00:00-07:00"
@@ -19623,8 +19847,8 @@
         ]
       },
       {
-        "startIndex": 612,
-        "endIndex": 612,
+        "startIndex": 619,
+        "endIndex": 619,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T09:30:00-07:00"
@@ -19647,8 +19871,8 @@
         ]
       },
       {
-        "startIndex": 613,
-        "endIndex": 613,
+        "startIndex": 620,
+        "endIndex": 620,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T10:00:00-07:00"
@@ -19671,8 +19895,8 @@
         ]
       },
       {
-        "startIndex": 614,
-        "endIndex": 614,
+        "startIndex": 621,
+        "endIndex": 621,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T10:30:00-07:00"
@@ -19695,8 +19919,8 @@
         ]
       },
       {
-        "startIndex": 615,
-        "endIndex": 615,
+        "startIndex": 622,
+        "endIndex": 622,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T11:00:00-07:00"
@@ -19719,8 +19943,8 @@
         ]
       },
       {
-        "startIndex": 616,
-        "endIndex": 616,
+        "startIndex": 623,
+        "endIndex": 623,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T11:30:00-07:00"
@@ -19743,8 +19967,8 @@
         ]
       },
       {
-        "startIndex": 617,
-        "endIndex": 617,
+        "startIndex": 624,
+        "endIndex": 624,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T12:00:00-07:00"
@@ -19767,8 +19991,8 @@
         ]
       },
       {
-        "startIndex": 618,
-        "endIndex": 618,
+        "startIndex": 625,
+        "endIndex": 625,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T12:30:00-07:00"
@@ -19791,8 +20015,8 @@
         ]
       },
       {
-        "startIndex": 619,
-        "endIndex": 619,
+        "startIndex": 626,
+        "endIndex": 626,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T13:00:00-07:00"
@@ -19815,8 +20039,8 @@
         ]
       },
       {
-        "startIndex": 620,
-        "endIndex": 620,
+        "startIndex": 627,
+        "endIndex": 627,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T13:30:00-07:00"
@@ -19839,8 +20063,8 @@
         ]
       },
       {
-        "startIndex": 621,
-        "endIndex": 621,
+        "startIndex": 628,
+        "endIndex": 628,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-13T14:00:00-07:00"
@@ -19863,8 +20087,8 @@
         ]
       },
       {
-        "startIndex": 622,
-        "endIndex": 622,
+        "startIndex": 629,
+        "endIndex": 629,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T09:00:00-07:00"
@@ -19887,8 +20111,8 @@
         ]
       },
       {
-        "startIndex": 623,
-        "endIndex": 623,
+        "startIndex": 630,
+        "endIndex": 630,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T09:30:00-07:00"
@@ -19911,8 +20135,8 @@
         ]
       },
       {
-        "startIndex": 624,
-        "endIndex": 624,
+        "startIndex": 631,
+        "endIndex": 631,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T10:00:00-07:00"
@@ -19935,8 +20159,8 @@
         ]
       },
       {
-        "startIndex": 625,
-        "endIndex": 625,
+        "startIndex": 632,
+        "endIndex": 632,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T10:30:00-07:00"
@@ -19959,8 +20183,8 @@
         ]
       },
       {
-        "startIndex": 626,
-        "endIndex": 626,
+        "startIndex": 633,
+        "endIndex": 633,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T11:00:00-07:00"
@@ -19983,8 +20207,8 @@
         ]
       },
       {
-        "startIndex": 627,
-        "endIndex": 627,
+        "startIndex": 634,
+        "endIndex": 634,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T11:30:00-07:00"
@@ -20007,8 +20231,8 @@
         ]
       },
       {
-        "startIndex": 628,
-        "endIndex": 628,
+        "startIndex": 635,
+        "endIndex": 635,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T12:00:00-07:00"
@@ -20031,8 +20255,8 @@
         ]
       },
       {
-        "startIndex": 629,
-        "endIndex": 629,
+        "startIndex": 636,
+        "endIndex": 636,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T12:30:00-07:00"
@@ -20055,8 +20279,8 @@
         ]
       },
       {
-        "startIndex": 630,
-        "endIndex": 630,
+        "startIndex": 637,
+        "endIndex": 637,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T13:00:00-07:00"
@@ -20079,8 +20303,8 @@
         ]
       },
       {
-        "startIndex": 631,
-        "endIndex": 631,
+        "startIndex": 638,
+        "endIndex": 638,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T13:30:00-07:00"
@@ -20103,8 +20327,8 @@
         ]
       },
       {
-        "startIndex": 632,
-        "endIndex": 632,
+        "startIndex": 639,
+        "endIndex": 639,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-16T14:00:00-07:00"
@@ -20127,8 +20351,8 @@
         ]
       },
       {
-        "startIndex": 633,
-        "endIndex": 633,
+        "startIndex": 640,
+        "endIndex": 640,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T09:00:00-07:00"
@@ -20151,8 +20375,8 @@
         ]
       },
       {
-        "startIndex": 634,
-        "endIndex": 634,
+        "startIndex": 641,
+        "endIndex": 641,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T09:30:00-07:00"
@@ -20175,8 +20399,8 @@
         ]
       },
       {
-        "startIndex": 635,
-        "endIndex": 635,
+        "startIndex": 642,
+        "endIndex": 642,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T10:00:00-07:00"
@@ -20199,8 +20423,8 @@
         ]
       },
       {
-        "startIndex": 636,
-        "endIndex": 636,
+        "startIndex": 643,
+        "endIndex": 643,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T10:30:00-07:00"
@@ -20223,8 +20447,8 @@
         ]
       },
       {
-        "startIndex": 637,
-        "endIndex": 637,
+        "startIndex": 644,
+        "endIndex": 644,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T11:00:00-07:00"
@@ -20247,8 +20471,8 @@
         ]
       },
       {
-        "startIndex": 638,
-        "endIndex": 638,
+        "startIndex": 645,
+        "endIndex": 645,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T11:30:00-07:00"
@@ -20271,8 +20495,8 @@
         ]
       },
       {
-        "startIndex": 639,
-        "endIndex": 639,
+        "startIndex": 646,
+        "endIndex": 646,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T12:00:00-07:00"
@@ -20295,8 +20519,8 @@
         ]
       },
       {
-        "startIndex": 640,
-        "endIndex": 640,
+        "startIndex": 647,
+        "endIndex": 647,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T12:30:00-07:00"
@@ -20319,8 +20543,8 @@
         ]
       },
       {
-        "startIndex": 641,
-        "endIndex": 641,
+        "startIndex": 648,
+        "endIndex": 648,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T13:00:00-07:00"
@@ -20343,8 +20567,8 @@
         ]
       },
       {
-        "startIndex": 642,
-        "endIndex": 642,
+        "startIndex": 649,
+        "endIndex": 649,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T13:30:00-07:00"
@@ -20367,8 +20591,8 @@
         ]
       },
       {
-        "startIndex": 643,
-        "endIndex": 643,
+        "startIndex": 650,
+        "endIndex": 650,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-17T14:00:00-07:00"
@@ -20391,8 +20615,176 @@
         ]
       },
       {
-        "startIndex": 644,
-        "endIndex": 644,
+        "startIndex": 651,
+        "endIndex": 651,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-17T15:00:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-17T15:00:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 652,
+        "endIndex": 652,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-17T15:30:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-17T15:30:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 653,
+        "endIndex": 653,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-17T16:00:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-17T16:00:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 654,
+        "endIndex": 654,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-17T16:30:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-17T16:30:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 655,
+        "endIndex": 655,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-17T17:00:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-17T17:00:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 656,
+        "endIndex": 656,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-17T17:30:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-17T17:30:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 657,
+        "endIndex": 657,
+        "primaryGroupField": {
+          "name": "EventStartTime",
+          "value": "2026-12-17T18:00:00-07:00"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-17T18:00:00-07:00"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "AvailableQuantity",
+            "value": "125"
+          },
+          {
+            "name": "Capacity",
+            "value": "125"
+          }
+        ]
+      },
+      {
+        "startIndex": 658,
+        "endIndex": 658,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T09:00:00-07:00"
@@ -20415,8 +20807,8 @@
         ]
       },
       {
-        "startIndex": 645,
-        "endIndex": 645,
+        "startIndex": 659,
+        "endIndex": 659,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T09:30:00-07:00"
@@ -20439,8 +20831,8 @@
         ]
       },
       {
-        "startIndex": 646,
-        "endIndex": 646,
+        "startIndex": 660,
+        "endIndex": 660,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T10:00:00-07:00"
@@ -20463,8 +20855,8 @@
         ]
       },
       {
-        "startIndex": 647,
-        "endIndex": 647,
+        "startIndex": 661,
+        "endIndex": 661,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T10:30:00-07:00"
@@ -20487,8 +20879,8 @@
         ]
       },
       {
-        "startIndex": 648,
-        "endIndex": 648,
+        "startIndex": 662,
+        "endIndex": 662,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T11:00:00-07:00"
@@ -20511,8 +20903,8 @@
         ]
       },
       {
-        "startIndex": 649,
-        "endIndex": 649,
+        "startIndex": 663,
+        "endIndex": 663,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T11:30:00-07:00"
@@ -20535,8 +20927,8 @@
         ]
       },
       {
-        "startIndex": 650,
-        "endIndex": 650,
+        "startIndex": 664,
+        "endIndex": 664,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T12:00:00-07:00"
@@ -20559,8 +20951,8 @@
         ]
       },
       {
-        "startIndex": 651,
-        "endIndex": 651,
+        "startIndex": 665,
+        "endIndex": 665,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T12:30:00-07:00"
@@ -20583,8 +20975,8 @@
         ]
       },
       {
-        "startIndex": 652,
-        "endIndex": 652,
+        "startIndex": 666,
+        "endIndex": 666,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T13:00:00-07:00"
@@ -20607,8 +20999,8 @@
         ]
       },
       {
-        "startIndex": 653,
-        "endIndex": 653,
+        "startIndex": 667,
+        "endIndex": 667,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T13:30:00-07:00"
@@ -20631,8 +21023,8 @@
         ]
       },
       {
-        "startIndex": 654,
-        "endIndex": 654,
+        "startIndex": 668,
+        "endIndex": 668,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-18T14:00:00-07:00"
@@ -20655,8 +21047,8 @@
         ]
       },
       {
-        "startIndex": 655,
-        "endIndex": 655,
+        "startIndex": 669,
+        "endIndex": 669,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T09:00:00-07:00"
@@ -20679,8 +21071,8 @@
         ]
       },
       {
-        "startIndex": 656,
-        "endIndex": 656,
+        "startIndex": 670,
+        "endIndex": 670,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T09:30:00-07:00"
@@ -20703,8 +21095,8 @@
         ]
       },
       {
-        "startIndex": 657,
-        "endIndex": 657,
+        "startIndex": 671,
+        "endIndex": 671,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T10:00:00-07:00"
@@ -20727,8 +21119,8 @@
         ]
       },
       {
-        "startIndex": 658,
-        "endIndex": 658,
+        "startIndex": 672,
+        "endIndex": 672,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T10:30:00-07:00"
@@ -20751,8 +21143,8 @@
         ]
       },
       {
-        "startIndex": 659,
-        "endIndex": 659,
+        "startIndex": 673,
+        "endIndex": 673,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T11:00:00-07:00"
@@ -20775,8 +21167,8 @@
         ]
       },
       {
-        "startIndex": 660,
-        "endIndex": 660,
+        "startIndex": 674,
+        "endIndex": 674,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T11:30:00-07:00"
@@ -20799,8 +21191,8 @@
         ]
       },
       {
-        "startIndex": 661,
-        "endIndex": 661,
+        "startIndex": 675,
+        "endIndex": 675,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T12:00:00-07:00"
@@ -20823,8 +21215,8 @@
         ]
       },
       {
-        "startIndex": 662,
-        "endIndex": 662,
+        "startIndex": 676,
+        "endIndex": 676,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T12:30:00-07:00"
@@ -20847,8 +21239,8 @@
         ]
       },
       {
-        "startIndex": 663,
-        "endIndex": 663,
+        "startIndex": 677,
+        "endIndex": 677,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T13:00:00-07:00"
@@ -20871,8 +21263,8 @@
         ]
       },
       {
-        "startIndex": 664,
-        "endIndex": 664,
+        "startIndex": 678,
+        "endIndex": 678,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T13:30:00-07:00"
@@ -20895,8 +21287,8 @@
         ]
       },
       {
-        "startIndex": 665,
-        "endIndex": 665,
+        "startIndex": 679,
+        "endIndex": 679,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-19T14:00:00-07:00"
@@ -20919,8 +21311,8 @@
         ]
       },
       {
-        "startIndex": 666,
-        "endIndex": 666,
+        "startIndex": 680,
+        "endIndex": 680,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T09:00:00-07:00"
@@ -20943,8 +21335,8 @@
         ]
       },
       {
-        "startIndex": 667,
-        "endIndex": 667,
+        "startIndex": 681,
+        "endIndex": 681,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T09:30:00-07:00"
@@ -20967,8 +21359,8 @@
         ]
       },
       {
-        "startIndex": 668,
-        "endIndex": 668,
+        "startIndex": 682,
+        "endIndex": 682,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T10:00:00-07:00"
@@ -20991,8 +21383,8 @@
         ]
       },
       {
-        "startIndex": 669,
-        "endIndex": 669,
+        "startIndex": 683,
+        "endIndex": 683,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T10:30:00-07:00"
@@ -21015,8 +21407,8 @@
         ]
       },
       {
-        "startIndex": 670,
-        "endIndex": 670,
+        "startIndex": 684,
+        "endIndex": 684,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T11:00:00-07:00"
@@ -21039,8 +21431,8 @@
         ]
       },
       {
-        "startIndex": 671,
-        "endIndex": 671,
+        "startIndex": 685,
+        "endIndex": 685,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T11:30:00-07:00"
@@ -21063,8 +21455,8 @@
         ]
       },
       {
-        "startIndex": 672,
-        "endIndex": 672,
+        "startIndex": 686,
+        "endIndex": 686,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T12:00:00-07:00"
@@ -21087,8 +21479,8 @@
         ]
       },
       {
-        "startIndex": 673,
-        "endIndex": 673,
+        "startIndex": 687,
+        "endIndex": 687,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T12:30:00-07:00"
@@ -21111,8 +21503,8 @@
         ]
       },
       {
-        "startIndex": 674,
-        "endIndex": 674,
+        "startIndex": 688,
+        "endIndex": 688,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T13:00:00-07:00"
@@ -21135,8 +21527,8 @@
         ]
       },
       {
-        "startIndex": 675,
-        "endIndex": 675,
+        "startIndex": 689,
+        "endIndex": 689,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T13:30:00-07:00"
@@ -21159,8 +21551,8 @@
         ]
       },
       {
-        "startIndex": 676,
-        "endIndex": 676,
+        "startIndex": 690,
+        "endIndex": 690,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-20T14:00:00-07:00"
@@ -21183,8 +21575,8 @@
         ]
       },
       {
-        "startIndex": 677,
-        "endIndex": 677,
+        "startIndex": 691,
+        "endIndex": 691,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T09:00:00-07:00"
@@ -21207,8 +21599,8 @@
         ]
       },
       {
-        "startIndex": 678,
-        "endIndex": 678,
+        "startIndex": 692,
+        "endIndex": 692,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T09:30:00-07:00"
@@ -21231,8 +21623,8 @@
         ]
       },
       {
-        "startIndex": 679,
-        "endIndex": 679,
+        "startIndex": 693,
+        "endIndex": 693,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T10:00:00-07:00"
@@ -21255,8 +21647,8 @@
         ]
       },
       {
-        "startIndex": 680,
-        "endIndex": 680,
+        "startIndex": 694,
+        "endIndex": 694,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T10:30:00-07:00"
@@ -21279,8 +21671,8 @@
         ]
       },
       {
-        "startIndex": 681,
-        "endIndex": 681,
+        "startIndex": 695,
+        "endIndex": 695,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T11:00:00-07:00"
@@ -21303,8 +21695,8 @@
         ]
       },
       {
-        "startIndex": 682,
-        "endIndex": 682,
+        "startIndex": 696,
+        "endIndex": 696,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T11:30:00-07:00"
@@ -21327,8 +21719,8 @@
         ]
       },
       {
-        "startIndex": 683,
-        "endIndex": 683,
+        "startIndex": 697,
+        "endIndex": 697,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T12:00:00-07:00"
@@ -21351,8 +21743,8 @@
         ]
       },
       {
-        "startIndex": 684,
-        "endIndex": 684,
+        "startIndex": 698,
+        "endIndex": 698,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T12:30:00-07:00"
@@ -21375,8 +21767,8 @@
         ]
       },
       {
-        "startIndex": 685,
-        "endIndex": 685,
+        "startIndex": 699,
+        "endIndex": 699,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T13:00:00-07:00"
@@ -21399,8 +21791,8 @@
         ]
       },
       {
-        "startIndex": 686,
-        "endIndex": 686,
+        "startIndex": 700,
+        "endIndex": 700,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T13:30:00-07:00"
@@ -21423,8 +21815,8 @@
         ]
       },
       {
-        "startIndex": 687,
-        "endIndex": 687,
+        "startIndex": 701,
+        "endIndex": 701,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-23T14:00:00-07:00"
@@ -21447,8 +21839,8 @@
         ]
       },
       {
-        "startIndex": 688,
-        "endIndex": 688,
+        "startIndex": 702,
+        "endIndex": 702,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T09:00:00-07:00"
@@ -21471,8 +21863,8 @@
         ]
       },
       {
-        "startIndex": 689,
-        "endIndex": 689,
+        "startIndex": 703,
+        "endIndex": 703,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T09:30:00-07:00"
@@ -21495,8 +21887,8 @@
         ]
       },
       {
-        "startIndex": 690,
-        "endIndex": 690,
+        "startIndex": 704,
+        "endIndex": 704,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T10:00:00-07:00"
@@ -21519,8 +21911,8 @@
         ]
       },
       {
-        "startIndex": 691,
-        "endIndex": 691,
+        "startIndex": 705,
+        "endIndex": 705,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T10:30:00-07:00"
@@ -21543,8 +21935,8 @@
         ]
       },
       {
-        "startIndex": 692,
-        "endIndex": 692,
+        "startIndex": 706,
+        "endIndex": 706,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T11:00:00-07:00"
@@ -21567,8 +21959,8 @@
         ]
       },
       {
-        "startIndex": 693,
-        "endIndex": 693,
+        "startIndex": 707,
+        "endIndex": 707,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T11:30:00-07:00"
@@ -21591,8 +21983,8 @@
         ]
       },
       {
-        "startIndex": 694,
-        "endIndex": 694,
+        "startIndex": 708,
+        "endIndex": 708,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T12:00:00-07:00"
@@ -21615,8 +22007,8 @@
         ]
       },
       {
-        "startIndex": 695,
-        "endIndex": 695,
+        "startIndex": 709,
+        "endIndex": 709,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T12:30:00-07:00"
@@ -21639,8 +22031,8 @@
         ]
       },
       {
-        "startIndex": 696,
-        "endIndex": 696,
+        "startIndex": 710,
+        "endIndex": 710,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T13:00:00-07:00"
@@ -21663,8 +22055,8 @@
         ]
       },
       {
-        "startIndex": 697,
-        "endIndex": 697,
+        "startIndex": 711,
+        "endIndex": 711,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T13:30:00-07:00"
@@ -21687,8 +22079,8 @@
         ]
       },
       {
-        "startIndex": 698,
-        "endIndex": 698,
+        "startIndex": 712,
+        "endIndex": 712,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-24T14:00:00-07:00"
@@ -21711,8 +22103,8 @@
         ]
       },
       {
-        "startIndex": 699,
-        "endIndex": 699,
+        "startIndex": 713,
+        "endIndex": 713,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T09:00:00-07:00"
@@ -21735,8 +22127,8 @@
         ]
       },
       {
-        "startIndex": 700,
-        "endIndex": 700,
+        "startIndex": 714,
+        "endIndex": 714,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T09:30:00-07:00"
@@ -21759,8 +22151,8 @@
         ]
       },
       {
-        "startIndex": 701,
-        "endIndex": 701,
+        "startIndex": 715,
+        "endIndex": 715,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T10:00:00-07:00"
@@ -21783,8 +22175,8 @@
         ]
       },
       {
-        "startIndex": 702,
-        "endIndex": 702,
+        "startIndex": 716,
+        "endIndex": 716,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T10:30:00-07:00"
@@ -21807,8 +22199,8 @@
         ]
       },
       {
-        "startIndex": 703,
-        "endIndex": 703,
+        "startIndex": 717,
+        "endIndex": 717,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T11:00:00-07:00"
@@ -21831,8 +22223,8 @@
         ]
       },
       {
-        "startIndex": 704,
-        "endIndex": 704,
+        "startIndex": 718,
+        "endIndex": 718,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T11:30:00-07:00"
@@ -21855,8 +22247,8 @@
         ]
       },
       {
-        "startIndex": 705,
-        "endIndex": 705,
+        "startIndex": 719,
+        "endIndex": 719,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T12:00:00-07:00"
@@ -21879,8 +22271,8 @@
         ]
       },
       {
-        "startIndex": 706,
-        "endIndex": 706,
+        "startIndex": 720,
+        "endIndex": 720,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T12:30:00-07:00"
@@ -21903,8 +22295,8 @@
         ]
       },
       {
-        "startIndex": 707,
-        "endIndex": 707,
+        "startIndex": 721,
+        "endIndex": 721,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T13:00:00-07:00"
@@ -21927,8 +22319,8 @@
         ]
       },
       {
-        "startIndex": 708,
-        "endIndex": 708,
+        "startIndex": 722,
+        "endIndex": 722,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T13:30:00-07:00"
@@ -21951,8 +22343,8 @@
         ]
       },
       {
-        "startIndex": 709,
-        "endIndex": 709,
+        "startIndex": 723,
+        "endIndex": 723,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-26T14:00:00-07:00"
@@ -21975,8 +22367,8 @@
         ]
       },
       {
-        "startIndex": 710,
-        "endIndex": 710,
+        "startIndex": 724,
+        "endIndex": 724,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T09:00:00-07:00"
@@ -21999,8 +22391,8 @@
         ]
       },
       {
-        "startIndex": 711,
-        "endIndex": 711,
+        "startIndex": 725,
+        "endIndex": 725,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T09:30:00-07:00"
@@ -22023,8 +22415,8 @@
         ]
       },
       {
-        "startIndex": 712,
-        "endIndex": 712,
+        "startIndex": 726,
+        "endIndex": 726,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T10:00:00-07:00"
@@ -22047,8 +22439,8 @@
         ]
       },
       {
-        "startIndex": 713,
-        "endIndex": 713,
+        "startIndex": 727,
+        "endIndex": 727,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T10:30:00-07:00"
@@ -22071,8 +22463,8 @@
         ]
       },
       {
-        "startIndex": 714,
-        "endIndex": 714,
+        "startIndex": 728,
+        "endIndex": 728,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T11:00:00-07:00"
@@ -22095,8 +22487,8 @@
         ]
       },
       {
-        "startIndex": 715,
-        "endIndex": 715,
+        "startIndex": 729,
+        "endIndex": 729,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T11:30:00-07:00"
@@ -22119,8 +22511,8 @@
         ]
       },
       {
-        "startIndex": 716,
-        "endIndex": 716,
+        "startIndex": 730,
+        "endIndex": 730,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T12:00:00-07:00"
@@ -22143,8 +22535,8 @@
         ]
       },
       {
-        "startIndex": 717,
-        "endIndex": 717,
+        "startIndex": 731,
+        "endIndex": 731,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T12:30:00-07:00"
@@ -22167,8 +22559,8 @@
         ]
       },
       {
-        "startIndex": 718,
-        "endIndex": 718,
+        "startIndex": 732,
+        "endIndex": 732,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T13:00:00-07:00"
@@ -22191,8 +22583,8 @@
         ]
       },
       {
-        "startIndex": 719,
-        "endIndex": 719,
+        "startIndex": 733,
+        "endIndex": 733,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T13:30:00-07:00"
@@ -22215,8 +22607,8 @@
         ]
       },
       {
-        "startIndex": 720,
-        "endIndex": 720,
+        "startIndex": 734,
+        "endIndex": 734,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-27T14:00:00-07:00"
@@ -22239,8 +22631,8 @@
         ]
       },
       {
-        "startIndex": 721,
-        "endIndex": 721,
+        "startIndex": 735,
+        "endIndex": 735,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T09:00:00-07:00"
@@ -22263,8 +22655,8 @@
         ]
       },
       {
-        "startIndex": 722,
-        "endIndex": 722,
+        "startIndex": 736,
+        "endIndex": 736,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T09:30:00-07:00"
@@ -22287,8 +22679,8 @@
         ]
       },
       {
-        "startIndex": 723,
-        "endIndex": 723,
+        "startIndex": 737,
+        "endIndex": 737,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T10:00:00-07:00"
@@ -22311,8 +22703,8 @@
         ]
       },
       {
-        "startIndex": 724,
-        "endIndex": 724,
+        "startIndex": 738,
+        "endIndex": 738,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T10:30:00-07:00"
@@ -22335,8 +22727,8 @@
         ]
       },
       {
-        "startIndex": 725,
-        "endIndex": 725,
+        "startIndex": 739,
+        "endIndex": 739,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T11:00:00-07:00"
@@ -22359,8 +22751,8 @@
         ]
       },
       {
-        "startIndex": 726,
-        "endIndex": 726,
+        "startIndex": 740,
+        "endIndex": 740,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T11:30:00-07:00"
@@ -22383,8 +22775,8 @@
         ]
       },
       {
-        "startIndex": 727,
-        "endIndex": 727,
+        "startIndex": 741,
+        "endIndex": 741,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T12:00:00-07:00"
@@ -22407,8 +22799,8 @@
         ]
       },
       {
-        "startIndex": 728,
-        "endIndex": 728,
+        "startIndex": 742,
+        "endIndex": 742,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T12:30:00-07:00"
@@ -22431,8 +22823,8 @@
         ]
       },
       {
-        "startIndex": 729,
-        "endIndex": 729,
+        "startIndex": 743,
+        "endIndex": 743,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T13:00:00-07:00"
@@ -22455,8 +22847,8 @@
         ]
       },
       {
-        "startIndex": 730,
-        "endIndex": 730,
+        "startIndex": 744,
+        "endIndex": 744,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T13:30:00-07:00"
@@ -22479,8 +22871,8 @@
         ]
       },
       {
-        "startIndex": 731,
-        "endIndex": 731,
+        "startIndex": 745,
+        "endIndex": 745,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-28T14:00:00-07:00"
@@ -22503,8 +22895,8 @@
         ]
       },
       {
-        "startIndex": 732,
-        "endIndex": 732,
+        "startIndex": 746,
+        "endIndex": 746,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T09:00:00-07:00"
@@ -22527,8 +22919,8 @@
         ]
       },
       {
-        "startIndex": 733,
-        "endIndex": 733,
+        "startIndex": 747,
+        "endIndex": 747,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T09:30:00-07:00"
@@ -22551,8 +22943,8 @@
         ]
       },
       {
-        "startIndex": 734,
-        "endIndex": 734,
+        "startIndex": 748,
+        "endIndex": 748,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T10:00:00-07:00"
@@ -22575,8 +22967,8 @@
         ]
       },
       {
-        "startIndex": 735,
-        "endIndex": 735,
+        "startIndex": 749,
+        "endIndex": 749,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T10:30:00-07:00"
@@ -22599,8 +22991,8 @@
         ]
       },
       {
-        "startIndex": 736,
-        "endIndex": 736,
+        "startIndex": 750,
+        "endIndex": 750,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T11:00:00-07:00"
@@ -22623,8 +23015,8 @@
         ]
       },
       {
-        "startIndex": 737,
-        "endIndex": 737,
+        "startIndex": 751,
+        "endIndex": 751,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T11:30:00-07:00"
@@ -22647,8 +23039,8 @@
         ]
       },
       {
-        "startIndex": 738,
-        "endIndex": 738,
+        "startIndex": 752,
+        "endIndex": 752,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T12:00:00-07:00"
@@ -22671,8 +23063,8 @@
         ]
       },
       {
-        "startIndex": 739,
-        "endIndex": 739,
+        "startIndex": 753,
+        "endIndex": 753,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T12:30:00-07:00"
@@ -22695,8 +23087,8 @@
         ]
       },
       {
-        "startIndex": 740,
-        "endIndex": 740,
+        "startIndex": 754,
+        "endIndex": 754,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T13:00:00-07:00"
@@ -22719,8 +23111,8 @@
         ]
       },
       {
-        "startIndex": 741,
-        "endIndex": 741,
+        "startIndex": 755,
+        "endIndex": 755,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T13:30:00-07:00"
@@ -22743,8 +23135,8 @@
         ]
       },
       {
-        "startIndex": 742,
-        "endIndex": 742,
+        "startIndex": 756,
+        "endIndex": 756,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-29T14:00:00-07:00"
@@ -22767,8 +23159,8 @@
         ]
       },
       {
-        "startIndex": 743,
-        "endIndex": 743,
+        "startIndex": 757,
+        "endIndex": 757,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T09:00:00-07:00"
@@ -22791,8 +23183,8 @@
         ]
       },
       {
-        "startIndex": 744,
-        "endIndex": 744,
+        "startIndex": 758,
+        "endIndex": 758,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T09:30:00-07:00"
@@ -22815,8 +23207,8 @@
         ]
       },
       {
-        "startIndex": 745,
-        "endIndex": 745,
+        "startIndex": 759,
+        "endIndex": 759,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T10:00:00-07:00"
@@ -22839,8 +23231,8 @@
         ]
       },
       {
-        "startIndex": 746,
-        "endIndex": 746,
+        "startIndex": 760,
+        "endIndex": 760,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T10:30:00-07:00"
@@ -22863,8 +23255,8 @@
         ]
       },
       {
-        "startIndex": 747,
-        "endIndex": 747,
+        "startIndex": 761,
+        "endIndex": 761,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T11:00:00-07:00"
@@ -22887,8 +23279,8 @@
         ]
       },
       {
-        "startIndex": 748,
-        "endIndex": 748,
+        "startIndex": 762,
+        "endIndex": 762,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T11:30:00-07:00"
@@ -22911,8 +23303,8 @@
         ]
       },
       {
-        "startIndex": 749,
-        "endIndex": 749,
+        "startIndex": 763,
+        "endIndex": 763,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T12:00:00-07:00"
@@ -22935,8 +23327,8 @@
         ]
       },
       {
-        "startIndex": 750,
-        "endIndex": 750,
+        "startIndex": 764,
+        "endIndex": 764,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T12:30:00-07:00"
@@ -22959,8 +23351,8 @@
         ]
       },
       {
-        "startIndex": 751,
-        "endIndex": 751,
+        "startIndex": 765,
+        "endIndex": 765,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T13:00:00-07:00"
@@ -22983,8 +23375,8 @@
         ]
       },
       {
-        "startIndex": 752,
-        "endIndex": 752,
+        "startIndex": 766,
+        "endIndex": 766,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T13:30:00-07:00"
@@ -23007,8 +23399,8 @@
         ]
       },
       {
-        "startIndex": 753,
-        "endIndex": 753,
+        "startIndex": 767,
+        "endIndex": 767,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30T14:00:00-07:00"
@@ -23031,8 +23423,8 @@
         ]
       },
       {
-        "startIndex": 754,
-        "endIndex": 754,
+        "startIndex": 768,
+        "endIndex": 768,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T09:00:00-07:00"
@@ -23055,8 +23447,8 @@
         ]
       },
       {
-        "startIndex": 755,
-        "endIndex": 755,
+        "startIndex": 769,
+        "endIndex": 769,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T09:30:00-07:00"
@@ -23079,8 +23471,8 @@
         ]
       },
       {
-        "startIndex": 756,
-        "endIndex": 756,
+        "startIndex": 770,
+        "endIndex": 770,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T10:00:00-07:00"
@@ -23103,8 +23495,8 @@
         ]
       },
       {
-        "startIndex": 757,
-        "endIndex": 757,
+        "startIndex": 771,
+        "endIndex": 771,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T10:30:00-07:00"
@@ -23127,8 +23519,8 @@
         ]
       },
       {
-        "startIndex": 758,
-        "endIndex": 758,
+        "startIndex": 772,
+        "endIndex": 772,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T11:00:00-07:00"
@@ -23151,8 +23543,8 @@
         ]
       },
       {
-        "startIndex": 759,
-        "endIndex": 759,
+        "startIndex": 773,
+        "endIndex": 773,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T11:30:00-07:00"
@@ -23175,8 +23567,8 @@
         ]
       },
       {
-        "startIndex": 760,
-        "endIndex": 760,
+        "startIndex": 774,
+        "endIndex": 774,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T12:00:00-07:00"
@@ -23199,8 +23591,8 @@
         ]
       },
       {
-        "startIndex": 761,
-        "endIndex": 761,
+        "startIndex": 775,
+        "endIndex": 775,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T12:30:00-07:00"
@@ -23223,8 +23615,8 @@
         ]
       },
       {
-        "startIndex": 762,
-        "endIndex": 762,
+        "startIndex": 776,
+        "endIndex": 776,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T13:00:00-07:00"
@@ -23247,8 +23639,8 @@
         ]
       },
       {
-        "startIndex": 763,
-        "endIndex": 763,
+        "startIndex": 777,
+        "endIndex": 777,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T13:30:00-07:00"
@@ -23271,8 +23663,8 @@
         ]
       },
       {
-        "startIndex": 764,
-        "endIndex": 764,
+        "startIndex": 778,
+        "endIndex": 778,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31T14:00:00-07:00"
@@ -23295,8 +23687,8 @@
         ]
       },
       {
-        "startIndex": 765,
-        "endIndex": 765,
+        "startIndex": 779,
+        "endIndex": 779,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T09:00:00-07:00"
@@ -23319,8 +23711,8 @@
         ]
       },
       {
-        "startIndex": 766,
-        "endIndex": 766,
+        "startIndex": 780,
+        "endIndex": 780,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T09:30:00-07:00"
@@ -23343,8 +23735,8 @@
         ]
       },
       {
-        "startIndex": 767,
-        "endIndex": 767,
+        "startIndex": 781,
+        "endIndex": 781,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T10:00:00-07:00"
@@ -23367,8 +23759,8 @@
         ]
       },
       {
-        "startIndex": 768,
-        "endIndex": 768,
+        "startIndex": 782,
+        "endIndex": 782,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T10:30:00-07:00"
@@ -23391,8 +23783,8 @@
         ]
       },
       {
-        "startIndex": 769,
-        "endIndex": 769,
+        "startIndex": 783,
+        "endIndex": 783,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T11:00:00-07:00"
@@ -23415,8 +23807,8 @@
         ]
       },
       {
-        "startIndex": 770,
-        "endIndex": 770,
+        "startIndex": 784,
+        "endIndex": 784,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T11:30:00-07:00"
@@ -23439,8 +23831,8 @@
         ]
       },
       {
-        "startIndex": 771,
-        "endIndex": 771,
+        "startIndex": 785,
+        "endIndex": 785,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T12:00:00-07:00"
@@ -23463,8 +23855,8 @@
         ]
       },
       {
-        "startIndex": 772,
-        "endIndex": 772,
+        "startIndex": 786,
+        "endIndex": 786,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T12:30:00-07:00"
@@ -23487,8 +23879,8 @@
         ]
       },
       {
-        "startIndex": 773,
-        "endIndex": 773,
+        "startIndex": 787,
+        "endIndex": 787,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T13:00:00-07:00"
@@ -23511,8 +23903,8 @@
         ]
       },
       {
-        "startIndex": 774,
-        "endIndex": 774,
+        "startIndex": 788,
+        "endIndex": 788,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T13:30:00-07:00"
@@ -23535,8 +23927,8 @@
         ]
       },
       {
-        "startIndex": 775,
-        "endIndex": 775,
+        "startIndex": 789,
+        "endIndex": 789,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-01T14:00:00-07:00"
@@ -23559,8 +23951,8 @@
         ]
       },
       {
-        "startIndex": 776,
-        "endIndex": 776,
+        "startIndex": 790,
+        "endIndex": 790,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T09:00:00-07:00"
@@ -23583,8 +23975,8 @@
         ]
       },
       {
-        "startIndex": 777,
-        "endIndex": 777,
+        "startIndex": 791,
+        "endIndex": 791,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T09:30:00-07:00"
@@ -23607,8 +23999,8 @@
         ]
       },
       {
-        "startIndex": 778,
-        "endIndex": 778,
+        "startIndex": 792,
+        "endIndex": 792,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T10:00:00-07:00"
@@ -23631,8 +24023,8 @@
         ]
       },
       {
-        "startIndex": 779,
-        "endIndex": 779,
+        "startIndex": 793,
+        "endIndex": 793,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T10:30:00-07:00"
@@ -23655,8 +24047,8 @@
         ]
       },
       {
-        "startIndex": 780,
-        "endIndex": 780,
+        "startIndex": 794,
+        "endIndex": 794,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T11:00:00-07:00"
@@ -23679,8 +24071,8 @@
         ]
       },
       {
-        "startIndex": 781,
-        "endIndex": 781,
+        "startIndex": 795,
+        "endIndex": 795,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T11:30:00-07:00"
@@ -23703,8 +24095,8 @@
         ]
       },
       {
-        "startIndex": 782,
-        "endIndex": 782,
+        "startIndex": 796,
+        "endIndex": 796,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T12:00:00-07:00"
@@ -23727,8 +24119,8 @@
         ]
       },
       {
-        "startIndex": 783,
-        "endIndex": 783,
+        "startIndex": 797,
+        "endIndex": 797,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T12:30:00-07:00"
@@ -23751,8 +24143,8 @@
         ]
       },
       {
-        "startIndex": 784,
-        "endIndex": 784,
+        "startIndex": 798,
+        "endIndex": 798,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T13:00:00-07:00"
@@ -23775,8 +24167,8 @@
         ]
       },
       {
-        "startIndex": 785,
-        "endIndex": 785,
+        "startIndex": 799,
+        "endIndex": 799,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T13:30:00-07:00"
@@ -23799,8 +24191,8 @@
         ]
       },
       {
-        "startIndex": 786,
-        "endIndex": 786,
+        "startIndex": 800,
+        "endIndex": 800,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-02T14:00:00-07:00"
@@ -23823,8 +24215,8 @@
         ]
       },
       {
-        "startIndex": 787,
-        "endIndex": 787,
+        "startIndex": 801,
+        "endIndex": 801,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T09:00:00-07:00"
@@ -23847,8 +24239,8 @@
         ]
       },
       {
-        "startIndex": 788,
-        "endIndex": 788,
+        "startIndex": 802,
+        "endIndex": 802,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T09:30:00-07:00"
@@ -23871,8 +24263,8 @@
         ]
       },
       {
-        "startIndex": 789,
-        "endIndex": 789,
+        "startIndex": 803,
+        "endIndex": 803,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T10:00:00-07:00"
@@ -23895,8 +24287,8 @@
         ]
       },
       {
-        "startIndex": 790,
-        "endIndex": 790,
+        "startIndex": 804,
+        "endIndex": 804,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T10:30:00-07:00"
@@ -23919,8 +24311,8 @@
         ]
       },
       {
-        "startIndex": 791,
-        "endIndex": 791,
+        "startIndex": 805,
+        "endIndex": 805,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T11:00:00-07:00"
@@ -23943,8 +24335,8 @@
         ]
       },
       {
-        "startIndex": 792,
-        "endIndex": 792,
+        "startIndex": 806,
+        "endIndex": 806,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T11:30:00-07:00"
@@ -23967,8 +24359,8 @@
         ]
       },
       {
-        "startIndex": 793,
-        "endIndex": 793,
+        "startIndex": 807,
+        "endIndex": 807,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T12:00:00-07:00"
@@ -23991,8 +24383,8 @@
         ]
       },
       {
-        "startIndex": 794,
-        "endIndex": 794,
+        "startIndex": 808,
+        "endIndex": 808,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T12:30:00-07:00"
@@ -24015,8 +24407,8 @@
         ]
       },
       {
-        "startIndex": 795,
-        "endIndex": 795,
+        "startIndex": 809,
+        "endIndex": 809,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T13:00:00-07:00"
@@ -24039,8 +24431,8 @@
         ]
       },
       {
-        "startIndex": 796,
-        "endIndex": 796,
+        "startIndex": 810,
+        "endIndex": 810,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T13:30:00-07:00"
@@ -24063,8 +24455,8 @@
         ]
       },
       {
-        "startIndex": 797,
-        "endIndex": 797,
+        "startIndex": 811,
+        "endIndex": 811,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-03T14:00:00-07:00"
@@ -24087,8 +24479,8 @@
         ]
       },
       {
-        "startIndex": 798,
-        "endIndex": 798,
+        "startIndex": 812,
+        "endIndex": 812,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T09:00:00-07:00"
@@ -24111,8 +24503,8 @@
         ]
       },
       {
-        "startIndex": 799,
-        "endIndex": 799,
+        "startIndex": 813,
+        "endIndex": 813,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T09:30:00-07:00"
@@ -24135,8 +24527,8 @@
         ]
       },
       {
-        "startIndex": 800,
-        "endIndex": 800,
+        "startIndex": 814,
+        "endIndex": 814,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T10:00:00-07:00"
@@ -24159,8 +24551,8 @@
         ]
       },
       {
-        "startIndex": 801,
-        "endIndex": 801,
+        "startIndex": 815,
+        "endIndex": 815,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T10:30:00-07:00"
@@ -24183,8 +24575,8 @@
         ]
       },
       {
-        "startIndex": 802,
-        "endIndex": 802,
+        "startIndex": 816,
+        "endIndex": 816,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T11:00:00-07:00"
@@ -24207,8 +24599,8 @@
         ]
       },
       {
-        "startIndex": 803,
-        "endIndex": 803,
+        "startIndex": 817,
+        "endIndex": 817,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T11:30:00-07:00"
@@ -24231,8 +24623,8 @@
         ]
       },
       {
-        "startIndex": 804,
-        "endIndex": 804,
+        "startIndex": 818,
+        "endIndex": 818,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T12:00:00-07:00"
@@ -24255,8 +24647,8 @@
         ]
       },
       {
-        "startIndex": 805,
-        "endIndex": 805,
+        "startIndex": 819,
+        "endIndex": 819,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T12:30:00-07:00"
@@ -24279,8 +24671,8 @@
         ]
       },
       {
-        "startIndex": 806,
-        "endIndex": 806,
+        "startIndex": 820,
+        "endIndex": 820,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T13:00:00-07:00"
@@ -24303,8 +24695,8 @@
         ]
       },
       {
-        "startIndex": 807,
-        "endIndex": 807,
+        "startIndex": 821,
+        "endIndex": 821,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T13:30:00-07:00"
@@ -24327,8 +24719,8 @@
         ]
       },
       {
-        "startIndex": 808,
-        "endIndex": 808,
+        "startIndex": 822,
+        "endIndex": 822,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-06T14:00:00-07:00"
@@ -24351,8 +24743,8 @@
         ]
       },
       {
-        "startIndex": 809,
-        "endIndex": 809,
+        "startIndex": 823,
+        "endIndex": 823,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T09:00:00-07:00"
@@ -24375,8 +24767,8 @@
         ]
       },
       {
-        "startIndex": 810,
-        "endIndex": 810,
+        "startIndex": 824,
+        "endIndex": 824,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T09:30:00-07:00"
@@ -24399,8 +24791,8 @@
         ]
       },
       {
-        "startIndex": 811,
-        "endIndex": 811,
+        "startIndex": 825,
+        "endIndex": 825,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T10:00:00-07:00"
@@ -24423,8 +24815,8 @@
         ]
       },
       {
-        "startIndex": 812,
-        "endIndex": 812,
+        "startIndex": 826,
+        "endIndex": 826,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T10:30:00-07:00"
@@ -24447,8 +24839,8 @@
         ]
       },
       {
-        "startIndex": 813,
-        "endIndex": 813,
+        "startIndex": 827,
+        "endIndex": 827,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T11:00:00-07:00"
@@ -24471,8 +24863,8 @@
         ]
       },
       {
-        "startIndex": 814,
-        "endIndex": 814,
+        "startIndex": 828,
+        "endIndex": 828,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T11:30:00-07:00"
@@ -24495,8 +24887,8 @@
         ]
       },
       {
-        "startIndex": 815,
-        "endIndex": 815,
+        "startIndex": 829,
+        "endIndex": 829,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T12:00:00-07:00"
@@ -24519,8 +24911,8 @@
         ]
       },
       {
-        "startIndex": 816,
-        "endIndex": 816,
+        "startIndex": 830,
+        "endIndex": 830,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T12:30:00-07:00"
@@ -24543,8 +24935,8 @@
         ]
       },
       {
-        "startIndex": 817,
-        "endIndex": 817,
+        "startIndex": 831,
+        "endIndex": 831,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T13:00:00-07:00"
@@ -24567,8 +24959,8 @@
         ]
       },
       {
-        "startIndex": 818,
-        "endIndex": 818,
+        "startIndex": 832,
+        "endIndex": 832,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T13:30:00-07:00"
@@ -24591,8 +24983,8 @@
         ]
       },
       {
-        "startIndex": 819,
-        "endIndex": 819,
+        "startIndex": 833,
+        "endIndex": 833,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-07T14:00:00-07:00"
@@ -24615,8 +25007,8 @@
         ]
       },
       {
-        "startIndex": 820,
-        "endIndex": 820,
+        "startIndex": 834,
+        "endIndex": 834,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T09:00:00-07:00"
@@ -24639,8 +25031,8 @@
         ]
       },
       {
-        "startIndex": 821,
-        "endIndex": 821,
+        "startIndex": 835,
+        "endIndex": 835,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T09:30:00-07:00"
@@ -24663,8 +25055,8 @@
         ]
       },
       {
-        "startIndex": 822,
-        "endIndex": 822,
+        "startIndex": 836,
+        "endIndex": 836,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T10:00:00-07:00"
@@ -24687,8 +25079,8 @@
         ]
       },
       {
-        "startIndex": 823,
-        "endIndex": 823,
+        "startIndex": 837,
+        "endIndex": 837,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T10:30:00-07:00"
@@ -24711,8 +25103,8 @@
         ]
       },
       {
-        "startIndex": 824,
-        "endIndex": 824,
+        "startIndex": 838,
+        "endIndex": 838,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T11:00:00-07:00"
@@ -24735,8 +25127,8 @@
         ]
       },
       {
-        "startIndex": 825,
-        "endIndex": 825,
+        "startIndex": 839,
+        "endIndex": 839,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T11:30:00-07:00"
@@ -24759,8 +25151,8 @@
         ]
       },
       {
-        "startIndex": 826,
-        "endIndex": 826,
+        "startIndex": 840,
+        "endIndex": 840,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T12:00:00-07:00"
@@ -24783,8 +25175,8 @@
         ]
       },
       {
-        "startIndex": 827,
-        "endIndex": 827,
+        "startIndex": 841,
+        "endIndex": 841,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T12:30:00-07:00"
@@ -24807,8 +25199,8 @@
         ]
       },
       {
-        "startIndex": 828,
-        "endIndex": 828,
+        "startIndex": 842,
+        "endIndex": 842,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T13:00:00-07:00"
@@ -24831,8 +25223,8 @@
         ]
       },
       {
-        "startIndex": 829,
-        "endIndex": 829,
+        "startIndex": 843,
+        "endIndex": 843,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T13:30:00-07:00"
@@ -24855,8 +25247,8 @@
         ]
       },
       {
-        "startIndex": 830,
-        "endIndex": 830,
+        "startIndex": 844,
+        "endIndex": 844,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-08T14:00:00-07:00"
@@ -24879,8 +25271,8 @@
         ]
       },
       {
-        "startIndex": 831,
-        "endIndex": 831,
+        "startIndex": 845,
+        "endIndex": 845,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T09:00:00-07:00"
@@ -24903,8 +25295,8 @@
         ]
       },
       {
-        "startIndex": 832,
-        "endIndex": 832,
+        "startIndex": 846,
+        "endIndex": 846,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T09:30:00-07:00"
@@ -24927,8 +25319,8 @@
         ]
       },
       {
-        "startIndex": 833,
-        "endIndex": 833,
+        "startIndex": 847,
+        "endIndex": 847,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T10:00:00-07:00"
@@ -24951,8 +25343,8 @@
         ]
       },
       {
-        "startIndex": 834,
-        "endIndex": 834,
+        "startIndex": 848,
+        "endIndex": 848,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T10:30:00-07:00"
@@ -24975,8 +25367,8 @@
         ]
       },
       {
-        "startIndex": 835,
-        "endIndex": 835,
+        "startIndex": 849,
+        "endIndex": 849,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T11:00:00-07:00"
@@ -24999,8 +25391,8 @@
         ]
       },
       {
-        "startIndex": 836,
-        "endIndex": 836,
+        "startIndex": 850,
+        "endIndex": 850,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T11:30:00-07:00"
@@ -25023,8 +25415,8 @@
         ]
       },
       {
-        "startIndex": 837,
-        "endIndex": 837,
+        "startIndex": 851,
+        "endIndex": 851,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T12:00:00-07:00"
@@ -25047,8 +25439,8 @@
         ]
       },
       {
-        "startIndex": 838,
-        "endIndex": 838,
+        "startIndex": 852,
+        "endIndex": 852,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T12:30:00-07:00"
@@ -25071,8 +25463,8 @@
         ]
       },
       {
-        "startIndex": 839,
-        "endIndex": 839,
+        "startIndex": 853,
+        "endIndex": 853,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T13:00:00-07:00"
@@ -25095,8 +25487,8 @@
         ]
       },
       {
-        "startIndex": 840,
-        "endIndex": 840,
+        "startIndex": 854,
+        "endIndex": 854,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T13:30:00-07:00"
@@ -25119,8 +25511,8 @@
         ]
       },
       {
-        "startIndex": 841,
-        "endIndex": 841,
+        "startIndex": 855,
+        "endIndex": 855,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-09T14:00:00-07:00"
@@ -25143,8 +25535,8 @@
         ]
       },
       {
-        "startIndex": 842,
-        "endIndex": 842,
+        "startIndex": 856,
+        "endIndex": 856,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T09:00:00-07:00"
@@ -25167,8 +25559,8 @@
         ]
       },
       {
-        "startIndex": 843,
-        "endIndex": 843,
+        "startIndex": 857,
+        "endIndex": 857,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T09:30:00-07:00"
@@ -25191,8 +25583,8 @@
         ]
       },
       {
-        "startIndex": 844,
-        "endIndex": 844,
+        "startIndex": 858,
+        "endIndex": 858,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T10:00:00-07:00"
@@ -25215,8 +25607,8 @@
         ]
       },
       {
-        "startIndex": 845,
-        "endIndex": 845,
+        "startIndex": 859,
+        "endIndex": 859,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T10:30:00-07:00"
@@ -25239,8 +25631,8 @@
         ]
       },
       {
-        "startIndex": 846,
-        "endIndex": 846,
+        "startIndex": 860,
+        "endIndex": 860,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T11:00:00-07:00"
@@ -25263,8 +25655,8 @@
         ]
       },
       {
-        "startIndex": 847,
-        "endIndex": 847,
+        "startIndex": 861,
+        "endIndex": 861,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T11:30:00-07:00"
@@ -25287,8 +25679,8 @@
         ]
       },
       {
-        "startIndex": 848,
-        "endIndex": 848,
+        "startIndex": 862,
+        "endIndex": 862,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T12:00:00-07:00"
@@ -25311,8 +25703,8 @@
         ]
       },
       {
-        "startIndex": 849,
-        "endIndex": 849,
+        "startIndex": 863,
+        "endIndex": 863,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T12:30:00-07:00"
@@ -25335,8 +25727,8 @@
         ]
       },
       {
-        "startIndex": 850,
-        "endIndex": 850,
+        "startIndex": 864,
+        "endIndex": 864,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T13:00:00-07:00"
@@ -25359,8 +25751,8 @@
         ]
       },
       {
-        "startIndex": 851,
-        "endIndex": 851,
+        "startIndex": 865,
+        "endIndex": 865,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T13:30:00-07:00"
@@ -25383,8 +25775,8 @@
         ]
       },
       {
-        "startIndex": 852,
-        "endIndex": 852,
+        "startIndex": 866,
+        "endIndex": 866,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-10T14:00:00-07:00"
@@ -25407,8 +25799,8 @@
         ]
       },
       {
-        "startIndex": 853,
-        "endIndex": 853,
+        "startIndex": 867,
+        "endIndex": 867,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T09:00:00-07:00"
@@ -25431,8 +25823,8 @@
         ]
       },
       {
-        "startIndex": 854,
-        "endIndex": 854,
+        "startIndex": 868,
+        "endIndex": 868,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T09:30:00-07:00"
@@ -25455,8 +25847,8 @@
         ]
       },
       {
-        "startIndex": 855,
-        "endIndex": 855,
+        "startIndex": 869,
+        "endIndex": 869,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T10:00:00-07:00"
@@ -25479,8 +25871,8 @@
         ]
       },
       {
-        "startIndex": 856,
-        "endIndex": 856,
+        "startIndex": 870,
+        "endIndex": 870,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T10:30:00-07:00"
@@ -25503,8 +25895,8 @@
         ]
       },
       {
-        "startIndex": 857,
-        "endIndex": 857,
+        "startIndex": 871,
+        "endIndex": 871,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T11:00:00-07:00"
@@ -25527,8 +25919,8 @@
         ]
       },
       {
-        "startIndex": 858,
-        "endIndex": 858,
+        "startIndex": 872,
+        "endIndex": 872,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T11:30:00-07:00"
@@ -25551,8 +25943,8 @@
         ]
       },
       {
-        "startIndex": 859,
-        "endIndex": 859,
+        "startIndex": 873,
+        "endIndex": 873,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T12:00:00-07:00"
@@ -25575,8 +25967,8 @@
         ]
       },
       {
-        "startIndex": 860,
-        "endIndex": 860,
+        "startIndex": 874,
+        "endIndex": 874,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T12:30:00-07:00"
@@ -25599,8 +25991,8 @@
         ]
       },
       {
-        "startIndex": 861,
-        "endIndex": 861,
+        "startIndex": 875,
+        "endIndex": 875,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T13:00:00-07:00"
@@ -25623,8 +26015,8 @@
         ]
       },
       {
-        "startIndex": 862,
-        "endIndex": 862,
+        "startIndex": 876,
+        "endIndex": 876,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T13:30:00-07:00"
@@ -25647,8 +26039,8 @@
         ]
       },
       {
-        "startIndex": 863,
-        "endIndex": 863,
+        "startIndex": 877,
+        "endIndex": 877,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-13T14:00:00-07:00"
@@ -25671,8 +26063,8 @@
         ]
       },
       {
-        "startIndex": 864,
-        "endIndex": 864,
+        "startIndex": 878,
+        "endIndex": 878,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T09:00:00-07:00"
@@ -25695,8 +26087,8 @@
         ]
       },
       {
-        "startIndex": 865,
-        "endIndex": 865,
+        "startIndex": 879,
+        "endIndex": 879,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T09:30:00-07:00"
@@ -25719,8 +26111,8 @@
         ]
       },
       {
-        "startIndex": 866,
-        "endIndex": 866,
+        "startIndex": 880,
+        "endIndex": 880,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T10:00:00-07:00"
@@ -25743,8 +26135,8 @@
         ]
       },
       {
-        "startIndex": 867,
-        "endIndex": 867,
+        "startIndex": 881,
+        "endIndex": 881,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T10:30:00-07:00"
@@ -25767,8 +26159,8 @@
         ]
       },
       {
-        "startIndex": 868,
-        "endIndex": 868,
+        "startIndex": 882,
+        "endIndex": 882,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T11:00:00-07:00"
@@ -25791,8 +26183,8 @@
         ]
       },
       {
-        "startIndex": 869,
-        "endIndex": 869,
+        "startIndex": 883,
+        "endIndex": 883,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T11:30:00-07:00"
@@ -25815,8 +26207,8 @@
         ]
       },
       {
-        "startIndex": 870,
-        "endIndex": 870,
+        "startIndex": 884,
+        "endIndex": 884,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T12:00:00-07:00"
@@ -25839,8 +26231,8 @@
         ]
       },
       {
-        "startIndex": 871,
-        "endIndex": 871,
+        "startIndex": 885,
+        "endIndex": 885,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T12:30:00-07:00"
@@ -25863,8 +26255,8 @@
         ]
       },
       {
-        "startIndex": 872,
-        "endIndex": 872,
+        "startIndex": 886,
+        "endIndex": 886,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T13:00:00-07:00"
@@ -25887,8 +26279,8 @@
         ]
       },
       {
-        "startIndex": 873,
-        "endIndex": 873,
+        "startIndex": 887,
+        "endIndex": 887,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T13:30:00-07:00"
@@ -25911,8 +26303,8 @@
         ]
       },
       {
-        "startIndex": 874,
-        "endIndex": 874,
+        "startIndex": 888,
+        "endIndex": 888,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-14T14:00:00-07:00"
@@ -25935,8 +26327,8 @@
         ]
       },
       {
-        "startIndex": 875,
-        "endIndex": 875,
+        "startIndex": 889,
+        "endIndex": 889,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T09:00:00-07:00"
@@ -25959,8 +26351,8 @@
         ]
       },
       {
-        "startIndex": 876,
-        "endIndex": 876,
+        "startIndex": 890,
+        "endIndex": 890,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T09:30:00-07:00"
@@ -25983,8 +26375,8 @@
         ]
       },
       {
-        "startIndex": 877,
-        "endIndex": 877,
+        "startIndex": 891,
+        "endIndex": 891,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T10:00:00-07:00"
@@ -26007,8 +26399,8 @@
         ]
       },
       {
-        "startIndex": 878,
-        "endIndex": 878,
+        "startIndex": 892,
+        "endIndex": 892,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T10:30:00-07:00"
@@ -26031,8 +26423,8 @@
         ]
       },
       {
-        "startIndex": 879,
-        "endIndex": 879,
+        "startIndex": 893,
+        "endIndex": 893,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T11:00:00-07:00"
@@ -26055,8 +26447,8 @@
         ]
       },
       {
-        "startIndex": 880,
-        "endIndex": 880,
+        "startIndex": 894,
+        "endIndex": 894,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T11:30:00-07:00"
@@ -26079,8 +26471,8 @@
         ]
       },
       {
-        "startIndex": 881,
-        "endIndex": 881,
+        "startIndex": 895,
+        "endIndex": 895,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T12:00:00-07:00"
@@ -26103,8 +26495,8 @@
         ]
       },
       {
-        "startIndex": 882,
-        "endIndex": 882,
+        "startIndex": 896,
+        "endIndex": 896,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T12:30:00-07:00"
@@ -26127,8 +26519,8 @@
         ]
       },
       {
-        "startIndex": 883,
-        "endIndex": 883,
+        "startIndex": 897,
+        "endIndex": 897,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T13:00:00-07:00"
@@ -26151,8 +26543,8 @@
         ]
       },
       {
-        "startIndex": 884,
-        "endIndex": 884,
+        "startIndex": 898,
+        "endIndex": 898,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T13:30:00-07:00"
@@ -26175,8 +26567,8 @@
         ]
       },
       {
-        "startIndex": 885,
-        "endIndex": 885,
+        "startIndex": 899,
+        "endIndex": 899,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-15T14:00:00-07:00"
@@ -26199,8 +26591,8 @@
         ]
       },
       {
-        "startIndex": 886,
-        "endIndex": 886,
+        "startIndex": 900,
+        "endIndex": 900,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T09:00:00-07:00"
@@ -26223,8 +26615,8 @@
         ]
       },
       {
-        "startIndex": 887,
-        "endIndex": 887,
+        "startIndex": 901,
+        "endIndex": 901,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T09:30:00-07:00"
@@ -26247,8 +26639,8 @@
         ]
       },
       {
-        "startIndex": 888,
-        "endIndex": 888,
+        "startIndex": 902,
+        "endIndex": 902,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T10:00:00-07:00"
@@ -26271,8 +26663,8 @@
         ]
       },
       {
-        "startIndex": 889,
-        "endIndex": 889,
+        "startIndex": 903,
+        "endIndex": 903,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T10:30:00-07:00"
@@ -26295,8 +26687,8 @@
         ]
       },
       {
-        "startIndex": 890,
-        "endIndex": 890,
+        "startIndex": 904,
+        "endIndex": 904,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T11:00:00-07:00"
@@ -26319,8 +26711,8 @@
         ]
       },
       {
-        "startIndex": 891,
-        "endIndex": 891,
+        "startIndex": 905,
+        "endIndex": 905,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T11:30:00-07:00"
@@ -26343,8 +26735,8 @@
         ]
       },
       {
-        "startIndex": 892,
-        "endIndex": 892,
+        "startIndex": 906,
+        "endIndex": 906,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T12:00:00-07:00"
@@ -26367,8 +26759,8 @@
         ]
       },
       {
-        "startIndex": 893,
-        "endIndex": 893,
+        "startIndex": 907,
+        "endIndex": 907,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T12:30:00-07:00"
@@ -26391,8 +26783,8 @@
         ]
       },
       {
-        "startIndex": 894,
-        "endIndex": 894,
+        "startIndex": 908,
+        "endIndex": 908,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T13:00:00-07:00"
@@ -26415,8 +26807,8 @@
         ]
       },
       {
-        "startIndex": 895,
-        "endIndex": 895,
+        "startIndex": 909,
+        "endIndex": 909,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T13:30:00-07:00"
@@ -26439,8 +26831,8 @@
         ]
       },
       {
-        "startIndex": 896,
-        "endIndex": 896,
+        "startIndex": 910,
+        "endIndex": 910,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-16T14:00:00-07:00"
@@ -26463,8 +26855,8 @@
         ]
       },
       {
-        "startIndex": 897,
-        "endIndex": 897,
+        "startIndex": 911,
+        "endIndex": 911,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T09:00:00-07:00"
@@ -26487,8 +26879,8 @@
         ]
       },
       {
-        "startIndex": 898,
-        "endIndex": 898,
+        "startIndex": 912,
+        "endIndex": 912,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T09:30:00-07:00"
@@ -26511,8 +26903,8 @@
         ]
       },
       {
-        "startIndex": 899,
-        "endIndex": 899,
+        "startIndex": 913,
+        "endIndex": 913,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T10:00:00-07:00"
@@ -26535,8 +26927,8 @@
         ]
       },
       {
-        "startIndex": 900,
-        "endIndex": 900,
+        "startIndex": 914,
+        "endIndex": 914,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T10:30:00-07:00"
@@ -26559,8 +26951,8 @@
         ]
       },
       {
-        "startIndex": 901,
-        "endIndex": 901,
+        "startIndex": 915,
+        "endIndex": 915,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T11:00:00-07:00"
@@ -26583,8 +26975,8 @@
         ]
       },
       {
-        "startIndex": 902,
-        "endIndex": 902,
+        "startIndex": 916,
+        "endIndex": 916,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T11:30:00-07:00"
@@ -26607,8 +26999,8 @@
         ]
       },
       {
-        "startIndex": 903,
-        "endIndex": 903,
+        "startIndex": 917,
+        "endIndex": 917,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T12:00:00-07:00"
@@ -26631,8 +27023,8 @@
         ]
       },
       {
-        "startIndex": 904,
-        "endIndex": 904,
+        "startIndex": 918,
+        "endIndex": 918,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T12:30:00-07:00"
@@ -26655,8 +27047,8 @@
         ]
       },
       {
-        "startIndex": 905,
-        "endIndex": 905,
+        "startIndex": 919,
+        "endIndex": 919,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T13:00:00-07:00"
@@ -26679,8 +27071,8 @@
         ]
       },
       {
-        "startIndex": 906,
-        "endIndex": 906,
+        "startIndex": 920,
+        "endIndex": 920,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T13:30:00-07:00"
@@ -26703,8 +27095,8 @@
         ]
       },
       {
-        "startIndex": 907,
-        "endIndex": 907,
+        "startIndex": 921,
+        "endIndex": 921,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-17T14:00:00-07:00"
@@ -26727,8 +27119,8 @@
         ]
       },
       {
-        "startIndex": 908,
-        "endIndex": 908,
+        "startIndex": 922,
+        "endIndex": 922,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T09:00:00-07:00"
@@ -26751,8 +27143,8 @@
         ]
       },
       {
-        "startIndex": 909,
-        "endIndex": 909,
+        "startIndex": 923,
+        "endIndex": 923,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T09:30:00-07:00"
@@ -26775,8 +27167,8 @@
         ]
       },
       {
-        "startIndex": 910,
-        "endIndex": 910,
+        "startIndex": 924,
+        "endIndex": 924,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T10:00:00-07:00"
@@ -26799,8 +27191,8 @@
         ]
       },
       {
-        "startIndex": 911,
-        "endIndex": 911,
+        "startIndex": 925,
+        "endIndex": 925,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T10:30:00-07:00"
@@ -26823,8 +27215,8 @@
         ]
       },
       {
-        "startIndex": 912,
-        "endIndex": 912,
+        "startIndex": 926,
+        "endIndex": 926,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T11:00:00-07:00"
@@ -26847,8 +27239,8 @@
         ]
       },
       {
-        "startIndex": 913,
-        "endIndex": 913,
+        "startIndex": 927,
+        "endIndex": 927,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T11:30:00-07:00"
@@ -26871,8 +27263,8 @@
         ]
       },
       {
-        "startIndex": 914,
-        "endIndex": 914,
+        "startIndex": 928,
+        "endIndex": 928,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T12:00:00-07:00"
@@ -26895,8 +27287,8 @@
         ]
       },
       {
-        "startIndex": 915,
-        "endIndex": 915,
+        "startIndex": 929,
+        "endIndex": 929,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T12:30:00-07:00"
@@ -26919,8 +27311,8 @@
         ]
       },
       {
-        "startIndex": 916,
-        "endIndex": 916,
+        "startIndex": 930,
+        "endIndex": 930,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T13:00:00-07:00"
@@ -26943,8 +27335,8 @@
         ]
       },
       {
-        "startIndex": 917,
-        "endIndex": 917,
+        "startIndex": 931,
+        "endIndex": 931,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T13:30:00-07:00"
@@ -26967,8 +27359,8 @@
         ]
       },
       {
-        "startIndex": 918,
-        "endIndex": 918,
+        "startIndex": 932,
+        "endIndex": 932,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-20T14:00:00-07:00"
@@ -26991,8 +27383,8 @@
         ]
       },
       {
-        "startIndex": 919,
-        "endIndex": 919,
+        "startIndex": 933,
+        "endIndex": 933,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T09:00:00-07:00"
@@ -27015,8 +27407,8 @@
         ]
       },
       {
-        "startIndex": 920,
-        "endIndex": 920,
+        "startIndex": 934,
+        "endIndex": 934,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T09:30:00-07:00"
@@ -27039,8 +27431,8 @@
         ]
       },
       {
-        "startIndex": 921,
-        "endIndex": 921,
+        "startIndex": 935,
+        "endIndex": 935,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T10:00:00-07:00"
@@ -27063,8 +27455,8 @@
         ]
       },
       {
-        "startIndex": 922,
-        "endIndex": 922,
+        "startIndex": 936,
+        "endIndex": 936,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T10:30:00-07:00"
@@ -27087,8 +27479,8 @@
         ]
       },
       {
-        "startIndex": 923,
-        "endIndex": 923,
+        "startIndex": 937,
+        "endIndex": 937,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T11:00:00-07:00"
@@ -27111,8 +27503,8 @@
         ]
       },
       {
-        "startIndex": 924,
-        "endIndex": 924,
+        "startIndex": 938,
+        "endIndex": 938,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T11:30:00-07:00"
@@ -27135,8 +27527,8 @@
         ]
       },
       {
-        "startIndex": 925,
-        "endIndex": 925,
+        "startIndex": 939,
+        "endIndex": 939,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T12:00:00-07:00"
@@ -27159,8 +27551,8 @@
         ]
       },
       {
-        "startIndex": 926,
-        "endIndex": 926,
+        "startIndex": 940,
+        "endIndex": 940,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T12:30:00-07:00"
@@ -27183,8 +27575,8 @@
         ]
       },
       {
-        "startIndex": 927,
-        "endIndex": 927,
+        "startIndex": 941,
+        "endIndex": 941,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T13:00:00-07:00"
@@ -27207,8 +27599,8 @@
         ]
       },
       {
-        "startIndex": 928,
-        "endIndex": 928,
+        "startIndex": 942,
+        "endIndex": 942,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T13:30:00-07:00"
@@ -27231,8 +27623,8 @@
         ]
       },
       {
-        "startIndex": 929,
-        "endIndex": 929,
+        "startIndex": 943,
+        "endIndex": 943,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-21T14:00:00-07:00"
@@ -27255,8 +27647,8 @@
         ]
       },
       {
-        "startIndex": 930,
-        "endIndex": 930,
+        "startIndex": 944,
+        "endIndex": 944,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T09:00:00-07:00"
@@ -27279,8 +27671,8 @@
         ]
       },
       {
-        "startIndex": 931,
-        "endIndex": 931,
+        "startIndex": 945,
+        "endIndex": 945,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T09:30:00-07:00"
@@ -27303,8 +27695,8 @@
         ]
       },
       {
-        "startIndex": 932,
-        "endIndex": 932,
+        "startIndex": 946,
+        "endIndex": 946,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T10:00:00-07:00"
@@ -27327,8 +27719,8 @@
         ]
       },
       {
-        "startIndex": 933,
-        "endIndex": 933,
+        "startIndex": 947,
+        "endIndex": 947,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T10:30:00-07:00"
@@ -27351,8 +27743,8 @@
         ]
       },
       {
-        "startIndex": 934,
-        "endIndex": 934,
+        "startIndex": 948,
+        "endIndex": 948,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T11:00:00-07:00"
@@ -27375,8 +27767,8 @@
         ]
       },
       {
-        "startIndex": 935,
-        "endIndex": 935,
+        "startIndex": 949,
+        "endIndex": 949,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T11:30:00-07:00"
@@ -27399,8 +27791,8 @@
         ]
       },
       {
-        "startIndex": 936,
-        "endIndex": 936,
+        "startIndex": 950,
+        "endIndex": 950,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T12:00:00-07:00"
@@ -27423,8 +27815,8 @@
         ]
       },
       {
-        "startIndex": 937,
-        "endIndex": 937,
+        "startIndex": 951,
+        "endIndex": 951,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T12:30:00-07:00"
@@ -27447,8 +27839,8 @@
         ]
       },
       {
-        "startIndex": 938,
-        "endIndex": 938,
+        "startIndex": 952,
+        "endIndex": 952,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T13:00:00-07:00"
@@ -27471,8 +27863,8 @@
         ]
       },
       {
-        "startIndex": 939,
-        "endIndex": 939,
+        "startIndex": 953,
+        "endIndex": 953,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T13:30:00-07:00"
@@ -27495,8 +27887,8 @@
         ]
       },
       {
-        "startIndex": 940,
-        "endIndex": 940,
+        "startIndex": 954,
+        "endIndex": 954,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-22T14:00:00-07:00"
@@ -27519,8 +27911,8 @@
         ]
       },
       {
-        "startIndex": 941,
-        "endIndex": 941,
+        "startIndex": 955,
+        "endIndex": 955,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T09:00:00-07:00"
@@ -27543,8 +27935,8 @@
         ]
       },
       {
-        "startIndex": 942,
-        "endIndex": 942,
+        "startIndex": 956,
+        "endIndex": 956,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T09:30:00-07:00"
@@ -27567,8 +27959,8 @@
         ]
       },
       {
-        "startIndex": 943,
-        "endIndex": 943,
+        "startIndex": 957,
+        "endIndex": 957,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T10:00:00-07:00"
@@ -27591,8 +27983,8 @@
         ]
       },
       {
-        "startIndex": 944,
-        "endIndex": 944,
+        "startIndex": 958,
+        "endIndex": 958,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T10:30:00-07:00"
@@ -27615,8 +28007,8 @@
         ]
       },
       {
-        "startIndex": 945,
-        "endIndex": 945,
+        "startIndex": 959,
+        "endIndex": 959,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T11:00:00-07:00"
@@ -27639,8 +28031,8 @@
         ]
       },
       {
-        "startIndex": 946,
-        "endIndex": 946,
+        "startIndex": 960,
+        "endIndex": 960,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T11:30:00-07:00"
@@ -27663,8 +28055,8 @@
         ]
       },
       {
-        "startIndex": 947,
-        "endIndex": 947,
+        "startIndex": 961,
+        "endIndex": 961,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T12:00:00-07:00"
@@ -27687,8 +28079,8 @@
         ]
       },
       {
-        "startIndex": 948,
-        "endIndex": 948,
+        "startIndex": 962,
+        "endIndex": 962,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T12:30:00-07:00"
@@ -27711,8 +28103,8 @@
         ]
       },
       {
-        "startIndex": 949,
-        "endIndex": 949,
+        "startIndex": 963,
+        "endIndex": 963,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T13:00:00-07:00"
@@ -27735,8 +28127,8 @@
         ]
       },
       {
-        "startIndex": 950,
-        "endIndex": 950,
+        "startIndex": 964,
+        "endIndex": 964,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T13:30:00-07:00"
@@ -27759,8 +28151,8 @@
         ]
       },
       {
-        "startIndex": 951,
-        "endIndex": 951,
+        "startIndex": 965,
+        "endIndex": 965,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-23T14:00:00-07:00"
@@ -27783,8 +28175,8 @@
         ]
       },
       {
-        "startIndex": 952,
-        "endIndex": 952,
+        "startIndex": 966,
+        "endIndex": 966,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T09:00:00-07:00"
@@ -27807,8 +28199,8 @@
         ]
       },
       {
-        "startIndex": 953,
-        "endIndex": 953,
+        "startIndex": 967,
+        "endIndex": 967,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T09:30:00-07:00"
@@ -27831,8 +28223,8 @@
         ]
       },
       {
-        "startIndex": 954,
-        "endIndex": 954,
+        "startIndex": 968,
+        "endIndex": 968,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T10:00:00-07:00"
@@ -27855,8 +28247,8 @@
         ]
       },
       {
-        "startIndex": 955,
-        "endIndex": 955,
+        "startIndex": 969,
+        "endIndex": 969,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T10:30:00-07:00"
@@ -27879,8 +28271,8 @@
         ]
       },
       {
-        "startIndex": 956,
-        "endIndex": 956,
+        "startIndex": 970,
+        "endIndex": 970,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T11:00:00-07:00"
@@ -27903,8 +28295,8 @@
         ]
       },
       {
-        "startIndex": 957,
-        "endIndex": 957,
+        "startIndex": 971,
+        "endIndex": 971,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T11:30:00-07:00"
@@ -27927,8 +28319,8 @@
         ]
       },
       {
-        "startIndex": 958,
-        "endIndex": 958,
+        "startIndex": 972,
+        "endIndex": 972,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T12:00:00-07:00"
@@ -27951,8 +28343,8 @@
         ]
       },
       {
-        "startIndex": 959,
-        "endIndex": 959,
+        "startIndex": 973,
+        "endIndex": 973,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T12:30:00-07:00"
@@ -27975,8 +28367,8 @@
         ]
       },
       {
-        "startIndex": 960,
-        "endIndex": 960,
+        "startIndex": 974,
+        "endIndex": 974,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T13:00:00-07:00"
@@ -27999,8 +28391,8 @@
         ]
       },
       {
-        "startIndex": 961,
-        "endIndex": 961,
+        "startIndex": 975,
+        "endIndex": 975,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T13:30:00-07:00"
@@ -28023,8 +28415,8 @@
         ]
       },
       {
-        "startIndex": 962,
-        "endIndex": 962,
+        "startIndex": 976,
+        "endIndex": 976,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-24T14:00:00-07:00"
@@ -28047,8 +28439,8 @@
         ]
       },
       {
-        "startIndex": 963,
-        "endIndex": 963,
+        "startIndex": 977,
+        "endIndex": 977,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T09:00:00-07:00"
@@ -28071,8 +28463,8 @@
         ]
       },
       {
-        "startIndex": 964,
-        "endIndex": 964,
+        "startIndex": 978,
+        "endIndex": 978,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T09:30:00-07:00"
@@ -28095,8 +28487,8 @@
         ]
       },
       {
-        "startIndex": 965,
-        "endIndex": 965,
+        "startIndex": 979,
+        "endIndex": 979,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T10:00:00-07:00"
@@ -28119,8 +28511,8 @@
         ]
       },
       {
-        "startIndex": 966,
-        "endIndex": 966,
+        "startIndex": 980,
+        "endIndex": 980,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T10:30:00-07:00"
@@ -28143,8 +28535,8 @@
         ]
       },
       {
-        "startIndex": 967,
-        "endIndex": 967,
+        "startIndex": 981,
+        "endIndex": 981,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T11:00:00-07:00"
@@ -28167,8 +28559,8 @@
         ]
       },
       {
-        "startIndex": 968,
-        "endIndex": 968,
+        "startIndex": 982,
+        "endIndex": 982,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T11:30:00-07:00"
@@ -28191,8 +28583,8 @@
         ]
       },
       {
-        "startIndex": 969,
-        "endIndex": 969,
+        "startIndex": 983,
+        "endIndex": 983,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T12:00:00-07:00"
@@ -28215,8 +28607,8 @@
         ]
       },
       {
-        "startIndex": 970,
-        "endIndex": 970,
+        "startIndex": 984,
+        "endIndex": 984,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T12:30:00-07:00"
@@ -28239,8 +28631,8 @@
         ]
       },
       {
-        "startIndex": 971,
-        "endIndex": 971,
+        "startIndex": 985,
+        "endIndex": 985,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T13:00:00-07:00"
@@ -28263,8 +28655,8 @@
         ]
       },
       {
-        "startIndex": 972,
-        "endIndex": 972,
+        "startIndex": 986,
+        "endIndex": 986,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T13:30:00-07:00"
@@ -28287,8 +28679,8 @@
         ]
       },
       {
-        "startIndex": 973,
-        "endIndex": 973,
+        "startIndex": 987,
+        "endIndex": 987,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-27T14:00:00-07:00"
@@ -28311,8 +28703,8 @@
         ]
       },
       {
-        "startIndex": 974,
-        "endIndex": 974,
+        "startIndex": 988,
+        "endIndex": 988,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T09:00:00-07:00"
@@ -28335,8 +28727,8 @@
         ]
       },
       {
-        "startIndex": 975,
-        "endIndex": 975,
+        "startIndex": 989,
+        "endIndex": 989,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T09:30:00-07:00"
@@ -28359,8 +28751,8 @@
         ]
       },
       {
-        "startIndex": 976,
-        "endIndex": 976,
+        "startIndex": 990,
+        "endIndex": 990,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T10:00:00-07:00"
@@ -28383,8 +28775,8 @@
         ]
       },
       {
-        "startIndex": 977,
-        "endIndex": 977,
+        "startIndex": 991,
+        "endIndex": 991,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T10:30:00-07:00"
@@ -28407,8 +28799,8 @@
         ]
       },
       {
-        "startIndex": 978,
-        "endIndex": 978,
+        "startIndex": 992,
+        "endIndex": 992,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T11:00:00-07:00"
@@ -28431,8 +28823,8 @@
         ]
       },
       {
-        "startIndex": 979,
-        "endIndex": 979,
+        "startIndex": 993,
+        "endIndex": 993,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T11:30:00-07:00"
@@ -28455,8 +28847,8 @@
         ]
       },
       {
-        "startIndex": 980,
-        "endIndex": 980,
+        "startIndex": 994,
+        "endIndex": 994,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T12:00:00-07:00"
@@ -28479,8 +28871,8 @@
         ]
       },
       {
-        "startIndex": 981,
-        "endIndex": 981,
+        "startIndex": 995,
+        "endIndex": 995,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T12:30:00-07:00"
@@ -28503,8 +28895,8 @@
         ]
       },
       {
-        "startIndex": 982,
-        "endIndex": 982,
+        "startIndex": 996,
+        "endIndex": 996,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T13:00:00-07:00"
@@ -28527,8 +28919,8 @@
         ]
       },
       {
-        "startIndex": 983,
-        "endIndex": 983,
+        "startIndex": 997,
+        "endIndex": 997,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T13:30:00-07:00"
@@ -28551,8 +28943,8 @@
         ]
       },
       {
-        "startIndex": 984,
-        "endIndex": 984,
+        "startIndex": 998,
+        "endIndex": 998,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-28T14:00:00-07:00"
@@ -28575,8 +28967,8 @@
         ]
       },
       {
-        "startIndex": 985,
-        "endIndex": 985,
+        "startIndex": 999,
+        "endIndex": 999,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T09:00:00-07:00"
@@ -28599,8 +28991,8 @@
         ]
       },
       {
-        "startIndex": 986,
-        "endIndex": 986,
+        "startIndex": 1000,
+        "endIndex": 1000,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T09:30:00-07:00"
@@ -28623,8 +29015,8 @@
         ]
       },
       {
-        "startIndex": 987,
-        "endIndex": 987,
+        "startIndex": 1001,
+        "endIndex": 1001,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T10:00:00-07:00"
@@ -28647,8 +29039,8 @@
         ]
       },
       {
-        "startIndex": 988,
-        "endIndex": 988,
+        "startIndex": 1002,
+        "endIndex": 1002,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T10:30:00-07:00"
@@ -28671,8 +29063,8 @@
         ]
       },
       {
-        "startIndex": 989,
-        "endIndex": 989,
+        "startIndex": 1003,
+        "endIndex": 1003,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T11:00:00-07:00"
@@ -28695,8 +29087,8 @@
         ]
       },
       {
-        "startIndex": 990,
-        "endIndex": 990,
+        "startIndex": 1004,
+        "endIndex": 1004,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T11:30:00-07:00"
@@ -28719,8 +29111,8 @@
         ]
       },
       {
-        "startIndex": 991,
-        "endIndex": 991,
+        "startIndex": 1005,
+        "endIndex": 1005,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T12:00:00-07:00"
@@ -28743,8 +29135,8 @@
         ]
       },
       {
-        "startIndex": 992,
-        "endIndex": 992,
+        "startIndex": 1006,
+        "endIndex": 1006,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T12:30:00-07:00"
@@ -28767,8 +29159,8 @@
         ]
       },
       {
-        "startIndex": 993,
-        "endIndex": 993,
+        "startIndex": 1007,
+        "endIndex": 1007,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T13:00:00-07:00"
@@ -28791,8 +29183,8 @@
         ]
       },
       {
-        "startIndex": 994,
-        "endIndex": 994,
+        "startIndex": 1008,
+        "endIndex": 1008,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T13:30:00-07:00"
@@ -28815,8 +29207,8 @@
         ]
       },
       {
-        "startIndex": 995,
-        "endIndex": 995,
+        "startIndex": 1009,
+        "endIndex": 1009,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-29T14:00:00-07:00"
@@ -28839,8 +29231,8 @@
         ]
       },
       {
-        "startIndex": 996,
-        "endIndex": 996,
+        "startIndex": 1010,
+        "endIndex": 1010,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T09:00:00-07:00"
@@ -28863,8 +29255,8 @@
         ]
       },
       {
-        "startIndex": 997,
-        "endIndex": 997,
+        "startIndex": 1011,
+        "endIndex": 1011,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T09:30:00-07:00"
@@ -28887,8 +29279,8 @@
         ]
       },
       {
-        "startIndex": 998,
-        "endIndex": 998,
+        "startIndex": 1012,
+        "endIndex": 1012,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T10:00:00-07:00"
@@ -28911,8 +29303,8 @@
         ]
       },
       {
-        "startIndex": 999,
-        "endIndex": 999,
+        "startIndex": 1013,
+        "endIndex": 1013,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T10:30:00-07:00"
@@ -28935,8 +29327,8 @@
         ]
       },
       {
-        "startIndex": 1000,
-        "endIndex": 1000,
+        "startIndex": 1014,
+        "endIndex": 1014,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T11:00:00-07:00"
@@ -28959,8 +29351,8 @@
         ]
       },
       {
-        "startIndex": 1001,
-        "endIndex": 1001,
+        "startIndex": 1015,
+        "endIndex": 1015,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T11:30:00-07:00"
@@ -28983,8 +29375,8 @@
         ]
       },
       {
-        "startIndex": 1002,
-        "endIndex": 1002,
+        "startIndex": 1016,
+        "endIndex": 1016,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T12:00:00-07:00"
@@ -29007,8 +29399,8 @@
         ]
       },
       {
-        "startIndex": 1003,
-        "endIndex": 1003,
+        "startIndex": 1017,
+        "endIndex": 1017,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T12:30:00-07:00"
@@ -29031,8 +29423,8 @@
         ]
       },
       {
-        "startIndex": 1004,
-        "endIndex": 1004,
+        "startIndex": 1018,
+        "endIndex": 1018,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T13:00:00-07:00"
@@ -29055,8 +29447,8 @@
         ]
       },
       {
-        "startIndex": 1005,
-        "endIndex": 1005,
+        "startIndex": 1019,
+        "endIndex": 1019,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T13:30:00-07:00"
@@ -29079,8 +29471,8 @@
         ]
       },
       {
-        "startIndex": 1006,
-        "endIndex": 1006,
+        "startIndex": 1020,
+        "endIndex": 1020,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-30T14:00:00-07:00"
@@ -29103,8 +29495,8 @@
         ]
       },
       {
-        "startIndex": 1007,
-        "endIndex": 1007,
+        "startIndex": 1021,
+        "endIndex": 1021,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T09:00:00-07:00"
@@ -29127,8 +29519,8 @@
         ]
       },
       {
-        "startIndex": 1008,
-        "endIndex": 1008,
+        "startIndex": 1022,
+        "endIndex": 1022,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T09:30:00-07:00"
@@ -29151,8 +29543,8 @@
         ]
       },
       {
-        "startIndex": 1009,
-        "endIndex": 1009,
+        "startIndex": 1023,
+        "endIndex": 1023,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T10:00:00-07:00"
@@ -29175,8 +29567,8 @@
         ]
       },
       {
-        "startIndex": 1010,
-        "endIndex": 1010,
+        "startIndex": 1024,
+        "endIndex": 1024,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T10:30:00-07:00"
@@ -29199,8 +29591,8 @@
         ]
       },
       {
-        "startIndex": 1011,
-        "endIndex": 1011,
+        "startIndex": 1025,
+        "endIndex": 1025,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T11:00:00-07:00"
@@ -29223,8 +29615,8 @@
         ]
       },
       {
-        "startIndex": 1012,
-        "endIndex": 1012,
+        "startIndex": 1026,
+        "endIndex": 1026,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T11:30:00-07:00"
@@ -29247,8 +29639,8 @@
         ]
       },
       {
-        "startIndex": 1013,
-        "endIndex": 1013,
+        "startIndex": 1027,
+        "endIndex": 1027,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T12:00:00-07:00"
@@ -29271,8 +29663,8 @@
         ]
       },
       {
-        "startIndex": 1014,
-        "endIndex": 1014,
+        "startIndex": 1028,
+        "endIndex": 1028,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T12:30:00-07:00"
@@ -29295,8 +29687,8 @@
         ]
       },
       {
-        "startIndex": 1015,
-        "endIndex": 1015,
+        "startIndex": 1029,
+        "endIndex": 1029,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T13:00:00-07:00"
@@ -29319,8 +29711,8 @@
         ]
       },
       {
-        "startIndex": 1016,
-        "endIndex": 1016,
+        "startIndex": 1030,
+        "endIndex": 1030,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T13:30:00-07:00"
@@ -29343,8 +29735,8 @@
         ]
       },
       {
-        "startIndex": 1017,
-        "endIndex": 1017,
+        "startIndex": 1031,
+        "endIndex": 1031,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-01-31T14:00:00-07:00"
@@ -29367,8 +29759,8 @@
         ]
       },
       {
-        "startIndex": 1018,
-        "endIndex": 1018,
+        "startIndex": 1032,
+        "endIndex": 1032,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T09:00:00-07:00"
@@ -29391,8 +29783,8 @@
         ]
       },
       {
-        "startIndex": 1019,
-        "endIndex": 1019,
+        "startIndex": 1033,
+        "endIndex": 1033,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T09:30:00-07:00"
@@ -29415,8 +29807,8 @@
         ]
       },
       {
-        "startIndex": 1020,
-        "endIndex": 1020,
+        "startIndex": 1034,
+        "endIndex": 1034,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T10:00:00-07:00"
@@ -29439,8 +29831,8 @@
         ]
       },
       {
-        "startIndex": 1021,
-        "endIndex": 1021,
+        "startIndex": 1035,
+        "endIndex": 1035,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T10:30:00-07:00"
@@ -29463,8 +29855,8 @@
         ]
       },
       {
-        "startIndex": 1022,
-        "endIndex": 1022,
+        "startIndex": 1036,
+        "endIndex": 1036,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T11:00:00-07:00"
@@ -29487,8 +29879,8 @@
         ]
       },
       {
-        "startIndex": 1023,
-        "endIndex": 1023,
+        "startIndex": 1037,
+        "endIndex": 1037,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T11:30:00-07:00"
@@ -29511,8 +29903,8 @@
         ]
       },
       {
-        "startIndex": 1024,
-        "endIndex": 1024,
+        "startIndex": 1038,
+        "endIndex": 1038,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T12:00:00-07:00"
@@ -29535,8 +29927,8 @@
         ]
       },
       {
-        "startIndex": 1025,
-        "endIndex": 1025,
+        "startIndex": 1039,
+        "endIndex": 1039,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T12:30:00-07:00"
@@ -29559,8 +29951,8 @@
         ]
       },
       {
-        "startIndex": 1026,
-        "endIndex": 1026,
+        "startIndex": 1040,
+        "endIndex": 1040,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T13:00:00-07:00"
@@ -29583,8 +29975,8 @@
         ]
       },
       {
-        "startIndex": 1027,
-        "endIndex": 1027,
+        "startIndex": 1041,
+        "endIndex": 1041,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T13:30:00-07:00"
@@ -29607,8 +29999,8 @@
         ]
       },
       {
-        "startIndex": 1028,
-        "endIndex": 1028,
+        "startIndex": 1042,
+        "endIndex": 1042,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-03T14:00:00-07:00"
@@ -29631,8 +30023,8 @@
         ]
       },
       {
-        "startIndex": 1029,
-        "endIndex": 1029,
+        "startIndex": 1043,
+        "endIndex": 1043,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T09:00:00-07:00"
@@ -29655,8 +30047,8 @@
         ]
       },
       {
-        "startIndex": 1030,
-        "endIndex": 1030,
+        "startIndex": 1044,
+        "endIndex": 1044,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T09:30:00-07:00"
@@ -29679,8 +30071,8 @@
         ]
       },
       {
-        "startIndex": 1031,
-        "endIndex": 1031,
+        "startIndex": 1045,
+        "endIndex": 1045,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T10:00:00-07:00"
@@ -29703,8 +30095,8 @@
         ]
       },
       {
-        "startIndex": 1032,
-        "endIndex": 1032,
+        "startIndex": 1046,
+        "endIndex": 1046,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T10:30:00-07:00"
@@ -29727,8 +30119,8 @@
         ]
       },
       {
-        "startIndex": 1033,
-        "endIndex": 1033,
+        "startIndex": 1047,
+        "endIndex": 1047,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T11:00:00-07:00"
@@ -29751,8 +30143,8 @@
         ]
       },
       {
-        "startIndex": 1034,
-        "endIndex": 1034,
+        "startIndex": 1048,
+        "endIndex": 1048,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T11:30:00-07:00"
@@ -29775,8 +30167,8 @@
         ]
       },
       {
-        "startIndex": 1035,
-        "endIndex": 1035,
+        "startIndex": 1049,
+        "endIndex": 1049,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T12:00:00-07:00"
@@ -29799,8 +30191,8 @@
         ]
       },
       {
-        "startIndex": 1036,
-        "endIndex": 1036,
+        "startIndex": 1050,
+        "endIndex": 1050,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T12:30:00-07:00"
@@ -29823,8 +30215,8 @@
         ]
       },
       {
-        "startIndex": 1037,
-        "endIndex": 1037,
+        "startIndex": 1051,
+        "endIndex": 1051,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T13:00:00-07:00"
@@ -29847,8 +30239,8 @@
         ]
       },
       {
-        "startIndex": 1038,
-        "endIndex": 1038,
+        "startIndex": 1052,
+        "endIndex": 1052,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T13:30:00-07:00"
@@ -29871,8 +30263,8 @@
         ]
       },
       {
-        "startIndex": 1039,
-        "endIndex": 1039,
+        "startIndex": 1053,
+        "endIndex": 1053,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-04T14:00:00-07:00"
@@ -29895,8 +30287,8 @@
         ]
       },
       {
-        "startIndex": 1040,
-        "endIndex": 1040,
+        "startIndex": 1054,
+        "endIndex": 1054,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T09:00:00-07:00"
@@ -29919,8 +30311,8 @@
         ]
       },
       {
-        "startIndex": 1041,
-        "endIndex": 1041,
+        "startIndex": 1055,
+        "endIndex": 1055,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T09:30:00-07:00"
@@ -29943,8 +30335,8 @@
         ]
       },
       {
-        "startIndex": 1042,
-        "endIndex": 1042,
+        "startIndex": 1056,
+        "endIndex": 1056,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T10:00:00-07:00"
@@ -29967,8 +30359,8 @@
         ]
       },
       {
-        "startIndex": 1043,
-        "endIndex": 1043,
+        "startIndex": 1057,
+        "endIndex": 1057,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T10:30:00-07:00"
@@ -29991,8 +30383,8 @@
         ]
       },
       {
-        "startIndex": 1044,
-        "endIndex": 1044,
+        "startIndex": 1058,
+        "endIndex": 1058,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T11:00:00-07:00"
@@ -30015,8 +30407,8 @@
         ]
       },
       {
-        "startIndex": 1045,
-        "endIndex": 1045,
+        "startIndex": 1059,
+        "endIndex": 1059,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T11:30:00-07:00"
@@ -30039,8 +30431,8 @@
         ]
       },
       {
-        "startIndex": 1046,
-        "endIndex": 1046,
+        "startIndex": 1060,
+        "endIndex": 1060,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T12:00:00-07:00"
@@ -30063,8 +30455,8 @@
         ]
       },
       {
-        "startIndex": 1047,
-        "endIndex": 1047,
+        "startIndex": 1061,
+        "endIndex": 1061,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T12:30:00-07:00"
@@ -30087,8 +30479,8 @@
         ]
       },
       {
-        "startIndex": 1048,
-        "endIndex": 1048,
+        "startIndex": 1062,
+        "endIndex": 1062,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T13:00:00-07:00"
@@ -30111,8 +30503,8 @@
         ]
       },
       {
-        "startIndex": 1049,
-        "endIndex": 1049,
+        "startIndex": 1063,
+        "endIndex": 1063,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T13:30:00-07:00"
@@ -30135,8 +30527,8 @@
         ]
       },
       {
-        "startIndex": 1050,
-        "endIndex": 1050,
+        "startIndex": 1064,
+        "endIndex": 1064,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-05T14:00:00-07:00"
@@ -30159,8 +30551,8 @@
         ]
       },
       {
-        "startIndex": 1051,
-        "endIndex": 1051,
+        "startIndex": 1065,
+        "endIndex": 1065,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T09:00:00-07:00"
@@ -30183,8 +30575,8 @@
         ]
       },
       {
-        "startIndex": 1052,
-        "endIndex": 1052,
+        "startIndex": 1066,
+        "endIndex": 1066,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T09:30:00-07:00"
@@ -30207,8 +30599,8 @@
         ]
       },
       {
-        "startIndex": 1053,
-        "endIndex": 1053,
+        "startIndex": 1067,
+        "endIndex": 1067,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T10:00:00-07:00"
@@ -30231,8 +30623,8 @@
         ]
       },
       {
-        "startIndex": 1054,
-        "endIndex": 1054,
+        "startIndex": 1068,
+        "endIndex": 1068,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T10:30:00-07:00"
@@ -30255,8 +30647,8 @@
         ]
       },
       {
-        "startIndex": 1055,
-        "endIndex": 1055,
+        "startIndex": 1069,
+        "endIndex": 1069,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T11:00:00-07:00"
@@ -30279,8 +30671,8 @@
         ]
       },
       {
-        "startIndex": 1056,
-        "endIndex": 1056,
+        "startIndex": 1070,
+        "endIndex": 1070,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T11:30:00-07:00"
@@ -30303,8 +30695,8 @@
         ]
       },
       {
-        "startIndex": 1057,
-        "endIndex": 1057,
+        "startIndex": 1071,
+        "endIndex": 1071,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T12:00:00-07:00"
@@ -30327,8 +30719,8 @@
         ]
       },
       {
-        "startIndex": 1058,
-        "endIndex": 1058,
+        "startIndex": 1072,
+        "endIndex": 1072,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T12:30:00-07:00"
@@ -30351,8 +30743,8 @@
         ]
       },
       {
-        "startIndex": 1059,
-        "endIndex": 1059,
+        "startIndex": 1073,
+        "endIndex": 1073,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T13:00:00-07:00"
@@ -30375,8 +30767,8 @@
         ]
       },
       {
-        "startIndex": 1060,
-        "endIndex": 1060,
+        "startIndex": 1074,
+        "endIndex": 1074,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T13:30:00-07:00"
@@ -30399,8 +30791,8 @@
         ]
       },
       {
-        "startIndex": 1061,
-        "endIndex": 1061,
+        "startIndex": 1075,
+        "endIndex": 1075,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-06T14:00:00-07:00"
@@ -30423,8 +30815,8 @@
         ]
       },
       {
-        "startIndex": 1062,
-        "endIndex": 1062,
+        "startIndex": 1076,
+        "endIndex": 1076,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T09:00:00-07:00"
@@ -30447,8 +30839,8 @@
         ]
       },
       {
-        "startIndex": 1063,
-        "endIndex": 1063,
+        "startIndex": 1077,
+        "endIndex": 1077,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T09:30:00-07:00"
@@ -30471,8 +30863,8 @@
         ]
       },
       {
-        "startIndex": 1064,
-        "endIndex": 1064,
+        "startIndex": 1078,
+        "endIndex": 1078,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T10:00:00-07:00"
@@ -30495,8 +30887,8 @@
         ]
       },
       {
-        "startIndex": 1065,
-        "endIndex": 1065,
+        "startIndex": 1079,
+        "endIndex": 1079,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T10:30:00-07:00"
@@ -30519,8 +30911,8 @@
         ]
       },
       {
-        "startIndex": 1066,
-        "endIndex": 1066,
+        "startIndex": 1080,
+        "endIndex": 1080,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T11:00:00-07:00"
@@ -30543,8 +30935,8 @@
         ]
       },
       {
-        "startIndex": 1067,
-        "endIndex": 1067,
+        "startIndex": 1081,
+        "endIndex": 1081,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T11:30:00-07:00"
@@ -30567,8 +30959,8 @@
         ]
       },
       {
-        "startIndex": 1068,
-        "endIndex": 1068,
+        "startIndex": 1082,
+        "endIndex": 1082,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T12:00:00-07:00"
@@ -30591,8 +30983,8 @@
         ]
       },
       {
-        "startIndex": 1069,
-        "endIndex": 1069,
+        "startIndex": 1083,
+        "endIndex": 1083,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T12:30:00-07:00"
@@ -30615,8 +31007,8 @@
         ]
       },
       {
-        "startIndex": 1070,
-        "endIndex": 1070,
+        "startIndex": 1084,
+        "endIndex": 1084,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T13:00:00-07:00"
@@ -30639,8 +31031,8 @@
         ]
       },
       {
-        "startIndex": 1071,
-        "endIndex": 1071,
+        "startIndex": 1085,
+        "endIndex": 1085,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T13:30:00-07:00"
@@ -30663,8 +31055,8 @@
         ]
       },
       {
-        "startIndex": 1072,
-        "endIndex": 1072,
+        "startIndex": 1086,
+        "endIndex": 1086,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-07T14:00:00-07:00"
@@ -30687,8 +31079,8 @@
         ]
       },
       {
-        "startIndex": 1073,
-        "endIndex": 1073,
+        "startIndex": 1087,
+        "endIndex": 1087,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T09:00:00-07:00"
@@ -30711,8 +31103,8 @@
         ]
       },
       {
-        "startIndex": 1074,
-        "endIndex": 1074,
+        "startIndex": 1088,
+        "endIndex": 1088,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T09:30:00-07:00"
@@ -30735,8 +31127,8 @@
         ]
       },
       {
-        "startIndex": 1075,
-        "endIndex": 1075,
+        "startIndex": 1089,
+        "endIndex": 1089,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T10:00:00-07:00"
@@ -30759,8 +31151,8 @@
         ]
       },
       {
-        "startIndex": 1076,
-        "endIndex": 1076,
+        "startIndex": 1090,
+        "endIndex": 1090,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T10:30:00-07:00"
@@ -30783,8 +31175,8 @@
         ]
       },
       {
-        "startIndex": 1077,
-        "endIndex": 1077,
+        "startIndex": 1091,
+        "endIndex": 1091,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T11:00:00-07:00"
@@ -30807,8 +31199,8 @@
         ]
       },
       {
-        "startIndex": 1078,
-        "endIndex": 1078,
+        "startIndex": 1092,
+        "endIndex": 1092,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T11:30:00-07:00"
@@ -30831,8 +31223,8 @@
         ]
       },
       {
-        "startIndex": 1079,
-        "endIndex": 1079,
+        "startIndex": 1093,
+        "endIndex": 1093,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T12:00:00-07:00"
@@ -30855,8 +31247,8 @@
         ]
       },
       {
-        "startIndex": 1080,
-        "endIndex": 1080,
+        "startIndex": 1094,
+        "endIndex": 1094,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T12:30:00-07:00"
@@ -30879,8 +31271,8 @@
         ]
       },
       {
-        "startIndex": 1081,
-        "endIndex": 1081,
+        "startIndex": 1095,
+        "endIndex": 1095,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T13:00:00-07:00"
@@ -30903,8 +31295,8 @@
         ]
       },
       {
-        "startIndex": 1082,
-        "endIndex": 1082,
+        "startIndex": 1096,
+        "endIndex": 1096,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T13:30:00-07:00"
@@ -30927,8 +31319,8 @@
         ]
       },
       {
-        "startIndex": 1083,
-        "endIndex": 1083,
+        "startIndex": 1097,
+        "endIndex": 1097,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-10T14:00:00-07:00"
@@ -30951,8 +31343,8 @@
         ]
       },
       {
-        "startIndex": 1084,
-        "endIndex": 1084,
+        "startIndex": 1098,
+        "endIndex": 1098,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T09:00:00-07:00"
@@ -30975,8 +31367,8 @@
         ]
       },
       {
-        "startIndex": 1085,
-        "endIndex": 1085,
+        "startIndex": 1099,
+        "endIndex": 1099,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T09:30:00-07:00"
@@ -30999,8 +31391,8 @@
         ]
       },
       {
-        "startIndex": 1086,
-        "endIndex": 1086,
+        "startIndex": 1100,
+        "endIndex": 1100,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T10:00:00-07:00"
@@ -31023,8 +31415,8 @@
         ]
       },
       {
-        "startIndex": 1087,
-        "endIndex": 1087,
+        "startIndex": 1101,
+        "endIndex": 1101,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T10:30:00-07:00"
@@ -31047,8 +31439,8 @@
         ]
       },
       {
-        "startIndex": 1088,
-        "endIndex": 1088,
+        "startIndex": 1102,
+        "endIndex": 1102,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T11:00:00-07:00"
@@ -31071,8 +31463,8 @@
         ]
       },
       {
-        "startIndex": 1089,
-        "endIndex": 1089,
+        "startIndex": 1103,
+        "endIndex": 1103,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T11:30:00-07:00"
@@ -31095,8 +31487,8 @@
         ]
       },
       {
-        "startIndex": 1090,
-        "endIndex": 1090,
+        "startIndex": 1104,
+        "endIndex": 1104,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T12:00:00-07:00"
@@ -31119,8 +31511,8 @@
         ]
       },
       {
-        "startIndex": 1091,
-        "endIndex": 1091,
+        "startIndex": 1105,
+        "endIndex": 1105,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T12:30:00-07:00"
@@ -31143,8 +31535,8 @@
         ]
       },
       {
-        "startIndex": 1092,
-        "endIndex": 1092,
+        "startIndex": 1106,
+        "endIndex": 1106,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T13:00:00-07:00"
@@ -31167,8 +31559,8 @@
         ]
       },
       {
-        "startIndex": 1093,
-        "endIndex": 1093,
+        "startIndex": 1107,
+        "endIndex": 1107,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T13:30:00-07:00"
@@ -31191,8 +31583,8 @@
         ]
       },
       {
-        "startIndex": 1094,
-        "endIndex": 1094,
+        "startIndex": 1108,
+        "endIndex": 1108,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-11T14:00:00-07:00"
@@ -31215,8 +31607,8 @@
         ]
       },
       {
-        "startIndex": 1095,
-        "endIndex": 1095,
+        "startIndex": 1109,
+        "endIndex": 1109,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T09:00:00-07:00"
@@ -31239,8 +31631,8 @@
         ]
       },
       {
-        "startIndex": 1096,
-        "endIndex": 1096,
+        "startIndex": 1110,
+        "endIndex": 1110,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T09:30:00-07:00"
@@ -31263,8 +31655,8 @@
         ]
       },
       {
-        "startIndex": 1097,
-        "endIndex": 1097,
+        "startIndex": 1111,
+        "endIndex": 1111,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T10:00:00-07:00"
@@ -31287,8 +31679,8 @@
         ]
       },
       {
-        "startIndex": 1098,
-        "endIndex": 1098,
+        "startIndex": 1112,
+        "endIndex": 1112,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T10:30:00-07:00"
@@ -31311,8 +31703,8 @@
         ]
       },
       {
-        "startIndex": 1099,
-        "endIndex": 1099,
+        "startIndex": 1113,
+        "endIndex": 1113,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T11:00:00-07:00"
@@ -31335,8 +31727,8 @@
         ]
       },
       {
-        "startIndex": 1100,
-        "endIndex": 1100,
+        "startIndex": 1114,
+        "endIndex": 1114,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T11:30:00-07:00"
@@ -31359,8 +31751,8 @@
         ]
       },
       {
-        "startIndex": 1101,
-        "endIndex": 1101,
+        "startIndex": 1115,
+        "endIndex": 1115,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T12:00:00-07:00"
@@ -31383,8 +31775,8 @@
         ]
       },
       {
-        "startIndex": 1102,
-        "endIndex": 1102,
+        "startIndex": 1116,
+        "endIndex": 1116,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T12:30:00-07:00"
@@ -31407,8 +31799,8 @@
         ]
       },
       {
-        "startIndex": 1103,
-        "endIndex": 1103,
+        "startIndex": 1117,
+        "endIndex": 1117,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T13:00:00-07:00"
@@ -31431,8 +31823,8 @@
         ]
       },
       {
-        "startIndex": 1104,
-        "endIndex": 1104,
+        "startIndex": 1118,
+        "endIndex": 1118,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T13:30:00-07:00"
@@ -31455,8 +31847,8 @@
         ]
       },
       {
-        "startIndex": 1105,
-        "endIndex": 1105,
+        "startIndex": 1119,
+        "endIndex": 1119,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-12T14:00:00-07:00"
@@ -31479,8 +31871,8 @@
         ]
       },
       {
-        "startIndex": 1106,
-        "endIndex": 1106,
+        "startIndex": 1120,
+        "endIndex": 1120,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T09:00:00-07:00"
@@ -31503,8 +31895,8 @@
         ]
       },
       {
-        "startIndex": 1107,
-        "endIndex": 1107,
+        "startIndex": 1121,
+        "endIndex": 1121,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T09:30:00-07:00"
@@ -31527,8 +31919,8 @@
         ]
       },
       {
-        "startIndex": 1108,
-        "endIndex": 1108,
+        "startIndex": 1122,
+        "endIndex": 1122,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T10:00:00-07:00"
@@ -31551,8 +31943,8 @@
         ]
       },
       {
-        "startIndex": 1109,
-        "endIndex": 1109,
+        "startIndex": 1123,
+        "endIndex": 1123,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T10:30:00-07:00"
@@ -31575,8 +31967,8 @@
         ]
       },
       {
-        "startIndex": 1110,
-        "endIndex": 1110,
+        "startIndex": 1124,
+        "endIndex": 1124,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T11:00:00-07:00"
@@ -31599,8 +31991,8 @@
         ]
       },
       {
-        "startIndex": 1111,
-        "endIndex": 1111,
+        "startIndex": 1125,
+        "endIndex": 1125,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T11:30:00-07:00"
@@ -31623,8 +32015,8 @@
         ]
       },
       {
-        "startIndex": 1112,
-        "endIndex": 1112,
+        "startIndex": 1126,
+        "endIndex": 1126,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T12:00:00-07:00"
@@ -31647,8 +32039,8 @@
         ]
       },
       {
-        "startIndex": 1113,
-        "endIndex": 1113,
+        "startIndex": 1127,
+        "endIndex": 1127,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T12:30:00-07:00"
@@ -31671,8 +32063,8 @@
         ]
       },
       {
-        "startIndex": 1114,
-        "endIndex": 1114,
+        "startIndex": 1128,
+        "endIndex": 1128,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T13:00:00-07:00"
@@ -31695,8 +32087,8 @@
         ]
       },
       {
-        "startIndex": 1115,
-        "endIndex": 1115,
+        "startIndex": 1129,
+        "endIndex": 1129,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T13:30:00-07:00"
@@ -31719,8 +32111,8 @@
         ]
       },
       {
-        "startIndex": 1116,
-        "endIndex": 1116,
+        "startIndex": 1130,
+        "endIndex": 1130,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-13T14:00:00-07:00"
@@ -31743,8 +32135,8 @@
         ]
       },
       {
-        "startIndex": 1117,
-        "endIndex": 1117,
+        "startIndex": 1131,
+        "endIndex": 1131,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T09:00:00-07:00"
@@ -31767,8 +32159,8 @@
         ]
       },
       {
-        "startIndex": 1118,
-        "endIndex": 1118,
+        "startIndex": 1132,
+        "endIndex": 1132,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T09:30:00-07:00"
@@ -31791,8 +32183,8 @@
         ]
       },
       {
-        "startIndex": 1119,
-        "endIndex": 1119,
+        "startIndex": 1133,
+        "endIndex": 1133,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T10:00:00-07:00"
@@ -31815,8 +32207,8 @@
         ]
       },
       {
-        "startIndex": 1120,
-        "endIndex": 1120,
+        "startIndex": 1134,
+        "endIndex": 1134,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T10:30:00-07:00"
@@ -31839,8 +32231,8 @@
         ]
       },
       {
-        "startIndex": 1121,
-        "endIndex": 1121,
+        "startIndex": 1135,
+        "endIndex": 1135,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T11:00:00-07:00"
@@ -31863,8 +32255,8 @@
         ]
       },
       {
-        "startIndex": 1122,
-        "endIndex": 1122,
+        "startIndex": 1136,
+        "endIndex": 1136,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T11:30:00-07:00"
@@ -31887,8 +32279,8 @@
         ]
       },
       {
-        "startIndex": 1123,
-        "endIndex": 1123,
+        "startIndex": 1137,
+        "endIndex": 1137,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T12:00:00-07:00"
@@ -31911,8 +32303,8 @@
         ]
       },
       {
-        "startIndex": 1124,
-        "endIndex": 1124,
+        "startIndex": 1138,
+        "endIndex": 1138,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T12:30:00-07:00"
@@ -31935,8 +32327,8 @@
         ]
       },
       {
-        "startIndex": 1125,
-        "endIndex": 1125,
+        "startIndex": 1139,
+        "endIndex": 1139,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T13:00:00-07:00"
@@ -31959,8 +32351,8 @@
         ]
       },
       {
-        "startIndex": 1126,
-        "endIndex": 1126,
+        "startIndex": 1140,
+        "endIndex": 1140,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T13:30:00-07:00"
@@ -31983,8 +32375,8 @@
         ]
       },
       {
-        "startIndex": 1127,
-        "endIndex": 1127,
+        "startIndex": 1141,
+        "endIndex": 1141,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-14T14:00:00-07:00"
@@ -32007,8 +32399,8 @@
         ]
       },
       {
-        "startIndex": 1128,
-        "endIndex": 1128,
+        "startIndex": 1142,
+        "endIndex": 1142,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T09:00:00-07:00"
@@ -32031,8 +32423,8 @@
         ]
       },
       {
-        "startIndex": 1129,
-        "endIndex": 1129,
+        "startIndex": 1143,
+        "endIndex": 1143,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T09:30:00-07:00"
@@ -32055,8 +32447,8 @@
         ]
       },
       {
-        "startIndex": 1130,
-        "endIndex": 1130,
+        "startIndex": 1144,
+        "endIndex": 1144,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T10:00:00-07:00"
@@ -32079,8 +32471,8 @@
         ]
       },
       {
-        "startIndex": 1131,
-        "endIndex": 1131,
+        "startIndex": 1145,
+        "endIndex": 1145,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T10:30:00-07:00"
@@ -32103,8 +32495,8 @@
         ]
       },
       {
-        "startIndex": 1132,
-        "endIndex": 1132,
+        "startIndex": 1146,
+        "endIndex": 1146,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T11:00:00-07:00"
@@ -32127,8 +32519,8 @@
         ]
       },
       {
-        "startIndex": 1133,
-        "endIndex": 1133,
+        "startIndex": 1147,
+        "endIndex": 1147,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T11:30:00-07:00"
@@ -32151,8 +32543,8 @@
         ]
       },
       {
-        "startIndex": 1134,
-        "endIndex": 1134,
+        "startIndex": 1148,
+        "endIndex": 1148,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T12:00:00-07:00"
@@ -32175,8 +32567,8 @@
         ]
       },
       {
-        "startIndex": 1135,
-        "endIndex": 1135,
+        "startIndex": 1149,
+        "endIndex": 1149,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T12:30:00-07:00"
@@ -32199,8 +32591,8 @@
         ]
       },
       {
-        "startIndex": 1136,
-        "endIndex": 1136,
+        "startIndex": 1150,
+        "endIndex": 1150,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T13:00:00-07:00"
@@ -32223,8 +32615,8 @@
         ]
       },
       {
-        "startIndex": 1137,
-        "endIndex": 1137,
+        "startIndex": 1151,
+        "endIndex": 1151,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T13:30:00-07:00"
@@ -32247,8 +32639,8 @@
         ]
       },
       {
-        "startIndex": 1138,
-        "endIndex": 1138,
+        "startIndex": 1152,
+        "endIndex": 1152,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-17T14:00:00-07:00"
@@ -32271,8 +32663,8 @@
         ]
       },
       {
-        "startIndex": 1139,
-        "endIndex": 1139,
+        "startIndex": 1153,
+        "endIndex": 1153,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T09:00:00-07:00"
@@ -32295,8 +32687,8 @@
         ]
       },
       {
-        "startIndex": 1140,
-        "endIndex": 1140,
+        "startIndex": 1154,
+        "endIndex": 1154,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T09:30:00-07:00"
@@ -32319,8 +32711,8 @@
         ]
       },
       {
-        "startIndex": 1141,
-        "endIndex": 1141,
+        "startIndex": 1155,
+        "endIndex": 1155,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T10:00:00-07:00"
@@ -32343,8 +32735,8 @@
         ]
       },
       {
-        "startIndex": 1142,
-        "endIndex": 1142,
+        "startIndex": 1156,
+        "endIndex": 1156,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T10:30:00-07:00"
@@ -32367,8 +32759,8 @@
         ]
       },
       {
-        "startIndex": 1143,
-        "endIndex": 1143,
+        "startIndex": 1157,
+        "endIndex": 1157,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T11:00:00-07:00"
@@ -32391,8 +32783,8 @@
         ]
       },
       {
-        "startIndex": 1144,
-        "endIndex": 1144,
+        "startIndex": 1158,
+        "endIndex": 1158,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T11:30:00-07:00"
@@ -32415,8 +32807,8 @@
         ]
       },
       {
-        "startIndex": 1145,
-        "endIndex": 1145,
+        "startIndex": 1159,
+        "endIndex": 1159,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T12:00:00-07:00"
@@ -32439,8 +32831,8 @@
         ]
       },
       {
-        "startIndex": 1146,
-        "endIndex": 1146,
+        "startIndex": 1160,
+        "endIndex": 1160,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T12:30:00-07:00"
@@ -32463,8 +32855,8 @@
         ]
       },
       {
-        "startIndex": 1147,
-        "endIndex": 1147,
+        "startIndex": 1161,
+        "endIndex": 1161,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T13:00:00-07:00"
@@ -32487,8 +32879,8 @@
         ]
       },
       {
-        "startIndex": 1148,
-        "endIndex": 1148,
+        "startIndex": 1162,
+        "endIndex": 1162,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T13:30:00-07:00"
@@ -32511,8 +32903,8 @@
         ]
       },
       {
-        "startIndex": 1149,
-        "endIndex": 1149,
+        "startIndex": 1163,
+        "endIndex": 1163,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-18T14:00:00-07:00"
@@ -32535,8 +32927,8 @@
         ]
       },
       {
-        "startIndex": 1150,
-        "endIndex": 1150,
+        "startIndex": 1164,
+        "endIndex": 1164,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T09:00:00-07:00"
@@ -32559,8 +32951,8 @@
         ]
       },
       {
-        "startIndex": 1151,
-        "endIndex": 1151,
+        "startIndex": 1165,
+        "endIndex": 1165,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T09:30:00-07:00"
@@ -32583,8 +32975,8 @@
         ]
       },
       {
-        "startIndex": 1152,
-        "endIndex": 1152,
+        "startIndex": 1166,
+        "endIndex": 1166,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T10:00:00-07:00"
@@ -32607,8 +32999,8 @@
         ]
       },
       {
-        "startIndex": 1153,
-        "endIndex": 1153,
+        "startIndex": 1167,
+        "endIndex": 1167,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T10:30:00-07:00"
@@ -32631,8 +33023,8 @@
         ]
       },
       {
-        "startIndex": 1154,
-        "endIndex": 1154,
+        "startIndex": 1168,
+        "endIndex": 1168,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T11:00:00-07:00"
@@ -32655,8 +33047,8 @@
         ]
       },
       {
-        "startIndex": 1155,
-        "endIndex": 1155,
+        "startIndex": 1169,
+        "endIndex": 1169,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T11:30:00-07:00"
@@ -32679,8 +33071,8 @@
         ]
       },
       {
-        "startIndex": 1156,
-        "endIndex": 1156,
+        "startIndex": 1170,
+        "endIndex": 1170,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T12:00:00-07:00"
@@ -32703,8 +33095,8 @@
         ]
       },
       {
-        "startIndex": 1157,
-        "endIndex": 1157,
+        "startIndex": 1171,
+        "endIndex": 1171,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T12:30:00-07:00"
@@ -32727,8 +33119,8 @@
         ]
       },
       {
-        "startIndex": 1158,
-        "endIndex": 1158,
+        "startIndex": 1172,
+        "endIndex": 1172,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T13:00:00-07:00"
@@ -32751,8 +33143,8 @@
         ]
       },
       {
-        "startIndex": 1159,
-        "endIndex": 1159,
+        "startIndex": 1173,
+        "endIndex": 1173,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T13:30:00-07:00"
@@ -32775,8 +33167,8 @@
         ]
       },
       {
-        "startIndex": 1160,
-        "endIndex": 1160,
+        "startIndex": 1174,
+        "endIndex": 1174,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-19T14:00:00-07:00"
@@ -32799,8 +33191,8 @@
         ]
       },
       {
-        "startIndex": 1161,
-        "endIndex": 1161,
+        "startIndex": 1175,
+        "endIndex": 1175,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T09:00:00-07:00"
@@ -32823,8 +33215,8 @@
         ]
       },
       {
-        "startIndex": 1162,
-        "endIndex": 1162,
+        "startIndex": 1176,
+        "endIndex": 1176,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T09:30:00-07:00"
@@ -32847,8 +33239,8 @@
         ]
       },
       {
-        "startIndex": 1163,
-        "endIndex": 1163,
+        "startIndex": 1177,
+        "endIndex": 1177,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T10:00:00-07:00"
@@ -32871,8 +33263,8 @@
         ]
       },
       {
-        "startIndex": 1164,
-        "endIndex": 1164,
+        "startIndex": 1178,
+        "endIndex": 1178,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T10:30:00-07:00"
@@ -32895,8 +33287,8 @@
         ]
       },
       {
-        "startIndex": 1165,
-        "endIndex": 1165,
+        "startIndex": 1179,
+        "endIndex": 1179,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T11:00:00-07:00"
@@ -32919,8 +33311,8 @@
         ]
       },
       {
-        "startIndex": 1166,
-        "endIndex": 1166,
+        "startIndex": 1180,
+        "endIndex": 1180,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T11:30:00-07:00"
@@ -32943,8 +33335,8 @@
         ]
       },
       {
-        "startIndex": 1167,
-        "endIndex": 1167,
+        "startIndex": 1181,
+        "endIndex": 1181,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T12:00:00-07:00"
@@ -32967,8 +33359,8 @@
         ]
       },
       {
-        "startIndex": 1168,
-        "endIndex": 1168,
+        "startIndex": 1182,
+        "endIndex": 1182,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T12:30:00-07:00"
@@ -32991,8 +33383,8 @@
         ]
       },
       {
-        "startIndex": 1169,
-        "endIndex": 1169,
+        "startIndex": 1183,
+        "endIndex": 1183,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T13:00:00-07:00"
@@ -33015,8 +33407,8 @@
         ]
       },
       {
-        "startIndex": 1170,
-        "endIndex": 1170,
+        "startIndex": 1184,
+        "endIndex": 1184,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T13:30:00-07:00"
@@ -33039,8 +33431,8 @@
         ]
       },
       {
-        "startIndex": 1171,
-        "endIndex": 1171,
+        "startIndex": 1185,
+        "endIndex": 1185,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-20T14:00:00-07:00"
@@ -33063,8 +33455,8 @@
         ]
       },
       {
-        "startIndex": 1172,
-        "endIndex": 1172,
+        "startIndex": 1186,
+        "endIndex": 1186,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T09:00:00-07:00"
@@ -33087,8 +33479,8 @@
         ]
       },
       {
-        "startIndex": 1173,
-        "endIndex": 1173,
+        "startIndex": 1187,
+        "endIndex": 1187,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T09:30:00-07:00"
@@ -33111,8 +33503,8 @@
         ]
       },
       {
-        "startIndex": 1174,
-        "endIndex": 1174,
+        "startIndex": 1188,
+        "endIndex": 1188,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T10:00:00-07:00"
@@ -33135,8 +33527,8 @@
         ]
       },
       {
-        "startIndex": 1175,
-        "endIndex": 1175,
+        "startIndex": 1189,
+        "endIndex": 1189,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T10:30:00-07:00"
@@ -33159,8 +33551,8 @@
         ]
       },
       {
-        "startIndex": 1176,
-        "endIndex": 1176,
+        "startIndex": 1190,
+        "endIndex": 1190,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T11:00:00-07:00"
@@ -33183,8 +33575,8 @@
         ]
       },
       {
-        "startIndex": 1177,
-        "endIndex": 1177,
+        "startIndex": 1191,
+        "endIndex": 1191,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T11:30:00-07:00"
@@ -33207,8 +33599,8 @@
         ]
       },
       {
-        "startIndex": 1178,
-        "endIndex": 1178,
+        "startIndex": 1192,
+        "endIndex": 1192,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T12:00:00-07:00"
@@ -33231,8 +33623,8 @@
         ]
       },
       {
-        "startIndex": 1179,
-        "endIndex": 1179,
+        "startIndex": 1193,
+        "endIndex": 1193,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T12:30:00-07:00"
@@ -33255,8 +33647,8 @@
         ]
       },
       {
-        "startIndex": 1180,
-        "endIndex": 1180,
+        "startIndex": 1194,
+        "endIndex": 1194,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T13:00:00-07:00"
@@ -33279,8 +33671,8 @@
         ]
       },
       {
-        "startIndex": 1181,
-        "endIndex": 1181,
+        "startIndex": 1195,
+        "endIndex": 1195,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T13:30:00-07:00"
@@ -33303,8 +33695,8 @@
         ]
       },
       {
-        "startIndex": 1182,
-        "endIndex": 1182,
+        "startIndex": 1196,
+        "endIndex": 1196,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-21T14:00:00-07:00"
@@ -33327,8 +33719,8 @@
         ]
       },
       {
-        "startIndex": 1183,
-        "endIndex": 1183,
+        "startIndex": 1197,
+        "endIndex": 1197,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T09:00:00-07:00"
@@ -33351,8 +33743,8 @@
         ]
       },
       {
-        "startIndex": 1184,
-        "endIndex": 1184,
+        "startIndex": 1198,
+        "endIndex": 1198,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T09:30:00-07:00"
@@ -33375,8 +33767,8 @@
         ]
       },
       {
-        "startIndex": 1185,
-        "endIndex": 1185,
+        "startIndex": 1199,
+        "endIndex": 1199,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T10:00:00-07:00"
@@ -33399,8 +33791,8 @@
         ]
       },
       {
-        "startIndex": 1186,
-        "endIndex": 1186,
+        "startIndex": 1200,
+        "endIndex": 1200,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T10:30:00-07:00"
@@ -33423,8 +33815,8 @@
         ]
       },
       {
-        "startIndex": 1187,
-        "endIndex": 1187,
+        "startIndex": 1201,
+        "endIndex": 1201,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T11:00:00-07:00"
@@ -33447,8 +33839,8 @@
         ]
       },
       {
-        "startIndex": 1188,
-        "endIndex": 1188,
+        "startIndex": 1202,
+        "endIndex": 1202,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T11:30:00-07:00"
@@ -33471,8 +33863,8 @@
         ]
       },
       {
-        "startIndex": 1189,
-        "endIndex": 1189,
+        "startIndex": 1203,
+        "endIndex": 1203,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T12:00:00-07:00"
@@ -33495,8 +33887,8 @@
         ]
       },
       {
-        "startIndex": 1190,
-        "endIndex": 1190,
+        "startIndex": 1204,
+        "endIndex": 1204,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T12:30:00-07:00"
@@ -33519,8 +33911,8 @@
         ]
       },
       {
-        "startIndex": 1191,
-        "endIndex": 1191,
+        "startIndex": 1205,
+        "endIndex": 1205,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T13:00:00-07:00"
@@ -33543,8 +33935,8 @@
         ]
       },
       {
-        "startIndex": 1192,
-        "endIndex": 1192,
+        "startIndex": 1206,
+        "endIndex": 1206,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T13:30:00-07:00"
@@ -33567,8 +33959,8 @@
         ]
       },
       {
-        "startIndex": 1193,
-        "endIndex": 1193,
+        "startIndex": 1207,
+        "endIndex": 1207,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-24T14:00:00-07:00"
@@ -33591,8 +33983,8 @@
         ]
       },
       {
-        "startIndex": 1194,
-        "endIndex": 1194,
+        "startIndex": 1208,
+        "endIndex": 1208,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T09:00:00-07:00"
@@ -33615,8 +34007,8 @@
         ]
       },
       {
-        "startIndex": 1195,
-        "endIndex": 1195,
+        "startIndex": 1209,
+        "endIndex": 1209,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T09:30:00-07:00"
@@ -33639,8 +34031,8 @@
         ]
       },
       {
-        "startIndex": 1196,
-        "endIndex": 1196,
+        "startIndex": 1210,
+        "endIndex": 1210,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T10:00:00-07:00"
@@ -33663,8 +34055,8 @@
         ]
       },
       {
-        "startIndex": 1197,
-        "endIndex": 1197,
+        "startIndex": 1211,
+        "endIndex": 1211,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T10:30:00-07:00"
@@ -33687,8 +34079,8 @@
         ]
       },
       {
-        "startIndex": 1198,
-        "endIndex": 1198,
+        "startIndex": 1212,
+        "endIndex": 1212,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T11:00:00-07:00"
@@ -33711,8 +34103,8 @@
         ]
       },
       {
-        "startIndex": 1199,
-        "endIndex": 1199,
+        "startIndex": 1213,
+        "endIndex": 1213,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T11:30:00-07:00"
@@ -33735,8 +34127,8 @@
         ]
       },
       {
-        "startIndex": 1200,
-        "endIndex": 1200,
+        "startIndex": 1214,
+        "endIndex": 1214,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T12:00:00-07:00"
@@ -33759,8 +34151,8 @@
         ]
       },
       {
-        "startIndex": 1201,
-        "endIndex": 1201,
+        "startIndex": 1215,
+        "endIndex": 1215,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T12:30:00-07:00"
@@ -33783,8 +34175,8 @@
         ]
       },
       {
-        "startIndex": 1202,
-        "endIndex": 1202,
+        "startIndex": 1216,
+        "endIndex": 1216,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T13:00:00-07:00"
@@ -33807,8 +34199,8 @@
         ]
       },
       {
-        "startIndex": 1203,
-        "endIndex": 1203,
+        "startIndex": 1217,
+        "endIndex": 1217,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T13:30:00-07:00"
@@ -33831,8 +34223,8 @@
         ]
       },
       {
-        "startIndex": 1204,
-        "endIndex": 1204,
+        "startIndex": 1218,
+        "endIndex": 1218,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-25T14:00:00-07:00"
@@ -33855,8 +34247,8 @@
         ]
       },
       {
-        "startIndex": 1205,
-        "endIndex": 1205,
+        "startIndex": 1219,
+        "endIndex": 1219,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T09:00:00-07:00"
@@ -33879,8 +34271,8 @@
         ]
       },
       {
-        "startIndex": 1206,
-        "endIndex": 1206,
+        "startIndex": 1220,
+        "endIndex": 1220,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T09:30:00-07:00"
@@ -33903,8 +34295,8 @@
         ]
       },
       {
-        "startIndex": 1207,
-        "endIndex": 1207,
+        "startIndex": 1221,
+        "endIndex": 1221,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T10:00:00-07:00"
@@ -33927,8 +34319,8 @@
         ]
       },
       {
-        "startIndex": 1208,
-        "endIndex": 1208,
+        "startIndex": 1222,
+        "endIndex": 1222,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T10:30:00-07:00"
@@ -33951,8 +34343,8 @@
         ]
       },
       {
-        "startIndex": 1209,
-        "endIndex": 1209,
+        "startIndex": 1223,
+        "endIndex": 1223,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T11:00:00-07:00"
@@ -33975,8 +34367,8 @@
         ]
       },
       {
-        "startIndex": 1210,
-        "endIndex": 1210,
+        "startIndex": 1224,
+        "endIndex": 1224,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T11:30:00-07:00"
@@ -33999,8 +34391,8 @@
         ]
       },
       {
-        "startIndex": 1211,
-        "endIndex": 1211,
+        "startIndex": 1225,
+        "endIndex": 1225,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T12:00:00-07:00"
@@ -34023,8 +34415,8 @@
         ]
       },
       {
-        "startIndex": 1212,
-        "endIndex": 1212,
+        "startIndex": 1226,
+        "endIndex": 1226,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T12:30:00-07:00"
@@ -34047,8 +34439,8 @@
         ]
       },
       {
-        "startIndex": 1213,
-        "endIndex": 1213,
+        "startIndex": 1227,
+        "endIndex": 1227,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T13:00:00-07:00"
@@ -34071,8 +34463,8 @@
         ]
       },
       {
-        "startIndex": 1214,
-        "endIndex": 1214,
+        "startIndex": 1228,
+        "endIndex": 1228,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T13:30:00-07:00"
@@ -34095,8 +34487,8 @@
         ]
       },
       {
-        "startIndex": 1215,
-        "endIndex": 1215,
+        "startIndex": 1229,
+        "endIndex": 1229,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-26T14:00:00-07:00"
@@ -34119,8 +34511,8 @@
         ]
       },
       {
-        "startIndex": 1216,
-        "endIndex": 1216,
+        "startIndex": 1230,
+        "endIndex": 1230,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T09:00:00-07:00"
@@ -34143,8 +34535,8 @@
         ]
       },
       {
-        "startIndex": 1217,
-        "endIndex": 1217,
+        "startIndex": 1231,
+        "endIndex": 1231,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T09:30:00-07:00"
@@ -34167,8 +34559,8 @@
         ]
       },
       {
-        "startIndex": 1218,
-        "endIndex": 1218,
+        "startIndex": 1232,
+        "endIndex": 1232,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T10:00:00-07:00"
@@ -34191,8 +34583,8 @@
         ]
       },
       {
-        "startIndex": 1219,
-        "endIndex": 1219,
+        "startIndex": 1233,
+        "endIndex": 1233,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T10:30:00-07:00"
@@ -34215,8 +34607,8 @@
         ]
       },
       {
-        "startIndex": 1220,
-        "endIndex": 1220,
+        "startIndex": 1234,
+        "endIndex": 1234,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T11:00:00-07:00"
@@ -34239,8 +34631,8 @@
         ]
       },
       {
-        "startIndex": 1221,
-        "endIndex": 1221,
+        "startIndex": 1235,
+        "endIndex": 1235,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T11:30:00-07:00"
@@ -34263,8 +34655,8 @@
         ]
       },
       {
-        "startIndex": 1222,
-        "endIndex": 1222,
+        "startIndex": 1236,
+        "endIndex": 1236,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T12:00:00-07:00"
@@ -34287,8 +34679,8 @@
         ]
       },
       {
-        "startIndex": 1223,
-        "endIndex": 1223,
+        "startIndex": 1237,
+        "endIndex": 1237,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T12:30:00-07:00"
@@ -34311,8 +34703,8 @@
         ]
       },
       {
-        "startIndex": 1224,
-        "endIndex": 1224,
+        "startIndex": 1238,
+        "endIndex": 1238,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T13:00:00-07:00"
@@ -34335,8 +34727,8 @@
         ]
       },
       {
-        "startIndex": 1225,
-        "endIndex": 1225,
+        "startIndex": 1239,
+        "endIndex": 1239,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T13:30:00-07:00"
@@ -34359,8 +34751,8 @@
         ]
       },
       {
-        "startIndex": 1226,
-        "endIndex": 1226,
+        "startIndex": 1240,
+        "endIndex": 1240,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-27T14:00:00-07:00"
@@ -34383,8 +34775,8 @@
         ]
       },
       {
-        "startIndex": 1227,
-        "endIndex": 1227,
+        "startIndex": 1241,
+        "endIndex": 1241,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T09:00:00-07:00"
@@ -34407,8 +34799,8 @@
         ]
       },
       {
-        "startIndex": 1228,
-        "endIndex": 1228,
+        "startIndex": 1242,
+        "endIndex": 1242,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T09:30:00-07:00"
@@ -34431,8 +34823,8 @@
         ]
       },
       {
-        "startIndex": 1229,
-        "endIndex": 1229,
+        "startIndex": 1243,
+        "endIndex": 1243,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T10:00:00-07:00"
@@ -34455,8 +34847,8 @@
         ]
       },
       {
-        "startIndex": 1230,
-        "endIndex": 1230,
+        "startIndex": 1244,
+        "endIndex": 1244,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T10:30:00-07:00"
@@ -34479,8 +34871,8 @@
         ]
       },
       {
-        "startIndex": 1231,
-        "endIndex": 1231,
+        "startIndex": 1245,
+        "endIndex": 1245,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T11:00:00-07:00"
@@ -34503,8 +34895,8 @@
         ]
       },
       {
-        "startIndex": 1232,
-        "endIndex": 1232,
+        "startIndex": 1246,
+        "endIndex": 1246,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T11:30:00-07:00"
@@ -34527,8 +34919,8 @@
         ]
       },
       {
-        "startIndex": 1233,
-        "endIndex": 1233,
+        "startIndex": 1247,
+        "endIndex": 1247,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T12:00:00-07:00"
@@ -34551,8 +34943,8 @@
         ]
       },
       {
-        "startIndex": 1234,
-        "endIndex": 1234,
+        "startIndex": 1248,
+        "endIndex": 1248,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T12:30:00-07:00"
@@ -34575,8 +34967,8 @@
         ]
       },
       {
-        "startIndex": 1235,
-        "endIndex": 1235,
+        "startIndex": 1249,
+        "endIndex": 1249,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T13:00:00-07:00"
@@ -34599,8 +34991,8 @@
         ]
       },
       {
-        "startIndex": 1236,
-        "endIndex": 1236,
+        "startIndex": 1250,
+        "endIndex": 1250,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T13:30:00-07:00"
@@ -34623,8 +35015,8 @@
         ]
       },
       {
-        "startIndex": 1237,
-        "endIndex": 1237,
+        "startIndex": 1251,
+        "endIndex": 1251,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2027-02-28T14:00:00-07:00"
@@ -34650,11 +35042,11 @@
     "grandTotals": [
       {
         "name": "AvailableQuantity",
-        "value": "142186"
+        "value": "143933"
       },
       {
         "name": "Capacity",
-        "value": "154240"
+        "value": "155990"
       }
     ]
   }
