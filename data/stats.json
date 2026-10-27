@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-27T14:48:27.241432-06:00",
+ "generatedAt": "2026-10-27T15:08:42.892507-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-27T14:48:27.241432-06:00",
+ "salesGeneratedAt": "2026-10-27T15:08:42.892507-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 179696,
+   "sold": 179701,
    "arrivedToDate": 176998,
-   "futureArrivals": 2698,
-   "checkedIn": 148714,
-   "checkedInToDate": 148662
+   "futureArrivals": 2703,
+   "checkedIn": 148703,
+   "checkedInToDate": 148651
   },
   "today": {
    "sold": 823,
-   "checkedIn": 735
+   "checkedIn": 724
   },
   "byEventName": {
    "General Admission": {
-    "sold": 172385,
+    "sold": 172390,
     "arrivedToDate": 169769,
-    "futureArrivals": 2616,
-    "checkedIn": 144753,
-    "checkedInToDate": 144703
+    "futureArrivals": 2621,
+    "checkedIn": 144742,
+    "checkedInToDate": 144692
    },
    "Walk-Up": {
     "sold": 4181,
@@ -483,10 +483,10 @@
    },
    "2026-10-27": {
     "sold": 823,
-    "checkedIn": 735
+    "checkedIn": 724
    },
    "2026-10-28": {
-    "sold": 310,
+    "sold": 313,
     "checkedIn": 0
    },
    "2026-10-29": {
@@ -538,7 +538,7 @@
     "checkedIn": 0
    },
    "2026-11-12": {
-    "sold": 27,
+    "sold": 29,
     "checkedIn": 0
    },
    "2026-11-13": {
@@ -673,10 +673,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 156416,
-  "todaySold": 749,
-  "ytdSoldIncludingToday": 157165,
-  "outstandingFutureSold": 2105,
-  "todayFutureSlotsSold": 6,
+  "todaySold": 738,
+  "ytdSoldIncludingToday": 157154,
+  "outstandingFutureSold": 2104,
+  "todayFutureSlotsSold": 0,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
