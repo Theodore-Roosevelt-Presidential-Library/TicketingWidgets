@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-30T11:18:54.900898-06:00",
+ "generatedAt": "2026-10-30T11:35:07.296500-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-30T11:18:54.900898-06:00",
+ "salesGeneratedAt": "2026-10-30T11:35:07.296500-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 180382,
-   "arrivedToDate": 178140,
-   "futureArrivals": 2242,
-   "checkedIn": 149491,
-   "checkedInToDate": 149439
+   "sold": 180392,
+   "arrivedToDate": 178146,
+   "futureArrivals": 2246,
+   "checkedIn": 149503,
+   "checkedInToDate": 149451
   },
   "today": {
-   "sold": 236,
-   "checkedIn": 174
+   "sold": 242,
+   "checkedIn": 186
   },
   "byEventName": {
    "General Admission": {
-    "sold": 173039,
-    "arrivedToDate": 170904,
-    "futureArrivals": 2135,
-    "checkedIn": 145526,
-    "checkedInToDate": 145476
+    "sold": 173049,
+    "arrivedToDate": 170910,
+    "futureArrivals": 2139,
+    "checkedIn": 145538,
+    "checkedInToDate": 145488
    },
    "Walk-Up": {
     "sold": 4213,
@@ -494,8 +494,8 @@
     "checkedIn": 259
    },
    "2026-10-30": {
-    "sold": 236,
-    "checkedIn": 174
+    "sold": 242,
+    "checkedIn": 186
    },
    "2026-10-31": {
     "sold": 159,
@@ -522,7 +522,7 @@
     "checkedIn": 0
    },
    "2026-11-07": {
-    "sold": 70,
+    "sold": 74,
     "checkedIn": 0
    },
    "2026-11-08": {
@@ -677,10 +677,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 157799,
-  "todaySold": 219,
-  "ytdSoldIncludingToday": 158018,
-  "outstandingFutureSold": 1988,
-  "todayFutureSlotsSold": 86,
+  "todaySold": 226,
+  "ytdSoldIncludingToday": 158025,
+  "outstandingFutureSold": 1985,
+  "todayFutureSlotsSold": 79,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
