@@ -1,124 +1,20 @@
 {
-  "generatedAt": "2026-10-29T23:48:43.638892-06:00",
+  "generatedAt": "2026-10-30T00:17:54.452729-06:00",
   "timezone": "America/Denver",
-  "today": "2026-10-29",
+  "today": "2026-10-30",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
   "mock": null,
   "bookingHorizon": {
     "lastDate": "2027-02-28",
-    "daysOut": 122,
+    "daysOut": 121,
     "label": "February 28, 2027",
-    "openDays": 93,
+    "openDays": 92,
     "note": "Last date with General Admission events on the ACME calendar. Not a sell-out date \u2014 it is how far ahead the schedule is published."
   },
   "days": [
     {
-      "date": "2026-10-29",
-      "dayLabel": "Today",
-      "closed": false,
-      "totalCapacity": 1375,
-      "totalSold": 285,
-      "pctSold": 21,
-      "soldOutSlots": 0,
-      "firstAvailable": null,
-      "status": "ended",
-      "selloutRisk": "none",
-      "riskNote": "Today's entries have ended.",
-      "riskReason": "Today's entries have ended",
-      "slots": [
-        {
-          "time": "09:00",
-          "label": "9:00 AM",
-          "capacity": 125,
-          "sold": 39,
-          "remaining": 86,
-          "status": "past"
-        },
-        {
-          "time": "09:30",
-          "label": "9:30 AM",
-          "capacity": 125,
-          "sold": 90,
-          "remaining": 35,
-          "status": "past"
-        },
-        {
-          "time": "10:00",
-          "label": "10:00 AM",
-          "capacity": 125,
-          "sold": 29,
-          "remaining": 96,
-          "status": "past"
-        },
-        {
-          "time": "10:30",
-          "label": "10:30 AM",
-          "capacity": 125,
-          "sold": 14,
-          "remaining": 111,
-          "status": "past"
-        },
-        {
-          "time": "11:00",
-          "label": "11:00 AM",
-          "capacity": 125,
-          "sold": 21,
-          "remaining": 104,
-          "status": "past"
-        },
-        {
-          "time": "11:30",
-          "label": "11:30 AM",
-          "capacity": 125,
-          "sold": 13,
-          "remaining": 112,
-          "status": "past"
-        },
-        {
-          "time": "12:00",
-          "label": "12:00 PM",
-          "capacity": 125,
-          "sold": 7,
-          "remaining": 118,
-          "status": "past"
-        },
-        {
-          "time": "12:30",
-          "label": "12:30 PM",
-          "capacity": 125,
-          "sold": 22,
-          "remaining": 103,
-          "status": "past"
-        },
-        {
-          "time": "13:00",
-          "label": "1:00 PM",
-          "capacity": 125,
-          "sold": 33,
-          "remaining": 92,
-          "status": "past"
-        },
-        {
-          "time": "13:30",
-          "label": "1:30 PM",
-          "capacity": 125,
-          "sold": 12,
-          "remaining": 113,
-          "status": "past"
-        },
-        {
-          "time": "14:00",
-          "label": "2:00 PM",
-          "capacity": 125,
-          "sold": 5,
-          "remaining": 120,
-          "status": "past"
-        }
-      ]
-    },
-    {
       "date": "2026-10-30",
-      "dayLabel": "Tomorrow",
+      "dayLabel": "Today",
       "closed": false,
       "totalCapacity": 1375,
       "totalSold": 153,
@@ -127,8 +23,8 @@
       "firstAvailable": "9:00 AM",
       "status": "available",
       "selloutRisk": "low",
-      "riskNote": "Good availability.",
-      "riskReason": "Good availability",
+      "riskNote": "Good availability today.",
+      "riskReason": "Good availability today",
       "slots": [
         {
           "time": "09:00",
@@ -222,7 +118,7 @@
     },
     {
       "date": "2026-10-31",
-      "dayLabel": "Sat Oct 31",
+      "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1875,
       "totalSold": 147,
@@ -818,6 +714,21 @@
           "status": "available"
         }
       ]
+    },
+    {
+      "date": "2026-11-06",
+      "dayLabel": "Fri Nov 6",
+      "closed": true,
+      "slots": [],
+      "closedReason": "Friends and Family Day",
+      "status": "closed",
+      "selloutRisk": "none",
+      "riskNote": "Closed \u2014 Friends and Family Day",
+      "totalCapacity": 0,
+      "totalSold": 0,
+      "pctSold": 0,
+      "soldOutSlots": 0,
+      "firstAvailable": null
     }
   ]
 }
