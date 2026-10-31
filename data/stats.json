@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T15:19:03.341327-06:00",
+ "generatedAt": "2026-10-31T15:34:35.806138-06:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-10-31T15:19:03.341327-06:00",
+ "salesGeneratedAt": "2026-10-31T15:34:35.806138-06:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 180692,
-   "arrivedToDate": 178517,
-   "futureArrivals": 2175,
-   "checkedIn": 149894,
-   "checkedInToDate": 149840
+   "sold": 180702,
+   "arrivedToDate": 178523,
+   "futureArrivals": 2179,
+   "checkedIn": 149900,
+   "checkedInToDate": 149846
   },
   "today": {
-   "sold": 310,
-   "checkedIn": 290
+   "sold": 316,
+   "checkedIn": 296
   },
   "byEventName": {
    "General Admission": {
-    "sold": 173349,
-    "arrivedToDate": 171281,
-    "futureArrivals": 2068,
-    "checkedIn": 145929,
-    "checkedInToDate": 145877
+    "sold": 173359,
+    "arrivedToDate": 171287,
+    "futureArrivals": 2072,
+    "checkedIn": 145935,
+    "checkedInToDate": 145883
    },
    "Walk-Up": {
     "sold": 4213,
@@ -498,11 +498,11 @@
     "checkedIn": 285
    },
    "2026-10-31": {
-    "sold": 310,
-    "checkedIn": 290
+    "sold": 316,
+    "checkedIn": 296
    },
    "2026-11-01": {
-    "sold": 120,
+    "sold": 124,
     "checkedIn": 2
    },
    "2026-11-03": {
@@ -677,10 +677,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 158085,
-  "todaySold": 307,
-  "ytdSoldIncludingToday": 158392,
-  "outstandingFutureSold": 1836,
-  "todayFutureSlotsSold": 11,
+  "todaySold": 313,
+  "ytdSoldIncludingToday": 158398,
+  "outstandingFutureSold": 1839,
+  "todayFutureSlotsSold": 10,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
