@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generatedAt": "2026-11-01T14:08:39.205900-07:00",
+ "generatedAt": "2026-11-02T14:09:13.847414-07:00",
  "seasonStart": "2026-07-04",
  "regionStates": [
   "MN",
@@ -11,23 +11,23 @@
  ],
  "source": "ACME Transactions \u2014 Quantity by EventStartTime and customer address. Aggregated in ACME; no personal data is requested or stored.",
  "coverage": {
-  "tickets": 171802,
-  "withAddress": 138909,
+  "tickets": 171817,
+  "withAddress": 138913,
   "pct": 81,
   "note": "Share of ticket sales carrying a usable address. Door sales rarely capture one, so percentages below are of tickets we can place, not of all visitors."
  },
  "current": {
-  "from": "2026-10-26",
-  "to": "2026-11-01",
-  "tickets": 2582,
-  "known": 1273,
+  "from": "2026-10-27",
+  "to": "2026-11-02",
+  "tickets": 2597,
+  "known": 1277,
   "intlTickets": 0,
   "topStates": [
    {
     "state": "ND",
     "name": "North Dakota",
-    "tickets": 438,
-    "pct": 34
+    "tickets": 442,
+    "pct": 35
    },
    {
     "state": "MN",
@@ -1290,14 +1290,14 @@
   {
    "week": "2026-10-26",
    "label": "Oct 26",
-   "partial": true,
-   "tickets": 2582,
-   "known": 1273,
+   "partial": false,
+   "tickets": 2597,
+   "known": 1277,
    "unknownPct": 51,
    "buckets": {
     "nd": {
-     "tickets": 438,
-     "pct": 34
+     "tickets": 442,
+     "pct": 35
     },
     "region": {
      "tickets": 361,
@@ -1330,7 +1330,7 @@
    "topStates": [
     [
      "ND",
-     438
+     442
     ],
     [
      "MN",
@@ -1675,13 +1675,13 @@
   {
    "period": "2026-11",
    "label": "Nov 2026",
-   "tickets": 248,
-   "known": 168,
-   "unknownPct": 32,
+   "tickets": 263,
+   "known": 172,
+   "unknownPct": 35,
    "buckets": {
     "nd": {
-     "tickets": 80,
-     "pct": 48
+     "tickets": 84,
+     "pct": 49
     },
     "region": {
      "tickets": 29,
@@ -1695,7 +1695,7 @@
     },
     "us": {
      "tickets": 59,
-     "pct": 35,
+     "pct": 34,
      "states": [
       "AZ",
       "IL",
@@ -1713,7 +1713,7 @@
    "topStates": [
     [
      "ND",
-     80
+     84
     ],
     [
      "MT",
@@ -1751,12 +1751,12 @@
   {
    "period": "2026",
    "label": "2026",
-   "tickets": 171802,
-   "known": 138909,
+   "tickets": 171817,
+   "known": 138913,
    "unknownPct": 19,
    "buckets": {
     "nd": {
-     "tickets": 46854,
+     "tickets": 46858,
      "pct": 34
     },
     "region": {
@@ -1794,7 +1794,7 @@
    "topStates": [
     [
      "ND",
-     46854
+     46858
     ],
     [
      "MN",
@@ -1892,7 +1892,7 @@
      },
      {
       "month": "2026-11",
-      "tickets": 85,
+      "tickets": 100,
       "pct": 82
      }
     ]
