@@ -272,6 +272,7 @@
         "2026-12-24",
         "2026-12-26",
         "2026-12-27",
+        "2026-12-29",
         "2026-12-30",
         "2026-12-31"
       ]
@@ -546,6 +547,7 @@
         "General Admission",
         "General Admission",
         "General Admission",
+        "General Admission",
         "Flex Tickets"
       ]
     },
@@ -776,7 +778,7 @@
         263,
         417,
         230,
-        196,
+        198,
         132,
         151,
         61,
@@ -818,6 +820,7 @@
         2,
         13,
         31,
+        2,
         1,
         5
       ]
@@ -1049,7 +1052,7 @@
         233,
         316,
         166,
-        44,
+        54,
         0,
         0,
         0,
@@ -1089,6 +1092,7 @@
         0,
         0,
         2,
+        0,
         0,
         0,
         0,
@@ -3922,11 +3926,11 @@
         "subtotalFields": [
           {
             "name": "TicketQuantity",
-            "value": "196"
+            "value": "198"
           },
           {
             "name": "CheckedInCount",
-            "value": "44"
+            "value": "54"
           }
         ]
       },
@@ -4847,6 +4851,30 @@
         "endIndex": 265,
         "primaryGroupField": {
           "name": "EventStartTime",
+          "value": "2026-12-29"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-29"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "TicketQuantity",
+            "value": "2"
+          },
+          {
+            "name": "CheckedInCount",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "startIndex": 266,
+        "endIndex": 266,
+        "primaryGroupField": {
+          "name": "EventStartTime",
           "value": "2026-12-30"
         },
         "groupFields": [
@@ -4867,8 +4895,8 @@
         ]
       },
       {
-        "startIndex": 266,
-        "endIndex": 266,
+        "startIndex": 267,
+        "endIndex": 267,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31"
@@ -4894,11 +4922,11 @@
     "grandTotals": [
       {
         "name": "TicketQuantity",
-        "value": "181725"
+        "value": "181729"
       },
       {
         "name": "CheckedInCount",
-        "value": "150664"
+        "value": "150674"
       }
     ]
   }
