@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T16:19:02.110247-07:00",
+ "generatedAt": "2026-11-07T16:34:27.188462-07:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-11-07T16:19:02.110247-07:00",
+ "salesGeneratedAt": "2026-11-07T16:34:27.188462-07:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 182612,
-   "arrivedToDate": 180417,
-   "futureArrivals": 2195,
-   "checkedIn": 151508,
-   "checkedInToDate": 151456
+   "sold": 182617,
+   "arrivedToDate": 180420,
+   "futureArrivals": 2197,
+   "checkedIn": 151511,
+   "checkedInToDate": 151459
   },
   "today": {
-   "sold": 417,
-   "checkedIn": 400
+   "sold": 420,
+   "checkedIn": 403
   },
   "byEventName": {
    "General Admission": {
-    "sold": 175238,
-    "arrivedToDate": 173150,
-    "futureArrivals": 2088,
-    "checkedIn": 147542,
-    "checkedInToDate": 147492
+    "sold": 175243,
+    "arrivedToDate": 173153,
+    "futureArrivals": 2090,
+    "checkedIn": 147545,
+    "checkedInToDate": 147495
    },
    "Walk-Up": {
     "sold": 4244,
@@ -522,8 +522,8 @@
     "checkedIn": 238
    },
    "2026-11-07": {
-    "sold": 417,
-    "checkedIn": 400
+    "sold": 420,
+    "checkedIn": 403
    },
    "2026-11-08": {
     "sold": 102,
@@ -546,7 +546,7 @@
     "checkedIn": 0
    },
    "2026-11-14": {
-    "sold": 93,
+    "sold": 95,
     "checkedIn": 0
    },
    "2026-11-15": {
@@ -685,9 +685,9 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 159702,
-  "todaySold": 414,
-  "ytdSoldIncludingToday": 160116,
-  "outstandingFutureSold": 3262,
+  "todaySold": 417,
+  "ytdSoldIncludingToday": 160119,
+  "outstandingFutureSold": 3264,
   "todayFutureSlotsSold": 6,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
