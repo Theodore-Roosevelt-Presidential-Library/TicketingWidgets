@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T09:48:35.483830-07:00",
+ "generatedAt": "2026-11-07T10:07:03.197955-07:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-11-07T09:48:35.483830-07:00",
+ "salesGeneratedAt": "2026-11-07T10:07:03.197955-07:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 182423,
-   "arrivedToDate": 180248,
-   "futureArrivals": 2175,
-   "checkedIn": 151163,
-   "checkedInToDate": 151111
+   "sold": 182445,
+   "arrivedToDate": 180267,
+   "futureArrivals": 2178,
+   "checkedIn": 151201,
+   "checkedInToDate": 151149
   },
   "today": {
-   "sold": 248,
-   "checkedIn": 55
+   "sold": 267,
+   "checkedIn": 93
   },
   "byEventName": {
    "General Admission": {
-    "sold": 175049,
-    "arrivedToDate": 172981,
-    "futureArrivals": 2068,
-    "checkedIn": 147197,
-    "checkedInToDate": 147147
+    "sold": 175071,
+    "arrivedToDate": 173000,
+    "futureArrivals": 2071,
+    "checkedIn": 147235,
+    "checkedInToDate": 147185
    },
    "Walk-Up": {
     "sold": 4244,
@@ -522,11 +522,11 @@
     "checkedIn": 238
    },
    "2026-11-07": {
-    "sold": 248,
-    "checkedIn": 55
+    "sold": 267,
+    "checkedIn": 93
    },
    "2026-11-08": {
-    "sold": 95,
+    "sold": 98,
     "checkedIn": 0
    },
    "2026-11-10": {
@@ -685,10 +685,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 159702,
-  "todaySold": 248,
-  "ytdSoldIncludingToday": 159950,
-  "outstandingFutureSold": 3484,
-  "todayFutureSlotsSold": 248,
+  "todaySold": 267,
+  "ytdSoldIncludingToday": 159969,
+  "outstandingFutureSold": 3470,
+  "todayFutureSlotsSold": 231,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
