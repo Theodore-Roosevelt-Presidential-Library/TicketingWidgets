@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T12:35:39.647394-07:00",
+ "generatedAt": "2026-11-08T12:48:33.237301-07:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-11-08T12:35:39.647394-07:00",
+ "salesGeneratedAt": "2026-11-08T12:48:33.237301-07:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 182778,
+   "sold": 182786,
    "arrivedToDate": 180652,
-   "futureArrivals": 2126,
-   "checkedIn": 151694,
-   "checkedInToDate": 151642
+   "futureArrivals": 2134,
+   "checkedIn": 151696,
+   "checkedInToDate": 151644
   },
   "today": {
    "sold": 232,
-   "checkedIn": 183
+   "checkedIn": 185
   },
   "byEventName": {
    "General Admission": {
-    "sold": 175404,
+    "sold": 175412,
     "arrivedToDate": 173385,
-    "futureArrivals": 2019,
-    "checkedIn": 147728,
-    "checkedInToDate": 147678
+    "futureArrivals": 2027,
+    "checkedIn": 147730,
+    "checkedInToDate": 147680
    },
    "Walk-Up": {
     "sold": 4244,
@@ -527,7 +527,7 @@
    },
    "2026-11-08": {
     "sold": 232,
-    "checkedIn": 183
+    "checkedIn": 185
    },
    "2026-11-10": {
     "sold": 192,
@@ -546,7 +546,7 @@
     "checkedIn": 0
    },
    "2026-11-14": {
-    "sold": 104,
+    "sold": 106,
     "checkedIn": 0
    },
    "2026-11-15": {
@@ -582,7 +582,7 @@
     "checkedIn": 0
    },
    "2026-11-25": {
-    "sold": 130,
+    "sold": 136,
     "checkedIn": 0
    },
    "2026-11-27": {
@@ -687,7 +687,7 @@
   "ytdSoldCompletedDays": 160117,
   "todaySold": 228,
   "ytdSoldIncludingToday": 160345,
-  "outstandingFutureSold": 3273,
+  "outstandingFutureSold": 3281,
   "todayFutureSlotsSold": 83,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
