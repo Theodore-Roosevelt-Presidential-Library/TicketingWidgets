@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-11T10:48:47.586815-07:00",
+ "generatedAt": "2026-11-11T11:09:48.490652-07:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-11-11T10:48:47.586815-07:00",
+ "salesGeneratedAt": "2026-11-11T11:09:48.490652-07:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 183370,
-   "arrivedToDate": 181304,
+   "sold": 183382,
+   "arrivedToDate": 181316,
    "futureArrivals": 2066,
-   "checkedIn": 152226,
-   "checkedInToDate": 152174
+   "checkedIn": 152258,
+   "checkedInToDate": 152206
   },
   "today": {
-   "sold": 219,
-   "checkedIn": 160
+   "sold": 231,
+   "checkedIn": 192
   },
   "byEventName": {
    "General Admission": {
-    "sold": 175996,
-    "arrivedToDate": 174012,
+    "sold": 176008,
+    "arrivedToDate": 174024,
     "futureArrivals": 1984,
-    "checkedIn": 148260,
-    "checkedInToDate": 148210
+    "checkedIn": 148292,
+    "checkedInToDate": 148242
    },
    "Walk-Up": {
     "sold": 4244,
@@ -534,8 +534,8 @@
     "checkedIn": 290
    },
    "2026-11-11": {
-    "sold": 219,
-    "checkedIn": 160
+    "sold": 231,
+    "checkedIn": 192
    },
    "2026-11-12": {
     "sold": 82,
@@ -684,16 +684,16 @@
   }
  },
  "inventory": {
-  "ytdSoldCompletedDays": 160683,
-  "todaySold": 215,
-  "ytdSoldIncludingToday": 160898,
-  "outstandingFutureSold": 3682,
-  "todayFutureSlotsSold": 125,
+  "ytdSoldCompletedDays": 160681,
+  "todaySold": 226,
+  "ytdSoldIncludingToday": 160907,
+  "outstandingFutureSold": 3656,
+  "todayFutureSlotsSold": 74,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
   "capacity": 206096,
-  "sold": 160683,
+  "sold": 160681,
   "pct": 78,
   "days": 121,
   "firstDay": "2026-07-04",
