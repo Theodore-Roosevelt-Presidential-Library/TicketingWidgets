@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-11T13:09:02.539379-07:00",
+ "generatedAt": "2026-11-11T14:06:50.738745-07:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-11-11T13:09:02.539379-07:00",
+ "salesGeneratedAt": "2026-11-11T14:06:50.738745-07:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 183430,
-   "arrivedToDate": 181351,
-   "futureArrivals": 2079,
-   "checkedIn": 152316,
-   "checkedInToDate": 152264
+   "sold": 183456,
+   "arrivedToDate": 181372,
+   "futureArrivals": 2084,
+   "checkedIn": 152335,
+   "checkedInToDate": 152283
   },
   "today": {
-   "sold": 266,
-   "checkedIn": 250
+   "sold": 287,
+   "checkedIn": 269
   },
   "byEventName": {
    "General Admission": {
-    "sold": 176056,
-    "arrivedToDate": 174059,
-    "futureArrivals": 1997,
-    "checkedIn": 148350,
-    "checkedInToDate": 148300
+    "sold": 176082,
+    "arrivedToDate": 174080,
+    "futureArrivals": 2002,
+    "checkedIn": 148369,
+    "checkedInToDate": 148319
    },
    "Walk-Up": {
     "sold": 4244,
@@ -534,11 +534,11 @@
     "checkedIn": 290
    },
    "2026-11-11": {
-    "sold": 266,
-    "checkedIn": 250
+    "sold": 287,
+    "checkedIn": 269
    },
    "2026-11-12": {
-    "sold": 84,
+    "sold": 87,
     "checkedIn": 0
    },
    "2026-11-13": {
@@ -554,7 +554,7 @@
     "checkedIn": 0
    },
    "2026-11-17": {
-    "sold": 165,
+    "sold": 167,
     "checkedIn": 0
    },
    "2026-11-18": {
@@ -685,10 +685,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 160681,
-  "todaySold": 261,
-  "ytdSoldIncludingToday": 160942,
-  "outstandingFutureSold": 3627,
-  "todayFutureSlotsSold": 32,
+  "todaySold": 282,
+  "ytdSoldIncludingToday": 160963,
+  "outstandingFutureSold": 3624,
+  "todayFutureSlotsSold": 24,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
