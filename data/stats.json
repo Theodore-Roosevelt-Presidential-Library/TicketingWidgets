@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T08:48:45.185640-07:00",
+ "generatedAt": "2026-11-13T09:10:11.219097-07:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-11-13T08:48:45.185640-07:00",
+ "salesGeneratedAt": "2026-11-13T09:10:11.219097-07:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 183726,
-   "arrivedToDate": 181644,
-   "futureArrivals": 2082,
-   "checkedIn": 152502,
-   "checkedInToDate": 152450
+   "sold": 183735,
+   "arrivedToDate": 181651,
+   "futureArrivals": 2084,
+   "checkedIn": 152511,
+   "checkedInToDate": 152459
   },
   "today": {
-   "sold": 94,
-   "checkedIn": 0
+   "sold": 101,
+   "checkedIn": 9
   },
   "byEventName": {
    "General Admission": {
-    "sold": 176352,
-    "arrivedToDate": 174352,
-    "futureArrivals": 2000,
-    "checkedIn": 148536,
-    "checkedInToDate": 148486
+    "sold": 176361,
+    "arrivedToDate": 174359,
+    "futureArrivals": 2002,
+    "checkedIn": 148545,
+    "checkedInToDate": 148495
    },
    "Walk-Up": {
     "sold": 4244,
@@ -542,11 +542,11 @@
     "checkedIn": 159
    },
    "2026-11-13": {
-    "sold": 94,
-    "checkedIn": 0
+    "sold": 101,
+    "checkedIn": 9
    },
    "2026-11-14": {
-    "sold": 162,
+    "sold": 164,
     "checkedIn": 0
    },
    "2026-11-15": {
@@ -689,10 +689,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 161122,
-  "todaySold": 87,
-  "ytdSoldIncludingToday": 161209,
-  "outstandingFutureSold": 3718,
-  "todayFutureSlotsSold": 87,
+  "todaySold": 94,
+  "ytdSoldIncludingToday": 161216,
+  "outstandingFutureSold": 3727,
+  "todayFutureSlotsSold": 94,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
