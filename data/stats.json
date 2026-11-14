@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T07:34:27.234901-07:00",
+ "generatedAt": "2026-11-14T07:48:56.913204-07:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,25 +7,25 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-11-14T07:34:27.234901-07:00",
+ "salesGeneratedAt": "2026-11-14T07:48:56.913204-07:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 183939,
-   "arrivedToDate": 181968,
-   "futureArrivals": 1971,
+   "sold": 183949,
+   "arrivedToDate": 181970,
+   "futureArrivals": 1979,
    "checkedIn": 152688,
    "checkedInToDate": 152636
   },
   "today": {
-   "sold": 218,
+   "sold": 220,
    "checkedIn": 0
   },
   "byEventName": {
    "General Admission": {
-    "sold": 176565,
-    "arrivedToDate": 174676,
-    "futureArrivals": 1889,
+    "sold": 176575,
+    "arrivedToDate": 174678,
+    "futureArrivals": 1897,
     "checkedIn": 148722,
     "checkedInToDate": 148672
    },
@@ -546,7 +546,7 @@
     "checkedIn": 186
    },
    "2026-11-14": {
-    "sold": 218,
+    "sold": 220,
     "checkedIn": 0
    },
    "2026-11-15": {
@@ -554,7 +554,7 @@
     "checkedIn": 0
    },
    "2026-11-17": {
-    "sold": 176,
+    "sold": 178,
     "checkedIn": 0
    },
    "2026-11-18": {
@@ -570,7 +570,7 @@
     "checkedIn": 50
    },
    "2026-11-21": {
-    "sold": 32,
+    "sold": 38,
     "checkedIn": 0
    },
    "2026-11-22": {
@@ -689,10 +689,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 161310,
-  "todaySold": 200,
-  "ytdSoldIncludingToday": 161510,
-  "outstandingFutureSold": 3870,
-  "todayFutureSlotsSold": 200,
+  "todaySold": 202,
+  "ytdSoldIncludingToday": 161512,
+  "outstandingFutureSold": 3880,
+  "todayFutureSlotsSold": 202,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
