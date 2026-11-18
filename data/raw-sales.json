@@ -274,6 +274,7 @@
         "2026-12-24",
         "2026-12-26",
         "2026-12-27",
+        "2026-12-28",
         "2026-12-29",
         "2026-12-30",
         "2026-12-31"
@@ -552,6 +553,7 @@
         "General Admission",
         "General Admission",
         "General Admission",
+        "General Admission",
         "Flex Tickets"
       ]
     },
@@ -826,6 +828,7 @@
         2,
         16,
         31,
+        5,
         2,
         1,
         5
@@ -1100,6 +1103,7 @@
         0,
         0,
         2,
+        0,
         0,
         0,
         0,
@@ -4883,6 +4887,30 @@
         "endIndex": 267,
         "primaryGroupField": {
           "name": "EventStartTime",
+          "value": "2026-12-28"
+        },
+        "groupFields": [
+          {
+            "name": "EventStartTime",
+            "value": "2026-12-28"
+          }
+        ],
+        "subtotalFields": [
+          {
+            "name": "TicketQuantity",
+            "value": "5"
+          },
+          {
+            "name": "CheckedInCount",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "startIndex": 268,
+        "endIndex": 268,
+        "primaryGroupField": {
+          "name": "EventStartTime",
           "value": "2026-12-29"
         },
         "groupFields": [
@@ -4903,8 +4931,8 @@
         ]
       },
       {
-        "startIndex": 268,
-        "endIndex": 268,
+        "startIndex": 269,
+        "endIndex": 269,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-30"
@@ -4927,8 +4955,8 @@
         ]
       },
       {
-        "startIndex": 269,
-        "endIndex": 269,
+        "startIndex": 270,
+        "endIndex": 270,
         "primaryGroupField": {
           "name": "EventStartTime",
           "value": "2026-12-31"
@@ -4954,7 +4982,7 @@
     "grandTotals": [
       {
         "name": "TicketQuantity",
-        "value": "184570"
+        "value": "184575"
       },
       {
         "name": "CheckedInCount",
