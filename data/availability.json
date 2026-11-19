@@ -1,118 +1,14 @@
 {
-  "generatedAt": "2026-11-18T23:49:55.579999-07:00",
+  "generatedAt": "2026-11-19T00:10:03.973232-07:00",
   "timezone": "America/Denver",
-  "today": "2026-11-18",
+  "today": "2026-11-19",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
   "mock": null,
   "bookingHorizon": null,
   "days": [
     {
-      "date": "2026-11-18",
-      "dayLabel": "Today",
-      "closed": false,
-      "totalCapacity": 1375,
-      "totalSold": 186,
-      "pctSold": 14,
-      "soldOutSlots": 0,
-      "firstAvailable": null,
-      "status": "ended",
-      "selloutRisk": "none",
-      "riskNote": "Today's entries have ended.",
-      "riskReason": "Today's entries have ended",
-      "slots": [
-        {
-          "time": "09:00",
-          "label": "9:00 AM",
-          "capacity": 125,
-          "sold": 52,
-          "remaining": 73,
-          "status": "past"
-        },
-        {
-          "time": "09:30",
-          "label": "9:30 AM",
-          "capacity": 125,
-          "sold": 16,
-          "remaining": 109,
-          "status": "past"
-        },
-        {
-          "time": "10:00",
-          "label": "10:00 AM",
-          "capacity": 125,
-          "sold": 18,
-          "remaining": 107,
-          "status": "past"
-        },
-        {
-          "time": "10:30",
-          "label": "10:30 AM",
-          "capacity": 125,
-          "sold": 10,
-          "remaining": 115,
-          "status": "past"
-        },
-        {
-          "time": "11:00",
-          "label": "11:00 AM",
-          "capacity": 125,
-          "sold": 12,
-          "remaining": 113,
-          "status": "past"
-        },
-        {
-          "time": "11:30",
-          "label": "11:30 AM",
-          "capacity": 125,
-          "sold": 2,
-          "remaining": 123,
-          "status": "past"
-        },
-        {
-          "time": "12:00",
-          "label": "12:00 PM",
-          "capacity": 125,
-          "sold": 25,
-          "remaining": 100,
-          "status": "past"
-        },
-        {
-          "time": "12:30",
-          "label": "12:30 PM",
-          "capacity": 125,
-          "sold": 12,
-          "remaining": 113,
-          "status": "past"
-        },
-        {
-          "time": "13:00",
-          "label": "1:00 PM",
-          "capacity": 125,
-          "sold": 22,
-          "remaining": 103,
-          "status": "past"
-        },
-        {
-          "time": "13:30",
-          "label": "1:30 PM",
-          "capacity": 125,
-          "sold": 6,
-          "remaining": 119,
-          "status": "past"
-        },
-        {
-          "time": "14:00",
-          "label": "2:00 PM",
-          "capacity": 125,
-          "sold": 11,
-          "remaining": 114,
-          "status": "past"
-        }
-      ]
-    },
-    {
       "date": "2026-11-19",
-      "dayLabel": "Tomorrow",
+      "dayLabel": "Today",
       "closed": false,
       "totalCapacity": 1000,
       "totalSold": 139,
@@ -121,8 +17,8 @@
       "firstAvailable": "9:00 AM",
       "status": "available",
       "selloutRisk": "low",
-      "riskNote": "Good availability.",
-      "riskReason": "Good availability",
+      "riskNote": "Good availability today.",
+      "riskReason": "Good availability today",
       "slots": [
         {
           "time": "09:00",
@@ -192,7 +88,7 @@
     },
     {
       "date": "2026-11-20",
-      "dayLabel": "Fri Nov 20",
+      "dayLabel": "Tomorrow",
       "closed": false,
       "totalCapacity": 1375,
       "totalSold": 214,
@@ -788,6 +684,21 @@
           "status": "available"
         }
       ]
+    },
+    {
+      "date": "2026-11-26",
+      "dayLabel": "Thu Nov 26",
+      "closed": true,
+      "slots": [],
+      "closedReason": "Thanksgiving",
+      "status": "closed",
+      "selloutRisk": "none",
+      "riskNote": "Closed \u2014 Thanksgiving",
+      "totalCapacity": 0,
+      "totalSold": 0,
+      "pctSold": 0,
+      "soldOutSlots": 0,
+      "firstAvailable": null
     }
   ]
 }
