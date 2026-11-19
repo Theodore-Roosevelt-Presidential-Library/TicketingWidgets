@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T09:10:01.771554-07:00",
+ "generatedAt": "2026-11-19T09:20:38.663234-07:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,27 +7,27 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-11-19T09:10:01.771554-07:00",
+ "salesGeneratedAt": "2026-11-19T09:20:38.663234-07:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 184799,
-   "arrivedToDate": 182993,
-   "futureArrivals": 1806,
-   "checkedIn": 153602,
-   "checkedInToDate": 153550
+   "sold": 184802,
+   "arrivedToDate": 182994,
+   "futureArrivals": 1808,
+   "checkedIn": 153609,
+   "checkedInToDate": 153557
   },
   "today": {
-   "sold": 155,
-   "checkedIn": 12
+   "sold": 156,
+   "checkedIn": 19
   },
   "byEventName": {
    "General Admission": {
-    "sold": 177425,
-    "arrivedToDate": 175701,
-    "futureArrivals": 1724,
-    "checkedIn": 149636,
-    "checkedInToDate": 149586
+    "sold": 177428,
+    "arrivedToDate": 175702,
+    "futureArrivals": 1726,
+    "checkedIn": 149643,
+    "checkedInToDate": 149593
    },
    "Walk-Up": {
     "sold": 4244,
@@ -562,11 +562,11 @@
     "checkedIn": 164
    },
    "2026-11-19": {
-    "sold": 155,
-    "checkedIn": 12
+    "sold": 156,
+    "checkedIn": 19
    },
    "2026-11-20": {
-    "sold": 216,
+    "sold": 218,
     "checkedIn": 50
    },
    "2026-11-21": {
@@ -693,10 +693,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 162311,
-  "todaySold": 155,
-  "ytdSoldIncludingToday": 162466,
-  "outstandingFutureSold": 4029,
-  "todayFutureSlotsSold": 155,
+  "todaySold": 156,
+  "ytdSoldIncludingToday": 162467,
+  "outstandingFutureSold": 4032,
+  "todayFutureSlotsSold": 156,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
