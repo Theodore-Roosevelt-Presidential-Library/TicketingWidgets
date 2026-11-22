@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-22T07:48:35.674270-07:00",
+ "generatedAt": "2026-11-22T08:07:32.881727-07:00",
  "year": "2026",
  "salesSource": "ACME TicketAnalytics \u2014 TicketQuantity (tickets on orders) and CheckedInCount (scans), by EventStartTime.",
  "salesEventNames": [
@@ -7,25 +7,25 @@
   "Flex Tickets",
   "Walk-Up"
  ],
- "salesGeneratedAt": "2026-11-22T07:48:35.674270-07:00",
+ "salesGeneratedAt": "2026-11-22T08:07:32.881727-07:00",
  "salesStale": false,
  "sales": {
   "total": {
-   "sold": 185432,
-   "arrivedToDate": 183792,
-   "futureArrivals": 1640,
+   "sold": 185436,
+   "arrivedToDate": 183794,
+   "futureArrivals": 1642,
    "checkedIn": 154161,
    "checkedInToDate": 154159
   },
   "today": {
-   "sold": 126,
+   "sold": 128,
    "checkedIn": 0
   },
   "byEventName": {
    "General Admission": {
-    "sold": 178006,
-    "arrivedToDate": 176448,
-    "futureArrivals": 1558,
+    "sold": 178010,
+    "arrivedToDate": 176450,
+    "futureArrivals": 1560,
     "checkedIn": 150195,
     "checkedInToDate": 150195
    },
@@ -574,7 +574,7 @@
     "checkedIn": 230
    },
    "2026-11-22": {
-    "sold": 126,
+    "sold": 128,
     "checkedIn": 0
    },
    "2026-11-24": {
@@ -594,7 +594,7 @@
     "checkedIn": 0
    },
    "2026-11-29": {
-    "sold": 14,
+    "sold": 16,
     "checkedIn": 0
    },
    "2026-12-02": {
@@ -693,10 +693,10 @@
  },
  "inventory": {
   "ytdSoldCompletedDays": 163062,
-  "todaySold": 112,
-  "ytdSoldIncludingToday": 163174,
-  "outstandingFutureSold": 3942,
-  "todayFutureSlotsSold": 112,
+  "todaySold": 114,
+  "ytdSoldIncludingToday": 163176,
+  "outstandingFutureSold": 3946,
+  "todayFutureSlotsSold": 114,
   "note": "Derived from Capacity - AvailableQuantity. Undercounts real sales: General Admission only, and floors at capacity on days that sell past it. Use the 'sales' block for any reported ticket number."
  },
  "sellThrough": {
