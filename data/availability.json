@@ -1,118 +1,14 @@
 {
-  "generatedAt": "2026-11-24T23:52:26.199425-07:00",
+  "generatedAt": "2026-11-25T00:10:34.470188-07:00",
   "timezone": "America/Denver",
-  "today": "2026-11-24",
+  "today": "2026-11-25",
   "ticketsUrl": "https://www.trlibrary.com/tickets",
   "mock": null,
   "bookingHorizon": null,
   "days": [
     {
-      "date": "2026-11-24",
-      "dayLabel": "Today",
-      "closed": false,
-      "totalCapacity": 1375,
-      "totalSold": 305,
-      "pctSold": 22,
-      "soldOutSlots": 0,
-      "firstAvailable": null,
-      "status": "ended",
-      "selloutRisk": "none",
-      "riskNote": "Today's entries have ended.",
-      "riskReason": "Today's entries have ended",
-      "slots": [
-        {
-          "time": "09:00",
-          "label": "9:00 AM",
-          "capacity": 125,
-          "sold": 88,
-          "remaining": 37,
-          "status": "past"
-        },
-        {
-          "time": "09:30",
-          "label": "9:30 AM",
-          "capacity": 125,
-          "sold": 35,
-          "remaining": 90,
-          "status": "past"
-        },
-        {
-          "time": "10:00",
-          "label": "10:00 AM",
-          "capacity": 125,
-          "sold": 49,
-          "remaining": 76,
-          "status": "past"
-        },
-        {
-          "time": "10:30",
-          "label": "10:30 AM",
-          "capacity": 125,
-          "sold": 2,
-          "remaining": 123,
-          "status": "past"
-        },
-        {
-          "time": "11:00",
-          "label": "11:00 AM",
-          "capacity": 125,
-          "sold": 22,
-          "remaining": 103,
-          "status": "past"
-        },
-        {
-          "time": "11:30",
-          "label": "11:30 AM",
-          "capacity": 125,
-          "sold": 48,
-          "remaining": 77,
-          "status": "past"
-        },
-        {
-          "time": "12:00",
-          "label": "12:00 PM",
-          "capacity": 125,
-          "sold": 10,
-          "remaining": 115,
-          "status": "past"
-        },
-        {
-          "time": "12:30",
-          "label": "12:30 PM",
-          "capacity": 125,
-          "sold": 23,
-          "remaining": 102,
-          "status": "past"
-        },
-        {
-          "time": "13:00",
-          "label": "1:00 PM",
-          "capacity": 125,
-          "sold": 17,
-          "remaining": 108,
-          "status": "past"
-        },
-        {
-          "time": "13:30",
-          "label": "1:30 PM",
-          "capacity": 125,
-          "sold": 3,
-          "remaining": 122,
-          "status": "past"
-        },
-        {
-          "time": "14:00",
-          "label": "2:00 PM",
-          "capacity": 125,
-          "sold": 8,
-          "remaining": 117,
-          "status": "past"
-        }
-      ]
-    },
-    {
       "date": "2026-11-25",
-      "dayLabel": "Tomorrow",
+      "dayLabel": "Today",
       "closed": false,
       "totalCapacity": 1375,
       "totalSold": 269,
@@ -121,8 +17,8 @@
       "firstAvailable": "9:00 AM",
       "status": "available",
       "selloutRisk": "low",
-      "riskNote": "Good availability.",
-      "riskReason": "Good availability",
+      "riskNote": "Good availability today.",
+      "riskReason": "Good availability today",
       "slots": [
         {
           "time": "09:00",
@@ -216,7 +112,7 @@
     },
     {
       "date": "2026-11-26",
-      "dayLabel": "Thu Nov 26",
+      "dayLabel": "Tomorrow",
       "closed": true,
       "slots": [],
       "closedReason": "Thanksgiving",
@@ -666,6 +562,110 @@
       "pctSold": 0,
       "soldOutSlots": 0,
       "firstAvailable": null
+    },
+    {
+      "date": "2026-12-02",
+      "dayLabel": "Wed Dec 2",
+      "closed": false,
+      "totalCapacity": 1375,
+      "totalSold": 30,
+      "pctSold": 2,
+      "soldOutSlots": 0,
+      "firstAvailable": "9:00 AM",
+      "status": "available",
+      "selloutRisk": "low",
+      "riskNote": "Good availability.",
+      "riskReason": "Good availability",
+      "slots": [
+        {
+          "time": "09:00",
+          "label": "9:00 AM",
+          "capacity": 125,
+          "sold": 0,
+          "remaining": 125,
+          "status": "available"
+        },
+        {
+          "time": "09:30",
+          "label": "9:30 AM",
+          "capacity": 125,
+          "sold": 0,
+          "remaining": 125,
+          "status": "available"
+        },
+        {
+          "time": "10:00",
+          "label": "10:00 AM",
+          "capacity": 125,
+          "sold": 4,
+          "remaining": 121,
+          "status": "available"
+        },
+        {
+          "time": "10:30",
+          "label": "10:30 AM",
+          "capacity": 125,
+          "sold": 0,
+          "remaining": 125,
+          "status": "available"
+        },
+        {
+          "time": "11:00",
+          "label": "11:00 AM",
+          "capacity": 125,
+          "sold": 2,
+          "remaining": 123,
+          "status": "available"
+        },
+        {
+          "time": "11:30",
+          "label": "11:30 AM",
+          "capacity": 125,
+          "sold": 0,
+          "remaining": 125,
+          "status": "available"
+        },
+        {
+          "time": "12:00",
+          "label": "12:00 PM",
+          "capacity": 125,
+          "sold": 0,
+          "remaining": 125,
+          "status": "available"
+        },
+        {
+          "time": "12:30",
+          "label": "12:30 PM",
+          "capacity": 125,
+          "sold": 15,
+          "remaining": 110,
+          "status": "available"
+        },
+        {
+          "time": "13:00",
+          "label": "1:00 PM",
+          "capacity": 125,
+          "sold": 0,
+          "remaining": 125,
+          "status": "available"
+        },
+        {
+          "time": "13:30",
+          "label": "1:30 PM",
+          "capacity": 125,
+          "sold": 9,
+          "remaining": 116,
+          "status": "available"
+        },
+        {
+          "time": "14:00",
+          "label": "2:00 PM",
+          "capacity": 125,
+          "sold": 0,
+          "remaining": 125,
+          "status": "available"
+        }
+      ]
     }
   ]
 }
